@@ -1,0 +1,124 @@
+banner_series,banner_model,banner_mode,banner_range_max_mm,sick_type_code,sick_order_number,sick_family,adequate,confidence,rationale,source
+,,fiber_optic,,,,,False,,no SICK equivalent in comparable mode (gap),deterministic
+BEAM-ARRAY,,opposed,,GSE6-P4112,1052450,G6,True,low,"G6 opposed reaches 15 m, likely covers Banner range; PNP chosen, but SICK offers only switching output vs Banner's analog measuring array.",judge
+BEAM-ARRAY,BMLV,retroreflective,,GL6-P4112,1051777,G6,True,low,"GL6 retroreflective (lente doble), 6 m range, PNP output; Banner range unspecified so adequacy assumed. G6 is a single-beam sensor, not a true light screen.",judge
+DURA-BEND,,fiber_optic,,,,,False,,no SICK equivalent in comparable mode (gap),deterministic
+ECONO-BEAM,,convergent,,GTE6-P4212,1051781,G6,True,low,"Only energetic GTE6 offered; convergent ideally maps to background suppression, so principle mismatch; 300 mm reach, no Banner range to verify.",judge
+ECONO-BEAM,,diffuse,80,WTB8-N1111,6033210,W8,True,low,deterministic range match,deterministic
+ECONO-BEAM,,diffuse (long range),200,GTB6-P4212,1052442,G6,True,medium,GTB6 reaches 250 mm covering 200 mm; background suppression differs from plain long-range diffuse but ensures reliable detection.,judge
+ECONO-BEAM,,diffuse (short range),80,WTB8-P1111,6033211,W8,True,high,WTB8 background-suppression diffuse reaches 100 mm covering 80 mm (ratio 1.25); PNP compatible with Banner bipolar output.,judge
+ECONO-BEAM,,fiber_optic,,,,,False,,no SICK equivalent in comparable mode (gap),deterministic
+ECONO-BEAM,,opposed,1800,WSE4-3P2230,1028160,W4-3,True,high,"W4-3 through-beam reaches 4000 mm (ratio 2.2), comfortably covers 1800 mm; PNP compatible with Banner bipolar NPN+PNP output.",judge
+ECONO-BEAM,,retroreflective,4500,WL4-3P2230,1028147,W4-3,True,high,"WL4-3 double-lens retro matches 4500 mm exactly (ratio 1.0), PNP compatible; non-polarized fit, polarization not required.",judge
+EZ-BEAM,,fixed_field,2000,WTE280-2P2431,6044728,W280-2,True,high,"WTE280-2 is background-suppression diffuse matching Banner fixed-field; range 2000 mm exactly covers Banner's, PNP output standard.",judge
+EZ-BEAM,EZ-BEAM S2,fixed_field,,GTE6-P4212,1051781,G6,True,low,"Only energetic (energetica) GTE6 offered, not true background suppression; 300 mm. Acceptable stand-in but sub-mode fit imperfect.",judge
+EZ-BEAM,EZ-BEAM S2,opposed,,GSE6-P4112,1052450,G6,True,medium,"G6 through-beam GSE6 reaches 15 m, ample for a compact sensor; PNP fits Banner solid-state outputs. Banner range unknown.",judge
+EZ-BEAM,EZ-BEAM S2,retroreflective,,GL6-P4112,1051777,G6,True,medium,"GL6 retroreflective, 6 m, double-lens design supports polarization for shiny targets; PNP compatible. Banner range not specified.",judge
+L-GAGE,,fixed_field,,GTE6-P4212,1051781,G6,False,low,"GTE6 is diffuse energetica switching sensor, not laser background-suppression; no analog 4-20mA output; only 300mm range vs L-GAGE measurement scope.",judge
+M12,,opposed,50000,WSE280-2P2431,6044745,W280-2,True,high,"W280-2 through-beam reaches 60 m, covering Banner's 50 m (ratio 1.2); PNP variant matches common Banner output.",judge
+MAXI-BEAM,,convergent,,GTE6-P4212,1051781,G6,True,low,"Only short-range diffuse offered; energetic not ideal for convergent focus, and Banner range unknown; PNP fits.",judge
+MAXI-BEAM,,diffuse,1500,GTE10-P4211,1064697,G10,True,medium,Energetic diffuse fits plain long-range; 1.3 m slightly short of 1.5 m (ratio 0.87) but acceptable; PNP.,judge
+MAXI-BEAM,,diffuse,760,WTE8-P1131V,6041473,W8,True,high,Energetic diffuse 950 mm covers Banner 760 mm (ratio 1.25); PNP output compatible.,judge
+MAXI-BEAM,,fiber_optic,,,,,False,,no SICK equivalent in comparable mode (gap),deterministic
+MAXI-BEAM,,fixed_field,100,WTB8-P1111,6033211,W8,True,high,Background-suppression 100 mm exactly matches Banner fixed-field (ratio 1.0); PNP output compatible.,judge
+MAXI-BEAM,,opposed,90000,WSE280-2P2431,6044745,W280-2,False,medium,Closest through-beam but 60 m reach vs Banner 90 m (ratio 0.67); PNP fits. No 90 m SICK candidate exists.,judge
+MAXI-BEAM,,opposed,4500,WSE4S-3F2130V,1045099,W4S-3,True,high,5 m reach covers Banner 4.5 m (ratio 1.11); PNP output compatible with MAXI-BEAM outputs.,judge
+MAXI-BEAM,,retroreflective,9000,WL11-2P2430,1041385,W11-2,True,high,"10 m double-lens retro covers Banner 9 m (ratio 1.11); non-polarized, PNP output compatible.",judge
+MAXI-BEAM,,retroreflective,4500,WL4-3P2230,1028147,W4-3,True,high,4.5 m polarized double-lens exactly matches Banner (ratio 1.0); PNP output compatible.,judge
+MINI-ARRAY,,opposed,,GSE6-P4112,1052450,G6,False,low,"GSE6 is single-beam through-beam (15 m); Banner MINI-ARRAY is a multi-beam measuring light curtain, not equivalent function.",judge
+MINI-BEAM,,convergent,,GTE6-P4212,1051781,G6,True,low,"G6 compact diffuse (300 mm) is closest fit, but only energetic (not background-suppression) and Banner range unspecified, so fit is uncertain.",judge
+MINI-BEAM,,diffuse,380,VTE180-2P42444,6043815,V180-2,True,high,"VTE180-2 background-suppression diffuse reaches 450 mm, covering Banner's 380 mm; PNP compatible.",judge
+MINI-BEAM,,diffuse,130,VTF180-2P42414,6043806,V180-2,True,high,VTF180-2 background-suppression diffuse matches Banner's 130 mm exactly; PNP compatible.,judge
+MINI-BEAM,,fiber_optic,,,,,False,,no SICK equivalent in comparable mode (gap),deterministic
+MINI-BEAM,,opposed,30000,GSE10-P4211,1064706,G10,True,high,"G10 through-beam reaches 40 m, fully covering Banner's 30 m; PNP compatible with Banner's PNP output. V180-2 at 28 m falls slightly short.",judge
+MINI-BEAM,,opposed,3000,WSE4-3P2230,1028160,W4-3,True,high,"W4-3 through-beam reaches 4 m, covering Banner's 3 m; PNP compatible with Banner bipolar output.",judge
+MINI-BEAM,,retroreflective,4500,WL4-3P2230,1028147,W4-3,True,high,WL4-3 double-lens retro matches Banner's 4.5 m exactly (non-polarized); PNP compatible.,judge
+MINI-BEAM,,retroreflective,2000,WL4S-3P2230V,1045095,W4S-3,True,high,"WL4S-3 autocollimation is polarized, matching Banner's polarized variant, reaching 4 m over Banner's 2 m; PNP compatible.",judge
+MINI-BEAM,Expert,convergent,,GTE6-P4212,1051781,G6,True,low,"Only energetica GTE6 available; convergent ideally maps to background-suppression, which is absent, so fit is approximate.",judge
+MINI-BEAM,Expert,diffuse,,GTE6-P4212,1051781,G6,True,medium,"GTE6 energetica diffuse matches plain diffuse mode; 300 mm range, PNP output; Banner range unknown so confidence medium.",judge
+MINI-BEAM,Expert,diffuse,,GTE6-P4212,1051781,G6,True,medium,"Wide-angle proximity maps to energetica diffuse GTE6; 300 mm, PNP; wide-angle optics not confirmed in candidates, hence medium.",judge
+MINI-BEAM,Expert,fiber_optic,,,,,False,,no SICK equivalent in comparable mode (gap),deterministic
+MINI-BEAM,Expert,retroreflective,,GL6-P4112,1051777,G6,True,high,"GL6 retroreflective, 6000 mm range covers typical MINI-BEAM polarized range; PNP output; verify polarization option on GL6.",judge
+MINI-BEAM,SME312LPC,retroreflective,,GL6-P4112,1051777,G6,True,medium,G6 'lente doble' provides polarization for retroreflective mode; 6 m range ample. PNP selected; NPN variant (GL6-N4112) also available if needed.,judge
+MULTI-BEAM,,convergent,,GTE6-P4212,1051781,G6,True,low,Only energetic GTE6 offered; no background-suppression option to properly match convergent/fixed-field; Banner range unspecified.,judge
+MULTI-BEAM,,diffuse,2000,GTE10-R3821,1065874,G10,True,high,GTE10 energetic diffuse matches plain-diffuse Banner at 2 m (ratio 1.0); relay output matches Banner's relay option.,judge
+MULTI-BEAM,,diffuse,600,GRTE18S-P2342,1058200,GR18S,True,medium,"GR18S energetic diffuse at 550 mm slightly short of 600 mm (ratio 0.92); PNP compatible, IP67 rating.",judge
+MULTI-BEAM,,diffuse,300,GTE6-P4212,1051781,G6,True,high,"GTE6 energetic diffuse matches Banner's 300 mm exactly (ratio 1.0), PNP compatible.",judge
+MULTI-BEAM,,fiber_optic,,,,,False,,no SICK equivalent in comparable mode (gap),deterministic
+MULTI-BEAM,,opposed,200000,WSE280-2P2431,6044745,W280-2,False,low,"Best through-beam is W280-2 at 60 m, far short of Banner's 200 m; large range gap, output PNP compatible.",judge
+MULTI-BEAM,,retroreflective,23000,GL10-P1111,1065876,G10,True,medium,"GL10 reaches 15 m vs Banner 23 m (ratio 0.65); slightly short but closest, PNP compatible with Banner outputs.",judge
+MULTI-BEAM,,retroreflective,9000,GL10-N4211,1064700,G10,True,high,"GL10 at 12 m comfortably covers Banner's 9 m (ratio 1.33), NPN compatible; same G10 family as IR retro.",judge
+MULTI-BEAM,,retroreflective,4500,WL4-3P2230,1028147,W4-3,True,high,"W4-3 matches Banner's 4.5 m polarized range exactly (ratio 1.0), PNP compatible; polarized filter suits reflective targets.",judge
+OMNI-BEAM,,convergent,,GTE6-P4212,1051781,G6,True,low,Only energetic G6 offered; no background-suppression candidate to truly match convergent submode; short-range G6 closest available.,judge
+OMNI-BEAM,,diffuse,1800,WTE280-2P2431,6044728,W280-2,True,high,W280-2 diffuse reaches 2 m (ratio 1.11) covering 1.8 m; PNP matches Banner output.,judge
+OMNI-BEAM,,diffuse,300,GTE6-P4212,1051781,G6,True,high,"G6 energetic diffuse exactly matches 300 mm (ratio 1.0), PNP output; plain diffuse fit.",judge
+OMNI-BEAM,,fiber_optic,,,,,False,,no SICK equivalent in comparable mode (gap),deterministic
+OMNI-BEAM,,opposed,45000,WSE8-P1131V,6041489,W8,True,high,W8 through-beam reaches full 45 m (ratio 1.0); PNP matches Banner's PNP output.,judge
+OMNI-BEAM,,retroreflective,9000,GL10G-N1251,1064705,G10,True,high,"G10 double-lens retro covers 9 m (10 m, ratio 1.11); non-polarized fits Banner variant.",judge
+OMNI-BEAM,,retroreflective,4500,WL4-3P2230,1028147,W4-3,True,medium,"W4-3 exactly matches 4.5 m (ratio 1.0), PNP output; polarization not confirmed in candidate data.",judge
+Q25,,fixed_field,100,WTB8-P1111,6033211,W8,True,high,WTB8 background suppression matches Banner fixed-field at 100 mm (ratio 1.0); PNP output compatible.,judge
+Q25,,opposed,20000,WSE12-3P2431,1041459,W12-3,True,high,W12-3 through-beam reaches full 20 m (ratio 1.0); PNP matches Banner output; newer W12 family preferred over W11.,judge
+Q25,,retroreflective,2000,WL4S-3P2230V,1045095,W4S-3,True,high,"W4S-3 autocollimation covers 4 m (ratio 2.0), polarized 'V' variant matches Banner polarized retro; PNP compatible.",judge
+Q40,,diffuse,600,GRTE18S-P2342,1058200,GR18S,True,medium,GRTE18S energetic diffuse at 550 mm (ratio 0.92) slightly short of 600 mm but PNP-compatible and closest available.,judge
+Q40,,opposed,60000,WSE280-2P2431,6044745,W280-2,True,high,W280-2 through-beam reaches full 60 m (ratio 1.0); PNP output matches Banner's PNP option.,judge
+Q40,,retroreflective,6000,GL6-P4112,1051777,G6,True,high,"GL6 double-lens (autocollimation, polarization-capable) covers full 6 m; PNP matches Banner output.",judge
+Q45,,convergent,,GTE6-P4212,1051781,G6,True,medium,"GTE6 short-range diffuse (300 mm) approximates convergent focus; Banner range unspecified, so fit assumed; PNP/NPN available.",judge
+Q45,,diffuse,3000,WTT280L-2P2536,6048062,W280L-2,True,high,W280L-2 long-range diffuse reaches full 3 m (ratio 1.0); dual PNP compatible with Banner NPN/PNP outputs.,judge
+Q45,,diffuse,1800,WTE280-2P2431,6044728,W280-2,True,high,"W280-2 diffuse reaches 2 m covering 1.8 m (ratio 1.11); PNP matches Banner, relay and energetic GTE10 alternatives exist.",judge
+Q45,,diffuse,500,WTB8-P1131V,6041465,W8 Inox,True,high,"WTB8 background-suppression reaches full 500 mm (ratio 1.0), fitting Banner short-range fixed-field; PNP and NPN available.",judge
+Q45,,fiber_optic,,,,,False,,no SICK equivalent in comparable mode (gap),deterministic
+Q45,,opposed,60000,WSE280-2P2431,6044745,W280-2,True,high,"W280-2 through-beam reaches full 60 m (ratio 1.0); PNP matches Banner NPN/PNP output, relay variants also available.",judge
+Q45,,retroreflective,70000,GL10-P1111,1065876,G10,False,low,All candidates max 15 m vs Banner 70 m laser retro (ratio 0.21); no SICK summary part covers this long range.,judge
+Q45,,retroreflective,9000,GL10G-N1251,1064705,G10,True,high,"G10 non-polarized reaches 10 m covering 9 m (ratio 1.11); NPN compatible, PNP W11-2 alternatives also available.",judge
+Q45,,retroreflective,6000,GL6-P4112,1051777,G6,True,high,"G6 polarized retro reaches full 6 m (ratio 1.0); PNP matches Banner, NPN variants also available.",judge
+Q45,Q45UR,ultrasonic,,UM30-212113,6036917,UM30,True,low,"Longest-range UM30 (350 mm) is closest ultrasonic match; Banner range unspecified so coverage unverified, and analog output needs a UM30 analog variant.",judge
+Q45U,,ultrasonic,1400,UM30-213113,6036918,UM30,True,high,"UM30 1300 mm nearly covers 1400 mm (ratio 0.93); analog variant matches Q45U analog output, family also offers PNP/NPN switching.",judge
+Q45U,,ultrasonic,3000,UM30-214113,6036919,UM30,True,high,"UM30 3400 mm fully covers 3000 mm (ratio 1.13); analog variant matches Q45U analog output, PNP/NPN switching also available in family.",judge
+Q45UR,,ultrasonic,150,UM30-211113,6036916,UM30,True,medium,Banner Q45UR is analog-only; UM30-211113 (no switching output = analog variant) covers 150mm within its 250mm range. UC12 candidates fit range but only offer switching outputs.,judge
+Q45X,,convergent,,GTE6-P4212,1051781,G6,False,low,"Convergent wants background suppression; only energetic GTE6 offered, so submode mismatch. No supresion-del-fondo candidate available.",judge
+Q45X,,diffuse,,GTE6-P4212,1051781,G6,True,medium,"GTE6 energetic diffuse 300 mm, PNP. Matches plain diffuse short-range submode; energetic principle correct.",judge
+Q45X,,diffuse,,GTE6-P4212,1051781,G6,False,low,Only GTE6 at 300 mm available; likely too short for Banner long-range diffuse. Energetic principle fits but range may be inadequate.,judge
+Q45X,,fiber_optic,,,,,False,,no SICK equivalent in comparable mode (gap),deterministic
+Q45X,,opposed,,GSE6-P4112,1052450,G6,True,medium,"GSE6 through-beam reaches 15 m, PNP output compatible with Q45X. Banner range unspecified but 15 m covers typical opposed use.",judge
+Q45X,,retroreflective,,GL6-P4112,1051777,G6,True,medium,"GL6 retroreflective 6 m, PNP. Polarized variant requested; verify GL6 polarization filter for shiny targets, otherwise range is ample.",judge
+Q45X,,retroreflective,,GL6-P4112,1051777,G6,True,medium,"GL6 retroreflective 6 m, PNP output compatible. Non-polarized use fully covered by GL6 dual-lens optics.",judge
+Q85,,diffuse,1000,WTE11-2P2432,1041381,W11-2,True,high,Long-range plain diffuse maps to energetic principle; WTE11-2 covers 1 m exactly; PNP compatible.,judge
+Q85,,diffuse,250,GTB6-P4212,1052442,G6,True,high,GTB6 background-suppression covers 250 mm exactly; PNP compatible; only short-range option offered.,judge
+Q85,,opposed,23000,VSE180-2P42434,6043850,V180-2,True,high,"V180-2 through-beam reaches 25 m, closest cover of Banner 23 m; PNP matches Banner's bipolar NPN+PNP output.",judge
+Q85,,retroreflective,4500,WL4-3P2230,1028147,W4-3,True,high,W4-3 exactly covers 4.5 m; double-lens (polarized) design matches Banner polarized retro; PNP compatible.,judge
+QM(T)42,,fixed_field,150,WTB4-3P3162,1028082,W4-3,True,high,W4-3 background-suppression exactly matches 150 mm range (ratio 1.0) and adjustable-field principle; PNP output compatible with Banner.,judge
+QM(T)42,,fixed_field,400,VTE180-2P42444,6043815,V180-2,True,high,"V180-2 background-suppression reaches 450 mm (ratio 1.125), closest covering the 400 mm range; PNP output matches Banner.",judge
+QM42,,fixed_field,2000,WTE280-2P2431,6044728,W280-2,True,medium,W280-2 reaches 2 m (ratio 1.0) with PNP; background-suppression principle not confirmed in data but family fits fixed-field use.,judge
+QM42,,opposed,10000,WSE8-P1131,6035581,W8,True,high,W8 through-beam reaches exactly 10 m (ratio 1.0); PNP chosen to match Banner's output offering.,judge
+QM42,,retroreflective,3000,WL4S-3P2230V,1045095,W4S-3,True,high,"W4S-3 autocollimation covers 3 m with 4 m reach (ratio 1.33); polarized, matching Banner polarized retro. PNP output.",judge
+QM42,,retroreflective,400,WL4S-3P2230V,1045095,W4S-3,True,medium,Only W4S-3 available; covers 400 mm but range 10x oversized and polarized vs Banner non-polarized variant.,judge
+QMT42,,fixed_field,2000,WTE280-2P2431,6044728,W280-2,True,medium,W280-2 covers full 2000 mm range with PNP output matching Banner; detection principle unlabeled but family supports background suppression for fixed-field.,judge
+S12,,opposed,15000,GSE6-P4112,1052450,G6,True,high,GSE6 through-beam exactly matches Banner's 15 m opposed range (ratio 1.0); PNP output matches Banner's PNP offering.,judge
+S18,,opposed,,GSE6-P4112,1052450,G6,True,medium,"G6 through-beam reaches 15 m, ample for any S18 opposed range; PNP output covers Banner's typical outputs. Banner range unspecified.",judge
+S18 & M18,,diffuse,300,GTE6-P4212,1051781,G6,True,high,G6 energetic diffuse at 300 mm matches plain long-range diffuse principle and range exactly; PNP output compatible.,judge
+S18 & M18,,diffuse,100,WTB8-P1111,6033211,W8,True,medium,"W8 covers 100 mm; uses background suppression rather than energetic, but adequate for short-range diffuse. PNP output.",judge
+S18 & M18,,fixed_field,100,WTB8-P1111,6033211,W8,True,high,W8 background-suppression matches Banner fixed-field principle at 100 mm exactly; PNP output compatible.,judge
+S18 & M18,,opposed,20000,WSE11-2P2430,1041394,W11-2,True,high,W11-2 through-beam reaches full 20 m (ratio 1.0); PNP matches Banner PNP output. Exact range coverage.,judge
+S18 & M18,,retroreflective,2000,WL4S-3P2230V,1045095,W4S-3,True,high,Polarized (autocolimación V) retro at 4 m comfortably covers 2 m; PNP matches. Polarization suits Banner polarized variant.,judge
+S18 & M18,,retroreflective,2000,WL4S-3P2230V,1045095,W4S-3,True,medium,"Only polarized W4S-3 offered; covers 2 m. Polarization mismatch vs Banner non-polarized but functionally acceptable, PNP output.",judge
+S30,,fixed_field,600,GRTE18S-P2342,1058200,GR18S,True,low,"GRTE18S is energetic diffuse, not background-suppression; sub-mode mismatch for fixed-field. Range 550 mm slightly short (ratio 0.917). PNP matches.",judge
+S30,,opposed,60000,WSE280-2P2431,6044745,W280-2,True,high,W280-2 through-beam reaches full 60 m (ratio 1.0); PNP variant matches Banner's PNP output. NPN and relay also available.,judge
+S30,,retroreflective,6000,GL6-P4112,1051777,G6,True,high,G6 double-lens retroreflective covers full 6 m (ratio 1.0); PNP matches Banner. Double-lens design suits polarized reflector detection.,judge
+SM30,,opposed,200000,WSE280-2P2431,6044745,W280-2,False,low,W280-2 through-beam reaches only 60 m (ratio 0.3) versus Banner's 200 m; PNP output fits but range grossly inadequate.,judge
+T18,,diffuse,100,WTB8-P1111,6033211,W8,True,medium,"WTB8 background-suppression reaches 100 mm (ratio 1.0); Banner plain diffuse, BGS is tighter but adequate.",judge
+T18,,opposed,20000,WSE11-2P2430,1041394,W11-2,True,high,Through-beam pair reaches full 20 m (ratio 1.0); PNP output covers Banner's discrete output.,judge
+T18,,retroreflective,2000,WL4S-3P2230V,1045095,W4S-3,True,high,"Polarized autocollimation retro reaches 4 m, comfortably covering 2 m Banner range; PNP output.",judge
+T18,,retroreflective,500,WL4S-3P2230V,1045095,W4S-3,True,medium,Same polarized W4S-3 far exceeds 500 mm; polarized where Banner is non-polarized but functionally covers it.,judge
+T18U,,ultrasonic,600,UM30-212118,6036922,UM30,False,low,Only UM30 candidates offered; 350 mm range covers barely 58% of Banner's 600 mm opposed-mode range. PNP output compatible.,judge
+T30,,diffuse,600,GRTE18S-P2342,1058200,GR18S,True,medium,GR18S energetic diffuse fits plain-diffuse variant and PNP output; 550 mm is slightly short of Banner's 600 mm (ratio 0.92).,judge
+T30,,opposed,60000,WSE280-2P2431,6044745,W280-2,True,high,W280-2 through-beam reaches full 60 m (range_ratio 1.0); PNP output matches Banner; NPN and relay variants also available.,judge
+T30,,retroreflective,6000,GL6-P4112,1051777,G6,True,high,G6 retroreflective covers full 6 m (ratio 1.0); double-lens supports polarized detection; PNP and NPN outputs match Banner.,judge
+ULTRA-BEAM,,ultrasonic,6000,UM30-215113,6036920,UM30,True,high,"UM30 reaches full 6000 mm (ratio 1.0); analog-capable variant matches Banner's analog output, unlike PNP-only siblings.",judge
+VALU-BEAM,,convergent,,GTE6-P4212,1051781,G6,True,low,"G6 short-range diffuse 300 mm approximates convergent; only energetica offered, no true fixed-field/background-suppression candidate.",judge
+VALU-BEAM,,diffuse,760,WTE8-P1131V,6041473,W8,True,high,"W8 energetic diffuse 950 mm covers 760 mm (ratio 1.25); plain diffuse -> energetica, PNP compatible.",judge
+VALU-BEAM,,diffuse,380,VTE180-2P42444,6043815,V180-2,True,medium,V180-2 background-suppression 450 mm covers 380 mm (ratio 1.18); WTB11-2 alternative slightly short.,judge
+VALU-BEAM,,fiber_optic,,,,,False,,no SICK equivalent in comparable mode (gap),deterministic
+VALU-BEAM,,opposed,60000,WSE280-2P2431,6044745,W280-2,True,high,W280-2 through-beam reaches full 60 m (ratio 1.0); PNP compatible with Banner's outputs.,judge
+VALU-BEAM,,opposed,3000,WSE4-3P2230,1028160,W4-3,True,high,W4-3 through-beam 4 m exceeds Banner 3 m (ratio 1.33); PNP output compatible.,judge
+VALU-BEAM,,retroreflective,9000,WL11-2P2430,1041385,W11-2,True,high,"W11-2 double-lens retro 10 m covers 9 m (ratio 1.11); non-polarized fit, PNP compatible.",judge
+VALU-BEAM,,retroreflective,4500,WL4-3P2230,1028147,W4-3,True,high,W4-3 retro double-lens matches 4.5 m exactly (ratio 1.0); PNP compatible.,judge

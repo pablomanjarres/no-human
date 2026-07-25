@@ -1,0 +1,124 @@
+banner_series,banner_model,banner_category,banner_mode,banner_variant,banner_range_max_mm,sick_order_number,sick_type_code,sick_family,sick_range_max_mm,sick_switching_output,range_ratio,match_quality,score,n_candidates,alt_type_codes
+,,Accesorios (Accessories),fiber_optic,opposed and diffuse (bifurcated),,,,,,,,GAP,0,0,
+DURA-BEND,,Accesorios (Accessories),fiber_optic,,,,,,,,,GAP,0,0,
+BEAM-ARRAY,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,,1052450,GSE6-P4112,G6,15000,PNP,,no-range,0,64,GSE6-N4112;GSE6-P1112;GSE6-N1112;GSE6-P7112
+BEAM-ARRAY,BMLV,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,,,1051777,GL6-P4112,G6,6000,PNP,,no-range,0,79,GL6-N4112;GL6-P1112;GL6-N1112;GL6-P4511
+ECONO-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,1800,1028160,WSE4-3P2230,W4-3,4000,PNP,2.222,moderate,60.1,64,WSE4-3P2130;WSE4-3F3130;WSE4-3E1330;WSE4-3P3131
+ECONO-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,non-polarized,4500,1028147,WL4-3P2230,W4-3,4500,PNP,1.0,strong,100,79,WL4-3N1330;WL4-3F2130;WL4-3E1330;WL4-3P3430
+ECONO-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,long range,200,1046410,WTF4S-3P2262V,W4S-3,200,PNP,1.0,strong,100,156,GTB6-P4212;GTB6-N4212;GTB6-P1212;GTB6-N1212
+ECONO-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,short range,80,6033210,WTB8-N1111,W8,100,NPN,1.25,strong,94.6,156,WTB8-P1111;WTB8-N2111;WTB8-P2111;WTB8-N2211
+ECONO-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),convergent,,,1051781,GTE6-P4212,G6,300,PNP,,no-range,0,156,GTE6-N4212;GTE6-P1212;GTE6-N1212;GTE6-P7212
+ECONO-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),fiber_optic,,,,,,,,,GAP,0,0,
+EZ-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),fixed_field,,2000,1065874,GTE10-R3821,G10,2000,Relé,1.0,strong,100,156,WTE280-2P2431;WTE280-2N2431;WTE280-2H4331;WTE280-2H1531
+EZ-BEAM,EZ-BEAM S2,Sensores fotoeléctricos (Photoelectric sensors),opposed,,,1052450,GSE6-P4112,G6,15000,PNP,,no-range,0,64,GSE6-N4112;GSE6-P1112;GSE6-N1112;GSE6-P7112
+EZ-BEAM,EZ-BEAM S2,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,,1051777,GL6-P4112,G6,6000,PNP,,no-range,0,79,GL6-N4112;GL6-P1112;GL6-N1112;GL6-P4511
+EZ-BEAM,EZ-BEAM S2,Sensores fotoeléctricos (Photoelectric sensors),fixed_field,,,1051781,GTE6-P4212,G6,300,PNP,,no-range,0,156,GTE6-N4212;GTE6-P1212;GTE6-N1212;GTE6-P7212
+L-GAGE,,Sensores fotoeléctricos (Photoelectric sensors),fixed_field,laser,,1051781,GTE6-P4212,G6,300,PNP,,no-range,0,156,GTE6-N4212;GTE6-P1212;GTE6-N1212;GTE6-P7212
+M12,,Sensores fotoeléctricos (Photoelectric sensors),opposed,laser,50000,6044745,WSE280-2P2431,W280-2,60000,PNP,1.2,strong,97.1,64,WSE280-2N2431;WSE280-2H4331;WSE280-2H1531;WSE280-2R4331
+MAXI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),opposed,long range,90000,6044745,WSE280-2P2431,W280-2,60000,PNP,0.667,moderate,75.7,64,WSE280-2N2431;WSE280-2H4331;WSE280-2H1531;WSE280-2R4331
+MAXI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),opposed,short range,4500,1045099,WSE4S-3F2130V,W4S-3,5000,PNP,1.111,strong,100,64,WSE4S-3P2130V;WSE4S-3N2130V;WSE4S-3F3430V;WSE4S-3P2430V
+MAXI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,non-polarized,9000,1064705,GL10G-N1251,G10,10000,NPN,1.111,strong,100,79,WL11-2P2430;WL11-2N2430;WL11-2P2432;GL10-N4211
+MAXI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,4500,1028147,WL4-3P2230,W4-3,4500,PNP,1.0,strong,100,79,WL4-3N1330;WL4-3F2130;WL4-3E1330;WL4-3P3430
+MAXI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,long range,1500,1064688,GTE10-R3811,G10,1300,Relé,0.867,strong,91.4,156,GTE10-P4211;GTE10-P1211;GTE10-N1211;GTE10-N4211
+MAXI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,short range,760,6041469,WTE8-N1131V,W8,950,NPN,1.25,strong,94.6,156,WTE8-N2231V;WTE8-N3331V;WTE8-P1131V;WTE8-P2231V
+MAXI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),convergent,,,1051781,GTE6-P4212,G6,300,PNP,,no-range,0,156,GTE6-N4212;GTE6-P1212;GTE6-N1212;GTE6-P7212
+MAXI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),fixed_field,,100,6033210,WTB8-N1111,W8,100,NPN,1.0,strong,100,156,WTB8-P1111;WTB8-N2111;WTB8-P2111;WTB8-N2211
+MAXI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),fiber_optic,,,,,,,,,GAP,0,0,
+MINI-ARRAY,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,,1052450,GSE6-P4112,G6,15000,PNP,,no-range,0,64,GSE6-N4112;GSE6-P1112;GSE6-N1112;GSE6-P7112
+MINI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),opposed,long range,30000,6037498,VSE180-2N42437,V180-2,28000,NPN,0.933,strong,95.9,64,VSE180-2P42437;VSE180-2N42432;VSE180-2P42432;GSE10-P4211
+MINI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),opposed,short range,3000,1028160,WSE4-3P2230,W4-3,4000,PNP,1.333,strong,90.7,64,WSE4-3P2130;WSE4-3F3130;WSE4-3E1330;WSE4-3P3131
+MINI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,non-polarized,4500,1028147,WL4-3P2230,W4-3,4500,PNP,1.0,strong,100,79,WL4-3N1330;WL4-3F2130;WL4-3E1330;WL4-3P3430
+MINI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,2000,1045095,WL4S-3P2230V,W4S-3,4000,PNP,2.0,moderate,66.4,79,WL4S-3P3430V;WL4S-3N1130V;WL4S-3E1330V;WL4S-3P2430V
+MINI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,long range,380,6043813,VTE180-2N42444,V180-2,450,NPN,1.184,strong,97.9,156,VTE180-2P42444;VTE180-2N42449;VTE180-2P42449;WTB11-2P2431
+MINI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,short range,130,6043804,VTF180-2N42414,V180-2,130,NPN,1.0,strong,100,156,VTF180-2P42414;VTF180-2N42419;VTF180-2P42419;VTF180-2N42412
+MINI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),convergent,,,1051781,GTE6-P4212,G6,300,PNP,,no-range,0,156,GTE6-N4212;GTE6-P1212;GTE6-N1212;GTE6-P7212
+MINI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),fiber_optic,,,,,,,,,GAP,0,0,
+MINI-BEAM,Expert,Sensores fotoeléctricos (Photoelectric sensors),diffuse,,,1051781,GTE6-P4212,G6,300,PNP,,no-range,0,156,GTE6-N4212;GTE6-P1212;GTE6-N1212;GTE6-P7212
+MINI-BEAM,Expert,Sensores fotoeléctricos (Photoelectric sensors),diffuse,wide angle (proximity),,1051781,GTE6-P4212,G6,300,PNP,,no-range,0,156,GTE6-N4212;GTE6-P1212;GTE6-N1212;GTE6-P7212
+MINI-BEAM,Expert,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,,1051777,GL6-P4112,G6,6000,PNP,,no-range,0,79,GL6-N4112;GL6-P1112;GL6-N1112;GL6-P4511
+MINI-BEAM,Expert,Sensores fotoeléctricos (Photoelectric sensors),convergent,,,1051781,GTE6-P4212,G6,300,PNP,,no-range,0,156,GTE6-N4212;GTE6-P1212;GTE6-N1212;GTE6-P7212
+MINI-BEAM,Expert,Sensores fotoeléctricos (Photoelectric sensors),fiber_optic,infrared,,,,,,,,GAP,0,0,
+MINI-BEAM,Expert,Sensores fotoeléctricos (Photoelectric sensors),fiber_optic,visible,,,,,,,,GAP,0,0,
+MINI-BEAM,SME312LPC,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,,1051777,GL6-P4112,G6,6000,PNP,,no-range,0,79,GL6-N4112;GL6-P1112;GL6-N1112;GL6-P4511
+MULTI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,200000,6044745,WSE280-2P2431,W280-2,60000,PNP,0.3,weak,27.8,64,WSE280-2N2431;WSE280-2H4331;WSE280-2H1531;WSE280-2R4331
+MULTI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,infrared,23000,1065876,GL10-P1111,G10,15000,PNP,0.652,moderate,74.4,79,GL10-P4111;GL10-P1211;GL10-P4211;WL280-2P2431
+MULTI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,non-polarized,9000,1064705,GL10G-N1251,G10,10000,NPN,1.111,strong,100,79,WL11-2P2430;WL11-2N2430;WL11-2P2432;GL10-N4211
+MULTI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,4500,1028147,WL4-3P2230,W4-3,4500,PNP,1.0,strong,100,79,WL4-3N1330;WL4-3F2130;WL4-3E1330;WL4-3P3430
+MULTI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,long range,2000,1065874,GTE10-R3821,G10,2000,Relé,1.0,strong,100,156,WTE280-2P2431;WTE280-2N2431;WTE280-2H4331;WTE280-2H1531
+MULTI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,medium range,600,1058200,GRTE18S-P2342,GR18S,550,PNP,0.917,strong,94.8,156,GRTE18S-N2342;GRTE18S-E234Z;GRTE18S-F234Z;GRTE18S-P234X
+MULTI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,short range,300,1051781,GTE6-P4212,G6,300,PNP,1.0,strong,100,156,GTE6-N4212;GTE6-P1212;GTE6-N1212;GTE6-P7212
+MULTI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),convergent,,,1051781,GTE6-P4212,G6,300,PNP,,no-range,0,156,GTE6-N4212;GTE6-P1212;GTE6-N1212;GTE6-P7212
+MULTI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),fiber_optic,,,,,,,,,GAP,0,0,
+OMNI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,45000,6041485,WSE8-N1131V,W8,45000,NPN,1.0,strong,100,64,WSE8-N2231V;WSE8-N3331V;WSE8-P1131V;WSE8-P2231V
+OMNI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,non-polarized,9000,1064705,GL10G-N1251,G10,10000,NPN,1.111,strong,100,79,WL11-2P2430;WL11-2N2430;WL11-2P2432;GL10-N4211
+OMNI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,4500,1028147,WL4-3P2230,W4-3,4500,PNP,1.0,strong,100,79,WL4-3N1330;WL4-3F2130;WL4-3E1330;WL4-3P3430
+OMNI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,long range,1800,1065874,GTE10-R3821,G10,2000,Relé,1.111,strong,100,156,WTE280-2P2431;WTE280-2N2431;WTE280-2H4331;WTE280-2H1531
+OMNI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,short range,300,1051781,GTE6-P4212,G6,300,PNP,1.0,strong,100,156,GTE6-N4212;GTE6-P1212;GTE6-N1212;GTE6-P7212
+OMNI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),convergent,,,1051781,GTE6-P4212,G6,300,PNP,,no-range,0,156,GTE6-N4212;GTE6-P1212;GTE6-N1212;GTE6-P7212
+OMNI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),fiber_optic,,,,,,,,,GAP,0,0,
+Q25,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,20000,1041394,WSE11-2P2430,W11-2,20000,PNP,1.0,strong,100,64,WSE11-2N2430;WSE12-3P2431;WSE12-3N2431;WSE12C-3P2430
+Q25,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,2000,1045095,WL4S-3P2230V,W4S-3,4000,PNP,2.0,moderate,66.4,79,WL4S-3P3430V;WL4S-3N1130V;WL4S-3E1330V;WL4S-3P2430V
+Q25,,Sensores fotoeléctricos (Photoelectric sensors),fixed_field,,100,6033210,WTB8-N1111,W8,100,NPN,1.0,strong,100,156,WTB8-P1111;WTB8-N2111;WTB8-P2111;WTB8-N2211
+Q40,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,60000,6044745,WSE280-2P2431,W280-2,60000,PNP,1.0,strong,100,64,WSE280-2N2431;WSE280-2H4331;WSE280-2H1531;WSE280-2R4331
+Q40,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,6000,1051777,GL6-P4112,G6,6000,PNP,1.0,strong,100,79,GL6-N4112;GL6-P1112;GL6-N1112;GL6-P4511
+Q40,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,,600,1058200,GRTE18S-P2342,GR18S,550,PNP,0.917,strong,94.8,156,GRTE18S-N2342;GRTE18S-E234Z;GRTE18S-F234Z;GRTE18S-P234X
+Q45,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,60000,6044745,WSE280-2P2431,W280-2,60000,PNP,1.0,strong,100,64,WSE280-2N2431;WSE280-2H4331;WSE280-2H1531;WSE280-2R4331
+Q45,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,laser,70000,1065876,GL10-P1111,G10,15000,PNP,0.214,weak,7.6,79,GL10-P4111;GL10-P1211;GL10-P4211;WL280-2P2431
+Q45,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,non-polarized,9000,1064705,GL10G-N1251,G10,10000,NPN,1.111,strong,100,79,WL11-2P2430;WL11-2N2430;WL11-2P2432;GL10-N4211
+Q45,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,6000,1051777,GL6-P4112,G6,6000,PNP,1.0,strong,100,79,GL6-N4112;GL6-P1112;GL6-N1112;GL6-P4511
+Q45,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,long range,3000,6048062,WTT280L-2P2536,W280L-2,3000,2 PNP,1.0,strong,100,156,WTT280L-2N2536;WTT280L-2P1536;WTT280L-2N1536;WTT280L-2P2531
+Q45,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,medium range,1800,1065874,GTE10-R3821,G10,2000,Relé,1.111,strong,100,156,WTE280-2P2431;WTE280-2N2431;WTE280-2H4331;WTE280-2H1531
+Q45,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,short range,500,6041461,WTB8-N1131V,W8 Inox,500,NPN,1.0,strong,100,156,WTB8-N2231V;WTB8-N3331V;WTB8-P1131V;WTB8-P2231V
+Q45,,Sensores fotoeléctricos (Photoelectric sensors),convergent,,,1051781,GTE6-P4212,G6,300,PNP,,no-range,0,156,GTE6-N4212;GTE6-P1212;GTE6-N1212;GTE6-P7212
+Q45,,Sensores fotoeléctricos (Photoelectric sensors),fiber_optic,,,,,,,,,GAP,0,0,
+Q45X,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,,1052450,GSE6-P4112,G6,15000,PNP,,no-range,0,64,GSE6-N4112;GSE6-P1112;GSE6-N1112;GSE6-P7112
+Q45X,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,,1051777,GL6-P4112,G6,6000,PNP,,no-range,0,79,GL6-N4112;GL6-P1112;GL6-N1112;GL6-P4511
+Q45X,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,non-polarized,,1051777,GL6-P4112,G6,6000,PNP,,no-range,0,79,GL6-N4112;GL6-P1112;GL6-N1112;GL6-P4511
+Q45X,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,short range,,1051781,GTE6-P4212,G6,300,PNP,,no-range,0,156,GTE6-N4212;GTE6-P1212;GTE6-N1212;GTE6-P7212
+Q45X,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,long range,,1051781,GTE6-P4212,G6,300,PNP,,no-range,0,156,GTE6-N4212;GTE6-P1212;GTE6-N1212;GTE6-P7212
+Q45X,,Sensores fotoeléctricos (Photoelectric sensors),convergent,,,1051781,GTE6-P4212,G6,300,PNP,,no-range,0,156,GTE6-N4212;GTE6-P1212;GTE6-N1212;GTE6-P7212
+Q45X,,Sensores fotoeléctricos (Photoelectric sensors),fiber_optic,,,,,,,,,GAP,0,0,
+Q85,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,23000,6043848,VSE180-2N42434,V180-2,25000,NPN,1.087,strong,100,64,VSE180-2P42434;VSE180-2N42439;VSE180-2P42439;VSE180-2N42437
+Q85,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,4500,1028147,WL4-3P2230,W4-3,4500,PNP,1.0,strong,100,79,WL4-3N1330;WL4-3F2130;WL4-3E1330;WL4-3P3430
+Q85,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,long range,1000,1041381,WTE11-2P2432,W11-2,1000,PNP,1.0,strong,100,156,WTE11-2N2432;WTB11-2P2461;WTB11-2N2461;GTB10-R3821
+Q85,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,short range,250,1052442,GTB6-P4212,G6,250,PNP,1.0,strong,100,156,GTB6-N4212;GTB6-P1212;GTB6-N1212;GTB6-P7211
+QM(T)42,,Sensores fotoeléctricos (Photoelectric sensors),fixed_field,short range,150,1028082,WTB4-3P3162,W4-3,150,PNP,1.0,strong,100,156,WTB4-3P2162;WTB4-3P2264;WTB4-3P3161;WTB4-3P3261
+QM(T)42,,Sensores fotoeléctricos (Photoelectric sensors),fixed_field,long range,400,6043813,VTE180-2N42444,V180-2,450,NPN,1.125,strong,100,156,VTE180-2P42444;VTE180-2N42449;VTE180-2P42449;WTB8-N1131V
+QM42,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,10000,6035578,WSE8-N1131,W8,10000,NPN,1.0,strong,100,64,WSE8-N2131;WSE8-N2231;WSE8-P1131;WSE8-P2131
+QM42,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,3000,1045095,WL4S-3P2230V,W4S-3,4000,PNP,1.333,strong,90.7,79,WL4S-3P3430V;WL4S-3N1130V;WL4S-3E1330V;WL4S-3P2430V
+QM42,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,non-polarized,400,1045095,WL4S-3P2230V,W4S-3,4000,PNP,10.0,poor,8,79,WL4S-3P3430V;WL4S-3N1130V;WL4S-3E1330V;WL4S-3P2430V
+QM42,,Sensores fotoeléctricos (Photoelectric sensors),fixed_field,,2000,1065874,GTE10-R3821,G10,2000,Relé,1.0,strong,100,156,WTE280-2P2431;WTE280-2N2431;WTE280-2H4331;WTE280-2H1531
+QMT42,,Sensores fotoeléctricos (Photoelectric sensors),fixed_field,,2000,1065874,GTE10-R3821,G10,2000,Relé,1.0,strong,100,156,WTE280-2P2431;WTE280-2N2431;WTE280-2H4331;WTE280-2H1531
+S12,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,15000,1052450,GSE6-P4112,G6,15000,PNP,1.0,strong,100,64,GSE6-N4112;GSE6-P1112;GSE6-N1112;GSE6-P7112
+S18 & M18,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,20000,1041394,WSE11-2P2430,W11-2,20000,PNP,1.0,strong,100,64,WSE11-2N2430;WSE12-3P2431;WSE12-3N2431;WSE12C-3P2430
+S18 & M18,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,2000,1045095,WL4S-3P2230V,W4S-3,4000,PNP,2.0,moderate,66.4,79,WL4S-3P3430V;WL4S-3N1130V;WL4S-3E1330V;WL4S-3P2430V
+S18 & M18,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,non-polarized,2000,1045095,WL4S-3P2230V,W4S-3,4000,PNP,2.0,moderate,66.4,79,WL4S-3P3430V;WL4S-3N1130V;WL4S-3E1330V;WL4S-3P2430V
+S18 & M18,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,long range,300,1051781,GTE6-P4212,G6,300,PNP,1.0,strong,100,156,GTE6-N4212;GTE6-P1212;GTE6-N1212;GTE6-P7212
+S18 & M18,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,short range,100,6033210,WTB8-N1111,W8,100,NPN,1.0,strong,100,156,WTB8-P1111;WTB8-N2111;WTB8-P2111;WTB8-N2211
+S18 & M18,,Sensores fotoeléctricos (Photoelectric sensors),fixed_field,,100,6033210,WTB8-N1111,W8,100,NPN,1.0,strong,100,156,WTB8-P1111;WTB8-N2111;WTB8-P2111;WTB8-N2211
+S30,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,60000,6044745,WSE280-2P2431,W280-2,60000,PNP,1.0,strong,100,64,WSE280-2N2431;WSE280-2H4331;WSE280-2H1531;WSE280-2R4331
+S30,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,6000,1051777,GL6-P4112,G6,6000,PNP,1.0,strong,100,79,GL6-N4112;GL6-P1112;GL6-N1112;GL6-P4511
+S30,,Sensores fotoeléctricos (Photoelectric sensors),fixed_field,,600,1058200,GRTE18S-P2342,GR18S,550,PNP,0.917,strong,94.8,156,GRTE18S-N2342;GRTE18S-E234Z;GRTE18S-F234Z;GRTE18S-P234X
+SM30,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,200000,6044745,WSE280-2P2431,W280-2,60000,PNP,0.3,weak,27.8,64,WSE280-2N2431;WSE280-2H4331;WSE280-2H1531;WSE280-2R4331
+T18,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,20000,1041394,WSE11-2P2430,W11-2,20000,PNP,1.0,strong,100,64,WSE11-2N2430;WSE12-3P2431;WSE12-3N2431;WSE12C-3P2430
+T18,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,2000,1045095,WL4S-3P2230V,W4S-3,4000,PNP,2.0,moderate,66.4,79,WL4S-3P3430V;WL4S-3N1130V;WL4S-3E1330V;WL4S-3P2430V
+T18,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,non-polarized,500,1045095,WL4S-3P2230V,W4S-3,4000,PNP,8.0,poor,8,79,WL4S-3P3430V;WL4S-3N1130V;WL4S-3E1330V;WL4S-3P2430V
+T18,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,,100,6033210,WTB8-N1111,W8,100,NPN,1.0,strong,100,156,WTB8-P1111;WTB8-N2111;WTB8-P2111;WTB8-N2211
+T30,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,60000,6044745,WSE280-2P2431,W280-2,60000,PNP,1.0,strong,100,64,WSE280-2N2431;WSE280-2H4331;WSE280-2H1531;WSE280-2R4331
+T30,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,6000,1051777,GL6-P4112,G6,6000,PNP,1.0,strong,100,79,GL6-N4112;GL6-P1112;GL6-N1112;GL6-P4511
+T30,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,,600,1058200,GRTE18S-P2342,GR18S,550,PNP,0.917,strong,94.8,156,GRTE18S-N2342;GRTE18S-E234Z;GRTE18S-F234Z;GRTE18S-P234X
+VALU-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),opposed,long range,60000,6044745,WSE280-2P2431,W280-2,60000,PNP,1.0,strong,100,64,WSE280-2N2431;WSE280-2H4331;WSE280-2H1531;WSE280-2R4331
+VALU-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),opposed,short range,3000,1028160,WSE4-3P2230,W4-3,4000,PNP,1.333,strong,90.7,64,WSE4-3P2130;WSE4-3F3130;WSE4-3E1330;WSE4-3P3131
+VALU-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,non-polarized,9000,1064705,GL10G-N1251,G10,10000,NPN,1.111,strong,100,79,WL11-2P2430;WL11-2N2430;WL11-2P2432;GL10-N4211
+VALU-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,4500,1028147,WL4-3P2230,W4-3,4500,PNP,1.0,strong,100,79,WL4-3N1330;WL4-3F2130;WL4-3E1330;WL4-3P3430
+VALU-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,long range,760,6041469,WTE8-N1131V,W8,950,NPN,1.25,strong,94.6,156,WTE8-N2231V;WTE8-N3331V;WTE8-P1131V;WTE8-P2231V
+VALU-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,short range,380,6043813,VTE180-2N42444,V180-2,450,NPN,1.184,strong,97.9,156,VTE180-2P42444;VTE180-2N42449;VTE180-2P42449;WTB11-2P2431
+VALU-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),convergent,,,1051781,GTE6-P4212,G6,300,PNP,,no-range,0,156,GTE6-N4212;GTE6-P1212;GTE6-N1212;GTE6-P7212
+VALU-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),fiber_optic,,,,,,,,,GAP,0,0,
+S18,,Sensores fotoeléctricos láser (Photoelectric laser sensors),opposed,laser,,1052450,GSE6-P4112,G6,15000,PNP,,no-range,0,64,GSE6-N4112;GSE6-P1112;GSE6-N1112;GSE6-P7112
+Q45,Q45UR,Sensores ultrasónicos (Ultrasonic),ultrasonic,,,6036916,UM30-211113,UM30,250,,,no-range,0,28,UM30-211118;UM30-211111;UM30-211112;UM30-212113
+Q45U,,Sensores ultrasónicos (Ultrasonic),ultrasonic,proximity mode,1400,6036918,UM30-213113,UM30,1300,,0.929,strong,95.6,28,UM30-213118;UM30-213111;UM30-213112;UM30-213115
+Q45U,,Sensores ultrasónicos (Ultrasonic),ultrasonic,proximity mode,3000,6036919,UM30-214113,UM30,3400,,1.133,strong,100,28,UM30-214118;UM30-214111;UM30-214112;UM30-214115
+Q45UR,,Sensores ultrasónicos (Ultrasonic),ultrasonic,,150,6029831,UC12-11231,UC12,150,PNP,1.0,strong,100,28,UC12-11235;UM30-211113;UM30-211118;UM30-211111
+T18U,,Sensores ultrasónicos (Ultrasonic),ultrasonic,opposed-mode,600,6036917,UM30-212113,UM30,350,,0.583,moderate,67.7,28,UM30-212118;UM30-212111;UM30-212112;UM30-212115
+ULTRA-BEAM,,Sensores ultrasónicos (Ultrasonic),ultrasonic,proximity mode,6000,6036920,UM30-215113,UM30,6000,,1.0,strong,100,28,UM30-215118;UM30-215111;UM30-215112;UM30-214113
