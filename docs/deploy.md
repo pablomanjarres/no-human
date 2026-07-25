@@ -52,7 +52,9 @@ copies under `apps/console/public` are gitignored so they can never drift.
 | Path | Serves |
 | --- | --- |
 | `/` | Landing page, rewritten to the synced `public/index.html` |
+| `/productos.html` | Catalogue of all 1,776 references with their catalogue photos, synced as a static file. Reads `/data/catalog.json` at load |
 | `/console` | The workspace |
+| `/api/ask` | The one endpoint with a model behind it. Returns 503 unless `ANTHROPIC_API_KEY` is set |
 | `/console/product/[sku]` | Product record, prerendered for all 799 SKUs — the three hand-authored parts plus every sensing SKU in the catalogue |
 | `/console/corpus` | Extraction swarm output and the dispute ledger |
 | `/console/doc/[docId]` | Citation viewer |

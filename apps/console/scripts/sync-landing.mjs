@@ -31,7 +31,7 @@ const ENTRIES = [
   "productos.html",
   "catalog.css",
   "catalog.js",
-  "data",
+  "data/catalog.json",
 ];
 
 const exists = async (p) => {
