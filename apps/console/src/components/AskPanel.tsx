@@ -282,22 +282,90 @@ function Turn({ turn, working }: { turn: AskTurn; working: boolean }) {
       ) : null}
 
       {turn.text ? (
-        <div className="mt-2 space-y-2">
-          {turn.text.split("\n\n").map((para, i) => (
-            <p
-              key={i}
-              className="text-[13px] leading-[1.6] whitespace-pre-wrap"
-              style={{ color: turn.failed ? "var(--color-halt)" : "var(--color-ink-dim)" }}
-            >
-              {para}
-            </p>
-          ))}
-        </div>
+        <Prose
+          text={turn.text}
+          ink={turn.failed ? "var(--color-halt)" : "var(--color-ink-dim)"}
+        />
       ) : null}
 
       {working ? <div className="sweep mt-2 h-[2px] w-full bg-cab-700" /> : null}
     </div>
   );
+}
+
+/**
+ * The model answers in markdown — headings, bold, bullet lists — and rendering
+ * that as plain text puts literal `##` and `**` on screen. This handles the
+ * small subset it actually uses rather than pulling in a parser, and it builds
+ * elements rather than HTML, so nothing the model emits can be injected.
+ */
+function Prose({ text, ink }: { text: string; ink: string }) {
+  const blocks: React.ReactNode[] = [];
+  const lines = text.split("\n");
+  let bullets: string[] = [];
+
+  const flushBullets = () => {
+    if (bullets.length === 0) return;
+    blocks.push(
+      <ul key={`ul-${blocks.length}`} className="space-y-1 pl-0">
+        {bullets.map((b, i) => (
+          <li key={i} className="flex gap-1.5 text-[13px] leading-[1.6]" style={{ color: ink }}>
+            <span aria-hidden className="text-ink-faint">
+              ·
+            </span>
+            <span className="flex-1">{inline(b)}</span>
+          </li>
+        ))}
+      </ul>,
+    );
+    bullets = [];
+  };
+
+  for (const raw of lines) {
+    const line = raw.trimEnd();
+    const heading = /^(#{1,6})\s+(.*)$/.exec(line);
+    const bullet = /^\s*[-*·]\s+(.*)$/.exec(line);
+
+    if (heading) {
+      flushBullets();
+      blocks.push(
+        <p
+          key={`h-${blocks.length}`}
+          className="font-display text-[13.5px] leading-[1.4] font-semibold text-ink"
+        >
+          {inline(heading[2] ?? "")}
+        </p>,
+      );
+    } else if (bullet) {
+      bullets.push(bullet[1] ?? "");
+    } else if (line.trim() === "") {
+      flushBullets();
+    } else {
+      flushBullets();
+      blocks.push(
+        <p key={`p-${blocks.length}`} className="text-[13px] leading-[1.6]" style={{ color: ink }}>
+          {inline(line)}
+        </p>,
+      );
+    }
+  }
+  flushBullets();
+
+  return <div className="mt-2 space-y-2">{blocks}</div>;
+}
+
+/** `**bold**` only. Part numbers and spec values are what the model bolds. */
+function inline(text: string): React.ReactNode[] {
+  return text.split(/(\*\*[^*]+\*\*)/g).map((part, i) => {
+    const bold = /^\*\*([^*]+)\*\*$/.exec(part);
+    return bold ? (
+      <strong key={i} className="font-semibold text-ink">
+        {bold[1]}
+      </strong>
+    ) : (
+      <span key={i}>{part}</span>
+    );
+  });
 }
 
 /** Tool arguments, short enough to sit on one line of the trace. */
