@@ -16,15 +16,20 @@ module codes against it.
 
 ## Quick start
 
+> Run the built CLI, not `--experimental-strip-types` on the sources: every
+> module imports with `.js` specifiers, and Node's type-stripping does not
+> rewrite those to `.ts`. Build first with `pnpm --filter @no-human/rag build`
+> (or `pnpm build` at the root, which turbo orders for you).
+
 ```bash
 # Build the index (add --no-embed to force lexical-only)
-node --experimental-strip-types src/cli.ts index
+node dist/cli.js index
 
 # Search, with hard constraints applied before ranking
-node --experimental-strip-types src/cli.ts search "sees a box at 40 cm" --pnp --ip 67
+node dist/cli.js search "sees a box at 40 cm" --pnp --ip 67
 
 # Deterministic solve — prints the per-constraint verdict table
-node --experimental-strip-types src/cli.ts solve --pnp --ip69k --response-max 12
+node dist/cli.js solve --pnp --ip69k --response-max 12
 ```
 
 No `VOYAGE_API_KEY` is required. Without one the dense and rerank lanes are

@@ -21,7 +21,7 @@
     "build": "tsc -p tsconfig.build.json",
     "lint": "eslint src",
     "test": "vitest run --passWithNoTests",
-    "rag": "node --experimental-strip-types src/cli.ts"
+    "rag": "pnpm build && node dist/cli.js"
   },
   "dependencies": {
     "minisearch": "^7.1.2"

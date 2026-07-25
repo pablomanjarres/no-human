@@ -207,20 +207,25 @@ packages/rag/src/
 
 ## 7. Usage
 
+> Run the built CLI, not `--experimental-strip-types` on the sources: every
+> module imports with `.js` specifiers, and Node's type-stripping does not
+> rewrite those to `.ts`. Build first with `pnpm --filter @no-human/rag build`
+> (or `pnpm build` at the root, which turbo orders for you).
+
 ```bash
 # Build the index. Add --no-embed to force lexical-only.
-node --experimental-strip-types packages/rag/src/cli.ts index
+node packages/rag/dist/cli.js index
 
 # Hybrid search with hard constraints
-node --experimental-strip-types packages/rag/src/cli.ts search \
+node packages/rag/dist/cli.js search \
   "retroreflective sensor sees a box at 40 cm" --pnp --ip 67 --top 5
 
 # Pure deterministic solve — prints the per-constraint verdict table
-node --experimental-strip-types packages/rag/src/cli.ts solve \
+node packages/rag/dist/cli.js solve \
   --pnp --ip69k --response-max 12
 
 # One SKU, fully cited
-node --experimental-strip-types packages/rag/src/cli.ts get 1051781
+node packages/rag/dist/cli.js get 1051781
 ```
 
 From the agent side, `createCatalogTools(retriever)` returns the Messages API

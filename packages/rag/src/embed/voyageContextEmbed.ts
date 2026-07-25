@@ -46,8 +46,25 @@ const DEFAULT_TIMEOUT_MS = 30_000;
  * keeps a 1,776-SKU corpus from being one enormous request that fails whole.
  * Documents are never split across batches — splitting a family would destroy
  * the very context this endpoint exists to provide.
+ *
+ * 250 rather than 1,000: the SICK corpus is ~1,886 chunks / ~281k tokens, so a
+ * 1,000-chunk batch is ~150k tokens and the endpoint rejects it. Because the
+ * whole lane fails open, that rejection is silent — you get a lexical-only
+ * index and a log line that cannot tell "no key" from "batch too large".
+ * Measured: 230 chunks in one request succeeds.
  */
-const DEFAULT_MAX_CHUNKS_PER_REQUEST = 1000;
+const DEFAULT_MAX_CHUNKS_PER_REQUEST = 250;
+
+/**
+ * Characters per HTTP request, as a proxy for the endpoint's token cap.
+ *
+ * A chunk-count cap alone is not enough. Card length varies by an order of
+ * magnitude across families, so 250 short accessory cards and 250 dense
+ * multi-spec sensor cards are wildly different requests. ~200k characters is
+ * roughly 57k tokens at the ~3.5 chars/token this bilingual corpus averages,
+ * which leaves generous headroom under the limit.
+ */
+const DEFAULT_MAX_CHARS_PER_REQUEST = 200_000;
 
 /**
  * The minimal `fetch` surface these lanes use.
@@ -266,19 +283,32 @@ function resolveEndpoint(explicit: string | undefined): string {
  * oversized request (and fail open if it is rejected) than quietly embed half a
  * family without its context.
  */
-function planBatches(populated: number[], documents: string[][], cap: number): number[][] {
+function planBatches(
+  populated: number[],
+  documents: string[][],
+  cap: number,
+  charCap: number = DEFAULT_MAX_CHARS_PER_REQUEST,
+): number[][] {
   const batches: number[][] = [];
   let current: number[] = [];
   let count = 0;
+  let chars = 0;
   for (const docIndex of populated) {
-    const size = documents[docIndex]!.length;
-    if (current.length > 0 && count + size > cap) {
+    const doc = documents[docIndex]!;
+    const size = doc.length;
+    const width = doc.reduce((total, chunk) => total + chunk.length, 0);
+    // Either ceiling closes the batch. The character budget is what actually
+    // bites on a dense corpus — the chunk count can be well under its cap while
+    // the payload is already over the endpoint's token limit.
+    if (current.length > 0 && (count + size > cap || chars + width > charCap)) {
       batches.push(current);
       current = [];
       count = 0;
+      chars = 0;
     }
     current.push(docIndex);
     count += size;
+    chars += width;
   }
   if (current.length > 0) batches.push(current);
   return batches;

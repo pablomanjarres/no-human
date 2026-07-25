@@ -204,26 +204,31 @@ packages/agent/src/
 
 ## 8. Usage
 
+> Run the built CLI, not `--experimental-strip-types` on the sources: every
+> module imports with `.js` specifiers, and Node's type-stripping does not
+> rewrite those to `.ts`. Build first with `pnpm --filter @no-human/rag build`
+> (or `pnpm build` at the root, which turbo orders for you).
+
 ```bash
 # Migrate a competitor part, streaming the trace live
-node --experimental-strip-types packages/agent/src/cli.ts migrate QS18VN6LV --trace
+node packages/agent/dist/cli.js migrate QS18VN6LV --trace
 
 # Free-text description
-node --experimental-strip-types packages/agent/src/cli.ts migrate \
+node packages/agent/dist/cli.js migrate \
   "rectangular, PNP, sees a box at 40 cm"
 
 # Photo of a nameplate
-node --experimental-strip-types packages/agent/src/cli.ts migrate --image ./label.jpg
+node packages/agent/dist/cli.js migrate --image ./label.jpg
 
 # Whole BOM, audited row by row
-node --experimental-strip-types packages/agent/src/cli.ts migrate --bom ./bom.csv
+node packages/agent/dist/cli.js migrate --bom ./bom.csv
 
 # Consultant mode
-node --experimental-strip-types packages/agent/src/cli.ts consult \
+node packages/agent/dist/cli.js consult \
   "I need to detect black boxes on a conveyor" --trace
 
 # Replay a recorded trace on stage
-node --experimental-strip-types packages/agent/src/cli.ts trace replay run.ndjson --speed 2
+node packages/agent/dist/cli.js trace replay run.ndjson --speed 2
 ```
 
 Requires `ANTHROPIC_API_KEY`. The retrieval layer underneath does **not** require
