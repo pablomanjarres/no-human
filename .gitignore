@@ -66,3 +66,8 @@ Thumbs.db
 # Playwright MCP local artifacts
 .playwright-mcp/
 .env*
+
+# Compiled output must never land beside sources: `tsc` without -p tsconfig.build.json
+# writes .js next to .ts, and Vite resolves the packages' .js import specifiers to
+# those stale files instead of the TypeScript — tests then silently exercise dead code.
+packages/*/src/**/*.js
