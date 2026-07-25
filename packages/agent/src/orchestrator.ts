@@ -384,8 +384,23 @@ export function confidenceFor(
   );
   if (blockingUnknown) return "low";
 
-  const upheld = (challenge?.challenges ?? []).filter((c) => c.verdict === "upheld");
+  const raised = challenge?.challenges ?? [];
+  const upheld = raised.filter((c) => c.verdict === "upheld");
   if (upheld.some((c) => c.severity === "fatal" || c.severity === "major")) return "medium";
+
+  // An `unverifiable` objection is not a cleared one. The Challenger raised a
+  // fatal or major concern and the catalog could not answer it either way, so
+  // the risk is live and unquantified — the same shape as a blocking `unknown`
+  // above. Reading `unverifiable` as "refuted" is exactly the laundering this
+  // function exists to prevent, and it is easy to do by accident because
+  // `computeSurvives` (correctly) only kills on an *upheld* fatal.
+  if (
+    raised.some(
+      (c) => c.verdict === "unverifiable" && (c.severity === "fatal" || c.severity === "major"),
+    )
+  ) {
+    return "medium";
+  }
   return "high";
 }
 

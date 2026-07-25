@@ -458,13 +458,34 @@ describe("confidenceFor", () => {
     expect(confidenceFor(solve, upheld)).toBe("medium");
   });
 
-  it("is not raised by a refuted or unverifiable objection", () => {
+  it("is not lowered by a refuted objection", () => {
+    // `refuted` means the objection was checked against the catalog and does
+    // not hold. That is a cleared concern, so it must not cost confidence —
+    // otherwise the Challenger doing its job well would look like risk.
     const solve = solveResult([verdict("outputType", "pass")]);
-    const refuted = report("x", true, [
-      challenge({ severity: "major", verdict: "refuted" }),
-      challenge({ severity: "major", verdict: "unverifiable" }),
-    ]);
+    const refuted = report("x", true, [challenge({ severity: "major", verdict: "refuted" })]);
     expect(confidenceFor(solve, refuted)).toBe("high");
+  });
+
+  it("is lowered by an unverifiable fatal or major objection", () => {
+    // `unverifiable` is NOT `refuted`. The Challenger raised a serious concern
+    // and the catalog could not answer it either way, so the risk is live and
+    // unquantified — the same shape as a blocking `unknown` verdict. Reading it
+    // as cleared is the laundering this rule exists to prevent, and it hides
+    // easily because `computeSurvives` only kills on an *upheld* fatal.
+    const solve = solveResult([verdict("outputType", "pass")]);
+    for (const severity of ["fatal", "major"] as const) {
+      const unverifiable = report("x", true, [challenge({ severity, verdict: "unverifiable" })]);
+      expect(confidenceFor(solve, unverifiable)).toBe("medium");
+    }
+  });
+
+  it("is not lowered by an unverifiable minor objection", () => {
+    // A minor concern nobody could check is noise, not risk. Letting it move
+    // the number would make `high` unreachable in a summary catalog.
+    const solve = solveResult([verdict("outputType", "pass")]);
+    const minor = report("x", true, [challenge({ severity: "minor", verdict: "unverifiable" })]);
+    expect(confidenceFor(solve, minor)).toBe("high");
   });
 
   it("is low when nothing was checked at all", () => {

@@ -915,6 +915,14 @@ export function capConfidence(
   droppedCount: number,
 ): SolutionDesign["confidence"] {
   const rank: Record<SolutionDesign["confidence"], number> = { low: 0, medium: 1, high: 2 };
+  // No checks at all is NOT a clean bill of health — it means every guard was
+  // skipped because the requirement it needed was never established (no stated
+  // distance, no output type, no supply voltage, no washdown) or the catalog
+  // prints no connection for the part (695 of 1,776 rows print none). An empty
+  // table rendered under "Confidence: high" is the worst read on the page: zero
+  // verification presented as maximum certainty. Same rule the migration side
+  // enforces in `confidenceFor` — nothing verified, nothing to be confident about.
+  if (checks.length === 0) return "low";
   const cap: SolutionDesign["confidence"] = checks.some((c) => c.status === "warning")
     ? "low"
     : checks.some((c) => c.status === "unverified") || droppedCount > 0
