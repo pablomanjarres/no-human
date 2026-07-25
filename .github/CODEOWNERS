@@ -1,0 +1,6 @@
+# CODEOWNERS for no-human.
+#
+# Default review owner is Pablo. Worker sessions all PR back to main and
+# Pablo arbitrates.
+
+* @pablomanjarres
