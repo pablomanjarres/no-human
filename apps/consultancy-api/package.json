@@ -14,8 +14,8 @@
     "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.115.0",
-    "@no-human/consultancy-engine": "workspace:*"
+    "@no-human/consultancy-engine": "workspace:*",
+    "@no-human/consultancy-llm": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^25.9.3",

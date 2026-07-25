@@ -19,7 +19,7 @@ import { fileURLToPath } from 'node:url';
 import { consult, loadCatalog } from '@no-human/consultancy-engine';
 import type { ConsultInput } from '@no-human/consultancy-engine';
 
-import { createAnthropicClient } from './anthropic.js';
+import { createAnthropicClient } from '@no-human/consultancy-llm';
 
 const HERE = fileURLToPath(new URL('.', import.meta.url));
 const REPO_ROOT = resolve(HERE, '../../..');
