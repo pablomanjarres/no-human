@@ -1098,7 +1098,36 @@ export async function consult(input: ConsultInput, deps: ConsultDeps): Promise<C
 
   emit({ type: "retrieval.start", label: "consultant · investigating the catalog", query: understood });
 
-  const tools = createCatalogTools(deps.retriever);
+  // Every order number any tool actually handed back during the investigation.
+  //
+  // Checking a proposed part against the *catalog* only asks "does this SKU
+  // exist" — which a 7-digit number recalled from training can satisfy. This
+  // set answers the question the module's own prompt promises is enforced:
+  // "did a tool return it on this turn". Without it, a final turn that produces
+  // no text notes (thinking-only, or the model summarising inside a tool_use)
+  // lets the design call name any real SICK part from memory, and it renders
+  // with a citation, indistinguishable from a retrieved one.
+  const witnessed = new Set<string>();
+  const collectOrderNumbers = (value: unknown): void => {
+    if (Array.isArray(value)) {
+      for (const item of value) collectOrderNumbers(item);
+      return;
+    }
+    if (value === null || typeof value !== "object") return;
+    for (const [key, inner] of Object.entries(value)) {
+      if (key === "orderNumber" && typeof inner === "string") witnessed.add(inner);
+      else collectOrderNumbers(inner);
+    }
+  };
+
+  const tools = createCatalogTools(deps.retriever).map((tool) => ({
+    ...tool,
+    run: async (input: unknown): Promise<unknown> => {
+      const output = await tool.run(input);
+      collectOrderNumbers(output);
+      return output;
+    },
+  }));
   const investigation = await deps.client.withTools({
     system: DESIGN_SYSTEM,
     messages: [{ role: "user", content: investigationBrief }],
@@ -1179,6 +1208,22 @@ export async function consult(input: ConsultInput, deps: ConsultDeps): Promise<C
     }
     if (seen.has(orderNumber)) continue;
     seen.add(orderNumber);
+
+    if (!witnessed.has(orderNumber)) {
+      // Exists in the catalog but no tool returned it this turn, so the model
+      // produced it from memory. That is the smuggling path Rule 1 exists to
+      // close, and it is the dangerous one precisely because the number
+      // resolves: it would render with a real citation and pass every
+      // downstream check.
+      dropped.push(orderNumber);
+      emit({
+        type: "error",
+        label: `dropped ${orderNumber} — no tool returned it`,
+        message: `The model proposed order number ${orderNumber}, which no tool returned during the investigation. It may exist in the catalog, but it did not come from evidence gathered on this turn, so it was removed rather than presented as a researched recommendation.`,
+        recoverable: true,
+      });
+      continue;
+    }
 
     const hit = deps.retriever.getProduct(orderNumber);
     if (hit === undefined) {

@@ -195,10 +195,19 @@ function design(bom: readonly { role: string; orderNumber: string; quantity: num
   };
 }
 
+// The investigation must actually CALL the tools, not just narrate having done
+// so. `consult` only accepts a BOM line whose order number a tool returned on
+// this turn -- a part the model merely recalled is dropped even when it exists
+// in the catalog -- so a scripted turn that executes nothing produces a design
+// with every line stripped.
 const INVESTIGATION: ScriptedResponse = {
   type: "text",
   text: "Shortlisted 1052442 (WTB4-3P2261, page B-16) plus bracket 2051422 and cordset 6009382 on page B-21.",
-  toolCalls: 3,
+  invoke: [
+    { name: "get_product", input: { orderNumber: "1052442" } },
+    { name: "get_product", input: { orderNumber: "2051422" } },
+    { name: "get_product", input: { orderNumber: "6009382" } },
+  ],
 };
 
 // ---------------------------------------------------------------------------
@@ -312,6 +321,40 @@ describe("consult — the needs-input path", () => {
 });
 
 describe("consult — the design path", () => {
+  it("drops a real catalog part that no tool returned on this turn", async () => {
+    // Rule 1's dangerous case. A 7-digit number recalled from training that
+    // happens to exist in the catalog passes an existence check, renders with a
+    // genuine citation, and is indistinguishable from a researched part. The
+    // only thing that separates them is whether a tool actually returned it.
+    const client = createFakeClient([
+      triage("photoelectric", SPECIFIED_GAPS),
+      // A narrower investigation: the sensor only. The bracket is never looked up.
+      {
+        type: "text",
+        text: "Shortlisted 1052442 (WTB4-3P2261, page B-16).",
+        invoke: [{ name: "get_product", input: { orderNumber: "1052442" } }],
+      },
+      design([
+        { role: "sensor", orderNumber: "1052442", quantity: 1 },
+        // Real, in this catalog — but no tool returned it on this turn.
+        { role: "accessory", orderNumber: "2051422", quantity: 1 },
+      ]),
+    ]);
+
+    const retriever = makeRetriever();
+    // Guard the premise: the part IS in the catalog, so an existence check
+    // alone would have let it through.
+    expect(retriever.getProduct("2051422")).toBeDefined();
+
+    const outcome = await consult({ problem: SPECIFIED_PROBLEM }, { client, retriever });
+
+    expect(outcome.kind).toBe("solution");
+    if (outcome.kind !== "solution") throw new Error("unreachable");
+    const numbers = outcome.design.billOfMaterials.map((l) => l.product.orderNumber);
+    expect(numbers).toContain("1052442");
+    expect(numbers).not.toContain("2051422");
+  });
+
   it("designs an installation whose every line is a real, cited catalog row", async () => {
     const client = createFakeClient([
       triage("photoelectric", SPECIFIED_GAPS),

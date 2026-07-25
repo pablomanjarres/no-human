@@ -650,7 +650,23 @@ export function createClaudeClient(opts: ClaudeClientOptions = {}): LlmClient {
  */
 export type ScriptedResponse =
   | { readonly type: "structured"; readonly value: unknown; readonly usage?: Partial<Usage> }
-  | { readonly type: "text"; readonly text: string; readonly toolCalls?: number; readonly usage?: Partial<Usage> }
+  | {
+      readonly type: "text";
+      readonly text: string;
+      readonly toolCalls?: number;
+      readonly usage?: Partial<Usage>;
+      /**
+       * Tools the scripted turn should actually invoke, in order.
+       *
+       * Without this a fake `withTools` returns text having executed nothing,
+       * so a caller that inspects what its tools *returned* — rather than what
+       * the model said about them — sees an empty world and behaves as if the
+       * model had no evidence. That is a real behavioural difference, not a
+       * detail: the consultant's Rule 1 check ("did a tool return this order
+       * number on this turn") is exactly such a caller.
+       */
+      readonly invoke?: readonly { readonly name: string; readonly input: unknown }[];
+    }
   | { readonly type: "refusal"; readonly reason: string; readonly usage?: Partial<Usage> }
   /** Simulate a transport or parse failure. */
   | { readonly type: "throw"; readonly error: unknown };
@@ -751,7 +767,34 @@ export function createFakeClient(script: readonly ScriptedResponse[]): FakeLlmCl
       if (entry.type !== "text") {
         throw new Error(`createFakeClient: withTools() got a "${entry.type}" script entry.`);
       }
-      return { text: entry.text, usage: fakeUsage(entry.usage), toolCalls: entry.toolCalls ?? 0 };
+      // Run the scripted tool invocations against the caller's REAL tools, so a
+      // caller that reads tool output sees what production would give it.
+      const byName = new Map(request.tools.map((t) => [t.name, t]));
+      let iteration = 0;
+      for (const call of entry.invoke ?? []) {
+        iteration += 1;
+        const tool = byName.get(call.name);
+        if (tool === undefined) {
+          throw new Error(
+            `createFakeClient: scripted invoke names "${call.name}", which is not in the tool set (${[...byName.keys()].join(", ") || "none"}).`,
+          );
+        }
+        notify(request.onToolCall, { name: call.name, input: call.input, iteration });
+        let isError = false;
+        let summary: string;
+        try {
+          summary = JSON.stringify(await tool.run(call.input)) ?? "";
+        } catch (err) {
+          isError = true;
+          summary = err instanceof Error ? err.message : String(err);
+        }
+        notify(request.onToolResult, { name: call.name, input: call.input, iteration, isError, summary });
+      }
+      return {
+        text: entry.text,
+        usage: fakeUsage(entry.usage),
+        toolCalls: entry.toolCalls ?? entry.invoke?.length ?? 0,
+      };
     },
   };
 }
