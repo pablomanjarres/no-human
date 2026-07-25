@@ -29,7 +29,10 @@ export function MethodNote({ stats }: { stats: CorpusStats }) {
       A separate verifier agent then re-read all{" "}
       <span className="font-mono text-ink">{groupDigits(stats.specRows)}</span> rows against their
       source pages. It disagreed{" "}
-      <span className="font-mono text-signal">{groupDigits(stats.disputes)}</span> times.
+      <span className="rounded-[2px] bg-signal-wash px-1.5 py-0.5 font-mono font-medium text-signal">
+        {groupDigits(stats.disputes)}
+      </span>{" "}
+      times.
     </>,
     <>
       A disputed row is never averaged and never silently resolved. Both readings stay on the row,

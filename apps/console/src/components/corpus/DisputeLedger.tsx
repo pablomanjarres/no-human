@@ -29,7 +29,11 @@ export function DisputeLedger({ rows, totalDisputes }: { rows: DisputeRow[]; tot
       <PanelHead
         eyebrow="Dispute ledger"
         title={`${groupDigits(totalDisputes)} open in the index · ${groupDigits(shown)} on parts the loaded runs read`}
-        right={<Chip accent="signal">VERIFIER ≠ EXTRACTOR</Chip>}
+        right={
+          <Chip accent="signal" ink="var(--color-signal)">
+            VERIFIER ≠ EXTRACTOR
+          </Chip>
+        }
       />
       <h2 id="ledger-heading" className="sr-only">
         Dispute ledger
@@ -39,7 +43,10 @@ export function DisputeLedger({ rows, totalDisputes }: { rows: DisputeRow[]; tot
         <p className="max-w-[104ch] text-[13px] leading-[1.65] text-ink-dim">
           A verifier agent re-read every extracted row against the page it was lifted from and
           disagreed with the extractor{" "}
-          <span className="font-mono text-signal">{groupDigits(totalDisputes)}</span> times. That
+          <span className="rounded-[2px] bg-signal-wash px-1.5 py-0.5 font-mono font-medium text-signal">
+            {groupDigits(totalDisputes)}
+          </span>{" "}
+          times. That
           count is the only evidence the second pass did any work — a verifier that always agrees is
           a verifier nobody ran. Each disagreement is held open: both readings stay on the row, the
           row drops below full confidence, and neither is promoted into a figure no datasheet
@@ -52,7 +59,15 @@ export function DisputeLedger({ rows, totalDisputes }: { rows: DisputeRow[]; tot
           No disputed row belongs to a part the loaded runs read.
         </p>
       ) : (
-        <div className="overflow-x-auto">
+        // `relative` is load-bearing, not decoration. The "Disagreement" header
+        // cell below is `sr-only`, which is `position: absolute` with no offsets,
+        // so it lands at its static position — roughly 42 % across an 820 px
+        // table. Without a positioned ancestor here its containing block was the
+        // `.panel`, so it escaped this scroller entirely and stuck out past the
+        // panel's right edge on any viewport under ~800 px, widening the document
+        // and scrolling the whole page sideways. Positioning the scroller makes it
+        // the containing block, so the span is clipped and scrolled with the table.
+        <div className="relative overflow-x-auto">
           <table className="w-full min-w-[820px] border-collapse text-left">
             <thead>
               <tr className="border-b border-rail">
@@ -105,20 +120,27 @@ export function DisputeLedger({ rows, totalDisputes }: { rows: DisputeRow[]; tot
                     </span>
                   </td>
 
+                  {/* The pair is the row. Two plates, both dark-texted: the first
+                      read recessed on grey, the second on the amber wash inside an
+                      amber rule. Nothing here uses signal-bright — on a cream tint
+                      it would be a smear rather than a number. */}
                   <td className="px-4 py-4">
-                    <span className="font-mono text-[12px] leading-snug text-ink-dim">
+                    <span className="inline-block rounded-[2px] border border-cab-600 bg-cab-800 px-2 py-1 font-mono text-[12px] leading-snug text-ink-dim">
                       {row.dispute.extracted}
                     </span>
                   </td>
 
                   <td className="px-1 py-4 text-center">
-                    <span aria-hidden className="font-mono text-[13px] leading-snug text-signal">
+                    <span
+                      aria-hidden
+                      className="font-mono text-[13px] leading-snug font-semibold text-signal"
+                    >
                       ≠
                     </span>
                   </td>
 
                   <td className="px-4 py-4">
-                    <span className="font-mono text-[12px] leading-snug text-signal">
+                    <span className="inline-block rounded-[2px] border border-signal bg-signal-wash px-2 py-1 font-mono text-[12px] leading-snug font-medium text-signal">
                       {row.dispute.verified}
                     </span>
                   </td>
@@ -145,7 +167,9 @@ export function DisputeLedger({ rows, totalDisputes }: { rows: DisputeRow[]; tot
         </div>
       )}
 
-      <footer className="grid gap-px border-t border-rail bg-rail lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)]">
+      {/* rounded to the panel's inner radius: this is the last child and its bed is
+          rail-coloured, so square corners spill past the panel's 6px curve. */}
+      <footer className="grid gap-px rounded-b-[5px] border-t border-rail bg-rail lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)]">
         <div className="bg-cab-850 px-4 py-3.5">
           <span className="eyebrow">Dispute held on</span>
           <div className="mt-3 flex flex-col gap-3">

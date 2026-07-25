@@ -155,7 +155,11 @@ export function Accessories({ part }: { part: Part }) {
                   </div>
                   <p className="mt-2 text-[12.5px] leading-[1.55] text-ink-dim">{it.line}</p>
                   {it.caution ? (
-                    <p className="mt-2 border-l-2 border-signal pl-2.5 text-[12px] leading-[1.5] text-signal-bright">
+                    // signal-bright is safety yellow — a fill tone. On white it is
+                    // ~1.7:1 and cannot carry a sentence. The caution now reads as
+                    // dark amber on the wash tint, with the bright tone nowhere
+                    // near the text.
+                    <p className="mt-2 border-l-2 border-signal bg-signal-wash py-1.5 pr-2 pl-2.5 text-[12px] leading-[1.5] text-signal">
                       {it.caution}
                     </p>
                   ) : null}

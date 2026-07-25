@@ -233,12 +233,12 @@ function CandidateLadder({ run, promoted }: { run: SolveRun; promoted: boolean }
         {run.candidates.map((c) => {
           const dead = c.verdict === "rejected" && promoted;
           const isActive = promoted ? c.verdict !== "rejected" && c.rank === run.promotion?.toRank : c.rank === 1;
+          // A killed row is struck through, carries the halt tone and says
+          // KILLED. It is deliberately not dimmed: compositing the row down to
+          // 45% took the label to roughly 2:1, and the killed row is the one a
+          // reader most needs to be able to read.
           return (
-            <li
-              key={c.part.id}
-              className="flex items-baseline gap-2 font-mono text-[11px]"
-              style={{ opacity: dead ? 0.45 : 1 }}
-            >
+            <li key={c.part.id} className="flex items-baseline gap-2 font-mono text-[11px]">
               <span className="w-3 text-ink-faint">{c.rank}</span>
               <Link
                 href={`/console/product/${c.part.partNumber}`}

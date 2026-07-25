@@ -24,7 +24,9 @@ export function DocHeader({ doc, groups }: { doc: DocRecord; groups: CitedPageGr
 
   return (
     <header className="shrink-0 border-b border-rail bg-cab-900">
-      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-cab-800 px-4 py-2">
+      {/* Utility strip: recessed grey so the offline marker reads as chrome, and
+          so the white title plate below it has an edge to sit against. */}
+      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-cab-700 bg-cab-850 px-4 py-2">
         <Link
           href="/console"
           className="flex items-center gap-1.5 font-mono text-[11px] text-ink-dim transition-colors hover:text-sick"
