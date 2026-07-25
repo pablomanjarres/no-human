@@ -9,12 +9,52 @@
 import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 
+// Environments are spelled out rather than pulled from the `globals` package to avoid adding a
+// dependency just to name a dozen identifiers. Without these, `no-undef` fires on every use of
+// `process` in scripts/ and every use of `document` in a browser file.
+const NODE_GLOBALS = {
+  process: "readonly",
+  console: "readonly",
+  URL: "readonly",
+  Buffer: "readonly",
+  __dirname: "readonly",
+  setTimeout: "readonly",
+  clearTimeout: "readonly",
+};
+
+const BROWSER_GLOBALS = {
+  document: "readonly",
+  window: "readonly",
+  localStorage: "readonly",
+  fetch: "readonly",
+  history: "readonly",
+  location: "readonly",
+  console: "readonly",
+  setTimeout: "readonly",
+  clearTimeout: "readonly",
+  Intl: "readonly",
+};
+
 export default [
   {
     ignores: ["**/dist/**", "**/.next/**", "**/.turbo/**", "**/node_modules/**"],
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,
+  {
+    // repo-level operational scripts and flat configs run in Node
+    files: ["scripts/**/*.mjs", "*.config.mjs"],
+    languageOptions: { globals: NODE_GLOBALS },
+  },
+  {
+    // static frontends ship these files straight to the browser
+    files: ["apps/**/*.js"],
+    languageOptions: { globals: BROWSER_GLOBALS },
+  },
+  {
+    files: ["**/*.test.{js,mjs}"],
+    languageOptions: { globals: NODE_GLOBALS },
+  },
   {
     files: ["**/*.{ts,tsx,mts,cts}"],
     rules: {

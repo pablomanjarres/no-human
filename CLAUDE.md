@@ -48,9 +48,11 @@ flat config + Prettier, vitest. CI is one job running
 
 ## Quick reference
 
-| Want to                  | Read                                   |
-| ------------------------ | -------------------------------------- |
-| Understand the system    | `docs/architecture.md`                 |
-| Add a new package or app | `packages/README.md`, `apps/README.md` |
-| Know what CI enforces    | `.github/workflows/ci.yml`             |
-| Pick up planned work     | `tasks/`                               |
+| Want to                     | Read                                     |
+| --------------------------- | ---------------------------------------- |
+| Understand the system       | `docs/architecture.md`                   |
+| Add a new package or app    | `packages/README.md`, `apps/README.md`   |
+| Know what CI enforces       | `.github/workflows/ci.yml`               |
+| Pick up planned work        | `tasks/`                                 |
+| Work on the catalog UI      | `apps/sick-clone-ui/README.md`           |
+| Use or regenerate SICK data | `sick-catalog-dataset/README.md`         |
