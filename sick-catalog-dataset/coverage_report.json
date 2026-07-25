@@ -1,0 +1,35 @@
+{
+  "input_files": 192,
+  "total_rows_extracted": 2026,
+  "distinct_order_numbers": 1776,
+  "distinct_products_after_dedup": 1776,
+  "row_type_counts": {
+    "product": 1507,
+    "accessory": 519
+  },
+  "by_section_products": {
+    "B": 491,
+    "C": 141,
+    "D": 46,
+    "E": 128,
+    "F": 258,
+    "G": 97,
+    "H": 120,
+    "I": 27,
+    "J": 24,
+    "K": 214,
+    "L": 107,
+    "M": 43,
+    "N": 80
+  },
+  "expected_distinct_order_numbers_regex": 1776,
+  "coverage_pct": 100.0,
+  "missing_global_count": 0,
+  "missing_global_sample": [],
+  "pages_with_missing": 0,
+  "missing_by_page": {},
+  "extracted_not_regex_detected_count": 0,
+  "extracted_not_regex_detected_sample": [],
+  "bad_order_number_rows": [],
+  "parse_errors": []
+}
