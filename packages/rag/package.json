@@ -1,0 +1,33 @@
+{
+  "name": "@no-human/rag",
+  "version": "0.0.1-alpha.0",
+  "private": true,
+  "type": "module",
+  "description": "Hybrid retrieval + indexing over the SICK catalog: Voyage contextualized embeddings, BM25, RRF fusion, cross-encoder rerank, and a deterministic spec-constraint solver.",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "sick-rag": "./dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "eslint src",
+    "test": "vitest run --passWithNoTests",
+    "rag": "node --experimental-strip-types src/cli.ts"
+  },
+  "dependencies": {
+    "minisearch": "^7.1.2"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3",
+    "vitest": "^3.2.4"
+  }
+}
