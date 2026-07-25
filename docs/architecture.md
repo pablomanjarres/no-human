@@ -1,12 +1,16 @@
 # Architecture
 
-> Status: skeleton. Fill this in with the first real feature — every other doc
-> and every `tasks/*.md` file links back here.
-
 ## What this is
 
-TODO: one paragraph. What the system does, for whom, and the single sentence
-that explains why it exists.
+A **cross-brand equivalence engine** for industrial sensors. Someone hands it a
+competitor part number — Banner, Keyence, Pepperl+Fuchs, Balluff — as a part
+number, a plain description, a photo of a worn label, or a whole BOM, and it
+returns the **SICK equivalent, parameter by parameter, cited to the catalog
+page**. When there is no real equivalent it says so and quantifies what you lose.
+
+The claim that makes it defensible: **the model never picks the part.** Agents
+handle messy language and messy PDFs; the match itself is a deterministic solve
+over structured specs, re-derivable by hand by a skeptical judge.
 
 ## Repository layout
 
@@ -18,6 +22,41 @@ that explains why it exists.
 | `scripts/`  | Repo-level operational scripts (deploy, codegen, secrets)        |
 | `docs/`     | Durable knowledge: contracts, runbooks, decisions                |
 | `tasks/`    | Queue of planned work, one markdown file per unit                |
+
+## Packages
+
+| Package           | What it owns                                                          |
+| ----------------- | --------------------------------------------------------------------- |
+| `@no-human/rag`   | Retrieval + indexing over the SICK catalog, and the deterministic spec-constraint solver. See [`rag-index.md`](./rag-index.md). |
+| `@no-human/agent` | The runtime agents — Resolver, Challenger, consultant mode — and the traced orchestrator. See [`agent-layer.md`](./agent-layer.md). |
+| `@no-human/core`  | Placeholder pinning workspace conventions. Delete or repurpose.        |
+
+### How they fit
+
+```
+ input ──▶ Resolver ──▶ SpecConstraints ──▶ retrieval ──▶ solver ──▶ Challenger ──▶ cited match
+          (LLM)                             └──── @no-human/rag ────┘   (LLM)        or refusal
+            └── underspecified? ask, don't guess
+```
+
+The seam between the two packages is the rule that makes the product
+defensible: **agents narrow, question, and attack; the deterministic solver
+decides.** A judge can re-derive any match by hand from the per-constraint
+verdict table.
+
+## Data
+
+`sick-catalog-dataset/` — 1,776 orderable SKUs across 110 families, extracted
+from the 240-page SICK 2015/2016 summary catalog at 100 % order-number coverage.
+Extraction followed strict null-if-absent rules: a field absent from the printed
+page is empty here, never inferred, and every populated field carries verbatim
+`provenance` plus a `low_confidence` flag when it was read from prose rather
+than a labelled table cell.
+
+**This shapes everything downstream.** It is the *summary* catalog, so most
+electrical specs are genuinely not printed (41 of 1,776 SKUs state a supply
+voltage). Any component that treats an unstated spec as a constraint *failure*
+rather than *unknown* will turn "cannot verify" into a confident wrong answer.
 
 ## Toolchain
 
