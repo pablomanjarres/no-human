@@ -1,0 +1,33 @@
+{
+  "input_files": 17,
+  "raw_rows": 87,
+  "distinct_products": 62,
+  "by_category": {
+    "Accesorios (Accessories)": 3,
+    "Botones ópticos de contacto (Optical touch buttons)": 2,
+    "Sensores fotoeléctricos (Photoelectric sensors)": 51,
+    "Sensores fotoeléctricos láser (Photoelectric laser sensors)": 1,
+    "Sensores ultrasónicos (Ultrasonic)": 5
+  },
+  "by_page_raw": {
+    "3": 3,
+    "4": 5,
+    "5": 3,
+    "6": 10,
+    "7": 4,
+    "8": 4,
+    "9": 6,
+    "10": 4,
+    "11": 5,
+    "12": 4,
+    "13": 9,
+    "14": 7,
+    "15": 5,
+    "16": 8,
+    "17": 6,
+    "18": 4
+  },
+  "products_with_sensing_modes": 37,
+  "total_sensing_mode_rows": 123,
+  "parse_errors": []
+}

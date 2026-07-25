@@ -1,0 +1,124 @@
+vendor,series,model,product_category,mode,variant,range_max_mm,focus_mm,material,source_pages
+Banner,,,Accesorios (Accessories),fiber_optic,opposed and diffuse (bifurcated),,,plastic (Teflon FEP encapsulated),5;18
+Banner,DURA-BEND,,Accesorios (Accessories),fiber_optic,,,,plastic,4
+Banner,BEAM-ARRAY,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,,,,15
+Banner,BEAM-ARRAY,BMLV,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,,,,,15
+Banner,ECONO-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,1800,,,6;8
+Banner,ECONO-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,non-polarized,4500,,,6;8
+Banner,ECONO-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,long range,200,,,6;8
+Banner,ECONO-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,short range,80,,,6;8
+Banner,ECONO-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),convergent,,,,,6;8
+Banner,ECONO-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),fiber_optic,,,,Glass or plastic,6;8
+Banner,EZ-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),fixed_field,,2000,,,6;17
+Banner,EZ-BEAM,EZ-BEAM S2,Sensores fotoeléctricos (Photoelectric sensors),opposed,,,,,14
+Banner,EZ-BEAM,EZ-BEAM S2,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,,,,14
+Banner,EZ-BEAM,EZ-BEAM S2,Sensores fotoeléctricos (Photoelectric sensors),fixed_field,,,,,14
+Banner,L-GAGE,,Sensores fotoeléctricos (Photoelectric sensors),fixed_field,laser,,,,3;14;16
+Banner,M12,,Sensores fotoeléctricos (Photoelectric sensors),opposed,laser,50000,,,6;16
+Banner,MAXI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),opposed,long range,90000,,,6;7;17
+Banner,MAXI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),opposed,short range,4500,,,6;7;17
+Banner,MAXI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,non-polarized,9000,,,6;7;17
+Banner,MAXI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,4500,,,6;7;17
+Banner,MAXI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,long range,1500,,,6;7;17
+Banner,MAXI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,short range,760,,,6;7;17
+Banner,MAXI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),convergent,,,38,,6;7;17
+Banner,MAXI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),fixed_field,,100,,,6;7;17
+Banner,MAXI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),fiber_optic,,,,glass or plastic,6;7;17
+Banner,MINI-ARRAY,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,,,,5;15
+Banner,MINI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),opposed,long range,30000,,,8;13
+Banner,MINI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),opposed,short range,3000,,,8;13
+Banner,MINI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,non-polarized,4500,,,8;13
+Banner,MINI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,2000,,,8;13
+Banner,MINI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,long range,380,,,8;13
+Banner,MINI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,short range,130,,,8;13
+Banner,MINI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),convergent,,,,,8;13
+Banner,MINI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),fiber_optic,,,,Glass or plastic,8;13
+Banner,MINI-BEAM,Expert,Sensores fotoeléctricos (Photoelectric sensors),diffuse,,,,,3
+Banner,MINI-BEAM,Expert,Sensores fotoeléctricos (Photoelectric sensors),diffuse,wide angle (proximity),,,,3
+Banner,MINI-BEAM,Expert,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,,,,3
+Banner,MINI-BEAM,Expert,Sensores fotoeléctricos (Photoelectric sensors),convergent,,,,,3
+Banner,MINI-BEAM,Expert,Sensores fotoeléctricos (Photoelectric sensors),fiber_optic,infrared,,,,3
+Banner,MINI-BEAM,Expert,Sensores fotoeléctricos (Photoelectric sensors),fiber_optic,visible,,,,3
+Banner,MINI-BEAM,SME312LPC,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,,,glass or plastic,6
+Banner,MULTI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,200000,,,6;7;15
+Banner,MULTI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,infrared,23000,,,6;7;15
+Banner,MULTI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,non-polarized,9000,,,6;7;15
+Banner,MULTI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,4500,,,6;7;15
+Banner,MULTI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,long range,2000,,,6;7;15
+Banner,MULTI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,medium range,600,,,6;7;15
+Banner,MULTI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,short range,300,,,6;7;15
+Banner,MULTI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),convergent,,,,,6;7;15
+Banner,MULTI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),fiber_optic,,,,glass,6;7;15
+Banner,OMNI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,45000,,,7;12;13;14
+Banner,OMNI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,non-polarized,9000,,,7;12;13;14
+Banner,OMNI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,4500,,,7;12;13;14
+Banner,OMNI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,long range,1800,,,7;12;13;14
+Banner,OMNI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,short range,300,,,7;12;13;14
+Banner,OMNI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),convergent,,,38,,7;12;13;14
+Banner,OMNI-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),fiber_optic,,,,glass or plastic,7;12;13;14
+Banner,Q25,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,20000,,,10
+Banner,Q25,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,2000,,,10
+Banner,Q25,,Sensores fotoeléctricos (Photoelectric sensors),fixed_field,,100,,,10
+Banner,Q40,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,60000,,,11
+Banner,Q40,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,6000,,,11
+Banner,Q40,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,,600,,,11
+Banner,Q45,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,60000,,,7;13;16
+Banner,Q45,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,laser,70000,,,7;13;16
+Banner,Q45,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,non-polarized,9000,,,7;13;16
+Banner,Q45,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,6000,,,7;13;16
+Banner,Q45,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,long range,3000,,,7;13;16
+Banner,Q45,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,medium range,1800,,,7;13;16
+Banner,Q45,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,short range,500,,,7;13;16
+Banner,Q45,,Sensores fotoeléctricos (Photoelectric sensors),convergent,,,,,7;13;16
+Banner,Q45,,Sensores fotoeléctricos (Photoelectric sensors),fiber_optic,,,,glass or plastic,7;13;16
+Banner,Q45X,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,,,,14
+Banner,Q45X,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,,,,14
+Banner,Q45X,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,non-polarized,,,,14
+Banner,Q45X,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,short range,,,,14
+Banner,Q45X,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,long range,,,,14
+Banner,Q45X,,Sensores fotoeléctricos (Photoelectric sensors),convergent,,,,,14
+Banner,Q45X,,Sensores fotoeléctricos (Photoelectric sensors),fiber_optic,,,,glass or plastic,14
+Banner,Q85,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,23000,,,8
+Banner,Q85,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,4500,,,8
+Banner,Q85,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,long range,1000,,,8
+Banner,Q85,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,short range,250,,,8
+Banner,QM(T)42,,Sensores fotoeléctricos (Photoelectric sensors),fixed_field,short range,150,,,17
+Banner,QM(T)42,,Sensores fotoeléctricos (Photoelectric sensors),fixed_field,long range,400,,,17
+Banner,QM42,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,10000,,,11;16
+Banner,QM42,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,3000,,,11;16
+Banner,QM42,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,non-polarized,400,,,11;16
+Banner,QM42,,Sensores fotoeléctricos (Photoelectric sensors),fixed_field,,2000,,,11;16
+Banner,QMT42,,Sensores fotoeléctricos (Photoelectric sensors),fixed_field,,2000,,,17
+Banner,S12,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,15000,,,10
+Banner,S18 & M18,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,20000,,,10
+Banner,S18 & M18,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,2000,,,10
+Banner,S18 & M18,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,non-polarized,2000,,,10
+Banner,S18 & M18,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,long range,300,,,10
+Banner,S18 & M18,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,short range,100,,,10
+Banner,S18 & M18,,Sensores fotoeléctricos (Photoelectric sensors),fixed_field,,100,,,10
+Banner,S30,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,60000,,,10
+Banner,S30,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,6000,,,10
+Banner,S30,,Sensores fotoeléctricos (Photoelectric sensors),fixed_field,,600,,,10
+Banner,SM30,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,200000,,,11;16
+Banner,T18,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,20000,,,11
+Banner,T18,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,2000,,,11
+Banner,T18,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,non-polarized,500,,,11
+Banner,T18,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,,100,,,11
+Banner,T30,,Sensores fotoeléctricos (Photoelectric sensors),opposed,,60000,,,11
+Banner,T30,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,6000,,,11
+Banner,T30,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,,600,,,11
+Banner,VALU-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),opposed,long range,60000,,,6;8
+Banner,VALU-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),opposed,short range,3000,,,6;8
+Banner,VALU-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,non-polarized,9000,,,6;8
+Banner,VALU-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),retroreflective,polarized,4500,,,6;8
+Banner,VALU-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,long range,760,,,6;8
+Banner,VALU-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),diffuse,short range,380,,,6;8
+Banner,VALU-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),convergent,,,38,,6;8
+Banner,VALU-BEAM,,Sensores fotoeléctricos (Photoelectric sensors),fiber_optic,,,,Glass or plastic,6;8
+Banner,S18,,Sensores fotoeléctricos láser (Photoelectric laser sensors),opposed,laser,,,,16
+Banner,Q45,Q45UR,Sensores ultrasónicos (Ultrasonic),ultrasonic,,,,,14
+Banner,Q45U,,Sensores ultrasónicos (Ultrasonic),ultrasonic,proximity mode,1400,,,12
+Banner,Q45U,,Sensores ultrasónicos (Ultrasonic),ultrasonic,proximity mode,3000,,,12
+Banner,Q45UR,,Sensores ultrasónicos (Ultrasonic),ultrasonic,,150,,,5
+Banner,T18U,,Sensores ultrasónicos (Ultrasonic),ultrasonic,opposed-mode,600,,,12
+Banner,ULTRA-BEAM,,Sensores ultrasónicos (Ultrasonic),ultrasonic,proximity mode,6000,,,12

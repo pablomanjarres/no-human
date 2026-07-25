@@ -1,0 +1,363 @@
+order_number,type_code,family,category,sensing_mode,detection_principle,range_max_mm,switching_output,supply_voltage_max_v,connection,enclosure_rating,source_page
+1051781,GTE6-P4212,G6,Fotocelulas (Photoelectric sensors),diffuse,energética,300,PNP,,Conector macho M8 de 4 polos,,B-16
+1051782,GTE6-N4212,G6,Fotocelulas (Photoelectric sensors),diffuse,energética,300,NPN,,Conector macho M8 de 4 polos,,B-16
+1051783,GTE6-P1212,G6,Fotocelulas (Photoelectric sensors),diffuse,energética,300,PNP,,"Cable de 3 hilos, 2 m, PVC",,B-16
+1051784,GTE6-N1212,G6,Fotocelulas (Photoelectric sensors),diffuse,energética,300,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-16
+1053628,GTE6-P7212,G6,Fotocelulas (Photoelectric sensors),diffuse,energética,300,PNP,,"Cable con conector macho M12 de 4 polos, 300 mm, PVC",,B-16
+1052442,GTB6-P4212,G6,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,250,PNP,,Conector macho M8 de 4 polos,,B-17
+1052443,GTB6-N4212,G6,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,250,NPN,,Conector macho M8 de 4 polos,,B-17
+1052444,GTB6-P1212,G6,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,250,PNP,,"Cable de 3 hilos, 2 m, PVC",,B-17
+1052445,GTB6-N1212,G6,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,250,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-17
+1057705,GTB6-P7211,G6,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,250,PNP,,"Cable con conector macho M12 de 4 polos, 300 mm",,B-17
+1058769,GTB6-N6212,G6,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,250,NPN,,"Cable con conector macho M8 de 4 polos, 300 mm",,B-17
+1059320,GTB6-P6211,G6,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,250,PNP,,"Cable con conector macho M8 de 4 polos, 300 mm",,B-17
+1059333,GTB6-P5211,G6,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,250,PNP,,"Cable con conector macho M8 de 3 polos, 300 mm",,B-17
+1051777,GL6-P4112,G6,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,6000,PNP,,Conector macho M8 de 4 polos,,B-18
+1051778,GL6-N4112,G6,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,6000,NPN,,Conector macho M8 de 4 polos,,B-18
+1051779,GL6-P1112,G6,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,6000,PNP,,"Cable de 3 hilos, 2 m, PVC",,B-18
+1051780,GL6-N1112,G6,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,6000,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-18
+1052634,GL6-P4511,G6,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,6000,PNP,,Conector macho M8 de 4 polos,,B-18
+1053590,GL6-P7112,G6,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,6000,PNP,,"Conector macho M12 de 4 polos, 300 mm, PVC",,B-18
+1056039,GL6-P7511,G6,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,6000,PNP,,"Conector macho M12 de 4 polos, 300 mm, PVC",,B-18
+1059241,GL6-P4211,G6,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,6000,PNP,,Conector macho M8 de 4 polos,,B-18
+1059632,GL6G-P4211,G6,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,6000,PNP,,Conector macho M8 de 4 polos,,B-18
+1059923,GL6-N1211,G6,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,6000,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-18
+1059925,GL6G-N1211,G6,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,6000,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-18
+1052450,GSE6-P4112,G6,Fotocelulas (Photoelectric sensors),opposed,,15000,PNP,,Conector macho M8 de 4 polos,,B-19
+1052451,GSE6-N4112,G6,Fotocelulas (Photoelectric sensors),opposed,,15000,NPN,,Conector macho M8 de 4 polos,,B-19
+1052452,GSE6-P1112,G6,Fotocelulas (Photoelectric sensors),opposed,,15000,PNP,,"Cable de 3 hilos, 2 m, PVC",,B-19
+1052453,GSE6-N1112,G6,Fotocelulas (Photoelectric sensors),opposed,,15000,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-19
+1054831,GSE6-P7112,G6,Fotocelulas (Photoelectric sensors),opposed,,15000,PNP,,"Cable con conector macho M12 de 4 polos, 300 mm, PVC",,B-19
+1054835,GSE6-N7112,G6,Fotocelulas (Photoelectric sensors),opposed,,15000,NPN,,"Cable con conector macho M12 de 4 polos, 300 mm, PVC",,B-19
+1054850,GSE6-P6112,G6,Fotocelulas (Photoelectric sensors),opposed,,15000,PNP,,"Cable con conector macho M8 de 4 polos, 300 mm, PVC",,B-19
+1054852,GSE6-N6112,G6,Fotocelulas (Photoelectric sensors),opposed,,15000,NPN,,"Cable con conector macho M8 de 4 polos, 300 mm, PVC",,B-19
+1028082,WTB4-3P3162,W4-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,150,PNP,,"Cable con conector macho M8 de 3 polos, 100 mm, PVC",,B-25
+1028084,WTB4-3P2162,W4-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,150,PNP,,Conector macho M8 de 3 polos,,B-25
+1028086,WTB4-3P2264,W4-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,150,PNP,,Conector macho M8 de 4 polos,,B-25
+1028097,WTB4-3P3161,W4-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,150,PNP,,"Cable con conector macho M8 de 3 polos, 100 mm, PVC",,B-25
+1028098,WTB4-3P3261,W4-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,150,PNP,,"Cable con conector macho M8 de 4 polos, 100 mm, PVC",,B-25
+1028100,WTB4-3P2261,W4-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,150,PNP,,Conector macho M8 de 4 polos,,B-25
+1028101,WTB4-3N1361,W4-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,150,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-25
+1028102,WTB4-3N1161,W4-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,150,NPN,,"Cable de 4 hilos, 2 m, PVC",,B-25
+1028105,WTB4-3F1361,W4-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,150,PNP,,"Cable de 3 hilos, 2 m, PVC",,B-25
+1028122,WTB4-3P3171,W4-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,150,PNP,,"Cable con conector macho M8 de 3 polos, 100 mm, PVC",,B-25
+1028125,WTB4-3N1371,W4-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,150,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-25
+1042190,WTB4-3P2271,W4-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,150,PNP,,Conector macho M8 de 4 polos,,B-25
+1044013,WTB4-3P3464,W4-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,150,PNP,,"Cable con conector macho M12 de 4 polos, 150 mm, PVC",,B-25
+1028114,WTV4-3P2241,W4-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,50,PNP,,Conector macho M8 de 4 polos,,B-26
+1029582,WTV4-3P3441,W4-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,50,PNP,,"Cable con conector macho M12 de 4 polos, 150 mm, PVC",,B-26
+1029885,WTV4-3N1321,W4-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,50,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-26
+1029888,WTV4-3P1321,W4-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,50,PNP,,"Cable de 3 hilos, 2 m, PVC",,B-26
+1046411,WTV4-3P3122,W4-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,50,PNP,,"Cable con conector macho M8 de 4 polos, 100 mm, PVC",,B-26
+1046644,WTV4-3P2271,W4-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,50,PNP,,Conector macho M8 de 4 polos,,B-26
+1046898,WTV4-3N1171,W4-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,50,NPN,,"Cable de 4 hilos, 2 m, PVC",,B-26
+1028147,WL4-3P2230,W4-3,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,4500,PNP,,Conector macho M8 de 4 polos,,B-27
+1028148,WL4-3N1330,W4-3,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,4500,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-27
+1028155,WL4-3F2130,W4-3,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,4500,PNP,,Conector macho M8 de 3 polos,,B-27
+1028156,WL4-3E1330,W4-3,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,4500,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-27
+1028160,WSE4-3P2230,W4-3,Fotocelulas (Photoelectric sensors),opposed,,4000,PNP,,Conector macho M8 de 4 polos,,B-27
+1028163,WSE4-3P2130,W4-3,Fotocelulas (Photoelectric sensors),opposed,,4000,PNP,,Conector macho M8 de 3 polos,,B-27
+1028170,WSE4-3F3130,W4-3,Fotocelulas (Photoelectric sensors),opposed,,4000,PNP,,"Cable con conector macho M8 de 3 polos, 100 mm, PVC",,B-27
+1028172,WSE4-3E1330,W4-3,Fotocelulas (Photoelectric sensors),opposed,,4000,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-27
+1029898,WSE4-3P3131,W4-3,Fotocelulas (Photoelectric sensors),opposed,,4000,PNP,,"Cable con conector macho M8 de 3 polos, 100 mm, PVC",,B-27
+1044347,WL4-3P3430,W4-3,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,4500,PNP,,"Cable con conector macho M12 de 4 polos, 150 mm, PVC",,B-27
+1046396,WTB4S-3P2232V,W4S-3 Inox,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,120,PNP,,Conector macho M8 de 4 polos,,B-29
+1046398,WTB4S-3P3232V,W4S-3 Inox,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,120,PNP,,"Cable con conector macho M8 de 4 polos, 150 mm, PVC",,B-29
+1046399,WTB4S-3P3432V,W4S-3 Inox,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,120,PNP,,"Cable con conector macho M12 de 4 polos, 150 mm, PVC",,B-29
+1054672,WTB4S-3P2432V,W4S-3 Inox,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,120,PNP,,Conector macho M12 de 4 polos,,B-29
+1046410,WTF4S-3P2262V,W4S-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del primer plano,200,PNP,,Conector macho M8 de 4 polos,,B-30
+1045095,WL4S-3P2230V,W4S-3,Fotocelulas (Photoelectric sensors),retroreflective,autocolimación,4000,PNP,,Conector macho M8 de 4 polos,,B-31
+1045099,WSE4S-3F2130V,W4S-3,Fotocelulas (Photoelectric sensors),opposed,,5000,PNP,,Conector macho M8 de 3 polos,,B-31
+1046415,WL4S-3P3430V,W4S-3,Fotocelulas (Photoelectric sensors),retroreflective,autocolimación,4000,PNP,,"Cable con conector macho M12 de 4 polos, 150 mm, PVC",,B-31
+1046418,WL4S-3N1130V,W4S-3,Fotocelulas (Photoelectric sensors),retroreflective,autocolimación,4000,NPN,,"Cable de 4 hilos, 2 m, PVC",,B-31
+1046420,WL4S-3E1330V,W4S-3,Fotocelulas (Photoelectric sensors),retroreflective,autocolimación,4000,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-31
+1046422,WL4S-3V2232V,W4S-3,Fotocelulas (Photoelectric sensors),retroreflective,autocolimación,5000,PNP,,Conector macho M8 de 4 polos,,B-31
+1046426,WL4S-3P3432V,W4S-3,Fotocelulas (Photoelectric sensors),retroreflective,autocolimación,5000,PNP,,"Cable con conector macho M12 de 4 polos, 150 mm, PVC",,B-31
+1046439,WSE4S-3P2130V,W4S-3,Fotocelulas (Photoelectric sensors),opposed,,5000,PNP,,Conector macho M8 de 3 polos,,B-31
+1047629,WSE4S-3N2130V,W4S-3,Fotocelulas (Photoelectric sensors),opposed,,5000,NPN,,Conector macho M8 de 3 polos,,B-31
+1048028,WSE4S-3F3430V,W4S-3,Fotocelulas (Photoelectric sensors),opposed,,5000,PNP,,"Cable con conector macho M12 de 4 polos, 150 mm, PVC",,B-31
+1054707,WL4S-3P2430V,W4S-3,Fotocelulas (Photoelectric sensors),retroreflective,autocolimación,4000,PNP,,"Conector macho M12 de 4 polos, 150 mm, PVC",,B-31
+1054715,WL4S-3P2432V,W4S-3,Fotocelulas (Photoelectric sensors),retroreflective,autocolimación,5000,PNP,,"Conector macho M12 de 4 polos, PVC",,B-31
+1054722,WL4S-3N2432V,W4S-3,Fotocelulas (Photoelectric sensors),retroreflective,autocolimación,5000,NPN,,"Conector macho M12 de 4 polos, PVC",,B-31
+1054784,WSE4S-3P2430V,W4S-3,Fotocelulas (Photoelectric sensors),opposed,,5000,PNP,,Conector macho M12 de 4 polos,,B-31
+6033204,WTB8-N1131,W8,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,300,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-33
+6033205,WTB8-P1131,W8,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,300,PNP,,"Cable de 3 hilos, 2 m, PVC",,B-33
+6033206,WTB8-N2131,W8,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,300,NPN,,Conector macho M8 de 3 polos,,B-33
+6033207,WTB8-P2131,W8,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,300,PNP,,Conector macho M8 de 3 polos,,B-33
+6033208,WTB8-N2231,W8,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,300,NPN,,Conector macho M8 de 4 polos,,B-33
+6033209,WTB8-P2231,W8,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,300,PNP,,Conector macho M8 de 4 polos,,B-33
+6033210,WTB8-N1111,W8,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,100,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-33
+6033211,WTB8-P1111,W8,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,100,PNP,,"Cable de 3 hilos, 2 m, PVC",,B-33
+6033212,WTB8-N2111,W8,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,100,NPN,,Conector macho M8 de 3 polos,,B-33
+6033213,WTB8-P2111,W8,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,100,PNP,,Conector macho M8 de 3 polos,,B-33
+6033214,WTB8-N2211,W8,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,100,NPN,,Conector macho M8 de 4 polos,,B-33
+6033215,WTB8-P2211,W8,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,100,PNP,,Conector macho M8 de 4 polos,,B-33
+6033176,WL8-N1131,W8,Fotocelulas (Photoelectric sensors),retroreflective,autocolimación,4000,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-34
+6033177,WL8-P1131,W8,Fotocelulas (Photoelectric sensors),retroreflective,autocolimación,4000,PNP,,"Cable de 3 hilos, 2 m, PVC",,B-34
+6033179,WL8-N2131,W8,Fotocelulas (Photoelectric sensors),retroreflective,autocolimación,4000,NPN,,Conector macho M8 de 3 polos,,B-34
+6033180,WL8-P2131,W8,Fotocelulas (Photoelectric sensors),retroreflective,autocolimación,4000,PNP,,Conector macho M8 de 3 polos,,B-34
+6033181,WL8-N2231,W8,Fotocelulas (Photoelectric sensors),retroreflective,autocolimación,4000,NPN,,Conector macho M8 de 4 polos,,B-34
+6033182,WL8-P2231,W8,Fotocelulas (Photoelectric sensors),retroreflective,autocolimación,4000,PNP,,Conector macho M8 de 4 polos,,B-34
+6035578,WSE8-N1131,W8,Fotocelulas (Photoelectric sensors),opposed,,10000,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-34
+6035579,WSE8-N2131,W8,Fotocelulas (Photoelectric sensors),opposed,,10000,NPN,,Conector macho M8 de 3 polos,,B-34
+6035580,WSE8-N2231,W8,Fotocelulas (Photoelectric sensors),opposed,,10000,NPN,,Conector macho M8 de 4 polos,,B-34
+6035581,WSE8-P1131,W8,Fotocelulas (Photoelectric sensors),opposed,,10000,PNP,,"Cable de 3 hilos, 2 m, PVC",,B-34
+6035582,WSE8-P2131,W8,Fotocelulas (Photoelectric sensors),opposed,,10000,PNP,,Conector macho M8 de 3 polos,,B-34
+6035583,WSE8-P2231,W8,Fotocelulas (Photoelectric sensors),opposed,,10000,PNP,,Conector macho M8 de 4 polos,,B-34
+6033216,WTB8L-N1131,W8 Laser,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,300,NPN,,"Cable de 4 hilos, 2 m, PVC",,B-35
+6033217,WTB8L-P1131,W8 Laser,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,300,PNP,,"Cable de 4 hilos, 2 m, PVC",,B-35
+6033218,WTB8L-N2131,W8 Laser,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,300,NPN,,Conector macho M8 de 3 polos,,B-35
+6033219,WTB8L-P2131,W8 Laser,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,300,PNP,,Conector macho M8 de 3 polos,,B-35
+6033220,WTB8L-N2231,W8 Laser,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,300,NPN,,Conector macho M8 de 4 polos,,B-35
+6033221,WTB8L-P2231,W8 Laser,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,300,PNP,,Conector macho M8 de 4 polos,,B-35
+6033222,WTB8L-N1111,W8 Laser,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,100,NPN,,"Cable de 4 hilos, 2 m, PVC",,B-35
+6033223,WTB8L-P1111,W8 Laser,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,100,PNP,,"Cable de 4 hilos, 2 m, PVC",,B-35
+6033224,WTB8L-N2111,W8 Laser,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,100,NPN,,Conector macho M8 de 3 polos,,B-35
+6033225,WTB8L-P2111,W8 Laser,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,100,PNP,,Conector macho M8 de 3 polos,,B-35
+6033226,WTB8L-N2211,W8 Laser,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,100,NPN,,Conector macho M8 de 4 polos,,B-35
+6033227,WTB8L-P2211,W8 Laser,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,100,PNP,,Conector macho M8 de 4 polos,,B-35
+6041453,WTB8-N1111V,W8 Inox,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,150,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-37
+6041455,WTB8-N2211V,W8 Inox,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,150,NPN,,Conector macho M8 de 4 polos,,B-37
+6041456,WTB8-N3311V,W8 Inox,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,150,NPN,,"Cable con conector macho M12 de 4 polos, 300 mm, PVC",,B-37
+6041457,WTB8-P1111V,W8 Inox,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,150,PNP,,"Cable de 3 hilos, 2 m, PVC",,B-37
+6041459,WTB8-P2211V,W8 Inox,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,150,PNP,,Conector macho M8 de 4 polos,,B-37
+6041460,WTB8-P3311V,W8 Inox,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,150,PNP,,"Cable con conector macho M12 de 4 polos, 300 mm, PVC",,B-37
+6041461,WTB8-N1131V,W8 Inox,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,500,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-37
+6041463,WTB8-N2231V,W8 Inox,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,500,NPN,,Conector macho M8 de 4 polos,,B-37
+6041464,WTB8-N3331V,W8 Inox,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,500,NPN,,"Cable con conector macho M12 de 4 polos, 300 mm, PVC",,B-37
+6041465,WTB8-P1131V,W8 Inox,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,500,PNP,,"Cable de 3 hilos, 2 m, PVC",,B-37
+6041467,WTB8-P2231V,W8 Inox,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,500,PNP,,Conector macho M8 de 4 polos,,B-37
+6041468,WTB8-P3331V,W8 Inox,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,500,PNP,,"Cable con conector macho M12 de 4 polos, 300 mm, PVC",,B-37
+6041469,WTE8-N1131V,W8,Fotocelulas (Photoelectric sensors),diffuse,energética,950,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-38
+6041471,WTE8-N2231V,W8,Fotocelulas (Photoelectric sensors),diffuse,energética,950,NPN,,Conector macho M8 de 4 polos,,B-38
+6041472,WTE8-N3331V,W8,Fotocelulas (Photoelectric sensors),diffuse,energética,950,NPN,,"Cable con conector macho M12 de 4 polos, 300 mm, PVC",,B-38
+6041473,WTE8-P1131V,W8,Fotocelulas (Photoelectric sensors),diffuse,energética,950,PNP,,"Cable de 3 hilos, 2 m, PVC",,B-38
+6041475,WTE8-P2231V,W8,Fotocelulas (Photoelectric sensors),diffuse,energética,950,PNP,,Conector macho M8 de 4 polos,,B-38
+6041476,WTE8-P3331V,W8,Fotocelulas (Photoelectric sensors),diffuse,energética,950,PNP,,"Cable con conector macho M12 de 4 polos, 300 mm, PVC",,B-38
+6041477,WL8-N1131V,W8,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,6500,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-38
+6041481,WL8-P1131V,W8,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,6500,PNP,,"Cable de 3 hilos, 2 m, PVC",,B-38
+6041483,WL8-P2231V,W8,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,6500,PNP,,Conector macho M8 de 4 polos,,B-38
+6041484,WL8-P3331V,W8,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,6500,PNP,,"Cable con conector macho M12 de 4 polos, 300 mm, PVC",,B-38
+6041485,WSE8-N1131V,W8,Fotocelulas (Photoelectric sensors),opposed,,45000,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-38
+6041487,WSE8-N2231V,W8,Fotocelulas (Photoelectric sensors),opposed,,45000,NPN,,Conector macho M8 de 4 polos,,B-38
+6041488,WSE8-N3331V,W8,Fotocelulas (Photoelectric sensors),opposed,,45000,NPN,,"Cable con conector macho M12 de 4 polos, 300 mm, PVC",,B-38
+6041489,WSE8-P1131V,W8,Fotocelulas (Photoelectric sensors),opposed,,45000,PNP,,"Cable de 3 hilos, 2 m, PVC",,B-38
+6041491,WSE8-P2231V,W8,Fotocelulas (Photoelectric sensors),opposed,,45000,PNP,,Conector macho M8 de 4 polos,,B-38
+6041492,WSE8-P3331V,W8,Fotocelulas (Photoelectric sensors),opposed,,45000,PNP,,"Cable con conector macho M12 de 4 polos, 300 mm, PVC",,B-38
+1064686,GTB10-R3811,G10,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,950,Relé,,"Cable de 5 hilos, 2 m, PVC",,B-40
+1064694,GTB10-P4211,G10,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,950,PNP,,Conector macho M12 de 4 polos,,B-40
+1065854,GTB10-P1211,G10,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,950,PNP,,"Cable de 3 hilos, 2 m, PVC",,B-40
+1065863,GTB10-R3821,G10,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,1200,Relé,,"Cable de 5 hilos, 2 m, PVC",,B-40
+1064688,GTE10-R3811,G10,Fotocelulas (Photoelectric sensors),diffuse,energética,1300,Relé,,"Cable de 5 hilos, 2 m, PVC",,B-41
+1064697,GTE10-P4211,G10,Fotocelulas (Photoelectric sensors),diffuse,energética,1300,PNP,,Conector macho M12 de 4 polos,,B-41
+1064700,GL10-N4211,G10,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,12000,NPN,,Conector macho M12 de 4 polos,,B-41
+1065865,GTE10-P1211,G10,Fotocelulas (Photoelectric sensors),diffuse,energética,1300,PNP,,"Cable de 3 hilos, 2 m, PVC",,B-41
+1065868,GTE10-N1211,G10,Fotocelulas (Photoelectric sensors),diffuse,energética,1300,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-41
+1065871,GTE10-N4211,G10,Fotocelulas (Photoelectric sensors),diffuse,energética,1300,NPN,,Conector macho M12 de 4 polos,,B-41
+1065874,GTE10-R3821,G10,Fotocelulas (Photoelectric sensors),diffuse,energética,2000,Relé,,"Cable de 5 hilos, 2 m, PVC",,B-41
+1065876,GL10-P1111,G10,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,15000,PNP,,"Cable de 3 hilos, 2 m, PVC",,B-41
+1065878,GL10-P4111,G10,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,15000,PNP,,Conector macho M12 de 4 polos,,B-41
+1065880,GL10-N1111,G10,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,12000,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-41
+1065883,GL10-N4111,G10,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,12000,NPN,,Conector macho M12 de 4 polos,,B-41
+1065885,GL10-P1211,G10,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,15000,PNP,,"Cable de 3 hilos, 2 m, PVC",,B-41
+1065888,GL10-N1211,G10,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,12000,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-41
+1065890,GL10-P4211,G10,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,15000,PNP,,Conector macho M12 de 4 polos,,B-41
+1064704,GL10G-P4251,G10,Fotocelulas (Photoelectric sensors),retroreflective,doble lente,12000,PNP,,Conector macho M12 de 4 polos,,B-42
+1064705,GL10G-N1251,G10,Fotocelulas (Photoelectric sensors),retroreflective,doble lente,10000,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-42
+1064706,GSE10-P4211,G10,Fotocelulas (Photoelectric sensors),opposed,,40000,PNP,,Conector macho M12 de 4 polos,,B-42
+1065899,GSE10-P4111,G10,Fotocelulas (Photoelectric sensors),opposed,,40000,PNP,,Conector macho M12 de 4 polos,,B-42
+1065901,GSE10-N1111,G10,Fotocelulas (Photoelectric sensors),opposed,,40000,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-42
+1065904,GSE10-N1211,G10,Fotocelulas (Photoelectric sensors),opposed,,40000,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-42
+1065906,GSE10-P4221,G10,Fotocelulas (Photoelectric sensors),opposed,,40000,PNP,,Conector macho M12 de 4 polos,,B-42
+1065908,GSE10-N1221,G10,Fotocelulas (Photoelectric sensors),opposed,,40000,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-42
+1041376,WTB11-2P2431,W11-2,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,350,PNP,,Conector macho M12 de 4 polos,,B-49
+1041378,WTB11-2N2431,W11-2,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,350,NPN,,Conector macho M12 de 4 polos,,B-49
+1044442,WTB11-2P2461,W11-2,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,1100,PNP,,Conector macho M12 de 4 polos,,B-49
+1051818,WTB11-2N2461,W11-2,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,1100,NPN,,Conector macho M12 de 4 polos,,B-49
+1041380,WTF11-2P2431,W11-2,Fotocelulas (Photoelectric sensors),diffuse,supresión del primer plano,350,PNP,,Conector macho M12 de 4 polos,,B-50
+1041381,WTE11-2P2432,W11-2,Fotocelulas (Photoelectric sensors),diffuse,energética,1000,PNP,,Conector macho M12 de 4 polos,,B-50
+1041383,WTE11-2N2432,W11-2,Fotocelulas (Photoelectric sensors),diffuse,energética,1000,NPN,,Conector macho M12 de 4 polos,,B-50
+1041385,WL11-2P2430,W11-2,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,10000,PNP,,Conector macho M12 de 4 polos,,B-50
+1041387,WL11-2N2430,W11-2,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,10000,NPN,,Conector macho M12 de 4 polos,,B-50
+1041394,WSE11-2P2430,W11-2,Fotocelulas (Photoelectric sensors),opposed,,20000,PNP,,Conector macho M12 de 4 polos,,B-50
+1041396,WSE11-2N2430,W11-2,Fotocelulas (Photoelectric sensors),opposed,,20000,NPN,,Conector macho M12 de 4 polos,,B-50
+1048542,WL11-2P2432,W11-2,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,10000,PNP,,Conector macho M12 de 4 polos,,B-50
+1041400,WTF12-3P2441,W12-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del primer plano,500,PNP,,Conector macho M12 de 4 polos,,B-52
+1041401,WTF12-3P2443,W12-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del primer plano,500,PNP,,Conector macho M12 de 4 polos,,B-52
+1041403,WTF12-3N2441,W12-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del primer plano,500,NPN,,Conector macho M12 de 4 polos,,B-52
+1041404,WTF12-3P2431,W12-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del primer plano,175,PNP,,Conector macho M12 de 4 polos,,B-52
+1041405,WTF12-3P2433,W12-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del primer plano,175,PNP,,Conector macho M12 de 4 polos,,B-52
+1041408,WTF12-3N2431,W12-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del primer plano,175,NPN,,Conector macho M12 de 4 polos,,B-52
+1041409,WTF12-3N2433,W12-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del primer plano,175,NPN,,Conector macho M12 de 4 polos,,B-52
+1041411,WTB12-3P2431,W12-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,350,PNP,,Conector macho M12 de 4 polos,,B-53
+1041412,WTB12-3P2433,W12-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,350,PNP,,Conector macho M12 de 4 polos,,B-53
+1041436,WL12-3P2431,W12-3,Fotocelulas (Photoelectric sensors),retroreflective,autocolimación,7000,PNP,,Conector macho M12 de 4 polos,,B-53
+1041440,WL12-3N2431,W12-3,Fotocelulas (Photoelectric sensors),retroreflective,autocolimación,7000,NPN,,Conector macho M12 de 4 polos,,B-53
+1060222,WTB12C-3P2432A91,W12-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,350,PNP,,Conector macho M12 de 4 polos,,B-53
+1067771,WTB12C-3P2432,W12-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,350,PNP,,Conector macho M12 de 4 polos,,B-53
+1067772,WTB12C-3P2432A70,W12-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,350,PNP,,Conector macho M12 de 4 polos,,B-53
+1067773,WTB12C-3P2432A71,W12-3,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,350,PNP,,Conector macho M12 de 4 polos,,B-53
+1041459,WSE12-3P2431,W12-3,Fotocelulas (Photoelectric sensors),opposed,,20000,PNP,,Conector macho M12 de 4 polos,,B-54
+1041462,WSE12-3N2431,W12-3,Fotocelulas (Photoelectric sensors),opposed,,20000,NPN,,Conector macho M12 de 4 polos,,B-54
+1067774,WL12C-3P2432,W12-3,Fotocelulas (Photoelectric sensors),retroreflective,autocolimación,7000,PNP,,Conector macho M12 de 4 polos,,B-54
+1067775,WL12C-3P2432A70,W12-3,Fotocelulas (Photoelectric sensors),retroreflective,autocolimación,7000,PNP,,Conector macho M12 de 4 polos,,B-54
+1067776,WL12C-3P2432A71,W12-3,Fotocelulas (Photoelectric sensors),retroreflective,autocolimación,7000,PNP,,Conector macho M12 de 4 polos,,B-54
+1067777,WL12C-3P2432A91,W12-3,Fotocelulas (Photoelectric sensors),retroreflective,autocolimación,7000,PNP,,Conector macho M12 de 4 polos,,B-54
+1067780,WSE12C-3P2430,W12-3,Fotocelulas (Photoelectric sensors),opposed,,20000,PNP,,Conector macho M12 de 4 polos,,B-54
+1067781,WSE12C-3P2430A70,W12-3,Fotocelulas (Photoelectric sensors),opposed,,20000,PNP,,Conector macho M12 de 4 polos,,B-54
+1067782,WSE12C-3P2430A71,W12-3,Fotocelulas (Photoelectric sensors),opposed,,20000,PNP,,Conector macho M12 de 4 polos,,B-54
+1067783,WSE12C-3P2430A91,W12-3,Fotocelulas (Photoelectric sensors),opposed,,20000,PNP,,Conector macho M12 de 4 polos,,B-54
+6044728,WTE280-2P2431,W280-2,Fotocelulas (Photoelectric sensors),diffuse,,2000,PNP,,conector macho M12 de 4 polos,,B-56
+6044729,WTE280-2N2431,W280-2,Fotocelulas (Photoelectric sensors),diffuse,,2000,NPN,,conector macho M12 de 4 polos,,B-56
+6044730,WTE280-2H4331,W280-2,Fotocelulas (Photoelectric sensors),diffuse,,2000,relé,,Conexión de bornes,,B-57
+6044731,WTE280-2H1531,W280-2,Fotocelulas (Photoelectric sensors),diffuse,,2000,relé,,"Cable de 5 hilos, 2 m",,B-57
+6044736,WL280-2P2431,W280-2,Fotocelulas (Photoelectric sensors),retroreflective,,15000,PNP,,conector macho M12 de 4 polos,,B-57
+6044737,WL280-2N2431,W280-2,Fotocelulas (Photoelectric sensors),retroreflective,,12000,NPN,,conector macho M12 de 4 polos,,B-57
+6044738,WL280-2H4331,W280-2,Fotocelulas (Photoelectric sensors),retroreflective,,15000,relé,,Conexión de bornes,,B-57
+6044739,WL280-2H1531,W280-2,Fotocelulas (Photoelectric sensors),retroreflective,,15000,relé,,"Cable de 5 hilos, 2 m",,B-57
+6044745,WSE280-2P2431,W280-2,Fotocelulas (Photoelectric sensors),opposed,,60000,PNP,,conector macho M12 de 4 polos,,B-57
+6044746,WSE280-2N2431,W280-2,Fotocelulas (Photoelectric sensors),opposed,,60000,NPN,,conector macho M12 de 4 polos,,B-57
+6044758,WTE280-2R4331,W280-2,Fotocelulas (Photoelectric sensors),diffuse,,2000,relé,,Conexión de bornes,,B-57
+6044759,WTE280-2R1531,W280-2,Fotocelulas (Photoelectric sensors),diffuse,,2000,relé,,"Cable de 5 hilos, 2 m",,B-57
+6044760,WL280-2R4331,W280-2,Fotocelulas (Photoelectric sensors),retroreflective,,15000,relé,,Conexión de bornes,,B-57
+6044761,WL280-2R1531,W280-2,Fotocelulas (Photoelectric sensors),retroreflective,,15000,relé,,"Cable de 5 hilos, 2 m",,B-57
+6044747,WSE280-2H4331,W280-2,Fotocelulas (Photoelectric sensors),opposed,,60000,relé,,Conexión de bornes,,B-58
+6044748,WSE280-2H1531,W280-2,Fotocelulas (Photoelectric sensors),opposed,,60000,relé,,"Cable de 5 hilos, 2 m",,B-58
+6044762,WSE280-2R4331,W280-2,Fotocelulas (Photoelectric sensors),opposed,,60000,relé,,Conexión de bornes,,B-58
+6044763,WSE280-2R1531,W280-2,Fotocelulas (Photoelectric sensors),opposed,,60000,relé,,"Cable de 5 hilos, 2 m",,B-58
+6048061,WTT280L-2P2531,W280L-2,Fotocelulas (Photoelectric sensors),diffuse,,4000,PNP,,Conector macho M12 de 5 polos,,B-59
+6048062,WTT280L-2P2536,W280L-2,Fotocelulas (Photoelectric sensors),diffuse,,3000,2 PNP,,Conector macho M12 de 5 polos,,B-59
+6048063,WTT280L-2N2531,W280L-2,Fotocelulas (Photoelectric sensors),diffuse,,4000,NPN,,Conector macho M12 de 5 polos,,B-59
+6048064,WTT280L-2N2536,W280L-2,Fotocelulas (Photoelectric sensors),diffuse,,3000,2 x NPN,,Conector macho M12 de 5 polos,,B-59
+6048065,WTT280L-2P1531,W280L-2,Fotocelulas (Photoelectric sensors),diffuse,,4000,PNP,,"Cable de 5 hilos, 2 m, PVC",,B-59
+6048066,WTT280L-2P1536,W280L-2,Fotocelulas (Photoelectric sensors),diffuse,,3000,2 PNP,,"Cable de 5 hilos, 2 m, PVC",,B-59
+6048067,WTT280L-2N1531,W280L-2,Fotocelulas (Photoelectric sensors),diffuse,,4000,NPN,,"Cable de 5 hilos, 2 m, PVC",,B-59
+6048068,WTT280L-2N1536,W280L-2,Fotocelulas (Photoelectric sensors),diffuse,,3000,2 x NPN,,"Cable de 5 hilos, 2 m, PVC",,B-59
+6048069,WLT280L-2P2536,W280L-2,Fotocelulas (Photoelectric sensors),diffuse,,18000,2 PNP,,conector macho M12 de 5 polos,,B-60
+6048070,WLT280L-2N2536,W280L-2,Fotocelulas (Photoelectric sensors),diffuse,,18000,2 x NPN,,conector macho M12 de 5 polos,,B-60
+1058200,GRTE18S-P2342,GR18S,Fotocelulas (Photoelectric sensors),diffuse,energética,550,PNP,,M12 de 3 pines,IP 67,B-61
+1058204,GRTE18S-P2312,GR18S,Fotocelulas (Photoelectric sensors),diffuse,energética,115,PNP,,M12 de 3 pines,IP 67,B-61
+1059408,GRTE18S-N2312,GR18S,Fotocelulas (Photoelectric sensors),diffuse,energética,115,NPN,,M12 de 3 pines,IP 67,B-61
+1059409,GRTE18S-E231Z,GR18S,Fotocelulas (Photoelectric sensors),diffuse,energética,115,NPN,,M12 de 3 pines,IP 67,B-61
+1059436,GRTE18S-P231Z,GR18S,Fotocelulas (Photoelectric sensors),diffuse,energética,115,PNP,,M12 de 3 pines,IP 67,B-61
+1059440,GRTE18S-P231X,GR18S,Fotocelulas (Photoelectric sensors),diffuse,energética,115,PNP,,M12 de 3 pines,IP 67,B-61
+1059482,GRTE18S-N2342,GR18S,Fotocelulas (Photoelectric sensors),diffuse,energética,550,NPN,,M12 de 3 pines,IP 67,B-61
+1059483,GRTE18S-E234Z,GR18S,Fotocelulas (Photoelectric sensors),diffuse,energética,550,NPN,,M12 de 3 pines,IP 67,B-61
+1059486,GRTE18S-F234Z,GR18S,Fotocelulas (Photoelectric sensors),diffuse,energética,550,PNP,,M12 de 3 pines,IP 67,B-61
+1059489,GRTE18S-P234X,GR18S,Fotocelulas (Photoelectric sensors),diffuse,energética,550,PNP,,M12 de 3 pines,IP 67,B-61
+1058192,GRL18S-P2336,GR18S,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,7200,PNP,,Conector macho M12 de 3 polos,,B-62
+1058193,GRTE18S-P2347,GR18S,Fotocelulas (Photoelectric sensors),diffuse,energética,550,PNP,,M12 de 3 pines,,B-62
+1058196,GRTE18S-P2317,GR18S,Fotocelulas (Photoelectric sensors),diffuse,energética,115,PNP,,M12 de 3 pines,,B-62
+1058199,GRL18S-P2331,GR18S,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,7200,PNP,,Conector macho M12 de 3 polos,,B-62
+1058207,GRL18S-P233Y,GR18S,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,7200,PNP,,Conector macho M12 de 3 polos,,B-62
+1058210,GRL18S-P233W,GR18S,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,7200,PNP,,Conector macho M12 de 3 polos,,B-62
+1058211,GRL18S-F2338,GR18S,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,7200,PNP,,Conector macho M12 de 3 polos,,B-62
+1058212,GRL18S-P2338,GR18S,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,7200,PNP,,Conector macho M12 de 3 polos,,B-62
+1059378,GRTE18S-N2317,GR18S,Fotocelulas (Photoelectric sensors),diffuse,energética,115,NPN,,M12 de 3 pines,,B-62
+1059406,GRTE18S-F2319,GR18S,Fotocelulas (Photoelectric sensors),diffuse,energética,115,PNP,,M12 de 3 pines,,B-62
+1059441,GRTE18S-N2347,GR18S,Fotocelulas (Photoelectric sensors),diffuse,energética,550,NPN,,M12 de 3 pines,,B-62
+1059480,GRTE18S-F2349,GR18S,Fotocelulas (Photoelectric sensors),diffuse,energética,550,PNP,,M12 de 3 pines,,B-62
+1059530,GRL18S-E1336,GR18S,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,7200,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-62
+1059531,GRL18S-N1336,GR18S,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,7200,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-62
+1059533,GRL18S-F2336,GR18S,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,7200,PNP,,Conector macho M12 de 3 polos,,B-62
+1059537,GRL18S-E1331,GR18S,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,7200,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-62
+1059538,GRL18S-N1331,GR18S,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,7200,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-62
+1058215,GRSE18S-P2336,GR18S,Fotocelulas (Photoelectric sensors),opposed,,15000,PNP,,Conector macho M12 de 3 polos,,B-63
+1059543,GRSE18S-E1336,GR18S,Fotocelulas (Photoelectric sensors),opposed,,15000,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-63
+1059548,GRSE18S-E1331,GR18S,Fotocelulas (Photoelectric sensors),opposed,,15000,NPN,,"Cable de 3 hilos, 2 m, PVC",,B-63
+1059550,GRSE18S-P2331,GR18S,Fotocelulas (Photoelectric sensors),opposed,,15000,PNP,,Conector macho M12 de 3 polos,,B-63
+1059551,GRSE18S-F233W,GR18S,Fotocelulas (Photoelectric sensors),opposed,,15000,PNP,,Conector macho M12 de 3 polos,,B-63
+1059552,GRSE18S-P233W,GR18S,Fotocelulas (Photoelectric sensors),opposed,,15000,PNP,,Conector macho M12 de 3 polos,,B-63
+6041805,VTE180-2N42442,V180-2,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,500,NPN,,conector macho M12 de 4 polos,,B-65
+6041807,VTE180-2P42442,V180-2,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,500,PNP,,conector macho M12 de 4 polos,,B-65
+6043813,VTE180-2N42444,V180-2,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,450,NPN,,conector macho M12 de 4 polos,,B-65
+6043815,VTE180-2P42444,V180-2,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,450,PNP,,conector macho M12 de 4 polos,,B-65
+6037482,VTE180-2N42447,V180-2,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,500,NPN,,conector macho M12 de 4 polos,,B-66
+6037484,VTE180-2P42447,V180-2,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,500,PNP,,conector macho M12 de 4 polos,,B-66
+6041801,VTF180-2N42412,V180-2,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,140,NPN,,conector macho M12 de 4 polos,,B-66
+6041803,VTF180-2P42412,V180-2,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,140,PNP,,conector macho M12 de 4 polos,,B-66
+6043804,VTF180-2N42414,V180-2,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,130,NPN,,conector macho M12 de 4 polos,,B-66
+6043806,VTF180-2P42414,V180-2,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,130,PNP,,conector macho M12 de 4 polos,,B-66
+6043808,VTF180-2N42419,V180-2,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,130,NPN,,conector macho M12 de 4 polos,,B-66
+6043811,VTF180-2P42419,V180-2,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,130,PNP,,conector macho M12 de 4 polos,,B-66
+6043817,VTE180-2N42449,V180-2,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,450,NPN,,conector macho M12 de 4 polos,,B-66
+6043819,VTE180-2P42449,V180-2,Fotocelulas (Photoelectric sensors),diffuse,supresión del fondo,450,PNP,,conector macho M12 de 4 polos,,B-66
+6037494,VL180-2N42436,VL180-2,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,7000,NPN,,conector macho M12 de 4 polos,,B-67
+6037496,VL180-2P42436,VL180-2,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,7000,PNP,,conector macho M12 de 4 polos,,B-67
+6041817,VL180-2N42431,VL180-2,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,7000,NPN,,conector macho M12 de 4 polos,,B-67
+6041819,VL180-2P42431,VL180-2,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,7000,PNP,,conector macho M12 de 4 polos,,B-67
+6043830,VL180-2N42433,VL180-2,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,5500,NPN,,conector macho M12 de 4 polos,,B-67
+6043834,VL180-2P42433,VL180-2,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,5500,PNP,,conector macho M12 de 4 polos,,B-67
+6043836,VL180-2N42438,VL180-2,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,5500,NPN,,conector macho M12 de 4 polos,,B-67
+6043838,VL180-2P42438,VL180-2,Fotocelulas (Photoelectric sensors),retroreflective,lente doble,5500,PNP,,conector macho M12 de 4 polos,,B-67
+6037498,VSE180-2N42437,V180-2,Fotocelulas (Photoelectric sensors),opposed,,28000,NPN,,conector macho M12 de 4 polos,,B-68
+6037500,VSE180-2P42437,V180-2,Fotocelulas (Photoelectric sensors),opposed,,28000,PNP,,conector macho M12 de 4 polos,,B-68
+6041821,VSE180-2N42432,V180-2,Fotocelulas (Photoelectric sensors),opposed,,28000,NPN,,conector macho M12 de 4 polos,,B-68
+6041823,VSE180-2P42432,V180-2,Fotocelulas (Photoelectric sensors),opposed,,28000,PNP,,conector macho M12 de 4 polos,,B-68
+6043848,VSE180-2N42434,V180-2,Fotocelulas (Photoelectric sensors),opposed,,25000,NPN,,conector macho M12 de 4 polos,,B-68
+6043850,VSE180-2P42434,V180-2,Fotocelulas (Photoelectric sensors),opposed,,25000,PNP,,conector macho M12 de 4 polos,,B-68
+6043852,VSE180-2N42439,V180-2,Fotocelulas (Photoelectric sensors),opposed,,25000,NPN,,conector macho M12 de 4 polos,,B-68
+6043854,VSE180-2P42439,V180-2,Fotocelulas (Photoelectric sensors),opposed,,25000,PNP,,conector macho M12 de 4 polos,,B-68
+1040763,IME12-04BPSZC0K,IME12,Sensores de proximidad (Proximity sensors),inductive,,4,PNP,,conector macho M12 de 4 polos,,C-77
+1040764,IME12-04BPSZC0S,IME12,Sensores de proximidad (Proximity sensors),inductive,,4,PNP,,conector macho M12 de 4 polos,,C-77
+1040771,IME12-04BNSZC0K,IME12,Sensores de proximidad (Proximity sensors),inductive,,4,NPN,,conector macho M12 de 4 polos,,C-77
+1040772,IME12-04BNSZC0S,IME12,Sensores de proximidad (Proximity sensors),inductive,,4,NPN,,conector macho M12 de 4 polos,,C-77
+1040779,IME12-08NPSZC0K,IME12,Sensores de proximidad (Proximity sensors),inductive,,8,PNP,,conector macho M12 de 4 polos,,C-77
+1040780,IME12-08NPSZC0S,IME12,Sensores de proximidad (Proximity sensors),inductive,,8,PNP,,conector macho M12 de 4 polos,,C-77
+1040787,IME12-08NNSZC0K,IME12,Sensores de proximidad (Proximity sensors),inductive,,8,NPN,,conector macho M12 de 4 polos,,C-77
+1040788,IME12-08NNSZC0S,IME12,Sensores de proximidad (Proximity sensors),inductive,,8,NPN,,conector macho M12 de 4 polos,,C-77
+1040965,IME18-08BPSZC0K,IME18,Sensores de proximidad (Proximity sensors),inductive,,8,PNP,,conector macho M12 de 4 polos,,C-77
+1040966,IME18-08BPSZC0S,IME18,Sensores de proximidad (Proximity sensors),inductive,,8,PNP,,conector macho M12 de 4 polos,,C-77
+1040973,IME18-08BNSZC0K,IME18,Sensores de proximidad (Proximity sensors),inductive,,8,NPN,,conector macho M12 de 4 polos,,C-77
+1040974,IME18-08BNSZC0S,IME18,Sensores de proximidad (Proximity sensors),inductive,,8,NPN,,conector macho M12 de 4 polos,,C-77
+1040981,IME18-12NPSZC0K,IME18,Sensores de proximidad (Proximity sensors),inductive,,12,PNP,,conector macho M12 de 4 polos,,C-77
+1040982,IME18-12NPSZC0S,IME18,Sensores de proximidad (Proximity sensors),inductive,,12,PNP,,conector macho M12 de 4 polos,,C-77
+1040989,IME18-12NNSZC0K,IME18,Sensores de proximidad (Proximity sensors),inductive,,12,NPN,,conector macho M12 de 4 polos,,C-77
+1040990,IME18-12NNSZC0S,IME18,Sensores de proximidad (Proximity sensors),inductive,,12,NPN,,conector macho M12 de 4 polos,,C-77
+1067178,IME12-04BDSZC0S,IME12,Sensores de proximidad (Proximity sensors),inductive,,4,,,conector macho M12 de 4 polos,,C-77
+1067180,IME12-08NDSZC0S,IME12,Sensores de proximidad (Proximity sensors),inductive,,8,,,conector macho M12 de 4 polos,,C-77
+1067181,IME18-12NDSZC0S,IME18,Sensores de proximidad (Proximity sensors),inductive,,12,,,conector macho M12 de 4 polos,,C-77
+1067207,IME18-08BDSZC0S,IME18,Sensores de proximidad (Proximity sensors),inductive,,8,,,conector macho M12 de 4 polos,,C-77
+6020389,CM18-12NPP-KW1,CM,Sensores de proximidad (Proximity sensors),capacitive,,12,PNP,,"Cable de 4 hilos, 2 m, PVC",,C-87
+6020410,CM18-12NPP-KC1,CM,Sensores de proximidad (Proximity sensors),capacitive,,12,PNP,,Conector macho M12 de 4 polos,,C-87
+6020473,CM30-16BPP-KW1,CM,Sensores de proximidad (Proximity sensors),capacitive,,16,PNP,,"Cable de 4 hilos, 2 m, PVC",,C-87
+6020475,CM30-16BPP-KC1,CM,Sensores de proximidad (Proximity sensors),capacitive,,16,PNP,,Conector macho M12 de 4 polos,,C-87
+6020476,CM30-25NPP-KW1,CM,Sensores de proximidad (Proximity sensors),capacitive,,25,PNP,,"Cable de 4 hilos, 2 m, PVC",,C-87
+6020477,CM30-25NPP-KC1,CM,Sensores de proximidad (Proximity sensors),capacitive,,25,PNP,,Conector macho M12 de 4 polos,,C-87
+6021457,CM18-12NNP-KW1,CM,Sensores de proximidad (Proximity sensors),capacitive,,12,NPN,,"Cable de 4 hilos, 2 m, PVC",,C-87
+6021458,CM18-12NNP-KC1,CM,Sensores de proximidad (Proximity sensors),capacitive,,12,NPN,,Conector macho M12 de 4 polos,,C-87
+6021459,CM30-16BNP-KW1,CM,Sensores de proximidad (Proximity sensors),capacitive,,16,NPN,,"Cable de 4 hilos, 2 m, PVC",,C-87
+6021460,CM30-16BNP-KC1,CM,Sensores de proximidad (Proximity sensors),capacitive,,16,NPN,,Conector macho M12 de 4 polos,,C-87
+6021461,CM30-25NNP-KW1,CM,Sensores de proximidad (Proximity sensors),capacitive,,25,NPN,,"Cable de 4 hilos, 2 m, PVC",,C-87
+6021462,CM30-25NNP-KC1,CM,Sensores de proximidad (Proximity sensors),capacitive,,25,NPN,,Conector macho M12 de 4 polos,,C-87
+6049678,UFN3-70B413,UF,Sensores de registro (Registration/contrast sensors),ultrasonic,,,PNP/NPN,,Conector macho M8 de 4 polos,IP 65,G-147
+6049679,UFN3-70P415,UF,Sensores de registro (Registration/contrast sensors),ultrasonic,,,PNP,,Conector macho M8 de 4 polos,IP 65,G-147
+6049680,UFN3-70N415,UF,Sensores de registro (Registration/contrast sensors),ultrasonic,,,NPN,,Conector macho M8 de 4 polos,IP 65,G-147
+6036916,UM30-211113,UM30,Sensores de distancia (Distance sensors),ultrasonic,,250,,,,,H-166
+6036921,UM30-211118,UM30,Sensores de distancia (Distance sensors),ultrasonic,,250,1 PNP (200 mA),,,,H-166
+6037660,UM30-211111,UM30,Sensores de distancia (Distance sensors),ultrasonic,,250,1 PNP (200 mA),,,,H-166
+6037664,UM30-211112,UM30,Sensores de distancia (Distance sensors),ultrasonic,,250,2 PNP (200 mA),,,,H-166
+6036917,UM30-212113,UM30,Sensores de distancia (Distance sensors),ultrasonic,,350,,,,,H-167
+6036918,UM30-213113,UM30,Sensores de distancia (Distance sensors),ultrasonic,,1300,,,,,H-167
+6036919,UM30-214113,UM30,Sensores de distancia (Distance sensors),ultrasonic,,3400,,,,,H-167
+6036920,UM30-215113,UM30,Sensores de distancia (Distance sensors),ultrasonic,,6000,,,,,H-167
+6036922,UM30-212118,UM30,Sensores de distancia (Distance sensors),ultrasonic,,350,1 PNP (200 mA),,,,H-167
+6036923,UM30-213118,UM30,Sensores de distancia (Distance sensors),ultrasonic,,1300,1 PNP (200 mA),,,,H-167
+6036924,UM30-214118,UM30,Sensores de distancia (Distance sensors),ultrasonic,,3400,1 PNP (200 mA),,,,H-167
+6036925,UM30-215118,UM30,Sensores de distancia (Distance sensors),ultrasonic,,6000,1 PNP (200 mA),,,,H-167
+6037537,UM30-213111,UM30,Sensores de distancia (Distance sensors),ultrasonic,,1300,1 PNP (200 mA),,,,H-167
+6037661,UM30-212111,UM30,Sensores de distancia (Distance sensors),ultrasonic,,350,1 PNP (200 mA),,,,H-167
+6037662,UM30-214111,UM30,Sensores de distancia (Distance sensors),ultrasonic,,3400,1 PNP (200 mA),,,,H-167
+6037663,UM30-215111,UM30,Sensores de distancia (Distance sensors),ultrasonic,,6000,1 PNP (200 mA),,,,H-167
+6037665,UM30-212112,UM30,Sensores de distancia (Distance sensors),ultrasonic,,350,2 PNP (200 mA),,,,H-167
+6037666,UM30-213112,UM30,Sensores de distancia (Distance sensors),ultrasonic,,1300,2 PNP (200 mA),,,,H-167
+6037667,UM30-214112,UM30,Sensores de distancia (Distance sensors),ultrasonic,,3400,2 PNP (200 mA),,,,H-167
+6037668,UM30-215112,UM30,Sensores de distancia (Distance sensors),ultrasonic,,6000,2 PNP (200 mA),,,,H-167
+6037670,UM30-212115,UM30,Sensores de distancia (Distance sensors),ultrasonic,,350,1 NPN (200 mA),,,,H-167
+6037671,UM30-213115,UM30,Sensores de distancia (Distance sensors),ultrasonic,,1300,1 NPN (200 mA),,,,H-167
+6037672,UM30-214115,UM30,Sensores de distancia (Distance sensors),ultrasonic,,3400,1 NPN (200 mA),,,,H-167
+6037676,UM30-213114,UM30,Sensores de distancia (Distance sensors),ultrasonic,,1300,2 NPN (200 mA),,,,H-167
+6029831,UC12-11231,UC12,Sensores de distancia (Distance sensors),ultrasonic,,150,PNP,,,,H-170
+6029832,UC12-12231,UC12,Sensores de distancia (Distance sensors),ultrasonic,,250,PNP,,,,H-170
+6029833,UC12-11235,UC12,Sensores de distancia (Distance sensors),ultrasonic,,150,NPN,,,,H-170
+6029834,UC12-12235,UC12,Sensores de distancia (Distance sensors),ultrasonic,,250,NPN,,,,H-170
