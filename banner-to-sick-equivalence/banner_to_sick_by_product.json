@@ -1,0 +1,1532 @@
+[
+ {
+  "banner_series": "BEAM-ARRAY",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GSE6-P4112",
+    "recommended_sick_order_number": "1052450",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "low",
+    "rationale": "G6 opposed reaches 15 m, likely covers Banner range; PNP chosen, but SICK offers only switching output vs Banner's analog measuring array."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "G6",
+   "summary": "SICK G6 (GSE6) opposed-mode sensor is the closest available match, but it is a single through-beam switching sensor, not a measuring light curtain.",
+   "confidence": "low",
+   "caveats": "Banner BEAM-ARRAY is an analog measuring light curtain; no equivalent array in this SICK shortlist. Banner range unspecified."
+  }
+ },
+ {
+  "banner_series": "BEAM-ARRAY",
+  "banner_model": "BMLV",
+  "per_mode": [
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GL6-P4112",
+    "recommended_sick_order_number": "1051777",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "low",
+    "rationale": "GL6 retroreflective (lente doble), 6 m range, PNP output; Banner range unspecified so adequacy assumed. G6 is a single-beam sensor, not a true light screen."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "G6",
+   "summary": "SICK G6 (GL6) retroreflective single-beam is the closest catalog match, but no true multi-beam light-screen equivalent to Banner BEAM-ARRAY exists in this shortlist.",
+   "confidence": "low",
+   "caveats": "Banner BEAM-ARRAY is a part-detection light curtain; G6 is a single-beam sensor, a functional mismatch. Banner range not provided."
+  }
+ },
+ {
+  "banner_series": "ECONO-BEAM",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": 1800,
+    "recommended_sick_type_code": "WSE4-3P2230",
+    "recommended_sick_order_number": "1028160",
+    "recommended_sick_family": "W4-3",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W4-3 through-beam reaches 4000 mm (ratio 2.2), comfortably covers 1800 mm; PNP compatible with Banner bipolar NPN+PNP output."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 4500,
+    "recommended_sick_type_code": "WL4-3P2230",
+    "recommended_sick_order_number": "1028147",
+    "recommended_sick_family": "W4-3",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "WL4-3 double-lens retro matches 4500 mm exactly (ratio 1.0), PNP compatible; non-polarized fit, polarization not required."
+   },
+   {
+    "mode": "diffuse (long range)",
+    "banner_range_max_mm": 200,
+    "recommended_sick_type_code": "GTB6-P4212",
+    "recommended_sick_order_number": "1052442",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "GTB6 reaches 250 mm covering 200 mm; background suppression differs from plain long-range diffuse but ensures reliable detection."
+   },
+   {
+    "mode": "diffuse (short range)",
+    "banner_range_max_mm": 80,
+    "recommended_sick_type_code": "WTB8-P1111",
+    "recommended_sick_order_number": "6033211",
+    "recommended_sick_family": "W8",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "WTB8 background-suppression diffuse reaches 100 mm covering 80 mm (ratio 1.25); PNP compatible with Banner bipolar output."
+   },
+   {
+    "mode": "convergent",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GTE6-P4212",
+    "recommended_sick_order_number": "1051781",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "low",
+    "rationale": "Only energetic GTE6 offered; convergent ideally maps to background suppression, so principle mismatch; 300 mm reach, no Banner range to verify."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "W4-3",
+   "summary": "SICK W4-3 covers the primary opposed and retroreflective modes; pair with G6/W8 for diffuse and convergent variants to fully replace ECONO-BEAM.",
+   "confidence": "medium",
+   "caveats": "No single SICK family spans all modes; convergent lacks a true background-suppression candidate, only energetic GTE6 offered."
+  }
+ },
+ {
+  "banner_series": "EZ-BEAM",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "fixed_field",
+    "banner_range_max_mm": 2000,
+    "recommended_sick_type_code": "WTE280-2P2431",
+    "recommended_sick_order_number": "6044728",
+    "recommended_sick_family": "W280-2",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "WTE280-2 is background-suppression diffuse matching Banner fixed-field; range 2000 mm exactly covers Banner's, PNP output standard."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "W280-2",
+   "summary": "SICK W280-2 (WTE280-2) background-suppression photoelectric sensors closely replace Banner EZ-BEAM fixed-field, matching 2000 mm range with PNP, NPN, and relay output variants.",
+   "confidence": "high",
+   "caveats": ""
+  }
+ },
+ {
+  "banner_series": "EZ-BEAM",
+  "banner_model": "EZ-BEAM S2",
+  "per_mode": [
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GSE6-P4112",
+    "recommended_sick_order_number": "1052450",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "G6 through-beam GSE6 reaches 15 m, ample for a compact sensor; PNP fits Banner solid-state outputs. Banner range unknown."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GL6-P4112",
+    "recommended_sick_order_number": "1051777",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "GL6 retroreflective, 6 m, double-lens design supports polarization for shiny targets; PNP compatible. Banner range not specified."
+   },
+   {
+    "mode": "fixed_field",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GTE6-P4212",
+    "recommended_sick_order_number": "1051781",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "low",
+    "rationale": "Only energetic (energetica) GTE6 offered, not true background suppression; 300 mm. Acceptable stand-in but sub-mode fit imperfect."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "G6",
+   "summary": "SICK G6 family covers all three EZ-BEAM S2 modes (GSE6 opposed, GL6 retroreflective, GTE6 diffuse) with PNP/NPN options.",
+   "confidence": "medium",
+   "caveats": "Fixed-field mode only matched by energetic diffuse, not background suppression; Banner ranges unspecified so range adequacy unverified."
+  }
+ },
+ {
+  "banner_series": "L-GAGE",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "fixed_field",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GTE6-P4212",
+    "recommended_sick_order_number": "1051781",
+    "recommended_sick_family": "G6",
+    "adequate": false,
+    "confidence": "low",
+    "rationale": "GTE6 is diffuse energetica switching sensor, not laser background-suppression; no analog 4-20mA output; only 300mm range vs L-GAGE measurement scope."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "G6",
+   "summary": "No true match: L-GAGE is a laser measurement sensor with analog output, but only short-range diffuse switching GTE6 candidates are offered.",
+   "confidence": "low",
+   "caveats": "SICK shortlist lacks laser background-suppression and analog 4-20mA measurement sensor matching L-GAGE; consider Dx35/OD displacement families instead."
+  }
+ },
+ {
+  "banner_series": "M12",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": 50000,
+    "recommended_sick_type_code": "WSE280-2P2431",
+    "recommended_sick_order_number": "6044745",
+    "recommended_sick_family": "W280-2",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W280-2 through-beam reaches 60 m, covering Banner's 50 m (ratio 1.2); PNP variant matches common Banner output."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "W280-2",
+   "summary": "SICK W280-2 through-beam laser fully replaces the Banner M12 opposed-mode sensor with ample range margin.",
+   "confidence": "high",
+   "caveats": ""
+  }
+ },
+ {
+  "banner_series": "MAXI-BEAM",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": 90000,
+    "recommended_sick_type_code": "WSE280-2P2431",
+    "recommended_sick_order_number": "6044745",
+    "recommended_sick_family": "W280-2",
+    "adequate": false,
+    "confidence": "medium",
+    "rationale": "Closest through-beam but 60 m reach vs Banner 90 m (ratio 0.67); PNP fits. No 90 m SICK candidate exists."
+   },
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": 4500,
+    "recommended_sick_type_code": "WSE4S-3F2130V",
+    "recommended_sick_order_number": "1045099",
+    "recommended_sick_family": "W4S-3",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "5 m reach covers Banner 4.5 m (ratio 1.11); PNP output compatible with MAXI-BEAM outputs."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 9000,
+    "recommended_sick_type_code": "WL11-2P2430",
+    "recommended_sick_order_number": "1041385",
+    "recommended_sick_family": "W11-2",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "10 m double-lens retro covers Banner 9 m (ratio 1.11); non-polarized, PNP output compatible."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 4500,
+    "recommended_sick_type_code": "WL4-3P2230",
+    "recommended_sick_order_number": "1028147",
+    "recommended_sick_family": "W4-3",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "4.5 m polarized double-lens exactly matches Banner (ratio 1.0); PNP output compatible."
+   },
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": 1500,
+    "recommended_sick_type_code": "GTE10-P4211",
+    "recommended_sick_order_number": "1064697",
+    "recommended_sick_family": "G10",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "Energetic diffuse fits plain long-range; 1.3 m slightly short of 1.5 m (ratio 0.87) but acceptable; PNP."
+   },
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": 760,
+    "recommended_sick_type_code": "WTE8-P1131V",
+    "recommended_sick_order_number": "6041473",
+    "recommended_sick_family": "W8",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "Energetic diffuse 950 mm covers Banner 760 mm (ratio 1.25); PNP output compatible."
+   },
+   {
+    "mode": "convergent",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GTE6-P4212",
+    "recommended_sick_order_number": "1051781",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "low",
+    "rationale": "Only short-range diffuse offered; energetic not ideal for convergent focus, and Banner range unknown; PNP fits."
+   },
+   {
+    "mode": "fixed_field",
+    "banner_range_max_mm": 100,
+    "recommended_sick_type_code": "WTB8-P1111",
+    "recommended_sick_order_number": "6033211",
+    "recommended_sick_family": "W8",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "Background-suppression 100 mm exactly matches Banner fixed-field (ratio 1.0); PNP output compatible."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "SICK W-series (W4/W8/W11/W280 + G10)",
+   "summary": "SICK W- and G-series photoelectric families cover most MAXI-BEAM modes well, but no single family spans all; W8 anchors diffuse/fixed-field.",
+   "confidence": "medium",
+   "caveats": "No SICK through-beam matches Banner 90 m opposed (max 60 m); convergent only served by short-range energetic diffuse."
+  }
+ },
+ {
+  "banner_series": "MINI-ARRAY",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GSE6-P4112",
+    "recommended_sick_order_number": "1052450",
+    "recommended_sick_family": "G6",
+    "adequate": false,
+    "confidence": "low",
+    "rationale": "GSE6 is single-beam through-beam (15 m); Banner MINI-ARRAY is a multi-beam measuring light curtain, not equivalent function."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "G6",
+   "summary": "No true match; SICK G6 GSE6 is a single-beam through-beam sensor, unlike Banner's measuring light-curtain array.",
+   "confidence": "low",
+   "caveats": "SICK summary catalog lacks a measuring light grid/array equivalent to Banner MINI-ARRAY."
+  }
+ },
+ {
+  "banner_series": "MINI-BEAM",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": 30000,
+    "recommended_sick_type_code": "GSE10-P4211",
+    "recommended_sick_order_number": "1064706",
+    "recommended_sick_family": "G10",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "G10 through-beam reaches 40 m, fully covering Banner's 30 m; PNP compatible with Banner's PNP output. V180-2 at 28 m falls slightly short."
+   },
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": 3000,
+    "recommended_sick_type_code": "WSE4-3P2230",
+    "recommended_sick_order_number": "1028160",
+    "recommended_sick_family": "W4-3",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W4-3 through-beam reaches 4 m, covering Banner's 3 m; PNP compatible with Banner bipolar output."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 4500,
+    "recommended_sick_type_code": "WL4-3P2230",
+    "recommended_sick_order_number": "1028147",
+    "recommended_sick_family": "W4-3",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "WL4-3 double-lens retro matches Banner's 4.5 m exactly (non-polarized); PNP compatible."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 2000,
+    "recommended_sick_type_code": "WL4S-3P2230V",
+    "recommended_sick_order_number": "1045095",
+    "recommended_sick_family": "W4S-3",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "WL4S-3 autocollimation is polarized, matching Banner's polarized variant, reaching 4 m over Banner's 2 m; PNP compatible."
+   },
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": 380,
+    "recommended_sick_type_code": "VTE180-2P42444",
+    "recommended_sick_order_number": "6043815",
+    "recommended_sick_family": "V180-2",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "VTE180-2 background-suppression diffuse reaches 450 mm, covering Banner's 380 mm; PNP compatible."
+   },
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": 130,
+    "recommended_sick_type_code": "VTF180-2P42414",
+    "recommended_sick_order_number": "6043806",
+    "recommended_sick_family": "V180-2",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "VTF180-2 background-suppression diffuse matches Banner's 130 mm exactly; PNP compatible."
+   },
+   {
+    "mode": "convergent",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GTE6-P4212",
+    "recommended_sick_order_number": "1051781",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "low",
+    "rationale": "G6 compact diffuse (300 mm) is closest fit, but only energetic (not background-suppression) and Banner range unspecified, so fit is uncertain."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "W4-3",
+   "summary": "The compact W4-3 / W4S-3 family covers most MINI-BEAM modes; pair with V180-2 for diffuse and G10 for long-range through-beam.",
+   "confidence": "medium",
+   "caveats": "No single family spans all modes; long-range 30 m opposed needs G10, and convergent has no true background-suppression equivalent."
+  }
+ },
+ {
+  "banner_series": "MINI-BEAM",
+  "banner_model": "Expert",
+  "per_mode": [
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GTE6-P4212",
+    "recommended_sick_order_number": "1051781",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "GTE6 energetica diffuse matches plain diffuse mode; 300 mm range, PNP output; Banner range unknown so confidence medium."
+   },
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GTE6-P4212",
+    "recommended_sick_order_number": "1051781",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "Wide-angle proximity maps to energetica diffuse GTE6; 300 mm, PNP; wide-angle optics not confirmed in candidates, hence medium."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GL6-P4112",
+    "recommended_sick_order_number": "1051777",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "GL6 retroreflective, 6000 mm range covers typical MINI-BEAM polarized range; PNP output; verify polarization option on GL6."
+   },
+   {
+    "mode": "convergent",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GTE6-P4212",
+    "recommended_sick_order_number": "1051781",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "low",
+    "rationale": "Only energetica GTE6 available; convergent ideally maps to background-suppression, which is absent, so fit is approximate."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "G6",
+   "summary": "SICK G6 family (GTE6 diffuse, GL6 retroreflective) covers MINI-BEAM Expert modes; no true background-suppression variant for convergent mode.",
+   "confidence": "medium",
+   "caveats": "Banner ranges unknown; convergent lacks background-suppression equivalent; confirm GL6 polarization and GTE6 wide-angle optics."
+  }
+ },
+ {
+  "banner_series": "MINI-BEAM",
+  "banner_model": "SME312LPC",
+  "per_mode": [
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GL6-P4112",
+    "recommended_sick_order_number": "1051777",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "G6 'lente doble' provides polarization for retroreflective mode; 6 m range ample. PNP selected; NPN variant (GL6-N4112) also available if needed."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "G6",
+   "summary": "SICK G6 polarized retroreflective (lente doble) family cleanly replaces the Banner MINI-BEAM SME312LPC polarized retro sensor with 6 m range.",
+   "confidence": "medium",
+   "caveats": "Banner range unspecified; assumed within G6's 6 m reach. Both PNP and NPN outputs available in family."
+  }
+ },
+ {
+  "banner_series": "MULTI-BEAM",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": 200000,
+    "recommended_sick_type_code": "WSE280-2P2431",
+    "recommended_sick_order_number": "6044745",
+    "recommended_sick_family": "W280-2",
+    "adequate": false,
+    "confidence": "low",
+    "rationale": "Best through-beam is W280-2 at 60 m, far short of Banner's 200 m; large range gap, output PNP compatible."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 23000,
+    "recommended_sick_type_code": "GL10-P1111",
+    "recommended_sick_order_number": "1065876",
+    "recommended_sick_family": "G10",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "GL10 reaches 15 m vs Banner 23 m (ratio 0.65); slightly short but closest, PNP compatible with Banner outputs."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 9000,
+    "recommended_sick_type_code": "GL10-N4211",
+    "recommended_sick_order_number": "1064700",
+    "recommended_sick_family": "G10",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "GL10 at 12 m comfortably covers Banner's 9 m (ratio 1.33), NPN compatible; same G10 family as IR retro."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 4500,
+    "recommended_sick_type_code": "WL4-3P2230",
+    "recommended_sick_order_number": "1028147",
+    "recommended_sick_family": "W4-3",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W4-3 matches Banner's 4.5 m polarized range exactly (ratio 1.0), PNP compatible; polarized filter suits reflective targets."
+   },
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": 2000,
+    "recommended_sick_type_code": "GTE10-R3821",
+    "recommended_sick_order_number": "1065874",
+    "recommended_sick_family": "G10",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "GTE10 energetic diffuse matches plain-diffuse Banner at 2 m (ratio 1.0); relay output matches Banner's relay option."
+   },
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": 600,
+    "recommended_sick_type_code": "GRTE18S-P2342",
+    "recommended_sick_order_number": "1058200",
+    "recommended_sick_family": "GR18S",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "GR18S energetic diffuse at 550 mm slightly short of 600 mm (ratio 0.92); PNP compatible, IP67 rating."
+   },
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": 300,
+    "recommended_sick_type_code": "GTE6-P4212",
+    "recommended_sick_order_number": "1051781",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "GTE6 energetic diffuse matches Banner's 300 mm exactly (ratio 1.0), PNP compatible."
+   },
+   {
+    "mode": "convergent",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GTE6-P4212",
+    "recommended_sick_order_number": "1051781",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "low",
+    "rationale": "Only energetic GTE6 offered; no background-suppression option to properly match convergent/fixed-field; Banner range unspecified."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "W280-2",
+   "summary": "SICK W280-2 modular family best spans MULTI-BEAM's opposed/retro/diffuse modes with relay outputs; G6/G10/GR18S cover shorter-range diffuse and retro variants.",
+   "confidence": "medium",
+   "caveats": "No SICK through-beam reaches Banner's 200 m (max 60 m); no background-suppression option for convergent mode."
+  }
+ },
+ {
+  "banner_series": "OMNI-BEAM",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": 45000,
+    "recommended_sick_type_code": "WSE8-P1131V",
+    "recommended_sick_order_number": "6041489",
+    "recommended_sick_family": "W8",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W8 through-beam reaches full 45 m (ratio 1.0); PNP matches Banner's PNP output."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 9000,
+    "recommended_sick_type_code": "GL10G-N1251",
+    "recommended_sick_order_number": "1064705",
+    "recommended_sick_family": "G10",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "G10 double-lens retro covers 9 m (10 m, ratio 1.11); non-polarized fits Banner variant."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 4500,
+    "recommended_sick_type_code": "WL4-3P2230",
+    "recommended_sick_order_number": "1028147",
+    "recommended_sick_family": "W4-3",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "W4-3 exactly matches 4.5 m (ratio 1.0), PNP output; polarization not confirmed in candidate data."
+   },
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": 1800,
+    "recommended_sick_type_code": "WTE280-2P2431",
+    "recommended_sick_order_number": "6044728",
+    "recommended_sick_family": "W280-2",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W280-2 diffuse reaches 2 m (ratio 1.11) covering 1.8 m; PNP matches Banner output."
+   },
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": 300,
+    "recommended_sick_type_code": "GTE6-P4212",
+    "recommended_sick_order_number": "1051781",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "G6 energetic diffuse exactly matches 300 mm (ratio 1.0), PNP output; plain diffuse fit."
+   },
+   {
+    "mode": "convergent",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GTE6-P4212",
+    "recommended_sick_order_number": "1051781",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "low",
+    "rationale": "Only energetic G6 offered; no background-suppression candidate to truly match convergent submode; short-range G6 closest available."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "G-series (G6/G10) with W8 for through-beam",
+   "summary": "SICK G6/G10 photoelectrics cover Banner OMNI-BEAM's retro and diffuse modes; W8 handles the 45 m opposed mode.",
+   "confidence": "medium",
+   "caveats": "No single SICK family spans all modes; convergent lacks a background-suppression option, and polarized retro not confirmed."
+  }
+ },
+ {
+  "banner_series": "Q25",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": 20000,
+    "recommended_sick_type_code": "WSE12-3P2431",
+    "recommended_sick_order_number": "1041459",
+    "recommended_sick_family": "W12-3",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W12-3 through-beam reaches full 20 m (ratio 1.0); PNP matches Banner output; newer W12 family preferred over W11."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 2000,
+    "recommended_sick_type_code": "WL4S-3P2230V",
+    "recommended_sick_order_number": "1045095",
+    "recommended_sick_family": "W4S-3",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W4S-3 autocollimation covers 4 m (ratio 2.0), polarized 'V' variant matches Banner polarized retro; PNP compatible."
+   },
+   {
+    "mode": "fixed_field",
+    "banner_range_max_mm": 100,
+    "recommended_sick_type_code": "WTB8-P1111",
+    "recommended_sick_order_number": "6033211",
+    "recommended_sick_family": "W8",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "WTB8 background suppression matches Banner fixed-field at 100 mm (ratio 1.0); PNP output compatible."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "SICK W-series (W12-3 opposed, W4S-3 retro, W8 diffuse)",
+   "summary": "SICK W-series photoelectric family cleanly covers all three Q25 modes with matching or greater range and compatible NPN/PNP outputs.",
+   "confidence": "high",
+   "caveats": "No single SICK family spans all modes; three W sub-families needed. Enclosure ratings not stated in candidate data."
+  }
+ },
+ {
+  "banner_series": "Q40",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": 60000,
+    "recommended_sick_type_code": "WSE280-2P2431",
+    "recommended_sick_order_number": "6044745",
+    "recommended_sick_family": "W280-2",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W280-2 through-beam reaches full 60 m (ratio 1.0); PNP output matches Banner's PNP option."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 6000,
+    "recommended_sick_type_code": "GL6-P4112",
+    "recommended_sick_order_number": "1051777",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "GL6 double-lens (autocollimation, polarization-capable) covers full 6 m; PNP matches Banner output."
+   },
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": 600,
+    "recommended_sick_type_code": "GRTE18S-P2342",
+    "recommended_sick_order_number": "1058200",
+    "recommended_sick_family": "GR18S",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "GRTE18S energetic diffuse at 550 mm (ratio 0.92) slightly short of 600 mm but PNP-compatible and closest available."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "W280-2 / G6 / GR18S span",
+   "summary": "SICK covers all three Q40 modes well: W280-2 through-beam, G6 retroreflective, GR18S diffuse, with PNP and NPN options.",
+   "confidence": "high",
+   "caveats": "No single SICK family spans all modes; diffuse GR18S is slightly short (550 vs 600 mm)."
+  }
+ },
+ {
+  "banner_series": "Q45",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": 60000,
+    "recommended_sick_type_code": "WSE280-2P2431",
+    "recommended_sick_order_number": "6044745",
+    "recommended_sick_family": "W280-2",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W280-2 through-beam reaches full 60 m (ratio 1.0); PNP matches Banner NPN/PNP output, relay variants also available."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 70000,
+    "recommended_sick_type_code": "GL10-P1111",
+    "recommended_sick_order_number": "1065876",
+    "recommended_sick_family": "G10",
+    "adequate": false,
+    "confidence": "low",
+    "rationale": "All candidates max 15 m vs Banner 70 m laser retro (ratio 0.21); no SICK summary part covers this long range."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 9000,
+    "recommended_sick_type_code": "GL10G-N1251",
+    "recommended_sick_order_number": "1064705",
+    "recommended_sick_family": "G10",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "G10 non-polarized reaches 10 m covering 9 m (ratio 1.11); NPN compatible, PNP W11-2 alternatives also available."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 6000,
+    "recommended_sick_type_code": "GL6-P4112",
+    "recommended_sick_order_number": "1051777",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "G6 polarized retro reaches full 6 m (ratio 1.0); PNP matches Banner, NPN variants also available."
+   },
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": 3000,
+    "recommended_sick_type_code": "WTT280L-2P2536",
+    "recommended_sick_order_number": "6048062",
+    "recommended_sick_family": "W280L-2",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W280L-2 long-range diffuse reaches full 3 m (ratio 1.0); dual PNP compatible with Banner NPN/PNP outputs."
+   },
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": 1800,
+    "recommended_sick_type_code": "WTE280-2P2431",
+    "recommended_sick_order_number": "6044728",
+    "recommended_sick_family": "W280-2",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W280-2 diffuse reaches 2 m covering 1.8 m (ratio 1.11); PNP matches Banner, relay and energetic GTE10 alternatives exist."
+   },
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": 500,
+    "recommended_sick_type_code": "WTB8-P1131V",
+    "recommended_sick_order_number": "6041465",
+    "recommended_sick_family": "W8 Inox",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "WTB8 background-suppression reaches full 500 mm (ratio 1.0), fitting Banner short-range fixed-field; PNP and NPN available."
+   },
+   {
+    "mode": "convergent",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GTE6-P4212",
+    "recommended_sick_order_number": "1051781",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "GTE6 short-range diffuse (300 mm) approximates convergent focus; Banner range unspecified, so fit assumed; PNP/NPN available."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "W280-2",
+   "summary": "SICK W280-2 family best replaces the Q45 across opposed, retroreflective and diffuse modes, supplemented by G6/G10 and WTB8 for shorter ranges.",
+   "confidence": "medium",
+   "caveats": "SICK summary catalog lacks a long-range laser retroreflective to match Banner's 70 m; convergent range unverified."
+  }
+ },
+ {
+  "banner_series": "Q45X",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GSE6-P4112",
+    "recommended_sick_order_number": "1052450",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "GSE6 through-beam reaches 15 m, PNP output compatible with Q45X. Banner range unspecified but 15 m covers typical opposed use."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GL6-P4112",
+    "recommended_sick_order_number": "1051777",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "GL6 retroreflective 6 m, PNP. Polarized variant requested; verify GL6 polarization filter for shiny targets, otherwise range is ample."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GL6-P4112",
+    "recommended_sick_order_number": "1051777",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "GL6 retroreflective 6 m, PNP output compatible. Non-polarized use fully covered by GL6 dual-lens optics."
+   },
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GTE6-P4212",
+    "recommended_sick_order_number": "1051781",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "GTE6 energetic diffuse 300 mm, PNP. Matches plain diffuse short-range submode; energetic principle correct."
+   },
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GTE6-P4212",
+    "recommended_sick_order_number": "1051781",
+    "recommended_sick_family": "G6",
+    "adequate": false,
+    "confidence": "low",
+    "rationale": "Only GTE6 at 300 mm available; likely too short for Banner long-range diffuse. Energetic principle fits but range may be inadequate."
+   },
+   {
+    "mode": "convergent",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GTE6-P4212",
+    "recommended_sick_order_number": "1051781",
+    "recommended_sick_family": "G6",
+    "adequate": false,
+    "confidence": "low",
+    "rationale": "Convergent wants background suppression; only energetic GTE6 offered, so submode mismatch. No supresion-del-fondo candidate available."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "G6",
+   "summary": "SICK G6 family (GSE6/GL6/GTE6) covers Q45X opposed, retroreflective and diffuse modes; convergent and long-range diffuse are weaker fits.",
+   "confidence": "medium",
+   "caveats": "Banner ranges unspecified; no background-suppression GTE6 for convergent, and 300 mm diffuse may not reach Q45X long-range."
+  }
+ },
+ {
+  "banner_series": "Q85",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": 23000,
+    "recommended_sick_type_code": "VSE180-2P42434",
+    "recommended_sick_order_number": "6043850",
+    "recommended_sick_family": "V180-2",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "V180-2 through-beam reaches 25 m, closest cover of Banner 23 m; PNP matches Banner's bipolar NPN+PNP output."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 4500,
+    "recommended_sick_type_code": "WL4-3P2230",
+    "recommended_sick_order_number": "1028147",
+    "recommended_sick_family": "W4-3",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W4-3 exactly covers 4.5 m; double-lens (polarized) design matches Banner polarized retro; PNP compatible."
+   },
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": 1000,
+    "recommended_sick_type_code": "WTE11-2P2432",
+    "recommended_sick_order_number": "1041381",
+    "recommended_sick_family": "W11-2",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "Long-range plain diffuse maps to energetic principle; WTE11-2 covers 1 m exactly; PNP compatible."
+   },
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": 250,
+    "recommended_sick_type_code": "GTB6-P4212",
+    "recommended_sick_order_number": "1052442",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "GTB6 background-suppression covers 250 mm exactly; PNP compatible; only short-range option offered."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "SICK W-series (W4-3/W11-2) plus V180-2 for through-beam",
+   "summary": "SICK small-photoelectric W-series covers Banner Q85's retro and diffuse modes, with V180-2 through-beam and G6 short-range diffuse filling the rest.",
+   "confidence": "high",
+   "caveats": "No single SICK family spans all Q85 modes; solution mixes V180-2, W4-3, W11-2 and G6."
+  }
+ },
+ {
+  "banner_series": "QM(T)42",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "fixed_field",
+    "banner_range_max_mm": 150,
+    "recommended_sick_type_code": "WTB4-3P3162",
+    "recommended_sick_order_number": "1028082",
+    "recommended_sick_family": "W4-3",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W4-3 background-suppression exactly matches 150 mm range (ratio 1.0) and adjustable-field principle; PNP output compatible with Banner."
+   },
+   {
+    "mode": "fixed_field",
+    "banner_range_max_mm": 400,
+    "recommended_sick_type_code": "VTE180-2P42444",
+    "recommended_sick_order_number": "6043815",
+    "recommended_sick_family": "V180-2",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "V180-2 background-suppression reaches 450 mm (ratio 1.125), closest covering the 400 mm range; PNP output matches Banner."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "W4-3",
+   "summary": "SICK background-suppression sensors replace the QM(T)42 adjustable-field series: W4-3 for short range, V180-2 for the long-range variant.",
+   "confidence": "high",
+   "caveats": "No single family spans both ranges; use W4-3 up to 150 mm and V180-2 for 400 mm."
+  }
+ },
+ {
+  "banner_series": "QM42",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": 10000,
+    "recommended_sick_type_code": "WSE8-P1131",
+    "recommended_sick_order_number": "6035581",
+    "recommended_sick_family": "W8",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W8 through-beam reaches exactly 10 m (ratio 1.0); PNP chosen to match Banner's output offering."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 3000,
+    "recommended_sick_type_code": "WL4S-3P2230V",
+    "recommended_sick_order_number": "1045095",
+    "recommended_sick_family": "W4S-3",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W4S-3 autocollimation covers 3 m with 4 m reach (ratio 1.33); polarized, matching Banner polarized retro. PNP output."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 400,
+    "recommended_sick_type_code": "WL4S-3P2230V",
+    "recommended_sick_order_number": "1045095",
+    "recommended_sick_family": "W4S-3",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "Only W4S-3 available; covers 400 mm but range 10x oversized and polarized vs Banner non-polarized variant."
+   },
+   {
+    "mode": "fixed_field",
+    "banner_range_max_mm": 2000,
+    "recommended_sick_type_code": "WTE280-2P2431",
+    "recommended_sick_order_number": "6044728",
+    "recommended_sick_family": "W280-2",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "W280-2 reaches 2 m (ratio 1.0) with PNP; background-suppression principle not confirmed in data but family fits fixed-field use."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "SICK W-series (W8 / W4S-3 / W280-2)",
+   "summary": "No single SICK family covers all QM42 modes; W8 opposed, W4S-3 retro, and W280-2 fixed-field together replace the series.",
+   "confidence": "medium",
+   "caveats": "Non-polarized retro only served by oversized polarized W4S-3; W280-2 background-suppression principle unconfirmed in candidate data."
+  }
+ },
+ {
+  "banner_series": "QMT42",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "fixed_field",
+    "banner_range_max_mm": 2000,
+    "recommended_sick_type_code": "WTE280-2P2431",
+    "recommended_sick_order_number": "6044728",
+    "recommended_sick_family": "W280-2",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "W280-2 covers full 2000 mm range with PNP output matching Banner; detection principle unlabeled but family supports background suppression for fixed-field."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "W280-2",
+   "summary": "SICK W280-2 (WTE280-2) is the best fixed-field replacement for Banner QMT42, matching 2000 mm range with PNP/NPN/relay output options.",
+   "confidence": "medium",
+   "caveats": "Candidate detection_principle unlabeled; verify background-suppression variant to fully match Banner fixed-field behavior."
+  }
+ },
+ {
+  "banner_series": "S12",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": 15000,
+    "recommended_sick_type_code": "GSE6-P4112",
+    "recommended_sick_order_number": "1052450",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "GSE6 through-beam exactly matches Banner's 15 m opposed range (ratio 1.0); PNP output matches Banner's PNP offering."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "G6",
+   "summary": "SICK G6 (GSE6) through-beam pair fully replaces Banner S12 opposed mode at matching 15 m range with compatible PNP/NPN outputs.",
+   "confidence": "high",
+   "caveats": ""
+  }
+ },
+ {
+  "banner_series": "S18 & M18",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": 20000,
+    "recommended_sick_type_code": "WSE11-2P2430",
+    "recommended_sick_order_number": "1041394",
+    "recommended_sick_family": "W11-2",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W11-2 through-beam reaches full 20 m (ratio 1.0); PNP matches Banner PNP output. Exact range coverage."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 2000,
+    "recommended_sick_type_code": "WL4S-3P2230V",
+    "recommended_sick_order_number": "1045095",
+    "recommended_sick_family": "W4S-3",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "Polarized (autocolimación V) retro at 4 m comfortably covers 2 m; PNP matches. Polarization suits Banner polarized variant."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 2000,
+    "recommended_sick_type_code": "WL4S-3P2230V",
+    "recommended_sick_order_number": "1045095",
+    "recommended_sick_family": "W4S-3",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "Only polarized W4S-3 offered; covers 2 m. Polarization mismatch vs Banner non-polarized but functionally acceptable, PNP output."
+   },
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": 300,
+    "recommended_sick_type_code": "GTE6-P4212",
+    "recommended_sick_order_number": "1051781",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "G6 energetic diffuse at 300 mm matches plain long-range diffuse principle and range exactly; PNP output compatible."
+   },
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": 100,
+    "recommended_sick_type_code": "WTB8-P1111",
+    "recommended_sick_order_number": "6033211",
+    "recommended_sick_family": "W8",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "W8 covers 100 mm; uses background suppression rather than energetic, but adequate for short-range diffuse. PNP output."
+   },
+   {
+    "mode": "fixed_field",
+    "banner_range_max_mm": 100,
+    "recommended_sick_type_code": "WTB8-P1111",
+    "recommended_sick_order_number": "6033211",
+    "recommended_sick_family": "W8",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W8 background-suppression matches Banner fixed-field principle at 100 mm exactly; PNP output compatible."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "SICK W-series photoelectric (W11-2 / W4S-3 / W8, with G6 diffuse)",
+   "summary": "SICK's W-family photoelectrics cover all S18/M18 modes with matching ranges, though spread across several sub-families rather than one 18 mm line.",
+   "confidence": "high",
+   "caveats": "No single SICK 18 mm family spans all modes; retroreflective candidates are polarized-only, so non-polarized Banner variant is only functionally approximate."
+  }
+ },
+ {
+  "banner_series": "S30",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": 60000,
+    "recommended_sick_type_code": "WSE280-2P2431",
+    "recommended_sick_order_number": "6044745",
+    "recommended_sick_family": "W280-2",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W280-2 through-beam reaches full 60 m (ratio 1.0); PNP variant matches Banner's PNP output. NPN and relay also available."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 6000,
+    "recommended_sick_type_code": "GL6-P4112",
+    "recommended_sick_order_number": "1051777",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "G6 double-lens retroreflective covers full 6 m (ratio 1.0); PNP matches Banner. Double-lens design suits polarized reflector detection."
+   },
+   {
+    "mode": "fixed_field",
+    "banner_range_max_mm": 600,
+    "recommended_sick_type_code": "GRTE18S-P2342",
+    "recommended_sick_order_number": "1058200",
+    "recommended_sick_family": "GR18S",
+    "adequate": true,
+    "confidence": "low",
+    "rationale": "GRTE18S is energetic diffuse, not background-suppression; sub-mode mismatch for fixed-field. Range 550 mm slightly short (ratio 0.917). PNP matches."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "W280-2 (opposed) with G6 and GR18S for reflective/diffuse",
+   "summary": "No single SICK family spans all S30 modes; use W280-2 for opposed, G6 for retroreflective, GR18S for the diffuse/fixed-field role.",
+   "confidence": "medium",
+   "caveats": "SICK shortlist offers no true background-suppression sensor for the fixed-field mode; GRTE18S is energetic and 50 mm short of 600 mm."
+  }
+ },
+ {
+  "banner_series": "SM30",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": 200000,
+    "recommended_sick_type_code": "WSE280-2P2431",
+    "recommended_sick_order_number": "6044745",
+    "recommended_sick_family": "W280-2",
+    "adequate": false,
+    "confidence": "low",
+    "rationale": "W280-2 through-beam reaches only 60 m (ratio 0.3) versus Banner's 200 m; PNP output fits but range grossly inadequate."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "W280-2",
+   "summary": "W280-2 is the closest SICK through-beam but covers just 60 m of Banner SM30's 200 m range.",
+   "confidence": "low",
+   "caveats": "SICK summary catalog lacks a long-range through-beam matching Banner SM30's 200 m opposed-mode range."
+  }
+ },
+ {
+  "banner_series": "T18",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": 20000,
+    "recommended_sick_type_code": "WSE11-2P2430",
+    "recommended_sick_order_number": "1041394",
+    "recommended_sick_family": "W11-2",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "Through-beam pair reaches full 20 m (ratio 1.0); PNP output covers Banner's discrete output."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 2000,
+    "recommended_sick_type_code": "WL4S-3P2230V",
+    "recommended_sick_order_number": "1045095",
+    "recommended_sick_family": "W4S-3",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "Polarized autocollimation retro reaches 4 m, comfortably covering 2 m Banner range; PNP output."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 500,
+    "recommended_sick_type_code": "WL4S-3P2230V",
+    "recommended_sick_order_number": "1045095",
+    "recommended_sick_family": "W4S-3",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "Same polarized W4S-3 far exceeds 500 mm; polarized where Banner is non-polarized but functionally covers it."
+   },
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": 100,
+    "recommended_sick_type_code": "WTB8-P1111",
+    "recommended_sick_order_number": "6033211",
+    "recommended_sick_family": "W8",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "WTB8 background-suppression reaches 100 mm (ratio 1.0); Banner plain diffuse, BGS is tighter but adequate."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "SICK W-series (W11-2 / W4S-3 / W8)",
+   "summary": "SICK W-series small photoelectrics cover all T18 modes: W11-2 through-beam, W4S-3 retro, W8 diffuse, with matching ranges.",
+   "confidence": "high",
+   "caveats": "No single family spans all modes; diffuse only available as background-suppression, not energetic."
+  }
+ },
+ {
+  "banner_series": "T30",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": 60000,
+    "recommended_sick_type_code": "WSE280-2P2431",
+    "recommended_sick_order_number": "6044745",
+    "recommended_sick_family": "W280-2",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W280-2 through-beam reaches full 60 m (range_ratio 1.0); PNP output matches Banner; NPN and relay variants also available."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 6000,
+    "recommended_sick_type_code": "GL6-P4112",
+    "recommended_sick_order_number": "1051777",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "G6 retroreflective covers full 6 m (ratio 1.0); double-lens supports polarized detection; PNP and NPN outputs match Banner."
+   },
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": 600,
+    "recommended_sick_type_code": "GRTE18S-P2342",
+    "recommended_sick_order_number": "1058200",
+    "recommended_sick_family": "GR18S",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "GR18S energetic diffuse fits plain-diffuse variant and PNP output; 550 mm is slightly short of Banner's 600 mm (ratio 0.92)."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "G6",
+   "summary": "No single SICK family spans all T30 modes; use W280-2 for through-beam, G6 for retroreflective, and GR18S for diffuse.",
+   "confidence": "medium",
+   "caveats": "Diffuse GR18S is marginally short (550 vs 600 mm); replacement requires three distinct SICK families, not one."
+  }
+ },
+ {
+  "banner_series": "VALU-BEAM",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": 60000,
+    "recommended_sick_type_code": "WSE280-2P2431",
+    "recommended_sick_order_number": "6044745",
+    "recommended_sick_family": "W280-2",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W280-2 through-beam reaches full 60 m (ratio 1.0); PNP compatible with Banner's outputs."
+   },
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": 3000,
+    "recommended_sick_type_code": "WSE4-3P2230",
+    "recommended_sick_order_number": "1028160",
+    "recommended_sick_family": "W4-3",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W4-3 through-beam 4 m exceeds Banner 3 m (ratio 1.33); PNP output compatible."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 9000,
+    "recommended_sick_type_code": "WL11-2P2430",
+    "recommended_sick_order_number": "1041385",
+    "recommended_sick_family": "W11-2",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W11-2 double-lens retro 10 m covers 9 m (ratio 1.11); non-polarized fit, PNP compatible."
+   },
+   {
+    "mode": "retroreflective",
+    "banner_range_max_mm": 4500,
+    "recommended_sick_type_code": "WL4-3P2230",
+    "recommended_sick_order_number": "1028147",
+    "recommended_sick_family": "W4-3",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W4-3 retro double-lens matches 4.5 m exactly (ratio 1.0); PNP compatible."
+   },
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": 760,
+    "recommended_sick_type_code": "WTE8-P1131V",
+    "recommended_sick_order_number": "6041473",
+    "recommended_sick_family": "W8",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "W8 energetic diffuse 950 mm covers 760 mm (ratio 1.25); plain diffuse -> energetica, PNP compatible."
+   },
+   {
+    "mode": "diffuse",
+    "banner_range_max_mm": 380,
+    "recommended_sick_type_code": "VTE180-2P42444",
+    "recommended_sick_order_number": "6043815",
+    "recommended_sick_family": "V180-2",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "V180-2 background-suppression 450 mm covers 380 mm (ratio 1.18); WTB11-2 alternative slightly short."
+   },
+   {
+    "mode": "convergent",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GTE6-P4212",
+    "recommended_sick_order_number": "1051781",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "low",
+    "rationale": "G6 short-range diffuse 300 mm approximates convergent; only energetica offered, no true fixed-field/background-suppression candidate."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "SICK W-series (W4-3 / W11-2 / W280-2)",
+   "summary": "SICK W-series photoelectrics cover VALU-BEAM's through-beam, retro and diffuse modes with adequate range and PNP/relay outputs; G6/V180 fill short-range roles.",
+   "confidence": "medium",
+   "caveats": "Convergent mode has no true fixed-field SICK match (energetica only); enclosure ratings unspecified in candidates."
+  }
+ },
+ {
+  "banner_series": "S18",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "opposed",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "GSE6-P4112",
+    "recommended_sick_order_number": "1052450",
+    "recommended_sick_family": "G6",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "G6 through-beam reaches 15 m, ample for any S18 opposed range; PNP output covers Banner's typical outputs. Banner range unspecified."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "G6",
+   "summary": "SICK G6 (GSE6) through-beam emitter/receiver best replaces the Banner S18 laser opposed sensor with 15 m range and standard NPN/PNP options.",
+   "confidence": "medium",
+   "caveats": "Banner range and outputs unspecified; G6 is standard-light not laser, so beam-spot precision may differ."
+  }
+ },
+ {
+  "banner_series": "Q45",
+  "banner_model": "Q45UR",
+  "per_mode": [
+   {
+    "mode": "ultrasonic",
+    "banner_range_max_mm": null,
+    "recommended_sick_type_code": "UM30-212113",
+    "recommended_sick_order_number": "6036917",
+    "recommended_sick_family": "UM30",
+    "adequate": true,
+    "confidence": "low",
+    "rationale": "Longest-range UM30 (350 mm) is closest ultrasonic match; Banner range unspecified so coverage unverified, and analog output needs a UM30 analog variant."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "UM30",
+   "summary": "SICK UM30 ultrasonic family best replaces Banner Q45UR; select an analog-output UM30 variant to match the analog response.",
+   "confidence": "low",
+   "caveats": "Banner range unknown; listed UM30 candidates are switching-output only, and analog Q45UR needs a dedicated UM30 analog model."
+  }
+ },
+ {
+  "banner_series": "Q45U",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "ultrasonic",
+    "banner_range_max_mm": 1400,
+    "recommended_sick_type_code": "UM30-213113",
+    "recommended_sick_order_number": "6036918",
+    "recommended_sick_family": "UM30",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "UM30 1300 mm nearly covers 1400 mm (ratio 0.93); analog variant matches Q45U analog output, family also offers PNP/NPN switching."
+   },
+   {
+    "mode": "ultrasonic",
+    "banner_range_max_mm": 3000,
+    "recommended_sick_type_code": "UM30-214113",
+    "recommended_sick_order_number": "6036919",
+    "recommended_sick_family": "UM30",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "UM30 3400 mm fully covers 3000 mm (ratio 1.13); analog variant matches Q45U analog output, PNP/NPN switching also available in family."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "UM30",
+   "summary": "SICK UM30 ultrasonic family replaces the Banner Q45U across both proximity ranges, offering analog and PNP/NPN switching output variants.",
+   "confidence": "high",
+   "caveats": "Short-range UM30 (1300 mm) is marginally under Banner's 1400 mm; verify near the 1400 mm limit."
+  }
+ },
+ {
+  "banner_series": "Q45UR",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "ultrasonic",
+    "banner_range_max_mm": 150,
+    "recommended_sick_type_code": "UM30-211113",
+    "recommended_sick_order_number": "6036916",
+    "recommended_sick_family": "UM30",
+    "adequate": true,
+    "confidence": "medium",
+    "rationale": "Banner Q45UR is analog-only; UM30-211113 (no switching output = analog variant) covers 150mm within its 250mm range. UC12 candidates fit range but only offer switching outputs."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "UM30",
+   "summary": "SICK UM30 best replaces the analog-output Banner Q45UR ultrasonic; its 250mm range comfortably covers Banner's 150mm.",
+   "confidence": "medium",
+   "caveats": "UC12 matches range exactly but lacks analog output; confirm UM30-211113 provides 0-10V/4-20mA analog to match Banner."
+  }
+ },
+ {
+  "banner_series": "T18U",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "ultrasonic",
+    "banner_range_max_mm": 600,
+    "recommended_sick_type_code": "UM30-212118",
+    "recommended_sick_order_number": "6036922",
+    "recommended_sick_family": "UM30",
+    "adequate": false,
+    "confidence": "low",
+    "rationale": "Only UM30 candidates offered; 350 mm range covers barely 58% of Banner's 600 mm opposed-mode range. PNP output compatible."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "UM30",
+   "summary": "UM30 is the nearest SICK ultrasonic family but its 350 mm reach falls well short of the T18U's 600 mm opposed-mode range.",
+   "confidence": "low",
+   "caveats": "No offered UM30 candidate reaches 600 mm; range shortfall (ratio 0.58) may leave application uncovered."
+  }
+ },
+ {
+  "banner_series": "ULTRA-BEAM",
+  "banner_model": null,
+  "per_mode": [
+   {
+    "mode": "ultrasonic",
+    "banner_range_max_mm": 6000,
+    "recommended_sick_type_code": "UM30-215113",
+    "recommended_sick_order_number": "6036920",
+    "recommended_sick_family": "UM30",
+    "adequate": true,
+    "confidence": "high",
+    "rationale": "UM30 reaches full 6000 mm (ratio 1.0); analog-capable variant matches Banner's analog output, unlike PNP-only siblings."
+   }
+  ],
+  "overall": {
+   "recommended_sick_family": "UM30",
+   "summary": "SICK UM30 ultrasonic sensor matches Banner ULTRA-BEAM's 6 m proximity range and analog output need.",
+   "confidence": "high",
+   "caveats": "UM30 provides PNP switching/analog; no E/M relay output, so relay-based ULTRA-BEAM installs need external relay."
+  }
+ }
+]

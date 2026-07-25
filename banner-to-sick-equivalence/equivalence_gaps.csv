@@ -1,0 +1,21 @@
+banner_series,banner_model,banner_mode,banner_range_max_mm,sick_type_code,sick_order_number,sick_family,adequate,confidence,rationale,source
+,,fiber_optic,,,,,False,,no SICK equivalent in comparable mode (gap),deterministic
+DURA-BEND,,fiber_optic,,,,,False,,no SICK equivalent in comparable mode (gap),deterministic
+ECONO-BEAM,,fiber_optic,,,,,False,,no SICK equivalent in comparable mode (gap),deterministic
+L-GAGE,,fixed_field,,GTE6-P4212,1051781,G6,False,low,"GTE6 is diffuse energetica switching sensor, not laser background-suppression; no analog 4-20mA output; only 300mm range vs L-GAGE measurement scope.",judge
+MAXI-BEAM,,fiber_optic,,,,,False,,no SICK equivalent in comparable mode (gap),deterministic
+MAXI-BEAM,,opposed,90000,WSE280-2P2431,6044745,W280-2,False,medium,Closest through-beam but 60 m reach vs Banner 90 m (ratio 0.67); PNP fits. No 90 m SICK candidate exists.,judge
+MINI-ARRAY,,opposed,,GSE6-P4112,1052450,G6,False,low,"GSE6 is single-beam through-beam (15 m); Banner MINI-ARRAY is a multi-beam measuring light curtain, not equivalent function.",judge
+MINI-BEAM,,fiber_optic,,,,,False,,no SICK equivalent in comparable mode (gap),deterministic
+MINI-BEAM,Expert,fiber_optic,,,,,False,,no SICK equivalent in comparable mode (gap),deterministic
+MULTI-BEAM,,fiber_optic,,,,,False,,no SICK equivalent in comparable mode (gap),deterministic
+MULTI-BEAM,,opposed,200000,WSE280-2P2431,6044745,W280-2,False,low,"Best through-beam is W280-2 at 60 m, far short of Banner's 200 m; large range gap, output PNP compatible.",judge
+OMNI-BEAM,,fiber_optic,,,,,False,,no SICK equivalent in comparable mode (gap),deterministic
+Q45,,fiber_optic,,,,,False,,no SICK equivalent in comparable mode (gap),deterministic
+Q45,,retroreflective,70000,GL10-P1111,1065876,G10,False,low,All candidates max 15 m vs Banner 70 m laser retro (ratio 0.21); no SICK summary part covers this long range.,judge
+Q45X,,convergent,,GTE6-P4212,1051781,G6,False,low,"Convergent wants background suppression; only energetic GTE6 offered, so submode mismatch. No supresion-del-fondo candidate available.",judge
+Q45X,,diffuse,,GTE6-P4212,1051781,G6,False,low,Only GTE6 at 300 mm available; likely too short for Banner long-range diffuse. Energetic principle fits but range may be inadequate.,judge
+Q45X,,fiber_optic,,,,,False,,no SICK equivalent in comparable mode (gap),deterministic
+SM30,,opposed,200000,WSE280-2P2431,6044745,W280-2,False,low,W280-2 through-beam reaches only 60 m (ratio 0.3) versus Banner's 200 m; PNP output fits but range grossly inadequate.,judge
+T18U,,ultrasonic,600,UM30-212118,6036922,UM30,False,low,Only UM30 candidates offered; 350 mm range covers barely 58% of Banner's 600 mm opposed-mode range. PNP output compatible.,judge
+VALU-BEAM,,fiber_optic,,,,,False,,no SICK equivalent in comparable mode (gap),deterministic
