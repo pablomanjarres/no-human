@@ -73,6 +73,11 @@ Replace `<host>` with the deployment URL.
   printed on a purchase order
 - `<host>/console?q=WTB9-3P221` — a near miss. Offers candidate type codes and
   refuses to pick one, because a character of a type code is often a polarity
+- `<host>/console?q=sensor%20de%20caja&mode=describe` — the Describe lane asking
+  before it solves. "Caja" does not state a material, and a carton and a black
+  crate are two derating tiers apart, so it asks instead of assuming
+- `<host>/console?q=cajas%20de%20carton%20a%2040%20cm&mode=describe` — the same
+  lane when the description does state both: ×2 derating, 800 mm required, solved
 - `<host>/console/corpus` — the verifier dispute count
 
 ## Caveats

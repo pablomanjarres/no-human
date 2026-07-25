@@ -1,4 +1,5 @@
-import { runDescribe, runMl100, runQs18, runs } from "@/data/runs";
+import { runMl100, runQs18, runs } from "@/data/runs";
+import { buildDescribeRun } from "@/lib/describe";
 import { findEntry, suggest } from "@/lib/lookup";
 import { buildIdentifiedRun, coverage } from "@/lib/solver";
 import type { InputMode, RailModel, SolveRun } from "@/lib/types";
@@ -46,7 +47,9 @@ const ALIASES: Record<string, SolveRun> = {
 const normalise = (s: string) => s.trim().toLowerCase().replace(/\s+/g, "");
 
 export function resolveRun(input: SolveInput): SolveRun | null {
-  if (input.mode === "describe") return runDescribe;
+  // Every description used to return one scripted run about black boxes.
+  // Now the text is actually read, and what it does not state is asked for.
+  if (input.mode === "describe") return buildDescribeRun(input);
   const key = normalise(input.raw);
   if (!key) return null;
 

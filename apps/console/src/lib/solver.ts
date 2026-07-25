@@ -340,7 +340,23 @@ export function solveCatalog(spec: SolveSpec): CatalogSolve {
 }
 
 /** The constraint set as it appears on the chips — derived, never hand-written. */
-function constraintsFor(spec: SolveSpec, requiredRange: number): Constraint[] {
+/**
+ * Where each constraint came from, when the caller knows better than the
+ * defaults below. The Describe lane asks the operator for remission rather than
+ * reading it from a datasheet, and labelling that "extracted" on the chip would
+ * misreport a guess as a citation.
+ */
+export interface ConstraintOrigins {
+  remission?: Constraint["origin"];
+  distance?: Constraint["origin"];
+  output?: Constraint["origin"];
+}
+
+function constraintsFor(
+  spec: SolveSpec,
+  requiredRange: number,
+  origins: ConstraintOrigins = {},
+): Constraint[] {
   const out: Constraint[] = [
     {
       key: "target_remission",
@@ -350,8 +366,11 @@ function constraintsFor(spec: SolveSpec, requiredRange: number): Constraint[] {
       unit: "—",
       enumValue: String(spec.remission),
       display: `${String(spec.remission).replace("pct", "%")} remission`,
-      origin: "extracted",
-      rationale: "Stated in the description. It sets the derating factor.",
+      origin: origins.remission ?? "extracted",
+      rationale:
+        (origins.remission ?? "extracted") === "asked"
+          ? "Answered by the operator. It sets the derating factor and the solver refused to guess it."
+          : "Stated in the description. It sets the derating factor.",
     },
     {
       key: "distance_mm",
@@ -361,8 +380,11 @@ function constraintsFor(spec: SolveSpec, requiredRange: number): Constraint[] {
       unit: "mm",
       min: spec.distanceMm,
       display: `${spec.distanceMm} mm to target`,
-      origin: "asked",
-      rationale: "Answered by the operator. The solver refused to guess it.",
+      origin: origins.distance ?? "asked",
+      rationale:
+        (origins.distance ?? "asked") === "extracted"
+          ? "Stated in the description."
+          : "Answered by the operator. The solver refused to guess it.",
     },
     {
       key: "sensing_range_max_mm",
@@ -385,8 +407,11 @@ function constraintsFor(spec: SolveSpec, requiredRange: number): Constraint[] {
       unit: "—",
       enumValue: spec.output,
       display: spec.output,
-      origin: "assumed",
-      rationale: "ASSUMED sourcing input card. Confirm against the PLC before ordering.",
+      origin: origins.output ?? "assumed",
+      rationale:
+        (origins.output ?? "assumed") === "extracted"
+          ? "Stated in the description."
+          : "ASSUMED sourcing input card. Confirm against the PLC before ordering.",
     });
   return out;
 }
@@ -396,10 +421,11 @@ export function buildCatalogRun(
   spec: SolveSpec,
   input: SolveRun["input"],
   answerLabel: string,
+  origins: ConstraintOrigins = {},
 ): SolveRun {
   const solved = solveCatalog(spec);
   const winner = solved.candidates[0];
-  const constraints = constraintsFor(spec, solved.required.rangeMm);
+  const constraints = constraintsFor(spec, solved.required.rangeMm, origins);
 
   const trace: TraceEvent[] = [
     {
