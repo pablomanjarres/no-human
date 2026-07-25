@@ -605,3 +605,130 @@ p {
     .footer-col { width: 100%; }
     .ventajas-grid { flex-direction: column; align-items: center; }
 }
+
+/* ---------------------------------------------------------------------------
+   Demo marker + the way in to the equivalence console.
+
+   The marker is deliberately quiet: it should not compete with the page, but a
+   public URL that looks exactly like sick.com needs to say what it actually is.
+--------------------------------------------------------------------------- */
+
+.demo-marker {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: var(--dark-navy);
+    color: rgba(255, 255, 255, 0.66);
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+    padding: 0.45rem 2.5rem;
+}
+
+.demo-marker-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #ffc72c;
+    flex-shrink: 0;
+}
+
+.demo-marker-text {
+    min-width: 0;
+}
+
+.demo-marker-link {
+    margin-left: auto;
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+    padding-bottom: 1px;
+    transition: border-color 0.15s ease;
+}
+
+.demo-marker-link:hover {
+    border-bottom-color: #fff;
+}
+
+/* The hero call to action. Uses the page's own blue so it reads as part of the
+   site, but it is the only element on the page that goes anywhere real. */
+.console-cta {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin: 2.25rem 0 0;
+    padding: 1.15rem 1.35rem 1.15rem 1.1rem;
+    max-width: 31rem;
+    /* The hero is already SICK blue, so the call to action inverts to sit on top
+       of it. The yellow edge is borrowed from the console's own signal colour. */
+    background-color: var(--white);
+    color: var(--dark-navy);
+    border-left: 4px solid #ffc72c;
+    text-decoration: none;
+    border-radius: 2px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+    transition:
+        background-color 0.15s ease,
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.console-cta:hover,
+.console-cta:focus-visible {
+    background-color: #f4f7ff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+}
+
+.console-cta:focus-visible {
+    outline: 3px solid var(--dark-navy);
+    outline-offset: 3px;
+}
+
+.console-cta-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 0;
+}
+
+.console-cta-eyebrow {
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.console-cta-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.console-cta-sub {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--body-text);
+}
+
+.console-cta-arrow {
+    font-size: 1.7rem;
+    line-height: 1;
+    flex-shrink: 0;
+    color: var(--primary-blue);
+}
+
+@media (max-width: 900px) {
+    .demo-marker {
+        padding: 0.45rem 1rem;
+        flex-wrap: wrap;
+        font-size: 0.68rem;
+    }
+    .demo-marker-link {
+        margin-left: 0;
+    }
+    .console-cta {
+        max-width: none;
+    }
+}
