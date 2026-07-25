@@ -1,7 +1,12 @@
 name: ci
 
 on:
+  # `ready_for_review` matters: the default pull_request types are
+  # opened/synchronize/reopened, so a PR opened as a draft and later marked
+  # ready would never run CI at all — the draft guard below skips the opened
+  # event, and nothing re-triggers on the transition.
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
   push:
     branches: [main]
   # Manual trigger lets us re-run CI on demand (useful after merging a flake
