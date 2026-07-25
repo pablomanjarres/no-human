@@ -123,8 +123,13 @@ changes, and the thing stops being a chatbot.
 
 ## Known gaps
 
-- **No product photography.** Housings are drawn to scale from their own
-  dimensions. Honest, but a judge who wants to see the sensor will not.
+- **Product photography is partial.** Catalogue-backed parts now show the
+  photograph printed in the source PDF, next to the drawn housing — 691 of the
+  796 sensing SKUs. The remaining 105 print no photo in the catalogue and show
+  none, and the three fixture runs in `runs.ts` carry no photo either because
+  their part numbers are not catalogue SKUs. Most of those photos depict the
+  product *family* rather than the exact variant, so they are labelled as such
+  on the image; see `sick-catalog-dataset/README.md`.
 - **The corpus is fixtures.** `apps/console/src/data/runs.ts` holds three runs in
   the exact shape the solver emits, so repointing at the extraction swarm is a
   one-file change — but nothing on screen came from a live extraction.

@@ -58,6 +58,20 @@ export interface SpecRow {
   dispute?: Dispute;
 }
 
+/** A photo lifted from the catalogue, carrying how precisely it matches the part. */
+export interface ProductPhoto {
+  /** Served from public/assets/products/, synced from apps/sick-clone-ui. */
+  src: string;
+  /**
+   * The photo depicts the product family, not this exact variant. The catalogue
+   * prints one photo per family page, so most variants inherit it. Shown, but
+   * labelled — never passed off as a photo of the specific SKU.
+   */
+  familyPhoto: boolean;
+  /** Printed catalogue page the photo came from, e.g. "B-46". */
+  page: string | null;
+}
+
 export interface Part {
   id: string;
   brand: string;
@@ -70,6 +84,12 @@ export interface Part {
   /** Millimetres — drives the to-scale housing silhouette. */
   dims: { l: number; w: number; h: number };
   form: "rect" | "cyl";
+  /**
+   * Product photo cropped out of the catalogue PDF. Absent for the 105 sensing
+   * SKUs the catalogue shows no photo for, and for every non-SICK part — there is
+   * no competitor imagery in this corpus. Absent means render nothing.
+   */
+  photo?: ProductPhoto;
   specs: SpecRow[];
   /** Competitor parts this SICK part is a documented replacement for. */
   replaces?: string[];

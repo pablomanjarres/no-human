@@ -4,7 +4,7 @@ import Link from "next/link";
 import { OUTCOME_COPY } from "@/lib/engine";
 import type { Candidate, Citation, Part, SolveRun } from "@/lib/types";
 import { RailLegend, SpecDelta } from "./ConstraintRail";
-import { ACCENT, BrandMark, Chip, Housing, Panel, PanelHead } from "./primitives";
+import { ACCENT, BrandMark, Chip, Housing, Panel, PanelHead, ProductPhoto } from "./primitives";
 
 const KILL_MS = 620;
 
@@ -110,7 +110,13 @@ function CandidateCard({
         ) : null}
       </div>
 
-      <div className="mt-3.5">
+      <div className="mt-3.5 flex items-start gap-3.5">
+        {part.photo ? (
+          <ProductPhoto
+            photo={part.photo}
+            alt={`${part.partNumber}${part.family ? ` — ${part.family}` : ""}`}
+          />
+        ) : null}
         <Housing part={part} accent={accent} {...(ghost ? { ghost } : {})} />
       </div>
 
