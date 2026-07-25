@@ -19,6 +19,14 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [{ source: "/", destination: "/index.html" }];
   },
+  // The /api/ask route reads the built RAG index off disk at request time.
+  // Next's tracer cannot see a path assembled at runtime, so the 4 MB artifact
+  // would be missing from the serverless bundle and every request would 500 in
+  // production while working perfectly in `next dev`. Trace it in explicitly.
+  outputFileTracingRoot: resolve(here, "..", ".."),
+  outputFileTracingIncludes: {
+    "/api/ask": ["../../sick-catalog-dataset/rag-index.json"],
+  },
 };
 
 export default nextConfig;
