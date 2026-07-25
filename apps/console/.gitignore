@@ -8,6 +8,15 @@
 /public/catalog.css
 /public/catalog.js
 /public/data/
+/public/consult.html
+/public/consult.css
+/public/consult.js
 
 # Distilled from sick-catalog-dataset by scripts/build-catalog.mjs before dev and build.
 /src/data/catalog.generated.json
+
+# Staged from sick-catalog-dataset by scripts/build-consult-catalog.mjs.
+/src/data/consult-catalog.generated.json
+
+# temp files from the atomic-write build scripts
+/src/data/*.tmp

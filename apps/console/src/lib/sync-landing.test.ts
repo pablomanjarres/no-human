@@ -66,7 +66,9 @@ describe("sync-landing ENTRIES", () => {
     }
   });
 
-  it.each(["index.html", "productos.html"])("carries everything %s references", async (page) => {
+  // Driven off ENTRY_POINTS, not a hand-written list, so a page added there is
+  // covered automatically rather than silently going unchecked.
+  it.each(entryPoints)("carries everything %s references", async (page) => {
     const missing: string[] = [];
     for (const ref of await refsIn(page)) {
       if (!isCarried(ref)) missing.push(ref);

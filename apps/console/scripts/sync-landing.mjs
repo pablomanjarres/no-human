@@ -17,10 +17,11 @@ const target = resolve(here, "..", "public");
 /**
  * Everything the pages need at runtime. The scrape scripts stay behind.
  *
- * There are two entry points, not one. `index.html` links to `productos.html`,
- * and that page carries its own stylesheet, its own script, and the generated
- * `data/catalog.json` the script fetches at load. Any one of them left out of
- * this list and the link 404s in production while working perfectly from the
+ * There are three entry points, not one. `index.html` links to
+ * `productos.html`, and `consult.html` is reachable on its own URL. Each
+ * carries its own stylesheet and script, and the catalogue page also needs the
+ * generated `data/catalog.json` it fetches at load. Any one of them left off
+ * this list and the page 404s in production while working perfectly from the
  * filesystem — which is exactly how it shipped the first time.
  */
 export const ENTRIES = [
@@ -32,10 +33,13 @@ export const ENTRIES = [
   "catalog.css",
   "catalog.js",
   "data/catalog.json",
+  "consult.html",
+  "consult.css",
+  "consult.js",
 ];
 
 /** The HTML files a browser can land on directly. Everything else is reached from one of these. */
-export const ENTRY_POINTS = ["index.html", "productos.html"];
+export const ENTRY_POINTS = ["index.html", "productos.html", "consult.html"];
 
 const exists = async (p) => {
   try {
