@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { buildMissRun, solve } from "@/lib/engine";
+import { buildCatalogRun } from "@/lib/solver";
 import type { Citation, CorpusStats, InputMode, SolveRun } from "@/lib/types";
 import { ConsultationPanel } from "./ConsultationPanel";
 import { ConstraintStrip, InputBar } from "./InputBar";
@@ -35,6 +36,10 @@ export function Workspace({
   });
   const [playing, setPlaying] = useState(() => Boolean(initialRun) && initialAt === undefined);
   const [cite, setCite] = useState<Citation | null>(null);
+  // Bumped on every replay. Without it, clicking Replay mid-playback leaves the
+  // already-armed rAF loop holding its original t0, which overwrites elapsed on
+  // the very next frame and the button looks broken.
+  const [take, setTake] = useState(0);
   const raf = useRef(0);
 
   const total = run ? run.stats.durationMs + TAIL_MS : 0;
@@ -72,7 +77,7 @@ export function Workspace({
     };
     raf.current = requestAnimationFrame(step);
     return () => cancelAnimationFrame(raf.current);
-  }, [playing, run, total]);
+  }, [playing, run, total, take]);
 
   const handleSolve = useCallback(
     (m: InputMode, raw: string) => {
@@ -95,20 +100,38 @@ export function Workspace({
 
   // Answering a clarifying question is what runs the solve. That is the product:
   // an underspecified input returns a question, and the answer returns a part.
+  // Answering the clarifying question is what runs the solve — and from here it
+  // is the real one: a deterministic pass over 796 SKUs transcribed from the
+  // SICK short-form catalogue, not a scripted result.
   const handleAnswer = useCallback(
-    (_value: string, label: string) => {
+    (value: string, label: string) => {
       if (run?.id === "run-describe") {
-        start(solve({ mode: "part", raw: "QS18VN6LV" }) ?? buildMissRun({ mode: "part", raw: "" }));
+        if (value === "unknown") return;
+        const distanceMm = Number(value);
+        if (!Number.isFinite(distanceMm)) return;
+        start(
+          buildCatalogRun(
+            { distanceMm, remission: "6pct", output: "PNP" },
+            run.input,
+            label,
+          ),
+        );
         return;
       }
-      if (run && !playing) {
+      if (run) {
         setElapsed(0);
         setPlaying(true);
+        setTake((n) => n + 1);
       }
-      void label;
     },
-    [run, playing, start],
+    [run, start],
   );
+
+  const replay = useCallback(() => {
+    setElapsed(0);
+    setPlaying(true);
+    setTake((n) => n + 1);
+  }, []);
 
   const working = playing && run !== null && elapsed < run.stats.durationMs;
 
@@ -153,10 +176,7 @@ export function Workspace({
           setPlaying(false);
           setElapsed(v);
         }}
-        onReplay={() => {
-          setElapsed(0);
-          setPlaying(true);
-        }}
+        onReplay={replay}
       />
 
       {cite ? <CitationDrawer citation={cite} onClose={() => setCite(null)} /> : null}

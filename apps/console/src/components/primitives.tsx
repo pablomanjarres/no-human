@@ -164,8 +164,6 @@ const PAD_X = 10;
 const PAD_Y = 9;
 const VB_W = 176;
 const VB_H = 106;
-/** The ghost caption needs its own line below the length dimension. */
-const VB_H_GHOST = 122;
 
 export function Housing({
   part,
@@ -188,7 +186,11 @@ export function Housing({
 
   const dimY = PAD_Y + Math.max(bh, gh) + 15;
   const dimX = PAD_X + Math.max(bw, gw) + 15;
-  const vbH = ghost ? VB_H_GHOST : VB_H;
+  // Derived, never constant: the length caption sits at dimY + 12, so a fixed
+  // viewBox height clipped it for anything taller than ~29 mm (WTB12 is 32 mm)
+  // because an inline <svg> is cropped by the UA's overflow:hidden.
+  const captionY = ghost ? dimY + 26 : dimY + 12;
+  const vbH = Math.max(captionY + 5, VB_H);
 
   return (
     <svg
@@ -304,7 +306,7 @@ export function Housing({
       {ghost ? (
         <text
           x={PAD_X}
-          y={vbH - 5}
+          y={captionY}
           fill="var(--color-ink-faint)"
           style={{ font: "500 8px var(--font-mono)" }}
         >

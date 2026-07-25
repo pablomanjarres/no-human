@@ -157,9 +157,14 @@ function RefusalCard({ run }: { run: SolveRun }) {
         <h2 className="nameplate mt-1.5 text-[22px] leading-[1.1]" style={{ color: "var(--color-halt)" }}>
           {refusal.headline}
         </h2>
+        {/* Only say the challenger killed candidates when it actually did. A
+            part that is not in the corpus never reaches the solver, let alone
+            the challenger — claiming otherwise here would be the exact kind of
+            unsourced assertion this product refuses to make. */}
         <p className="mt-2 text-[12.5px] leading-[1.55] text-ink-dim">
-          {run.stats.afterConstraints} candidates passed the base-spec filter. The challenger killed
-          all of them. We will not claim compatibility we cannot source.
+          {run.attacks.some((a) => a.outcome === "kill") && run.stats.afterConstraints > 0
+            ? `${run.stats.afterConstraints} candidates passed the base-spec filter. The challenger killed all of them. We will not claim compatibility we cannot source.`
+            : "The solver was never invoked — there is no spec vector to solve against. We will not claim compatibility we cannot source."}
         </p>
       </div>
 

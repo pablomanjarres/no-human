@@ -53,6 +53,13 @@ export function InputBar({
         className="flex flex-wrap items-stretch gap-0"
         onSubmit={(e) => {
           e.preventDefault();
+          if (isDrop) {
+            // The sample stands in for a decoded nameplate or a BOM line. It
+            // resolves to a real part number so the rest of the run is genuine.
+            onSolve("part", mode === "photo" ? "QS18VN6LV" : "ML100-8-1000-RT/95/103");
+            return;
+          }
+          if (!value.trim()) return;
           onSolve(mode, value);
         }}
       >
@@ -82,8 +89,15 @@ export function InputBar({
         <label className="flex min-w-0 flex-1 items-center gap-2.5 px-3.5">
           <span className="sr-only">{active.label}</span>
           {isDrop ? (
-            <span className="flex-1 truncate font-mono text-[13px] text-ink-faint">
-              {active.placeholder} — or run the sample below
+            // File input is not wired in this build. Saying so is cheaper than a
+            // tab that looks live, submits nothing, and answers "(empty)".
+            <span className="flex-1 truncate text-[12.5px] text-ink-faint">
+              File upload is not wired in this build.{" "}
+              <span className="text-ink-dim">
+                {mode === "photo"
+                  ? "Run the sample nameplate to see the OCR path end to end."
+                  : "Run the sample BOM row to see an audited line."}
+              </span>
             </span>
           ) : (
             <input
@@ -102,11 +116,11 @@ export function InputBar({
 
         <button
           type="submit"
-          disabled={busy}
-          className="shrink-0 border-l border-rail px-5 font-mono text-[10.5px] uppercase tracking-[0.14em] transition-colors disabled:opacity-50"
+          disabled={busy || (!isDrop && !value.trim())}
+          className="shrink-0 border-l border-rail px-5 font-mono text-[10.5px] uppercase tracking-[0.14em] transition-colors disabled:opacity-40"
           style={{ background: "var(--color-sick-wash)", color: "var(--color-sick)" }}
         >
-          {busy ? "Solving…" : "Solve →"}
+          {busy ? "Solving…" : isDrop ? "Run sample →" : "Solve →"}
         </button>
       </form>
 

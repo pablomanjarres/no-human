@@ -16,11 +16,21 @@ export interface SolveInput {
   raw: string;
 }
 
+/**
+ * Exact part numbers only.
+ *
+ * There was prefix matching here and it had to go. `QS18VP6LV` is a real Banner
+ * part — a different one, PNP where QS18VN6LV is NPN — and a prefix match handed
+ * it the NPN answer with full confidence and a citation. Wiring a sourcing
+ * output into a sinking input card is precisely the failure this product exists
+ * to prevent, and being confidently wrong about it on stage would end the pitch.
+ *
+ * A sibling part number we have not extracted is a stranger. It goes to the
+ * refusal path like any other stranger.
+ */
 const ALIASES: Record<string, SolveRun> = {
   qs18vn6lv: runQs18,
-  qs18: runQs18,
   "ml100-8-1000-rt/95/103": runMl100,
-  ml100: runMl100,
 };
 
 const normalise = (s: string) => s.trim().toLowerCase().replace(/\s+/g, "");
@@ -29,10 +39,7 @@ export function resolveRun(input: SolveInput): SolveRun | null {
   if (input.mode === "describe") return runDescribe;
   const key = normalise(input.raw);
   if (!key) return null;
-  const direct = ALIASES[key];
-  if (direct) return direct;
-  const partial = Object.keys(ALIASES).find((a) => key.startsWith(a) || a.startsWith(key));
-  return partial ? (ALIASES[partial] ?? null) : null;
+  return ALIASES[key] ?? null;
 }
 
 export function solve(input: SolveInput): SolveRun | null {

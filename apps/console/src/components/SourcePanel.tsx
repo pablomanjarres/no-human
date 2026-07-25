@@ -48,9 +48,18 @@ export function SourcePanel({
           <p className="mt-3.5 text-[12.5px] leading-[1.55] text-ink-dim">{part.blurb}</p>
         </div>
 
-        <div className="px-3.5 pt-2.5 pb-1">
-          <span className="eyebrow">Extracted spec vector</span>
-        </div>
+        {part.specs.length === 0 ? (
+          <p className="px-3.5 py-3 text-[12px] leading-[1.55] text-ink-faint">
+            No spec vector on this side — there is no competitor datasheet to extract from. The
+            constraint set above is what the solver ran on.
+          </p>
+        ) : null}
+
+        {part.specs.length > 0 ? (
+          <div className="px-3.5 pt-2.5 pb-1">
+            <span className="eyebrow">Extracted spec vector</span>
+          </div>
+        ) : null}
 
         <ul>
           {part.specs.map((spec) => (

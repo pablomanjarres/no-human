@@ -4,3 +4,6 @@
 /public/styles.css
 /public/app.js
 /public/assets/
+
+# Distilled from sick-catalog-dataset by scripts/build-catalog.mjs before dev and build.
+/src/data/catalog.generated.json
