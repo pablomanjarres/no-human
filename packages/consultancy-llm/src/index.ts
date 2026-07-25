@@ -42,24 +42,36 @@ export function createAnthropicClient(apiKey?: string): LlmClient {
     async structured({ system, user, schema, purpose }) {
       const request = {
         model: MODEL,
-        max_tokens: 16_000,
+        // Both responses are small structured objects — a requirement is a few
+        // hundred tokens, an adjudication under a thousand. The old 16k ceiling
+        // bought nothing and left room for the model to think far past the point
+        // of usefulness.
+        max_tokens: purpose === 'adjudicate' ? 6_000 : 3_000,
         system,
         messages: [{ role: 'user' as const, content: user }],
         output_config: {
           format: { type: 'json_schema' as const, schema },
-          // Parsing a problem statement is a lighter task than adjudicating a
-          // shortlist, and the shortlist is where judgement actually matters.
-          effort: purpose === 'adjudicate' ? ('high' as const) : ('medium' as const),
+          // Measured on the deployment: medium/high took 62s for one
+          // consultation — over the 60s function ceiling on a Hobby plan and a
+          // poor wait even where it fits. Parsing is structured extraction, which
+          // Opus 5 handles well at low effort; adjudication keeps the higher tier
+          // because choosing between near-equivalent SKUs is the judgement call.
+          effort: purpose === 'adjudicate' ? ('medium' as const) : ('low' as const),
         },
       };
 
+      // Bound each call so a slow model degrades into a deterministic answer
+      // instead of running the serverless function past its ceiling, where the
+      // caller gets a 504 with no body and no explanation. The two calls are
+      // sequential, so these have to sum to less than the function limit.
+      const timeout = purpose === 'adjudicate' ? 30_000 : 18_000;
+
       const send = async (withFallbacks: boolean) => {
-        if (!withFallbacks) return client.messages.create(request);
-        return client.beta.messages.create({
-          ...request,
-          betas: [FALLBACK_BETA],
-          fallbacks: 'default',
-        } as never);
+        if (!withFallbacks) return client.messages.create(request, { timeout });
+        return client.beta.messages.create(
+          { ...request, betas: [FALLBACK_BETA], fallbacks: 'default' } as never,
+          { timeout },
+        );
       };
 
       let response;
