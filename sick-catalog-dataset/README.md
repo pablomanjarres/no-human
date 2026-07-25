@@ -30,6 +30,7 @@ This dataset is a faithful transcription of that catalog for internal/project us
 | `products_all_rows.jsonl` | 2,026 | **Every extracted row**, including a shared accessory repeated on each page it appears on. Use this if you care about per-page placement rather than the deduped SKU list. |
 | `families.csv` | 110 | Roll-up by product family: variant/accessory counts, pages, catalog URL. |
 | `coverage_report.json` | — | QA report: counts, per-section totals, coverage %, any gaps. |
+| `images.json` | 1,776 | Product photo per SKU (or `null`), with match method, confidence and provenance. See [Product images](#product-images-imagesjson). |
 
 In the deduped files (`products.*`), a SKU that appears on several pages (118 shared
 accessories) is kept **once**; `occurrences` and `also_on_pages` record the extras.
@@ -74,6 +75,52 @@ accessories) is kept **once**; `occurrences` and `also_on_pages` record the extr
 |---|---|
 | `other_specs_json` | JSON object of any additional labelled spec not mapped to a named column. |
 | `low_confidence` | `;`-separated list of fields read from prose/bullets/footnotes rather than a labelled table cell. (JSON files also carry `provenance` = the verbatim source substring for every populated field.) |
+
+## Product images (`images.json`)
+
+`images.json` keys every SKU to the product photo extracted from the same PDF, or to `null` when
+the catalog has no photo for it. The image files themselves live in
+`apps/sick-clone-ui/assets/products/` (one copy, referenced by basename) because the frontend
+serves them directly.
+
+| Metric | Value |
+|---|---|
+| SKUs with a photo | **1,458 / 1,776 (82.1 %)** |
+| Distinct photos | 297 (≈1.1 MB WebP) |
+| SKUs with no photo in the source | 318 |
+
+Regenerate with (needs `pdftohtml`, `pdftoppm`, ImageMagick, and the source PDF):
+
+```bash
+node scripts/extract-product-images.mjs            # PDF  -> images + images.json
+node scripts/build-catalog-data.mjs                # join -> apps/sick-clone-ui/data/catalog.json
+```
+
+**How a photo is matched to a SKU.** The catalog holds two kinds of photo, matched differently:
+
+| `match_method` | How | Confidence |
+|---|---|---|
+| `row_aligned` | Small photo in an ordering/accessory table row; its vertical centre lines up with that row's 7-digit order number (typically within 2 px). Matched to **one exact SKU**. | exact |
+| `page_hero` | Large photo at the top of a page. Depicts the family, so every *product* variant on that page gets it. | exact page, family-level subject |
+| `family_hero` | Family's opening-page photo, applied to variants of the same subfamily whose own page carries no photo. | family-level, `low_confidence` |
+| `family_hero_loose` | Same, but matched only at family level (subfamily unknown or absent). | family-level, `low_confidence` |
+
+Every entry records `provenance` — source PDF page, the image's placement box, and for row matches
+the pixel offset to the order number it matched.
+
+Rules this follows, consistent with the field rules above:
+
+1. **Never inferred.** No photo in the source ⇒ `image: null` with a reason. No stand-ins, no
+   placeholders baked into the data.
+2. **Accessories never inherit a sensor photo.** A mounting bracket only gets the thumbnail from its
+   own catalog row; it is never given the family's hero photo.
+3. **Family-level photos are flagged**, not silently presented as the exact variant
+   (`low_confidence: true`, surfaced in the UI as *"Foto de familia"*).
+4. **Page-wide decorative bands are excluded** (any image ≥ 70 % of page width), as are pictograms
+   too small to be a product photo and certification marks (e.g. the UL logo).
+5. **Pixels come from rendering the page and cropping the placement box**, not from raw image
+   extraction — raw extraction drops a PDF soft mask, which turned page B-61's GR18S photo into a
+   black rectangle.
 
 ## Extraction rules honored
 

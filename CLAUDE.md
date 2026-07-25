@@ -67,12 +67,13 @@ flat config + Prettier, vitest. CI is one job running
 
 ## Quick reference
 
-| Want to                  | Read                                   |
-| ------------------------ | -------------------------------------- |
-| Understand the system    | `docs/architecture.md`                 |
-| Work on search/indexing  | `docs/rag-index.md`, then `packages/rag/src/types.ts` |
+| Want to                  | Read                                                      |
+| ------------------------ | --------------------------------------------------------- |
+| Understand the system    | `docs/architecture.md`                                    |
+| Work on search/indexing  | `docs/rag-index.md`, then `packages/rag/src/types.ts`     |
 | Work on the agents       | `docs/agent-layer.md`, then `packages/agent/src/types.ts` |
-| Know the catalog data    | `sick-catalog-dataset/README.md`       |
-| Add a new package or app | `packages/README.md`, `apps/README.md` |
-| Know what CI enforces    | `.github/workflows/ci.yml`             |
-| Pick up planned work     | `tasks/`                               |
+| Work on the catalog UI   | `apps/sick-clone-ui/README.md`                            |
+| Know the catalog data    | `sick-catalog-dataset/README.md`                          |
+| Add a new package or app | `packages/README.md`, `apps/README.md`                    |
+| Know what CI enforces    | `.github/workflows/ci.yml`                                |
+| Pick up planned work     | `tasks/`                                                  |

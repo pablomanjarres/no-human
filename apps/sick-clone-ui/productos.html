@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SICK | Catálogo de productos</title>
+    <link rel="preconnect" href="https://cdn.sick.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="catalog.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="header-container">
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <a href="index.html" class="grid-icon" title="Menú de aplicaciones"><i class="fa-solid fa-grip"></i></a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="productos.html" class="nav-active">Productos</a></li>
+                    <li><a href="index.html">Soluciones</a></li>
+                    <li><a href="index.html">Soporte</a></li>
+                    <li><a href="index.html">Enfoque</a></li>
+                    <li><a href="index.html">Empresa</a></li>
+                </ul>
+            </nav>
+            <div class="header-utils">
+                <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i> Buscar</button>
+                <a href="#" class="util-icon" title="Idioma"><i class="fa-solid fa-globe"></i> ES</a>
+                <a href="#" class="util-icon" title="Wishlist"><i class="fa-regular fa-heart"></i></a>
+                <a href="#" class="util-icon" title="Carrito"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="#" class="util-icon" title="Usuario"><i class="fa-regular fa-user"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE HEAD -->
+    <section class="catalog-head">
+        <div class="catalog-container">
+            <nav class="breadcrumb" aria-label="Ruta de navegación">
+                <a href="index.html">Inicio</a> <span>/</span> <span aria-current="page">Productos</span>
+            </nav>
+            <span class="tag tag-dark">CATÁLOGO RESUMIDO 2015/2016</span>
+            <h1>GAMA DE PRODUCTOS</h1>
+            <p class="catalog-lede">
+                Todas las referencias pedibles del catálogo, con la foto de producto extraída
+                directamente del catálogo original.
+            </p>
+            <p class="coverage-note" id="coverage-note" role="status"></p>
+        </div>
+    </section>
+
+    <!-- FILTERS -->
+    <section class="catalog-filters" aria-label="Filtros del catálogo">
+        <div class="catalog-container filter-row">
+            <div class="filter-search">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <label class="sr-only" for="q">Buscar por referencia, tipo, familia o descripción</label>
+                <input type="search" id="q" placeholder="Referencia, tipo, familia o descripción…" autocomplete="off">
+            </div>
+            <div class="filter-group">
+                <label class="sr-only" for="category">Categoría</label>
+                <select id="category">
+                    <option value="">Todas las categorías</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="sr-only" for="kind">Tipo de referencia</label>
+                <select id="kind">
+                    <option value="">Productos y accesorios</option>
+                    <option value="product">Solo productos</option>
+                    <option value="accessory">Solo accesorios</option>
+                </select>
+            </div>
+            <label class="filter-check">
+                <input type="checkbox" id="only-images"> Solo con imagen
+            </label>
+            <button type="button" class="btn-reset" id="reset">Limpiar</button>
+        </div>
+    </section>
+
+    <!-- RESULTS -->
+    <main class="catalog-main">
+        <div class="catalog-container">
+            <p class="result-count" id="result-count" role="status">Cargando catálogo…</p>
+            <div class="product-grid" id="grid"></div>
+            <div class="grid-footer">
+                <button type="button" class="btn btn-blue" id="load-more" hidden>Cargar más</button>
+                <p class="empty-state" id="empty-state" hidden>
+                    Ninguna referencia coincide con la búsqueda.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- DETAIL PANEL -->
+    <div class="panel-backdrop" id="panel-backdrop" hidden></div>
+    <aside class="detail-panel" id="detail-panel" role="dialog" aria-modal="true" aria-labelledby="detail-title" hidden>
+        <button type="button" class="panel-close" id="panel-close" aria-label="Cerrar detalles">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="panel-body" id="panel-body"></div>
+    </aside>
+
+    <!-- FOOTER -->
+    <footer class="site-footer bg-navy txt-white">
+        <div class="container footer-bottom">
+            <div class="country-selector">
+                <a href="#"><i class="fa-solid fa-globe"></i> Español - España</a>
+            </div>
+            <div class="legal-links">
+                Datos de producto &copy; SICK AG, catálogo resumido 8014481 — extracción para uso interno del proyecto.
+            </div>
+            <div class="copyright">
+                &copy; 2026 SICK AG
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script src="catalog.js"></script>
+</body>
+</html>
