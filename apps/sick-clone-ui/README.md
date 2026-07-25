@@ -24,7 +24,7 @@ data and the browser blocks that on `file://`.
   │
   ├─ scripts/extract-product-images.mjs
   │     ├─ sick-catalog-dataset/images.json        SKU -> photo + provenance + confidence
-  │     └─ assets/products/*.webp                  297 photos, ~1.1 MB
+  │     └─ assets/products/*.webp                  299 photos, ~1.1 MB
   │
   └─ scripts/build-catalog-data.mjs
         └─ data/catalog.json                       what productos.html fetches (1.5 MB, 64 KB gzipped)
