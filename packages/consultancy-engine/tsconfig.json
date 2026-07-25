@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ES2022"],
+    // `loadCatalog` reads the enriched-catalog artifact from disk, so this
+    // package needs the Node built-in types. Declared explicitly because the
+    // build config excludes the test files that would otherwise pull them in.
+    "types": ["node"],
+    "declaration": true,
+    "noEmit": true
+  },
+  "include": ["src/**/*.ts"]
+}

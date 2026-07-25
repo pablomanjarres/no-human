@@ -1,0 +1,29 @@
+{
+  "name": "@no-human/consultancy-engine",
+  "version": "0.0.1-alpha.0",
+  "private": true,
+  "type": "module",
+  "description": "Deterministic requirement scoring over the enriched SICK catalog, plus the LLM prompt/validation boundary for the consultancy tool.",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "tsc -p tsconfig.build.json",
+    "dev": "tsc -p tsconfig.build.json --watch",
+    "lint": "eslint src",
+    "test": "vitest run --passWithNoTests"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^25.9.3",
+    "typescript": "^6.0.3",
+    "vitest": "^3.2.4"
+  }
+}
