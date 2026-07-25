@@ -17,7 +17,7 @@ const cite = (
   brand: string,
   page: number,
   snippet: string,
-): Citation => ({ docId, docTitle, brand, page, href: `/doc/${docId}?page=${page}`, snippet });
+): Citation => ({ docId, docTitle, brand, page, href: `/console/doc/${docId}?page=${page}`, snippet });
 
 const BANNER_QS18 = (page: number, snippet: string) =>
   cite("banner-qs18", "WORLD-BEAM QS18 — Datasheet 128140", "Banner", page, snippet);

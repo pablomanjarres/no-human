@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Fragment, useState } from "react";
 
 import { BrandMark, CiteLink, ConfidenceMark, Panel, PanelHead } from "@/components/primitives";
@@ -176,7 +177,15 @@ export function SpecTable({ part }: { part: Part }) {
                   &ldquo;{open.snippet}&rdquo;
                 </p>
               ) : null}
-              <p className="mt-2 font-mono text-[10px] text-ink-faint">{open.href}</p>
+              <Link
+                href={`/console/doc/${open.docId}?page=${open.page}`}
+                className="mt-2 inline-flex items-center gap-1.5 font-mono text-[10px] text-ink-faint transition-colors hover:text-sick focus-visible:text-sick"
+              >
+                <span className="underline decoration-cab-600 decoration-dotted underline-offset-2">
+                  Open the page in the corpus viewer
+                </span>
+                <span aria-hidden>→</span>
+              </Link>
             </div>
             <button
               type="button"

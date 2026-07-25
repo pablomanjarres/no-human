@@ -14,6 +14,11 @@ const nextConfig: NextConfig = {
   // The floating dev badge sits on top of the transport bar during a demo.
   devIndicators: false,
   turbopack: { root: resolve(here, "..", "..") },
+  // One deployment, one URL: the static landing page from apps/sick-clone-ui is
+  // synced into public/ and served at /, and the workspace lives under /console.
+  async rewrites() {
+    return [{ source: "/", destination: "/index.html" }];
+  },
 };
 
 export default nextConfig;

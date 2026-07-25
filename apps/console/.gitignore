@@ -1,0 +1,6 @@
+# Synced from apps/sick-clone-ui by scripts/sync-landing.mjs before dev and build.
+# The landing page has exactly one source of truth and it is not this directory.
+/public/index.html
+/public/styles.css
+/public/app.js
+/public/assets/

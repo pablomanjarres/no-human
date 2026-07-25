@@ -67,6 +67,14 @@ export function MethodNote({ stats }: { stats: CorpusStats }) {
           </li>
         ))}
       </ol>
+
+      <footer className="mt-auto border-t border-rail bg-cab-850 px-4 py-3.5">
+        <p className="text-[12px] leading-[1.65] text-ink-faint">
+          The index is a build artefact, not a request-time call. It is rebuilt when the PDF store
+          changes and the console reads it. If a value is not in it, the console says so — it does
+          not fall back to a model.
+        </p>
+      </footer>
     </Panel>
   );
 }

@@ -134,6 +134,8 @@ export function Accessories({ part }: { part: Part }) {
         </p>
       </div>
 
+      {/* gap-px over a rail-coloured bed draws the hairlines. The filler keeps an
+          empty cell from showing that bed at the two-column breakpoint. */}
       <div className="grid gap-px bg-rail sm:grid-cols-2 lg:grid-cols-3">
         {groups.map((g) => (
           <section key={g.kind} className="flex flex-col bg-cab-900 p-4">
@@ -162,6 +164,9 @@ export function Accessories({ part }: { part: Part }) {
             </ul>
           </section>
         ))}
+        {groups.length % 2 === 1 ? (
+          <div className="hidden bg-cab-900 sm:block lg:hidden" aria-hidden />
+        ) : null}
       </div>
 
       <p className="border-t border-rail bg-cab-850 px-4 py-4 text-[12.5px] leading-[1.65] text-ink-dim sm:px-5">

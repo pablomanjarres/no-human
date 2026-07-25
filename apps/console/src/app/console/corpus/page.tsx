@@ -33,7 +33,7 @@ export default function CorpusPage() {
     <main className="mx-auto w-full max-w-[1280px] px-5 py-7 lg:px-8 lg:py-10">
       <nav className="mb-8">
         <Link
-          href="/"
+          href="/console"
           className="inline-flex items-center gap-2 font-mono text-[11px] text-ink-faint transition-colors hover:text-sick focus-visible:text-sick"
         >
           <span aria-hidden>←</span>
@@ -42,9 +42,9 @@ export default function CorpusPage() {
       </nav>
 
       <header className="mb-7 border-b border-rail pb-7">
-        <p className="eyebrow">Offline corpus · extraction index</p>
-        <h1 className="nameplate mt-2.5 text-[clamp(1.75rem,4.2vw,2.75rem)] leading-[0.98] text-ink">
-          The index everything else is read out of
+        <p className="eyebrow">Corpus board · build artefact</p>
+        <h1 className="nameplate mt-2.5 text-[clamp(1.6rem,3.4vw,2.35rem)] leading-[1.02] text-ink">
+          Offline extraction index
         </h1>
         <p className="mt-4 max-w-[86ch] text-[14px] leading-[1.7] text-ink-dim">
           An extraction swarm ran at{" "}
@@ -57,8 +57,9 @@ export default function CorpusPage() {
           <span className="font-mono text-signal">{groupDigits(corpusStats.disputes)}</span> times.
         </p>
         <p className="mt-3 max-w-[86ch] text-[14px] leading-[1.7] text-ink-dim">
-          Those {groupDigits(corpusStats.disputes)} disagreements are on this page, in full, with
-          both readings intact. They are the reason to believe the rest of it.
+          That count is not a defect rate to bury under a confidence percentage. It is the only
+          evidence the second pass ran at all. Every dispute sitting on a part the console has
+          loaded is in the ledger below — both readings intact, neither one promoted.
         </p>
       </header>
 
@@ -71,14 +72,6 @@ export default function CorpusPage() {
           <FlaggedRows rows={flagged} totalLow={corpusStats.lowConfidence} />
         </div>
       </div>
-
-      <footer className="mt-8 border-t border-rail pt-5">
-        <p className="max-w-[86ch] text-[12px] leading-[1.65] text-ink-faint">
-          Nothing on this page was computed at request time. The index is a build artefact: it is
-          rebuilt when the PDF store changes, and the console reads it. If a value is not in it, the
-          console says so and refuses — it does not fall back to a model.
-        </p>
-      </footer>
     </main>
   );
 }

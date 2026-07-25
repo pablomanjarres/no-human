@@ -56,7 +56,7 @@ export default async function ProductPage({ params }: PageProps) {
     <main className="mx-auto w-full max-w-[1200px] px-4 py-6 sm:px-6 sm:py-8">
       <nav aria-label="Breadcrumb" className="mb-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
         <Link
-          href="/"
+          href="/console"
           className="eyebrow inline-flex items-center gap-2 transition-colors hover:text-ink focus-visible:text-ink"
         >
           <span aria-hidden>←</span> Workspace

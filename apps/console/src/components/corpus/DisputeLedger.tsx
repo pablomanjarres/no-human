@@ -1,12 +1,5 @@
-import {
-  BrandMark,
-  Chip,
-  CiteLink,
-  ConfidenceMark,
-  Housing,
-  Panel,
-  PanelHead,
-} from "@/components/primitives";
+import { BrandMark, Chip, ConfidenceMark, Housing, Panel, PanelHead } from "@/components/primitives";
+import { CiteJump } from "@/components/doc/CiteJump";
 import { groupDigits } from "@/components/corpus/format";
 import type { DisputeRow } from "@/components/corpus/collect";
 import type { Part } from "@/lib/types";
@@ -60,7 +53,7 @@ export function DisputeLedger({ rows, totalDisputes }: { rows: DisputeRow[]; tot
         </p>
       ) : (
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[900px] border-collapse text-left">
+          <table className="w-full min-w-[820px] border-collapse text-left">
             <thead>
               <tr className="border-b border-rail">
                 <th scope="col" className="eyebrow w-[15%] px-4 py-2">
@@ -139,7 +132,7 @@ export function DisputeLedger({ rows, totalDisputes }: { rows: DisputeRow[]; tot
                       {row.citation.docTitle}
                     </span>
                     <span className="mt-1.5 flex items-center gap-2">
-                      <CiteLink citation={row.citation} />
+                      <CiteJump citation={row.citation} href={row.citation.href} />
                       <span className="font-mono text-[10px] text-ink-faint">
                         {row.citation.docId}
                       </span>

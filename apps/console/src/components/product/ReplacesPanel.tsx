@@ -123,7 +123,7 @@ export function ReplacesPanel({ part }: { part: Part }) {
         {rivals.map((r, i) => (
           <li key={`${r.brand}-${r.family}`} className="border-b border-rail last:border-b-0">
             <Link
-              href={`/?q=${encodeURIComponent(r.probe)}`}
+              href={`/console?q=${encodeURIComponent(r.probe)}`}
               className="group grid grid-cols-[1.75rem_minmax(0,1fr)] items-start gap-x-2 gap-y-3 border-l-[3px] border-l-cab-600 px-4 py-5 transition-colors duration-150 hover:border-l-sick hover:bg-sick-wash focus-visible:border-l-sick focus-visible:bg-sick-wash sm:grid-cols-[2.25rem_minmax(0,1fr)_auto] sm:gap-x-4 sm:px-5"
             >
               <span className="mt-1 font-mono text-[11px] leading-none text-ink-faint tabular-nums transition-colors group-hover:text-sick">

@@ -40,17 +40,23 @@ export function TelemetryRail({ stats }: { stats: CorpusStats }) {
 
   return (
     <header className="flex shrink-0 items-stretch gap-0 border-b border-rail bg-cab-900">
-      <div className="flex shrink-0 items-center gap-2.5 border-r border-rail px-4 py-2.5">
+      <Link
+        href="/"
+        className="group flex shrink-0 items-center gap-2.5 border-r border-rail px-4 py-2.5"
+        title="Back to sick.com"
+      >
         <span
           className="block h-[18px] w-[3px]"
           style={{ background: "var(--color-sick)" }}
           aria-hidden
         />
         <div className="leading-none">
-          <span className="nameplate block text-[15px] leading-none text-ink">SICK Cross</span>
+          <span className="nameplate block text-[15px] leading-none text-ink transition-colors group-hover:text-sick">
+            SICK Cross
+          </span>
           <span className="eyebrow mt-[3px] block leading-none">Cross-brand equivalence engine</span>
         </div>
-      </div>
+      </Link>
 
       <div className="flex min-w-0 flex-1 items-center overflow-x-auto py-2 [scrollbar-width:none]">
         <Readout label="Datasheets" value={String(stats.datasheets)} title="PDFs cached in the offline corpus" />
@@ -89,7 +95,7 @@ export function TelemetryRail({ stats }: { stats: CorpusStats }) {
           Offline
         </span>
         <Link
-          href="/corpus"
+          href="/console/corpus"
           className="font-mono text-[9.5px] uppercase tracking-[0.12em] text-ink-dim transition-colors hover:text-sick"
         >
           Corpus →

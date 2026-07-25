@@ -81,7 +81,7 @@ export function ProductHero({ part }: { part: Part }) {
           ) : null}
         </div>
 
-        <figure className="w-full min-w-0 rounded-[2px] border border-rail bg-cab-850 lg:w-[320px] lg:shrink-0">
+        <figure className="w-full max-w-[420px] min-w-0 rounded-[2px] border border-rail bg-cab-850 lg:w-[320px] lg:shrink-0">
           <figcaption className="flex items-center justify-between gap-3 border-b border-rail px-3 py-2">
             <span className="eyebrow">Dimensional drawing</span>
             <span className="font-mono text-[10px] text-ink-faint">to scale</span>

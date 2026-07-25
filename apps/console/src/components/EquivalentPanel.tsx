@@ -95,7 +95,7 @@ function CandidateCard({
       </div>
 
       <Link
-        href={`/product/${part.partNumber}`}
+        href={`/console/product/${part.partNumber}`}
         className="nameplate mt-1 block text-[26px] leading-[1.05] text-ink transition-colors hover:text-sick"
       >
         {part.partNumber}
@@ -236,7 +236,7 @@ function CandidateLadder({ run, promoted }: { run: SolveRun; promoted: boolean }
             >
               <span className="w-3 text-ink-faint">{c.rank}</span>
               <Link
-                href={`/product/${c.part.partNumber}`}
+                href={`/console/product/${c.part.partNumber}`}
                 className="flex-1 truncate transition-colors hover:text-sick"
                 style={{
                   color: dead ? "var(--color-halt)" : isActive ? "var(--color-sick)" : "var(--color-ink-dim)",

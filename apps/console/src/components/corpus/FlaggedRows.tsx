@@ -1,4 +1,5 @@
-import { BrandMark, Chip, CiteLink, ConfidenceMark, Panel, PanelHead } from "@/components/primitives";
+import { BrandMark, Chip, ConfidenceMark, Panel, PanelHead } from "@/components/primitives";
+import { CiteJump } from "@/components/doc/CiteJump";
 import { groupDigits } from "@/components/corpus/format";
 import type { FlaggedRow } from "@/components/corpus/collect";
 
@@ -38,7 +39,7 @@ export function FlaggedRows({ rows, totalLow }: { rows: FlaggedRow[]; totalLow: 
 
             <div className="mt-2 flex items-baseline justify-between gap-3">
               <span className="min-w-0 text-[12px] leading-snug text-ink">{row.field}</span>
-              <CiteLink citation={row.citation} />
+              <CiteJump citation={row.citation} href={row.citation.href} />
             </div>
 
             <p className="mt-1 font-mono text-[11px] leading-snug text-ink-dim">
