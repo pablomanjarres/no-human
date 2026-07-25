@@ -30,7 +30,14 @@ const MODES: { id: InputMode; label: string; placeholder: string; hint: string }
   },
 ];
 
-const SAMPLES = ["QS18VN6LV", "ML100-8-1000-RT/95/103"];
+/**
+ * Two scripted competitor solves, then a real one.
+ *
+ * `WTB9-3P2211S14` is a live lookup into the 796-SKU catalogue and `1052171` is
+ * the same part by order number — both are here so it is obvious from the bar
+ * that the field takes any part we hold, not just the two demo strings.
+ */
+const SAMPLES = ["QS18VN6LV", "ML100-8-1000-RT/95/103", "WTB9-3P2211S14", "1052171"];
 
 export function InputBar({
   mode,
@@ -63,7 +70,11 @@ export function InputBar({
           onSolve(mode, value);
         }}
       >
-        <div className="flex shrink-0 items-stretch border-r border-rail" role="tablist" aria-label="Input mode">
+        <div
+          className="flex shrink-0 items-stretch border-r border-rail"
+          role="tablist"
+          aria-label="Input mode"
+        >
           {MODES.map((m) => (
             <button
               key={m.id}
@@ -145,7 +156,9 @@ export function InputBar({
         </span>
         <button
           type="button"
-          onClick={() => onSolve("describe", "Necesito detectar cajas negras sobre una banda transportadora")}
+          onClick={() =>
+            onSolve("describe", "Necesito detectar cajas negras sobre una banda transportadora")
+          }
           className="font-mono text-[10.5px] text-ink-dim underline decoration-cab-600 decoration-dotted underline-offset-2 transition-colors hover:text-sick hover:decoration-sick"
         >
           a description in Spanish
@@ -155,16 +168,29 @@ export function InputBar({
   );
 }
 
-const ORIGIN_STYLE: Record<Constraint["origin"], { accent: string; mark: string; title: string }> = {
-  extracted: { accent: "var(--color-sick)", mark: "", title: "Read directly from the source datasheet" },
-  asked: { accent: "var(--color-sick)", mark: "answered", title: "Answered by the operator, not assumed" },
-  assumed: {
-    accent: "var(--color-signal)",
-    mark: "assumed",
-    title: "ASSUMED by the resolver. Confirm before ordering.",
-  },
-  default: { accent: "var(--color-rail-bright)", mark: "default", title: "From the application default profile" },
-};
+const ORIGIN_STYLE: Record<Constraint["origin"], { accent: string; mark: string; title: string }> =
+  {
+    extracted: {
+      accent: "var(--color-sick)",
+      mark: "",
+      title: "Read directly from the source datasheet",
+    },
+    asked: {
+      accent: "var(--color-sick)",
+      mark: "answered",
+      title: "Answered by the operator, not assumed",
+    },
+    assumed: {
+      accent: "var(--color-signal)",
+      mark: "assumed",
+      title: "ASSUMED by the resolver. Confirm before ordering.",
+    },
+    default: {
+      accent: "var(--color-rail-bright)",
+      mark: "default",
+      title: "From the application default profile",
+    },
+  };
 
 /**
  * The hinge of the whole interface: unstructured input on the left of the screen
@@ -177,7 +203,10 @@ export function ConstraintStrip({ constraints }: { constraints: Constraint[] }) 
 
   return (
     <div className="flex shrink-0 flex-wrap items-center gap-x-2 gap-y-1.5 border-b border-rail bg-cab-900 px-3.5 py-2">
-      <span className="eyebrow shrink-0" title="Emitted by the resolver agent. The solver runs on these, and only these.">
+      <span
+        className="eyebrow shrink-0"
+        title="Emitted by the resolver agent. The solver runs on these, and only these."
+      >
         Constraint set
       </span>
       <span className="shrink-0 font-mono text-[9.5px] text-ink-faint">
@@ -203,7 +232,9 @@ export function ConstraintStrip({ constraints }: { constraints: Constraint[] }) 
           >
             {c.display}
             {style.mark ? (
-              <span className="text-[8.5px] uppercase tracking-[0.1em] opacity-70">{style.mark}</span>
+              <span className="text-[8.5px] uppercase tracking-[0.1em] opacity-70">
+                {style.mark}
+              </span>
             ) : null}
           </span>
         );

@@ -53,7 +53,7 @@ copies under `apps/console/public` are gitignored so they can never drift.
 | --- | --- |
 | `/` | Landing page, rewritten to the synced `public/index.html` |
 | `/console` | The workspace |
-| `/console/product/[sku]` | Product record, prerendered for the three known SKUs |
+| `/console/product/[sku]` | Product record, prerendered for all 799 SKUs — the three hand-authored parts plus every sensing SKU in the catalogue |
 | `/console/corpus` | Extraction swarm output and the dispute ledger |
 | `/console/doc/[docId]` | Citation viewer |
 
@@ -66,6 +66,13 @@ Replace `<host>` with the deployment URL.
 - `<host>/console?q=QS18VN6LV&t=900` — frozen one frame before the kill, if you
   want to talk over it rather than race it
 - `<host>/console?q=ML100-8-1000-RT/95/103` — the refusal
+- `<host>/console?q=WTB9-3P2211S14` — a live lookup into the 796-SKU catalogue:
+  identifies the part, says plainly that it is ours rather than a competitor's,
+  and ranks what else in the same category covers it
+- `<host>/console?q=1052171` — the same part by order number, which is what is
+  printed on a purchase order
+- `<host>/console?q=WTB9-3P221` — a near miss. Offers candidate type codes and
+  refuses to pick one, because a character of a type code is often a polarity
 - `<host>/console/corpus` — the verifier dispute count
 
 ## Caveats
