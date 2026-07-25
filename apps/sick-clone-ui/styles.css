@@ -1,0 +1,734 @@
+/* SICK Intl — fuente corporativa oficial de SICK */
+@font-face {
+    font-family: "SICK Intl";
+    src: url("https://cdn.sick.com/media/fonts/sickintl-v1/regular/SICKIntl-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "SICK Intl";
+    src: url("https://cdn.sick.com/media/fonts/sickintl-v1/semibold/SICKIntl-Semibold.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "SICK Intl";
+    src: url("https://cdn.sick.com/media/fonts/sickintl-v1/semibold/SICKIntl-Semibold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* RESET & BASICS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "SICK Intl", sans-serif;
+    color: rgb(45, 50, 52);
+    line-height: 1.6;
+    letter-spacing: 0.32px;
+    background-color: #fff;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* COLORS — extraídos del sitio real */
+:root {
+    --primary-blue: hsl(219, 100%, 50%); /* = #0041C3 exacto del sitio real */
+    --dark-navy: #0d1117;
+    --body-text: rgb(45, 50, 52);
+    --light-gray: #f5f5f5;
+    --sage-green: #C8D8C0;
+    --white: #FFFFFF;
+    --border-color: #e0e0e0;
+}
+
+.bg-white { background-color: var(--white); }
+.bg-navy { background-color: var(--dark-navy); color: var(--white); }
+.bg-light-gray { background-color: var(--light-gray); }
+.bg-blue { background-color: var(--primary-blue); color: var(--white); }
+.bg-sage { background-color: var(--sage-green); }
+.txt-white { color: var(--white); }
+.text-primary { color: var(--primary-blue); }
+
+.mt-3 { margin-top: 1rem; }
+.mt-4 { margin-top: 1.5rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 1rem; }
+.text-center { text-align: center; }
+
+/* UTILS */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+.section-padding {
+    padding: 4rem 0;
+}
+
+h1 {
+    font-family: "SICK Intl", sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 0.32px;
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+h2 {
+    font-family: "SICK Intl", sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: 0.32px;
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+h3 {
+    font-family: "SICK Intl", sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.32px;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+/* TYPOGRAPHY TAGS */
+.tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+.tag-dark { color: var(--dark-navy); }
+.tag-blue { color: var(--primary-blue); }
+
+/* BUTTONS */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s;
+}
+.btn i { margin-left: 0.5rem; }
+.btn-white-outline {
+    background-color: transparent;
+    color: var(--white);
+    border-color: var(--white);
+}
+.btn-white-outline:hover {
+    background-color: var(--white);
+    color: var(--primary-blue);
+}
+.btn-blue {
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+.btn-blue:hover {
+    background-color: #002d8a;
+}
+.btn-blue-outline {
+    background-color: transparent;
+    color: var(--white);
+    border-color: var(--primary-blue);
+}
+.btn-blue-outline:hover {
+    background-color: var(--primary-blue);
+}
+.btn-outline {
+    background-color: transparent;
+    color: var(--primary-blue);
+    border-color: var(--primary-blue);
+}
+
+.link-arrow, .link-arrow-white, .link-arrow-dark {
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.link-arrow { color: var(--primary-blue); }
+.link-arrow-white { color: var(--white); }
+.link-arrow-dark { color: var(--dark-navy); }
+
+/* HEADER — exacto del sitio real: height 72px, padding 12px 32px */
+.site-header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 72px;
+}
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 12px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+.main-nav ul {
+    display: flex;
+    gap: 2.5rem;
+}
+.main-nav a {
+    font-family: "SICK Intl", sans-serif;
+    font-weight: 400;
+    color: rgb(45, 50, 52);
+    text-transform: none; /* NAV NO es uppercase en el original */
+    font-size: 16px;
+    letter-spacing: 0.32px;
+    transition: color 0.2s;
+}
+.main-nav a:hover {
+    color: var(--primary-blue);
+}
+.header-utils {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+.search-btn {
+    background-color: transparent;
+    border: 1.5px solid rgb(45, 50, 52);
+    padding: 8px 16px;
+    border-radius: 24px;
+    font-family: "SICK Intl", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: rgb(45, 50, 52);
+    transition: background 0.2s;
+}
+.search-btn:hover {
+    background-color: #f0f0f0;
+}
+.util-icon {
+    color: rgb(45, 50, 52);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    font-size: 18px;
+    font-weight: 400;
+    transition: color 0.2s;
+}
+.util-icon:hover { color: var(--primary-blue); }
+.grid-icon {
+    color: rgb(45, 50, 52);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+.grid-icon:hover { color: var(--primary-blue); }
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: rgb(45, 50, 52);
+}
+
+/* HERO */
+.hero-section {
+    display: flex;
+    min-height: 85vh;
+    position: relative;
+    overflow: hidden;
+}
+.hero-left {
+    width: 48%;
+    background-color: var(--primary-blue);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3.5rem 4rem 2.5rem;
+    position: relative;
+}
+.hero-content {
+    padding-top: 2rem;
+}
+.hero-content .tag {
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 1.2rem;
+}
+.hero-content h1 {
+    font-size: 3.2rem;
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    color: var(--white);
+    max-width: 520px;
+    hyphens: auto;
+}
+.hero-content p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    max-width: 440px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+    font-weight: 400;
+    hyphens: auto;
+}
+.hero-arrow-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--white);
+    font-size: 2.5rem;
+    font-weight: 300; /* Thinner arrow */
+    line-height: 1;
+    transition: transform 0.3s;
+    text-decoration: none;
+}
+.hero-arrow-link:hover {
+    transform: translateX(8px);
+}
+.hero-logo-overlay {
+    display: flex;
+    align-items: baseline;
+    gap: 1.2rem;
+    padding-bottom: 0;
+    margin-top: auto; /* Push to bottom */
+}
+.sick-logo-text {
+    font-family: "SICK Intl", sans-serif;
+    font-size: 9rem; /* Much larger, like the original */
+    font-weight: 700;
+    line-height: 0.8;
+    margin: 0;
+    color: var(--white);
+    text-transform: none;
+    letter-spacing: -3px;
+}
+.sick-claim {
+    font-family: "SICK Intl", sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--white);
+    letter-spacing: -0.5px;
+}
+.hero-right {
+    width: 52%;
+    position: relative;
+    overflow: hidden;
+}
+.hero-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* TWO COL LAYOUT */
+.two-col {
+    display: flex;
+    gap: 4rem;
+}
+.col-left {
+    flex: 1;
+}
+.col-right {
+    flex: 1;
+}
+
+/* LINK LIST — texto grande como en el original */
+.link-list li {
+    border-bottom: 1px solid #ddd;
+}
+.link-list a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 0;
+    font-family: "SICK Intl", sans-serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: rgb(13, 13, 13);
+    transition: color 0.3s;
+}
+.link-list a:hover {
+    color: var(--primary-blue);
+}
+.link-list a i {
+    font-size: 0.9rem;
+    color: rgb(45, 50, 52);
+}
+
+/* SPLIT LAYOUT */
+.split-layout {
+    display: flex;
+    min-height: 60vh;
+}
+.split-left, .split-right {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+.img-bg {
+    background-size: cover;
+    background-position: center;
+}
+.content-box {
+    padding: 4rem;
+    max-width: 600px;
+}
+.content-box h2 {
+    font-size: 2.5rem;
+}
+
+/* GRID CARDS (MYSICK/ACERCA) */
+.grid-layout {
+    display: flex;
+    gap: 2rem;
+}
+.main-card {
+    flex: 2;
+}
+.main-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.side-cards {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.card {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* FLEX CARDS */
+.flex-cards {
+    display: flex;
+    gap: 2rem;
+}
+.info-card {
+    flex: 1;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+}
+.info-card h3 {
+    font-size: 1.2rem;
+}
+.info-card .link-arrow-dark {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+/* BLOG */
+.blog-carousel {
+    display: flex;
+    gap: 2rem;
+}
+.blog-card {
+    flex: 1;
+    background: var(--white);
+    color: var(--dark-navy);
+}
+.blog-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.blog-info {
+    padding: 1.5rem;
+}
+
+/* VENTAJAS */
+.ventajas-grid {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+}
+.ventaja-item {
+    text-align: center;
+    max-width: 250px;
+}
+
+/* FOOTER */
+.site-footer {
+    padding: 4rem 2rem 2rem;
+}
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+.footer-col h4 {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+.footer-col ul li {
+    margin-bottom: 0.8rem;
+}
+.footer-col ul a {
+    color: #bbb;
+}
+.footer-col ul a:hover {
+    color: var(--white);
+}
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+.social-links a {
+    color: var(--white);
+    font-size: 1.2rem;
+}
+.footer-bottom {
+    border-top: 1px solid #333;
+    padding-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    color: #bbb;
+    font-size: 0.85rem;
+}
+.footer-bottom a {
+    color: #bbb;
+}
+.country-selector a {
+    color: var(--white);
+    font-weight: 600;
+}
+
+/* COOKIE BANNER */
+.cookie-banner {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--white);
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    z-index: 1000;
+    max-width: 800px;
+    width: 90%;
+    border-radius: 8px;
+    display: none;
+}
+.cookie-banner.show {
+    display: block;
+}
+.cookie-content h3 {
+    margin-bottom: 1rem;
+    color: var(--dark-navy);
+}
+.cookie-content p {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+.cookie-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .main-nav { display: none; }
+    .main-nav.active {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        padding: 1rem;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+    .main-nav ul { flex-direction: column; gap: 1rem; }
+    .mobile-menu-toggle { display: block; }
+    
+    .hero-section { flex-direction: column; }
+    .hero-left, .hero-right { width: 100%; }
+    .hero-right { height: 400px; }
+    .hero-logo-overlay { position: relative; bottom: 0; left: 0; padding: 2rem; text-align: center; }
+    
+    .two-col, .split-layout { flex-direction: column; }
+    .split-left, .split-right { width: 100%; }
+    .img-bg { height: 400px; }
+    
+    .grid-layout, .flex-cards, .blog-carousel { flex-direction: column; }
+    .footer-grid { flex-wrap: wrap; }
+    .footer-col { width: 45%; }
+}
+
+@media (max-width: 576px) {
+    .footer-col { width: 100%; }
+    .ventajas-grid { flex-direction: column; align-items: center; }
+}
+
+/* ---------------------------------------------------------------------------
+   Demo marker + the way in to the equivalence console.
+
+   The marker is deliberately quiet: it should not compete with the page, but a
+   public URL that looks exactly like sick.com needs to say what it actually is.
+--------------------------------------------------------------------------- */
+
+.demo-marker {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: var(--dark-navy);
+    color: rgba(255, 255, 255, 0.66);
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+    padding: 0.45rem 2.5rem;
+}
+
+.demo-marker-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #ffc72c;
+    flex-shrink: 0;
+}
+
+.demo-marker-text {
+    min-width: 0;
+}
+
+.demo-marker-link {
+    margin-left: auto;
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+    padding-bottom: 1px;
+    transition: border-color 0.15s ease;
+}
+
+.demo-marker-link:hover {
+    border-bottom-color: #fff;
+}
+
+/* The hero call to action. Uses the page's own blue so it reads as part of the
+   site, but it is the only element on the page that goes anywhere real. */
+.console-cta {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin: 2.25rem 0 0;
+    padding: 1.15rem 1.35rem 1.15rem 1.1rem;
+    max-width: 31rem;
+    /* The hero is already SICK blue, so the call to action inverts to sit on top
+       of it. The yellow edge is borrowed from the console's own signal colour. */
+    background-color: var(--white);
+    color: var(--dark-navy);
+    border-left: 4px solid #ffc72c;
+    text-decoration: none;
+    border-radius: 2px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+    transition:
+        background-color 0.15s ease,
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.console-cta:hover,
+.console-cta:focus-visible {
+    background-color: #f4f7ff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+}
+
+.console-cta:focus-visible {
+    outline: 3px solid var(--dark-navy);
+    outline-offset: 3px;
+}
+
+.console-cta-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 0;
+}
+
+.console-cta-eyebrow {
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.console-cta-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.console-cta-sub {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--body-text);
+}
+
+.console-cta-arrow {
+    font-size: 1.7rem;
+    line-height: 1;
+    flex-shrink: 0;
+    color: var(--primary-blue);
+}
+
+@media (max-width: 900px) {
+    .demo-marker {
+        padding: 0.45rem 1rem;
+        flex-wrap: wrap;
+        font-size: 0.68rem;
+    }
+    .demo-marker-link {
+        margin-left: 0;
+    }
+    .console-cta {
+        max-width: none;
+    }
+}

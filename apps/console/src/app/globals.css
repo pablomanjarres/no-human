@@ -1,0 +1,417 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   SICK Cross — design tokens
+
+   Ground:  the colour of a control cabinet (RAL 7016 anthracite), not black.
+            Black reads as "developer tool". Anthracite reads as "machine".
+   Signal:  SICK blue = PASS. Safety yellow = CAUTION. Vermilion = HALT.
+            There is deliberately no green in this system. Blue/amber/red is
+            the pairing on every safety device SICK ships, and it survives
+            deuteranopia in a way green/red does not.
+   Type:    Archivo (variable width) for nameplate headings, IBM Plex Sans for
+            reading, IBM Plex Mono for anything an engineer would type or
+            quote — part numbers, spec values, trace timestamps.
+--------------------------------------------------------------------------- */
+
+@theme {
+  --color-cab-950: #0f1317;
+  --color-cab-900: #151a1f;
+  --color-cab-850: #191f25;
+  --color-cab-800: #1d242b;
+  --color-cab-700: #252e36;
+  --color-cab-600: #303b45;
+  --color-rail: #3c4854;
+  --color-rail-bright: #536270;
+
+  --color-ink: #e9f0f6;
+  --color-ink-dim: #9aa8b5;
+  --color-ink-faint: #64727f;
+
+  --color-sick: #00a0dc;
+  --color-sick-bright: #57c8f5;
+  --color-sick-deep: #00658f;
+  --color-sick-wash: #0a2a3a;
+
+  --color-signal: #ffc72c;
+  --color-signal-bright: #ffdc7a;
+  --color-signal-deep: #7d5c00;
+  --color-signal-wash: #302300;
+
+  --color-halt: #ff6250;
+  --color-halt-bright: #ff9587;
+  --color-halt-deep: #8e2418;
+  --color-halt-wash: #33110d;
+
+  --font-display: var(--font-archivo), "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-plex-sans), "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  --radius-panel: 3px;
+
+  --ease-mech: cubic-bezier(0.16, 0.84, 0.28, 1);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-rail);
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-cab-950);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv05" 1;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Every interactive surface gets a visible, high-contrast focus ring. */
+  :focus-visible {
+    outline: 2px solid var(--color-sick);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--color-sick-deep);
+    color: var(--color-ink);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-cab-900);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-cab-600);
+    border: 2px solid var(--color-cab-900);
+    border-radius: 6px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-rail);
+  }
+}
+
+@layer components {
+  /* --- Nameplate type -----------------------------------------------------
+     Headings are set in Archivo at expanded width and heavy weight, tracked
+     tight. The reference is a machine nameplate stamped into metal, not a
+     marketing headline.                                                     */
+  .nameplate {
+    font-family: var(--font-display);
+    font-variation-settings: "wdth" 112;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+  }
+
+  /* --- Panels -------------------------------------------------------------
+     A panel is a plate bolted into the cabinet: 1px seam, a 1px highlight on
+     the top edge where light catches it, no soft shadow.                    */
+  .panel {
+    background-color: var(--color-cab-900);
+    border: 1px solid var(--color-rail);
+    border-radius: var(--radius-panel);
+    position: relative;
+  }
+
+  .panel::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, var(--color-rail-bright) 70%, transparent),
+      transparent
+    );
+    pointer-events: none;
+  }
+
+  .panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.625rem 0.875rem;
+    border-bottom: 1px solid var(--color-rail);
+    background-color: var(--color-cab-850);
+  }
+
+  /* --- Constraint rail — THE SIGNATURE ------------------------------------
+     Each spec is a number line. The bracket is the window the constraint
+     solver requires. The solid tick is the SICK candidate. The hollow tick is
+     the part being replaced. You can read "does this satisfy the constraint"
+     without reading a single number, which is the entire technical claim of
+     the product rendered as a widget.                                       */
+  .rail {
+    position: relative;
+    height: 22px;
+    width: 100%;
+  }
+
+  .rail-track {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--color-cab-600);
+  }
+
+  /* Faint graticule so the track reads as a measured axis, not a progress bar */
+  .rail-grat {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 7px;
+    transform: translateY(-3px);
+    background-image: repeating-linear-gradient(
+      90deg,
+      var(--color-cab-700) 0 1px,
+      transparent 1px 12.5%
+    );
+    opacity: 0.7;
+  }
+
+  .rail-band {
+    position: absolute;
+    top: 50%;
+    height: 14px;
+    transform: translateY(-50%);
+    left: var(--band-start);
+    width: var(--band-width);
+    background: color-mix(in oklab, var(--rail-accent) 10%, transparent);
+    border-left: 2px solid color-mix(in oklab, var(--rail-accent) 85%, transparent);
+    border-right: 2px solid color-mix(in oklab, var(--rail-accent) 85%, transparent);
+  }
+
+  /* Bracket serifs — the top and bottom caps that turn two vertical strokes
+     into a ├────┤ tolerance window rather than a progress bar. */
+  .rail-band::before,
+  .rail-band::after {
+    content: "";
+    position: absolute;
+    left: -2px;
+    right: -2px;
+    height: 1px;
+    background:
+      linear-gradient(90deg, color-mix(in oklab, var(--rail-accent) 85%, transparent) 0 5px, transparent 5px)
+        left / 100% 100% no-repeat,
+      linear-gradient(270deg, color-mix(in oklab, var(--rail-accent) 85%, transparent) 0 5px, transparent 5px)
+        right / 100% 100% no-repeat;
+  }
+  .rail-band::before {
+    top: 0;
+  }
+  .rail-band::after {
+    bottom: 0;
+  }
+
+  .rail-tick {
+    position: absolute;
+    top: 50%;
+    left: var(--tick);
+    width: 3px;
+    height: 18px;
+    margin-left: -1.5px;
+    transform: translateY(-50%);
+    background: var(--rail-accent);
+    transition:
+      left 620ms var(--ease-mech),
+      background-color 300ms ease;
+  }
+
+  .rail-tick::after {
+    content: "";
+    position: absolute;
+    inset: -3px -4px;
+    background: color-mix(in oklab, var(--rail-accent) 22%, transparent);
+  }
+
+  /* The part being replaced — hollow, so the delta is a visible gap */
+  .rail-ghost {
+    position: absolute;
+    top: 50%;
+    left: var(--tick);
+    width: 7px;
+    height: 7px;
+    margin-left: -3.5px;
+    transform: translateY(-50%) rotate(45deg);
+    border: 1px solid var(--color-ink-faint);
+    background: var(--color-cab-900);
+  }
+
+  /* --- Trace ------------------------------------------------------------- */
+  .trace-spine {
+    position: absolute;
+    left: 7px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--color-cab-600);
+  }
+
+  .trace-node {
+    position: absolute;
+    left: 3px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    border: 1px solid var(--node-accent, var(--color-rail-bright));
+    background: var(--color-cab-950);
+  }
+
+  .trace-node[data-live="true"] {
+    background: var(--node-accent, var(--color-sick));
+    animation: pulse-node 1.4s ease-in-out infinite;
+  }
+
+  /* --- Motion ------------------------------------------------------------ */
+  @keyframes pulse-node {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 color-mix(in oklab, var(--node-accent, var(--color-sick)) 60%, transparent);
+    }
+    50% {
+      box-shadow: 0 0 0 5px transparent;
+    }
+  }
+
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* The money shot: rank 1 is killed and drops out of the slot. */
+  @keyframes card-killed {
+    0% {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+    35% {
+      transform: translateX(-3px);
+    }
+    45% {
+      transform: translateX(3px);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(14px) scale(0.97);
+      filter: grayscale(1);
+    }
+  }
+
+  @keyframes card-promoted {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes sweep {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(300%);
+    }
+  }
+
+  .anim-in {
+    animation: slide-in 340ms var(--ease-mech) both;
+  }
+  .anim-killed {
+    animation: card-killed 620ms var(--ease-mech) both;
+  }
+  .anim-promoted {
+    animation: card-promoted 520ms var(--ease-mech) both;
+  }
+
+  /* Indeterminate work indicator: a scanner sweep, not a spinner. */
+  .sweep {
+    position: relative;
+    overflow: hidden;
+  }
+  .sweep::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 33%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, var(--color-sick) 26%, transparent),
+      transparent
+    );
+    animation: sweep 1.5s linear infinite;
+  }
+
+  /* --- Chips ------------------------------------------------------------- */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.1875rem 0.4375rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    line-height: 1.2;
+    border: 1px solid var(--chip-accent, var(--color-rail));
+    background: color-mix(in oklab, var(--chip-accent, var(--color-rail)) 12%, transparent);
+    color: var(--chip-ink, var(--color-ink-dim));
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  /* --- Housing render ------------------------------------------------------
+     There are no product photographs in this build. Rather than fake one, the
+     sensor is drawn from its own dimensions — a scale silhouette with the
+     optical face marked. It is honest, and it is to scale.                  */
+  .housing {
+    background-image:
+      linear-gradient(180deg, color-mix(in oklab, var(--color-ink) 7%, transparent), transparent 55%),
+      repeating-linear-gradient(
+        90deg,
+        color-mix(in oklab, var(--color-ink) 3%, transparent) 0 1px,
+        transparent 1px 4px
+      );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
