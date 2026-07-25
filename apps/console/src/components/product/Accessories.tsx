@@ -129,8 +129,8 @@ export function Accessories({ part }: { part: Part }) {
           Compatible components
         </h2>
         <p className="mt-2.5 max-w-[70ch] text-[12.5px] leading-[1.6] text-ink-dim">
-          What ships alongside the sensor. Each carries its own SICK order number — the sensor&rsquo;s
-          order number does not include any of them.
+          What ships alongside the sensor. Each carries its own SICK order number — the
+          sensor&rsquo;s order number does not include any of them.
         </p>
       </div>
 
@@ -172,9 +172,9 @@ export function Accessories({ part }: { part: Part }) {
       <p className="border-t border-rail bg-cab-850 px-4 py-4 text-[12.5px] leading-[1.65] text-ink-dim sm:px-5">
         <span className="eyebrow mr-2.5">Scope</span>
         These are catalogue accessories, not part of the equivalence claim. No constraint in a solve
-        depends on an accessory and none of them were scored — swapping a cordset or a bracket changes
-        the bill of materials, never the verdict. The right-hand figure on each line is the SICK order
-        number for that accessory.
+        depends on an accessory and none of them were scored — swapping a cordset or a bracket
+        changes the bill of materials, never the verdict. The right-hand figure on each line is the
+        SICK order number for that accessory.
       </p>
     </Panel>
   );

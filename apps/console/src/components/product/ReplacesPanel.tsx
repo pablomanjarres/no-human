@@ -61,7 +61,11 @@ function parseRival(label: string): Rival {
   if (known) return known;
   const brand = KNOWN_BRANDS.find((b) => label.toLowerCase().startsWith(b.toLowerCase()));
   const head = brand ?? label.split(" ")[0] ?? label;
-  const family = label.slice(head.length).replace(/series\s*$/i, "").trim() || label;
+  const family =
+    label
+      .slice(head.length)
+      .replace(/series\s*$/i, "")
+      .trim() || label;
   return {
     brand: head,
     family,
@@ -107,8 +111,8 @@ export function ReplacesPanel({ part }: { part: Part }) {
           <h2 className="nameplate text-[clamp(1.9rem,4.6vw,3rem)] leading-[0.88]">Replaces</h2>
           <p className="mt-3.5 max-w-[62ch] text-[13.5px] leading-[1.6] text-ink-dim">
             Competitor families this part is a documented replacement for. Each one resolves against
-            the spec vector on this page — parameter by parameter, both datasheets cited. Open one and
-            the solver runs it in front of you, or tells you it cannot.
+            the spec vector on this page — parameter by parameter, both datasheets cited. Open one
+            and the solver runs it in front of you, or tells you it cannot.
           </p>
         </div>
         <div className="shrink-0 text-right">
@@ -140,7 +144,9 @@ export function ReplacesPanel({ part }: { part: Part }) {
                   {r.family} <span className="text-ink-faint">series</span>
                 </p>
 
-                <p className="mt-2.5 max-w-[70ch] text-[12.5px] leading-[1.6] text-ink-dim">{r.note}</p>
+                <p className="mt-2.5 max-w-[70ch] text-[12.5px] leading-[1.6] text-ink-dim">
+                  {r.note}
+                </p>
               </div>
 
               <span className="eyebrow col-start-2 mt-0.5 shrink-0 whitespace-nowrap transition-colors group-hover:text-sick group-focus-visible:text-sick sm:col-start-3 sm:text-right">
@@ -160,9 +166,9 @@ export function ReplacesPanel({ part }: { part: Part }) {
       <p className="border-t border-rail bg-cab-850 px-5 py-4 text-[12.5px] leading-[1.65] text-ink-dim sm:px-6">
         <span className="eyebrow mr-2.5">Why this list exists</span>
         No manufacturer publishes a cross-reference for somebody else&rsquo;s catalogue, and the
-        spreadsheets that circulate instead carry no sources. This one is checkable: open a family and
-        every row of the comparison carries the datasheet page it was read from — or the run ends in a
-        refusal and says which constraint it could not defend.
+        spreadsheets that circulate instead carry no sources. This one is checkable: open a family
+        and every row of the comparison carries the datasheet page it was read from — or the run
+        ends in a refusal and says which constraint it could not defend.
       </p>
     </Panel>
   );

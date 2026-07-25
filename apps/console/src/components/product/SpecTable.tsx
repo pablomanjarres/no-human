@@ -43,7 +43,9 @@ function DisputePair({ dispute }: { dispute: Dispute }) {
       </div>
       <div className="min-w-[8.5rem] flex-1 rounded-[2px] border border-signal bg-signal-wash px-2.5 py-1.5">
         <span className="eyebrow text-signal">Verified</span>
-        <p className="mt-1 font-mono text-[13px] leading-tight text-signal-bright">{dispute.verified}</p>
+        <p className="mt-1 font-mono text-[13px] leading-tight text-signal-bright">
+          {dispute.verified}
+        </p>
       </div>
     </div>
   );
@@ -70,7 +72,9 @@ export function SpecTable({ part }: { part: Part }) {
 
       <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-5 border-b border-rail px-4 py-5 sm:px-5">
         <div className="min-w-0">
-          <h2 className="nameplate text-[clamp(1.15rem,2.6vw,1.65rem)] leading-none">Specification</h2>
+          <h2 className="nameplate text-[clamp(1.15rem,2.6vw,1.65rem)] leading-none">
+            Specification
+          </h2>
           <p className="mt-2.5 max-w-[66ch] text-[12.5px] leading-[1.6] text-ink-dim">
             Each row is one value read out of one datasheet page, not a summary of it. Click a page
             reference to see the line it came from.
@@ -86,8 +90,9 @@ export function SpecTable({ part }: { part: Part }) {
       <div className="overflow-x-auto">
         <table className="w-full min-w-[540px] border-collapse text-left">
           <caption className="sr-only">
-            Full specification for {part.brand} {part.partNumber}, read from {doc?.docTitle ?? "the offline corpus"}.
-            Each row carries the datasheet page the value was read from.
+            Full specification for {part.brand} {part.partNumber}, read from{" "}
+            {doc?.docTitle ?? "the offline corpus"}. Each row carries the datasheet page the value
+            was read from.
           </caption>
           <thead>
             <tr className="border-b border-rail bg-cab-850">
@@ -128,7 +133,9 @@ export function SpecTable({ part }: { part: Part }) {
                       {d ? (
                         <DisputePair dispute={d} />
                       ) : (
-                        <span className="font-mono text-[13px] leading-snug text-ink">{s.value}</span>
+                        <span className="font-mono text-[13px] leading-snug text-ink">
+                          {s.value}
+                        </span>
                       )}
                     </td>
                     <td className="px-4 py-3 align-top font-mono text-[11px] whitespace-nowrap text-ink-faint">
@@ -206,11 +213,12 @@ export function SpecTable({ part }: { part: Part }) {
       <p className="border-t border-rail px-4 py-4 text-[12.5px] leading-[1.65] text-ink-dim sm:px-5">
         <span className="eyebrow mr-2.5">On disputed rows</span>
         Two passes read every datasheet: one extracts, one verifies. Where they disagree, both
-        readings stay on the page with the reason, accented in yellow. Nothing is averaged and nothing
-        is quietly dropped — a disputed row is the system telling you the source is ambiguous, which is
-        the only honest thing to do with a number you are about to order against. Across the corpus{" "}
-        <span className="font-mono text-ink">{corpusStats.disputes}</span> rows are open disputes and{" "}
-        <span className="font-mono text-ink">{corpusStats.lowConfidence}</span> sit below high
+        readings stay on the page with the reason, accented in yellow. Nothing is averaged and
+        nothing is quietly dropped — a disputed row is the system telling you the source is
+        ambiguous, which is the only honest thing to do with a number you are about to order
+        against. Across the corpus{" "}
+        <span className="font-mono text-ink">{corpusStats.disputes}</span> rows are open disputes
+        and <span className="font-mono text-ink">{corpusStats.lowConfidence}</span> sit below high
         confidence. On this part:{" "}
         <span className="font-mono text-ink">
           {disputed} disputed, {belowHigh} below high

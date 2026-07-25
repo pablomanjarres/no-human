@@ -30,7 +30,9 @@ const CHIP_KEYS = [
 export function ProductHero({ part }: { part: Part }) {
   const primary = part.specs[0]?.citation;
   const dimsPage = specByKey(part, "width_mm")?.citation.page;
-  const chips = CHIP_KEYS.map((k) => specByKey(part, k)).filter((r): r is SpecRow => r !== undefined);
+  const chips = CHIP_KEYS.map((k) => specByKey(part, k)).filter(
+    (r): r is SpecRow => r !== undefined,
+  );
 
   return (
     <Panel className="anim-in">
@@ -90,8 +92,8 @@ export function ProductHero({ part }: { part: Part }) {
             <Housing part={part} accent="sick" maxWidth={288} />
           </div>
           <p className="border-t border-rail px-3 py-2 font-mono text-[10px] leading-[1.5] text-ink-faint">
-            Drawn from the dimensional drawing{dimsPage ? `, p.${dimsPage}` : ""}. There is no photograph of
-            this part in the corpus, so there is none on this page.
+            Drawn from the dimensional drawing{dimsPage ? `, p.${dimsPage}` : ""}. There is no
+            photograph of this part in the corpus, so there is none on this page.
           </p>
         </figure>
       </div>

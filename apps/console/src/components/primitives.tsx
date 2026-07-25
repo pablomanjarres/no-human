@@ -164,6 +164,8 @@ const PAD_X = 10;
 const PAD_Y = 9;
 const VB_W = 176;
 const VB_H = 106;
+/** The ghost caption needs its own line below the length dimension. */
+const VB_H_GHOST = 122;
 
 export function Housing({
   part,
@@ -186,10 +188,11 @@ export function Housing({
 
   const dimY = PAD_Y + Math.max(bh, gh) + 15;
   const dimX = PAD_X + Math.max(bw, gw) + 15;
+  const vbH = ghost ? VB_H_GHOST : VB_H;
 
   return (
     <svg
-      viewBox={`0 0 ${VB_W} ${VB_H}`}
+      viewBox={`0 0 ${VB_W} ${vbH}`}
       width="100%"
       style={{ maxWidth }}
       role="img"
@@ -301,11 +304,11 @@ export function Housing({
       {ghost ? (
         <text
           x={PAD_X}
-          y={VB_H - 4}
+          y={vbH - 5}
           fill="var(--color-ink-faint)"
           style={{ font: "500 8px var(--font-mono)" }}
         >
-          dashed: {ghost.partNumber} · same scale
+          dashed = {ghost.partNumber}, same scale
         </text>
       ) : null}
     </svg>

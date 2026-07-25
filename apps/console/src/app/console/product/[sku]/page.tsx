@@ -54,7 +54,10 @@ export default async function ProductPage({ params }: PageProps) {
 
   return (
     <main className="mx-auto w-full max-w-[1200px] px-4 py-6 sm:px-6 sm:py-8">
-      <nav aria-label="Breadcrumb" className="mb-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+      <nav
+        aria-label="Breadcrumb"
+        className="mb-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-2"
+      >
         <Link
           href="/console"
           className="eyebrow inline-flex items-center gap-2 transition-colors hover:text-ink focus-visible:text-ink"
@@ -76,7 +79,8 @@ export default async function ProductPage({ params }: PageProps) {
       <footer className="mt-6 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 border-t border-rail px-1 pt-4">
         <p className="font-mono text-[10px] leading-[1.6] text-ink-faint">
           Read from the offline corpus · {corpusStats.datasheets} datasheets ·{" "}
-          {corpusStats.specRows.toLocaleString("en-US")} spec rows · extracted {corpusStats.extractedAt}
+          {corpusStats.specRows.toLocaleString("en-US")} spec rows · extracted{" "}
+          {corpusStats.extractedAt}
         </p>
         <p className="font-mono text-[10px] text-ink-faint">
           Nothing on this page reaches the network at request time.

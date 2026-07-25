@@ -74,10 +74,10 @@ export function ReadoutStrip({ stats }: { stats: CorpusStats }) {
     },
     {
       index: "04",
-      label: "Low confidence",
+      label: "Low conf.",
       value: groupDigits(stats.lowConfidence),
       unit: "rows",
-      gloss: "Flagged at extraction. The solver will not treat these as settled.",
+      gloss: "Rows flagged at extraction. The solver will not treat one as settled.",
       marked: false,
       span: "",
       size: "text-[30px]",

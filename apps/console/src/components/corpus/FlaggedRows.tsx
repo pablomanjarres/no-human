@@ -56,7 +56,7 @@ export function FlaggedRows({ rows, totalLow }: { rows: FlaggedRow[]; totalLow: 
         ))}
       </ul>
 
-      <footer className="border-t border-rail bg-cab-850 px-4 py-3.5">
+      <footer className="mt-auto border-t border-rail bg-cab-850 px-4 py-3.5">
         <p className="text-[12px] leading-[1.65] text-ink-dim">
           <span className="font-mono text-ink">{groupDigits(totalLow)}</span> rows across the index
           sit below full confidence;{" "}
