@@ -1,0 +1,536 @@
+/* ENGINEERING COPILOT — widget de consulta rápida.
+   Responde lo sencillo aquí y entrega lo técnico a la consola de análisis.
+   Todo va prefijado con .cp- para no chocar con los estilos del sitio. */
+
+.cp-root {
+    /* Azul técnico y navy heredados del sitio (styles.css) */
+    --cp-blue: #0041c3;
+    --cp-blue-dark: #002d8a;
+    --cp-blue-tint: #eaf0ff;
+    --cp-blue-line: #cfdcff;
+    --cp-blue-ink: #16264d;
+
+    --cp-navy: #0d1117;
+    --cp-navy-2: #1a222d;
+
+    /* Verde solo para estados correctos */
+    --cp-green: #22c55e;
+    --cp-green-txt: #4ade80;
+
+    /* Ámbar solo para alertas */
+    --cp-amber: #d97706;
+    --cp-amber-bg: #fffbeb;
+    --cp-amber-line: #fde68a;
+    --cp-amber-ink: #92400e;
+
+    --cp-gray: #f2f4f7;
+    --cp-surface: #ffffff;
+    --cp-line: #e6e9ee;
+    --cp-ink: rgb(45, 50, 52);
+    --cp-ink-soft: #5b6670;
+
+    --cp-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+        "Liberation Mono", monospace;
+    --cp-shadow: 0 24px 60px -12px rgba(13, 17, 23, 0.3),
+        0 0 0 1px rgba(13, 17, 23, 0.06);
+}
+
+/* El sitio define márgenes globales para p/h*; los neutralizamos dentro del
+   widget con :where() para no ganarle especificidad a las clases .cp-*. */
+.cp-root :where(p, h2, h3, h4) {
+    margin: 0;
+    font: inherit;
+    text-transform: none;
+    letter-spacing: inherit;
+}
+
+/* ---------- Botón flotante ---------- */
+.cp-launcher {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 1200;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    height: 52px;
+    padding: 0 20px 0 8px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--cp-navy);
+    color: #fff;
+    font-family: "SICK Intl", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.32px;
+    cursor: pointer;
+    box-shadow: 0 12px 28px -8px rgba(13, 17, 23, 0.45);
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+.cp-launcher:hover {
+    background: var(--cp-navy-2);
+    transform: translateY(-2px);
+}
+.cp-launcher:focus-visible {
+    outline: 3px solid var(--cp-blue);
+    outline-offset: 3px;
+}
+.cp-launcher-icon {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--cp-blue);
+    color: #fff;
+    font-size: 15px;
+}
+.cp-launcher-label {
+    line-height: 1;
+}
+
+/* Punto verde: estado "en línea", como un LED de sensor */
+.cp-led {
+    position: relative;
+    flex: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--cp-green);
+}
+.cp-led::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    animation: cp-pulse 2.4s ease-out infinite;
+}
+@keyframes cp-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55);
+    }
+    70% {
+        box-shadow: 0 0 0 7px rgba(34, 197, 94, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    }
+}
+
+/* ---------- Panel ---------- */
+.cp-panel {
+    position: fixed;
+    right: 24px;
+    bottom: 88px;
+    z-index: 1200;
+    display: flex;
+    flex-direction: column;
+    width: 390px;
+    height: 590px;
+    max-height: calc(100vh - 112px);
+    overflow: hidden;
+    border-radius: 16px;
+    background: var(--cp-surface);
+    box-shadow: var(--cp-shadow);
+    font-family: "SICK Intl", sans-serif;
+    color: var(--cp-ink);
+    letter-spacing: 0.32px;
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+    transform-origin: 100% 100%;
+    transition:
+        opacity 0.18s ease,
+        transform 0.18s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+.cp-panel[hidden] {
+    display: none;
+}
+.cp-panel.is-open {
+    opacity: 1;
+    transform: none;
+}
+
+/* ---------- Header ---------- */
+.cp-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 14px 14px 16px;
+    background: var(--cp-navy);
+    color: #fff;
+}
+.cp-monogram {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    flex: none;
+    border-radius: 9px;
+    background: var(--cp-blue);
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1;
+}
+.cp-headings {
+    flex: 1;
+    min-width: 0;
+}
+.cp-title {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: #fff;
+}
+.cp-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 2px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--cp-green-txt);
+}
+.cp-close {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    flex: none;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 16px;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+.cp-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+.cp-close:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+/* ---------- Hilo de mensajes ---------- */
+.cp-thread {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 18px 16px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: var(--cp-gray);
+}
+/* El hilo crece desde abajo: sin conversación no queda un hueco gris muerto.
+   Con scroll, el margen automático se resuelve a 0 y no recorta el inicio. */
+.cp-thread::before {
+    content: "";
+    margin-top: auto;
+}
+.cp-thread::-webkit-scrollbar {
+    width: 8px;
+}
+.cp-thread::-webkit-scrollbar-thumb {
+    border: 2px solid var(--cp-gray);
+    border-radius: 999px;
+    background: #d3d9e2;
+}
+
+.cp-msg {
+    max-width: 84%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    animation: cp-rise 0.16s ease-out both;
+}
+@keyframes cp-rise {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+}
+.cp-msg-bot {
+    align-self: flex-start;
+    background: var(--cp-surface);
+    border: 1px solid var(--cp-line);
+}
+.cp-msg-user {
+    align-self: flex-end;
+    background: var(--cp-blue-tint);
+    border: 1px solid var(--cp-blue-line);
+    color: var(--cp-blue-ink);
+}
+
+/* Indicador de escritura */
+.cp-typing {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    padding: 13px 12px;
+}
+.cp-typing span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #a8b2c0;
+    animation: cp-blink 1.2s ease-in-out infinite;
+}
+.cp-typing span:nth-child(2) {
+    animation-delay: 0.15s;
+}
+.cp-typing span:nth-child(3) {
+    animation-delay: 0.3s;
+}
+@keyframes cp-blink {
+    0%,
+    60%,
+    100% {
+        opacity: 0.3;
+    }
+    30% {
+        opacity: 1;
+    }
+}
+
+/* ---------- Tarjeta de escalado (el elemento firma) ---------- */
+.cp-escalate {
+    align-self: stretch;
+    max-width: 100%;
+    padding: 14px 14px 14px 16px;
+    border: 1px solid var(--cp-blue-line);
+    border-left: 3px solid var(--cp-blue);
+    border-radius: 12px;
+    background: var(--cp-surface);
+    box-shadow: 0 6px 16px -8px rgba(0, 65, 195, 0.35);
+    animation: cp-rise 0.16s ease-out both;
+}
+.cp-escalate-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--cp-navy);
+}
+/* Eco de la consulta: lo que exactamente se entrega a la consola */
+.cp-escalate-echo {
+    display: flex;
+    gap: 7px;
+    margin-top: 10px;
+    padding: 8px 10px;
+    border: 1px solid #e3e8f0;
+    border-radius: 8px;
+    background: #f7f9fc;
+    font-family: var(--cp-mono);
+    font-size: 12.5px;
+    line-height: 1.45;
+    letter-spacing: 0;
+    color: #3a4553;
+    word-break: break-word;
+}
+.cp-escalate-echo::before {
+    content: "›";
+    flex: none;
+    color: var(--cp-blue);
+    font-weight: 700;
+}
+.cp-escalate-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 11px 14px;
+    border-radius: 8px;
+    background: var(--cp-blue);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    transition: background 0.2s ease;
+}
+.cp-escalate-cta:hover {
+    background: var(--cp-blue-dark);
+}
+.cp-escalate-cta:focus-visible {
+    outline: 3px solid var(--cp-blue);
+    outline-offset: 2px;
+}
+.cp-escalate-note {
+    margin-top: 8px;
+    font-size: 11.5px;
+    line-height: 1.45;
+    color: var(--cp-ink-soft);
+}
+
+/* ---------- Alerta (solo ámbar) ---------- */
+.cp-alert {
+    align-self: stretch;
+    max-width: 100%;
+    display: flex;
+    gap: 10px;
+    padding: 11px 12px;
+    border: 1px solid var(--cp-amber-line);
+    border-radius: 10px;
+    background: var(--cp-amber-bg);
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--cp-amber-ink);
+    animation: cp-rise 0.16s ease-out both;
+}
+.cp-alert i {
+    flex: none;
+    margin-top: 2px;
+    color: var(--cp-amber);
+}
+
+/* ---------- Composer ---------- */
+.cp-composer {
+    padding: 12px 14px 14px;
+    border-top: 1px solid var(--cp-line);
+    background: var(--cp-surface);
+}
+.cp-examples {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+.cp-examples[hidden] {
+    display: none;
+}
+.cp-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    max-width: 100%;
+    padding: 6px 11px;
+    border: 1px solid var(--cp-line);
+    border-radius: 999px;
+    background: var(--cp-surface);
+    color: var(--cp-ink);
+    font-family: inherit;
+    font-size: 12.5px;
+    letter-spacing: 0.32px;
+    text-align: left;
+    cursor: pointer;
+    transition:
+        border-color 0.2s ease,
+        color 0.2s ease,
+        background 0.2s ease;
+}
+.cp-chip i {
+    font-size: 9px;
+    color: var(--cp-blue);
+}
+.cp-chip:hover {
+    border-color: var(--cp-blue-line);
+    background: var(--cp-blue-tint);
+    color: var(--cp-blue-dark);
+}
+.cp-chip:focus-visible {
+    outline: 2px solid var(--cp-blue);
+    outline-offset: 2px;
+}
+
+.cp-form {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+}
+.cp-input {
+    flex: 1;
+    min-width: 0;
+    max-height: 92px;
+    padding: 10px 12px;
+    border: 1px solid #e0e4ea;
+    border-radius: 10px;
+    background: var(--cp-gray);
+    color: var(--cp-ink);
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.45;
+    letter-spacing: 0.32px;
+    resize: none;
+    overflow-y: auto;
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+.cp-input::placeholder {
+    color: #97a1ad;
+}
+.cp-input:focus {
+    outline: none;
+    border-color: var(--cp-blue);
+    background: var(--cp-surface);
+}
+.cp-send {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    flex: none;
+    border: 0;
+    border-radius: 10px;
+    background: var(--cp-blue);
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        opacity 0.2s ease;
+}
+.cp-send:hover:not(:disabled) {
+    background: var(--cp-blue-dark);
+}
+.cp-send:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+.cp-send:focus-visible {
+    outline: 3px solid var(--cp-blue);
+    outline-offset: 2px;
+}
+
+/* ---------- Móvil: casi todo el ancho, siempre por encima ---------- */
+@media (max-width: 520px) {
+    .cp-launcher {
+        right: 12px;
+        bottom: 14px;
+        height: 48px;
+        padding: 0 16px 0 7px;
+        font-size: 14px;
+    }
+    .cp-launcher-icon {
+        width: 34px;
+        height: 34px;
+    }
+    .cp-panel {
+        right: 10px;
+        left: 10px;
+        bottom: 72px;
+        width: auto;
+        height: min(590px, calc(100vh - 96px));
+        height: min(590px, calc(100dvh - 96px));
+        max-height: none;
+    }
+    .cp-msg {
+        max-width: 90%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cp-root *,
+    .cp-root *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}

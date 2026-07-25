@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://cdn.sick.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="copilot.css">
 </head>
 <body>
 
@@ -281,6 +282,48 @@
         </div>
     </div>
 
+    <!-- ENGINEERING COPILOT -->
+    <div class="cp-root" id="engineering-copilot">
+        <button class="cp-launcher" id="cp-launcher" type="button" aria-expanded="false" aria-controls="cp-panel">
+            <span class="cp-launcher-icon" aria-hidden="true"><i class="fa-solid fa-wave-square"></i></span>
+            <span class="cp-launcher-label">Engineering Copilot</span>
+            <span class="cp-led" aria-hidden="true"></span>
+        </button>
+
+        <section class="cp-panel" id="cp-panel" role="dialog" aria-labelledby="cp-title" hidden>
+            <header class="cp-header">
+                <span class="cp-monogram" aria-hidden="true">S</span>
+                <div class="cp-headings">
+                    <h2 class="cp-title" id="cp-title">Engineering Copilot</h2>
+                    <p class="cp-status"><span class="cp-led" aria-hidden="true"></span>Listo para ayudar</p>
+                </div>
+                <button class="cp-close" id="cp-close" type="button" aria-label="Cerrar el copiloto">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+            </header>
+
+            <div class="cp-thread" id="cp-thread" role="log" aria-live="polite" aria-label="Conversación"></div>
+
+            <div class="cp-composer">
+                <div class="cp-examples" id="cp-examples">
+                    <button class="cp-chip" type="button" data-query="¿Qué puedo preguntar aquí?">
+                        ¿Qué puedo preguntar aquí? <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                    </button>
+                    <button class="cp-chip" type="button" data-query="Equivalente SICK del Banner Q45">
+                        Equivalente SICK del Banner Q45 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <form class="cp-form" id="cp-form">
+                    <textarea class="cp-input" id="cp-input" rows="1" placeholder="Escribe tu consulta…" aria-label="Consulta"></textarea>
+                    <button class="cp-send" id="cp-send" type="submit" aria-label="Enviar consulta">
+                        <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+    </div>
+
     <script src="app.js"></script>
+    <script src="copilot.js"></script>
 </body>
 </html>
