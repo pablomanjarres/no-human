@@ -36,12 +36,15 @@ import { basename, dirname, extname, join, resolve } from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
 
+import Anthropic from "@anthropic-ai/sdk";
+
 import { createRetriever, readIndex, type Retriever } from "@no-human/rag";
 
 import { createClaudeClient, type LlmClient } from "./claude.js";
 import { loadCompetitorIndex, type CompetitorIndex } from "./competitors.js";
+import type { VisionClient } from "./inputs/vision.js";
 import { consult } from "./consultant.js";
-import { runMigration } from "./orchestrator.js";
+import { runBomAudit, runMigration } from "./orchestrator.js";
 import { renderMarkdown, renderTraceSummary } from "./report.js";
 import { createTrace, fromNdjson, replayTrace, type Trace } from "./trace.js";
 import type { AgentInput, ConsultOutcome, MigrationReport, TraceEvent } from "./types.js";
@@ -278,6 +281,8 @@ async function openRetriever(argv: Argv): Promise<Retriever> {
 
 interface RunContext {
   client: LlmClient;
+  /** Raw SDK client for the nameplate-photo path (image content blocks). */
+  vision: VisionClient;
   retriever: Retriever;
   competitors: CompetitorIndex;
   trace: Trace;
@@ -296,7 +301,12 @@ async function openRun(argv: Argv, signal: AbortSignal): Promise<RunContext> {
   const retriever = await openRetriever(argv);
   const competitors = await loadCompetitorIndex(REPO_ROOT);
   const trace = createTrace(has(argv, "trace") ? { onEvent: printTraceEvent } : undefined);
-  return { client: createClaudeClient(), retriever, competitors, trace, signal };
+  // The vision path needs the raw SDK surface (image content blocks), which the
+  // structured LlmClient wrapper deliberately does not model. Constructed here
+  // rather than lazily inside the resolver so `--image` fails at startup on a
+  // missing credential, not three steps into a run.
+  const vision = new Anthropic() as unknown as VisionClient;
+  return { client: createClaudeClient(), vision, retriever, competitors, trace, signal };
 }
 
 // ---------------------------------------------------------------------------
@@ -416,17 +426,33 @@ function limitRecommendations(report: MigrationReport, top: number | undefined):
 async function cmdMigrate(argv: Argv, signal: AbortSignal): Promise<void> {
   const input = await buildMigrateInput(argv);
   const ctx = await openRun(argv, signal);
+  const deps = {
+    client: ctx.client,
+    vision: ctx.vision,
+    retriever: ctx.retriever,
+    competitors: ctx.competitors,
+    trace: ctx.trace,
+    signal: ctx.signal,
+  };
 
-  const report = limitRecommendations(
-    await runMigration(input, {
-      client: ctx.client,
-      retriever: ctx.retriever,
-      competitors: ctx.competitors,
-      trace: ctx.trace,
-      signal: ctx.signal,
-    }),
-    intFlag(argv, "top"),
-  );
+  // A BOM is many independent resolutions, not one — `runMigration` rejects it
+  // by design. Route it to the auditor here rather than making the operator
+  // know that: `--bom` is a documented flag, so it has to do something.
+  if (input.kind === "bom") {
+    const entries = await runBomAudit(input.csv, deps);
+    if (has(argv, "json")) {
+      json(entries);
+      return;
+    }
+    for (const entry of entries) {
+      out(`\n## BOM line ${entry.row.line}${entry.row.partNumber ? ` · ${entry.row.partNumber}` : ""}`);
+      out(renderMarkdown(entry.report));
+    }
+    note(`\n${entries.length} row(s) audited.`);
+    return;
+  }
+
+  const report = limitRecommendations(await runMigration(input, deps), intFlag(argv, "top"));
 
   if (has(argv, "json")) {
     json(report);

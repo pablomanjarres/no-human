@@ -57,6 +57,7 @@ import { challengeAll, type ChallengeCandidate } from "./challenger.js";
 import { isRefused, type LlmClient, type StructuredOk, type StructuredRequest, type Refused, type ToolLoopOk, type ToolLoopRequest, type Usage } from "./claude.js";
 import type { CompetitorIndex } from "./competitors.js";
 import { parseBom, type BomRow } from "./inputs/bom.js";
+import type { VisionClient } from "./inputs/vision.js";
 import { buildComparison } from "./report.js";
 import { resolve } from "./resolver.js";
 import { createTrace, type Trace } from "./trace.js";
@@ -132,6 +133,17 @@ export interface MigrationDeps {
   readonly client: LlmClient;
   readonly retriever: Retriever;
   readonly competitors: CompetitorIndex;
+  /**
+   * Raw Anthropic client used for the nameplate-photo path.
+   *
+   * Separate from `client` because {@link readLabel} sends an image content
+   * block, which the structured {@link LlmClient} wrapper does not model.
+   * Optional so the three text paths need no vision plumbing — but a caller
+   * that passes an `image` input without it gets a hard error from the
+   * resolver rather than a silent downgrade, because reading a part number off
+   * a label is the whole job in that modality.
+   */
+  readonly vision?: VisionClient;
   /** Existing trace to append to. Omit and the run creates its own. */
   readonly trace?: Trace;
   readonly signal?: AbortSignal;
@@ -550,6 +562,7 @@ export async function runMigration(
     client,
     competitors: deps.competitors,
     trace,
+    ...(deps.vision !== undefined ? { vision: deps.vision } : {}),
     ...signalOpts,
   });
 
