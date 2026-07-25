@@ -74,6 +74,34 @@ Rules: a derived field never overwrites a stated one, every derived field record
 
 Regenerate with `node scripts/enrich-catalog.mjs`.
 
+## Deployed surface
+
+The Vercel project deploys `apps/console`, so the tool ships there as a Next
+route handler rather than the standalone server:
+
+| Path | Serves |
+| --- | --- |
+| `/consult.html` | the console UI, synced from `apps/sick-clone-ui` |
+| `/api/consult` | the engine behind a route handler |
+| `/api/health` | catalogue counts + whether a model credential is present |
+
+`apps/consultancy-api` (plain `node:http`) stays for local development. Both
+surfaces import the same `@no-human/consultancy-engine`, so there is one
+implementation of the scoring and one of the prompts.
+
+`scripts/build-consult-catalog.mjs` stages the enriched catalogue into
+`src/data/consult-catalog.generated.json` (gitignored) so the route can `import`
+it and Next bundles it into the function — no output-file tracing to get wrong.
+It drops `other_specs` and `derived_from`, which the route never reads, taking
+the payload from 3.6 MB to 3.0 MB.
+
+The Vercel `buildCommand` runs `turbo run build --filter=@no-human/console` from
+the workspace root. Turbo's `build` task declares `dependsOn: ["^build"]`, so the
+engine and the LLM transport compile before Next resolves them.
+
+`ANTHROPIC_API_KEY` is set in the Vercel project. Without it the deployment still
+answers, deterministically, and says so.
+
 ## Running it
 
 ```sh

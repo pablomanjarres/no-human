@@ -15,7 +15,15 @@ const source = resolve(here, "..", "..", "sick-clone-ui");
 const target = resolve(here, "..", "public");
 
 /** Everything the page needs at runtime. The scrape scripts stay behind. */
-const ENTRIES = ["index.html", "styles.css", "app.js", "assets"];
+const ENTRIES = [
+  "index.html",
+  "styles.css",
+  "app.js",
+  "assets",
+  "consult.html",
+  "consult.css",
+  "consult.js",
+];
 
 const exists = async (p) => {
   try {

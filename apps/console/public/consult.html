@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Asesor de aplicaciones · SICK</title>
+    <link rel="stylesheet" href="consult.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html">SICK</a>
+      <span class="brand-sub">Asesor de aplicaciones</span>
+      <span class="status" id="status">conectando…</span>
+    </header>
+
+    <main class="wrap">
+      <section class="intro">
+        <h1>Describe el problema. Te decimos qué sensor lo resuelve.</h1>
+        <p>
+          Escribe la aplicación en lenguaje natural. El asesor identifica el principio de detección
+          adecuado, filtra el catálogo SICK y explica por qué esa referencia es la correcta —
+          incluyendo lo que el catálogo <em>no</em> confirma.
+        </p>
+      </section>
+
+      <form class="panel" id="form">
+        <label class="field">
+          <span class="label">Problema o necesidad</span>
+          <textarea
+            id="problem"
+            rows="4"
+            required
+            placeholder="Ej.: Necesito detectar botellas de PET transparente en una cinta transportadora a 2 metros. La zona se lava a presión varias veces al día."
+          ></textarea>
+        </label>
+
+        <div class="row">
+          <label class="field">
+            <span class="label">Sector <em>(opcional)</em></span>
+            <input id="industry" type="text" placeholder="Alimentación y bebidas" />
+          </label>
+          <label class="field">
+            <span class="label">Aplicación <em>(opcional)</em></span>
+            <input id="application" type="text" placeholder="Control de presencia en línea de llenado" />
+          </label>
+        </div>
+
+        <details class="constraints">
+          <summary>Restricciones concretas <em>(opcional)</em></summary>
+          <div class="row">
+            <label class="field">
+              <span class="label">Distancia de detección (mm)</span>
+              <input id="sensing_distance_mm" type="number" min="0" placeholder="2000" />
+            </label>
+            <label class="field">
+              <span class="label">Protocolo de comunicación</span>
+              <input id="communication_protocol" type="text" placeholder="IO-Link" />
+            </label>
+          </div>
+          <div class="row">
+            <label class="field">
+              <span class="label">Entorno</span>
+              <input id="environment" type="text" placeholder="Lavado a presión, IP69K" />
+            </label>
+            <label class="field">
+              <span class="label">Montaje</span>
+              <input id="mounting" type="text" placeholder="Escuadra lateral, M18" />
+            </label>
+          </div>
+          <div class="row">
+            <label class="field">
+              <span class="label">Precisión</span>
+              <input id="precision" type="text" placeholder="±1 mm" />
+            </label>
+            <label class="field">
+              <span class="label">Presupuesto</span>
+              <input id="budget" type="text" placeholder="200 EUR/unidad" />
+            </label>
+          </div>
+        </details>
+
+        <button type="submit" id="submit">Analizar y recomendar</button>
+      </form>
+
+      <section id="results" class="results" hidden></section>
+    </main>
+
+    <footer class="foot">
+      Datos de producto extraídos del <em>Catálogo resumido SICK 2015/2016</em> (doc. 8014481),
+      1.493 productos y 283 accesorios. Producto © SICK AG. Esta herramienta no sustituye a la
+      hoja de datos ni a una evaluación de riesgos.
+    </footer>
+
+    <script src="consult.js"></script>
+  </body>
+</html>

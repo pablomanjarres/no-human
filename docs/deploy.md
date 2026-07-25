@@ -17,8 +17,10 @@ account. Do it once in a browser.
    two levels up.
 3. Framework preset: Next.js. Build and install commands come from
    `apps/console/vercel.json`, so leave them on the defaults.
-4. Environment variables: none are required. The console renders from the offline
-   corpus. `ANTHROPIC_API_KEY` and friends land later — see `.env.example`.
+4. Environment variables: none are required by the console, which renders from
+   the offline corpus. `ANTHROPIC_API_KEY` is required only by `/api/consult` —
+   without it the advisor still answers, ranking deterministically, and says so
+   on every response. See `docs/consultancy-tool.md`.
 5. Deploy.
 
 Autodeploy is on from that moment. Nothing else to configure.
@@ -56,6 +58,9 @@ copies under `apps/console/public` are gitignored so they can never drift.
 | `/console/product/[sku]` | Product record, prerendered for all 799 SKUs — the three hand-authored parts plus every sensing SKU in the catalogue |
 | `/console/corpus` | Extraction swarm output and the dispute ledger |
 | `/console/doc/[docId]` | Citation viewer |
+| `/consult.html` | Application advisor — problem description in, recommended SKU out |
+| `/api/consult` | Advisor endpoint (`POST`). Needs `ANTHROPIC_API_KEY` for the full analysis; degrades to deterministic ranking without it |
+| `/api/health` | Catalogue counts and whether a model credential is present |
 
 ## Demo links to have open on stage
 

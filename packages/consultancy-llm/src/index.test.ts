@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { extractJson } from './anthropic.js';
+import { extractJson } from './index.js';
 
 describe('extractJson', () => {
   it('parses a structured-output response', () => {

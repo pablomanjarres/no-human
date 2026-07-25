@@ -12,7 +12,7 @@
  *
  * Output: src/data/catalog.generated.json (gitignored, rebuilt before dev/build).
  */
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -203,8 +203,13 @@ const coverage = {
   },
 };
 
+// Write then rename: `turbo run typecheck build` runs both tasks concurrently
+// and both regenerate this file. Rename is atomic, so a concurrent reader
+// never sees a half-written JSON.
 await mkdir(dirname(outFile), { recursive: true });
-await writeFile(outFile, JSON.stringify({ coverage, catalog }, null, 0));
+const tmpFile = `${outFile}.${process.pid}.tmp`;
+await writeFile(tmpFile, JSON.stringify({ coverage, catalog }, null, 0));
+await rename(tmpFile, outFile);
 
 console.log(
   `[build-catalog] ${catalog.length} sensing SKUs from ${coverage.totalSkus} catalogue products · ` +
