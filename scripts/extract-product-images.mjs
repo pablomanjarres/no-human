@@ -26,8 +26,12 @@ const REPO = path.resolve(import.meta.dirname, "..");
 // --- geometry thresholds, in pdftohtml page space at --zoom 1.5 (892 x 1188 per page) ---
 const PAGE_WIDE_FRACTION = 0.7; // >= this share of page width => decorative header band, not a product
 const MIN_AREA = 500; // below this it is a pictogram/symbol, not a photo
-const ROW_THUMB_MAX_H = 70; // a table-row thumbnail is never taller than this
-const HERO_MIN_H = 100; // a family hero photo is at least this tall
+// Row matching runs first and consumes what it matches; whatever is left and big enough is a hero.
+// These two bands must overlap, never leave a gap: a gap silently drops real photos. It did — a
+// mounting column 88 px tall on K-199 (2 px from its own order-number row) and the TR4 Direct family
+// photo 72 px tall on L-215 both fell between a 70 px thumbnail ceiling and a 100 px hero floor.
+const ROW_THUMB_MAX_H = 100; // tallest image still allowed to match a single table row
+const HERO_MIN_H = 71; // shortest unmatched image still allowed to stand for a family
 const ROW_MATCH_TOLERANCE = 45; // max |image centre - order-number centre| to call it the same row
 const FOOTER_FRACTION = 0.93; // text below this is the page footer (holds the catalog id 8014481)
 const CATALOG_ID = "8014481"; // doc number in every footer — never an order number
@@ -69,12 +73,9 @@ const skus = readJsonl(path.join(DATASET, "products.jsonl"));
 const rows = readJsonl(path.join(DATASET, "products_all_rows.jsonl"));
 
 // Every page a SKU appears on. pdf_page is 0-based in the dataset; pdftohtml pages are 1-based.
-const pagesOfSku = new Map(); // order_number -> Set<pageNo>
 const skusOnPage = new Map(); // pageNo -> Set<order_number>
 for (const r of rows) {
   const page = r.pdf_page + 1;
-  if (!pagesOfSku.has(r.order_number)) pagesOfSku.set(r.order_number, new Set());
-  pagesOfSku.get(r.order_number).add(page);
   if (!skusOnPage.has(page)) skusOnPage.set(page, new Set());
   skusOnPage.get(page).add(r.order_number);
 }
@@ -127,7 +128,7 @@ for (const block of xml.split('<page number="').slice(1)) {
     const text = m[3].replace(/<[^>]+>/g, "");
     for (const num of text.match(/\b\d{7}\b/g) ?? []) {
       if (num === CATALOG_ID || !expected.has(num)) continue;
-      orderNumbers.push({ num, top, left: Number(m[2]), text: text.trim().slice(0, 80) });
+      orderNumbers.push({ num, top, left: Number(m[2]) });
     }
   }
   pages.push({ number, width, height, images, orderNumbers });
@@ -140,7 +141,7 @@ const ROW_TEXT_H = 11; // a text line's height in this page space
 
 const assignments = new Map(); // order_number -> candidate assignment
 const heroesByPage = new Map(); // pageNo -> chosen hero image
-const stats = { decorative: 0, pictogram: 0, rowMatched: 0, heroes: 0, unused: 0 };
+const stats = { decorative: 0, pictogram: 0, rowMatched: 0, heroes: 0, noBucket: 0 };
 
 function better(a, b) {
   // lower rank wins; ties broken by larger source image
@@ -176,6 +177,7 @@ for (const page of pages) {
   // --- row thumbnails: mutual-nearest match between small images and order-number rows
   const thumbs = usable.filter((i) => i.h <= ROW_THUMB_MAX_H);
   const taken = new Set();
+  const consumed = new Set(); // images claimed by a row, so the hero pass cannot reuse them
   for (const img of thumbs) {
     let best = null;
     let bestDist = Infinity;
@@ -187,19 +189,14 @@ for (const page of pages) {
         best = on;
       }
     }
-    if (!best || bestDist > ROW_MATCH_TOLERANCE) {
-      stats.unused++;
-      continue;
-    }
+    if (!best || bestDist > ROW_MATCH_TOLERANCE) continue;
     // require the reverse direction too: no other thumbnail is closer to this row
     const contender = thumbs.some(
       (o) => o !== img && Math.abs(centre(o) - (best.top + ROW_TEXT_H / 2)) < bestDist,
     );
-    if (contender) {
-      stats.unused++;
-      continue;
-    }
+    if (contender) continue;
     taken.add(best.num);
+    consumed.add(img);
     stats.rowMatched++;
     propose(best.num, {
       image: img,
@@ -215,12 +212,18 @@ for (const page of pages) {
     });
   }
 
-  // --- family hero: the largest tall image on the page that was not used as a row thumbnail
-  const heroCandidates = usable.filter((i) => i.h >= HERO_MIN_H);
+  // --- family hero: the largest tall image on the page that no row already claimed
+  const heroCandidates = usable.filter((i) => !consumed.has(i) && i.h >= HERO_MIN_H);
   if (heroCandidates.length) {
     const hero = heroCandidates.reduce((a, b) => (b.w * b.h > a.w * a.h ? b : a));
     heroesByPage.set(page.number, { hero, ambiguous: heroCandidates.length > 1, page });
     stats.heroes++;
+  }
+
+  // Anything usable that neither a row nor the hero pass took. Reported rather than dropped in
+  // silence, so a future threshold change that starts losing photos is visible in the output.
+  for (const img of usable) {
+    if (!consumed.has(img) && img.h < HERO_MIN_H) stats.noBucket++;
   }
 }
 
@@ -423,7 +426,7 @@ writeFileSync(
 
 process.stdout.write(
   `\nPDF images: ${pages.reduce((n, p) => n + p.images.length, 0)} ` +
-    `(skipped ${stats.decorative} page-wide bands, ${stats.pictogram} pictograms, ${stats.unused} unmatched)\n` +
+    `(skipped ${stats.decorative} page-wide bands, ${stats.pictogram} pictograms, ${stats.noBucket} unused)\n` +
     `Row-aligned matches: ${stats.rowMatched}   pages with a hero photo: ${stats.heroes}\n` +
     `SKUs with an image: ${withImage}/${skus.length} (${((withImage / skus.length) * 100).toFixed(1)}%)\n` +
     `  by method: ${JSON.stringify(methodCounts)}\n` +

@@ -85,9 +85,9 @@ serves them directly.
 
 | Metric | Value |
 |---|---|
-| SKUs with a photo | **1,458 / 1,776 (82.1 %)** |
-| Distinct photos | 297 (≈1.1 MB WebP) |
-| SKUs with no photo in the source | 318 |
+| SKUs with a photo | **1,477 / 1,776 (83.2 %)** |
+| Distinct photos | 299 (≈1.1 MB WebP) |
+| SKUs with no photo in the source | 299 |
 
 Regenerate with (needs `pdftohtml`, `pdftoppm`, ImageMagick, and the source PDF):
 
