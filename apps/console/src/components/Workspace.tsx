@@ -133,15 +133,23 @@ export function Workspace({
     setTake((n) => n + 1);
   }, []);
 
+  // Stable: the drawer's focus manager keys off this identity, and the parent
+  // re-renders every animation frame while a replay is playing.
+  const closeCite = useCallback(() => setCite(null), []);
+
   const working = playing && run !== null && elapsed < run.stats.durationMs;
 
   return (
-    <div className="flex h-dvh flex-col overflow-hidden">
+    // Below lg the console is a document: the page scrolls and every panel is
+    // printed at its natural height. Only at lg does it become a fixed-height
+    // cabinet with three independently scrolling columns — capping the height on
+    // a phone turned each panel into a ~115px porthole over 1500px of content.
+    <div className="flex min-h-dvh flex-col lg:h-dvh lg:overflow-hidden">
       <TelemetryRail stats={stats} />
       <InputBar mode={mode} onModeChange={setMode} onSolve={handleSolve} busy={working} />
       {run && run.constraints.length > 0 ? <ConstraintStrip constraints={run.constraints} /> : null}
 
-      <main className="grid min-h-0 flex-1 grid-cols-1 gap-px overflow-y-auto bg-rail lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)_minmax(0,1fr)] lg:overflow-hidden">
+      <main className="grid flex-auto grid-cols-1 gap-px bg-rail lg:min-h-0 lg:flex-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)_minmax(0,1fr)] lg:overflow-hidden">
         {run ? (
           <SourcePanel part={run.source} onCite={setCite} />
         ) : (
@@ -179,7 +187,7 @@ export function Workspace({
         onReplay={replay}
       />
 
-      {cite ? <CitationDrawer citation={cite} onClose={() => setCite(null)} /> : null}
+      {cite ? <CitationDrawer citation={cite} onClose={closeCite} /> : null}
     </div>
   );
 }
@@ -216,12 +224,14 @@ function Transport({
   const kill = run?.promotion;
 
   return (
-    <footer className="flex shrink-0 items-center gap-3 border-t border-rail bg-cab-900 px-3.5 py-1.5">
+    // Sticky below lg so the scrub bar stays reachable while the page scrolls;
+    // at lg the shell is already viewport-height, so it is simply the bottom edge.
+    <footer className="sticky bottom-0 z-20 flex shrink-0 items-center gap-3 border-t border-rail bg-cab-900 px-3.5 py-1.5 lg:static">
       <button
         type="button"
         onClick={onReplay}
         disabled={!run}
-        className="shrink-0 border border-cab-600 px-2 py-[3px] font-mono text-[9.5px] uppercase tracking-[0.12em] text-ink-dim transition-colors hover:border-sick hover:text-sick disabled:opacity-40"
+        className="shrink-0 border border-rail bg-cab-900 px-2 py-[3px] font-mono text-[9.5px] uppercase tracking-[0.12em] text-ink-dim transition-colors hover:border-sick hover:bg-sick-wash hover:text-sick disabled:opacity-50"
       >
         ⟲ Replay
       </button>
@@ -230,8 +240,7 @@ function Transport({
         <button
           type="button"
           onClick={() => onScrub(Math.max(kill.at - 260, 0))}
-          className="shrink-0 border px-2 py-[3px] font-mono text-[9.5px] uppercase tracking-[0.12em] transition-opacity hover:opacity-80"
-          style={{ borderColor: "var(--color-halt-deep)", color: "var(--color-halt)" }}
+          className="shrink-0 border border-halt-bright bg-halt-wash px-2 py-[3px] font-mono text-[9.5px] uppercase tracking-[0.12em] text-halt transition-colors hover:border-halt"
           title="Jump to the moment the challenger kills rank 1"
         >
           ⏵ The kill
@@ -246,7 +255,7 @@ function Transport({
         onChange={(e) => onScrub(Number(e.target.value))}
         disabled={!run}
         aria-label="Scrub the solve"
-        className="h-1 min-w-0 flex-1 appearance-none rounded-none bg-cab-700 accent-[var(--color-sick)] disabled:opacity-40"
+        className="h-1 min-w-0 flex-1 appearance-none rounded-none bg-rail accent-[var(--color-sick)] disabled:opacity-50"
       />
 
       <span className="shrink-0 font-mono text-[9.5px] tabular-nums text-ink-faint">
@@ -254,10 +263,11 @@ function Transport({
       </span>
 
       <span className="hidden min-w-0 shrink-0 items-baseline gap-2 md:flex">
-        <span className="w-px self-stretch bg-cab-700" aria-hidden />
+        <span className="w-px self-stretch bg-cab-600" aria-hidden />
         <span
-          className="truncate font-mono text-[9.5px] uppercase tracking-[0.12em]"
-          style={{ color: playing ? "var(--color-sick)" : "var(--color-ink-faint)" }}
+          className={`truncate font-mono text-[9.5px] uppercase tracking-[0.12em] ${
+            playing ? "text-sick" : "text-ink-faint"
+          }`}
         >
           {current ? `${current.agent} · ${current.title}` : "idle"}
         </span>
@@ -266,29 +276,72 @@ function Transport({
   );
 }
 
+const FOCUSABLE =
+  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
 /**
  * Grounding you can click. The snippet is the exact line the value was read from;
  * the link goes to the full extracted page.
  */
 function CitationDrawer({ citation, onClose }: { citation: Citation; onClose: () => void }) {
+  const dialog = useRef<HTMLDivElement>(null);
+  // Read through a ref so the focus effect runs once per open. Keying it on the
+  // handler would re-run it on every animation frame of a replay, which would
+  // yank focus back to the trigger 60 times a second.
+  const close = useRef(onClose);
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    close.current = onClose;
   }, [onClose]);
+
+  useEffect(() => {
+    const opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    dialog.current?.focus();
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        close.current();
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const root = dialog.current;
+      if (!root) return;
+      const stops = Array.from(root.querySelectorAll<HTMLElement>(FOCUSABLE));
+      const first = stops[0];
+      const last = stops.at(-1);
+      if (!first || !last) {
+        // Nothing tabbable inside: keep the ring on the dialog itself.
+        e.preventDefault();
+        root.focus();
+        return;
+      }
+      const active = document.activeElement;
+      const inside = root.contains(active);
+      if (e.shiftKey ? active === first || active === root || !inside : active === last || !inside) {
+        e.preventDefault();
+        (e.shiftKey ? last : first).focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      // Hand the caret back to whatever cell opened the citation.
+      if (opener?.isConnected) opener.focus();
+    };
+  }, []);
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-4 sm:items-center"
-      role="dialog"
-      aria-modal="true"
-      aria-label={`Citation: ${citation.docTitle} page ${citation.page}`}
+      className="fixed inset-0 z-50 flex items-end justify-center bg-ink-dim/30 p-4 sm:items-center"
       onClick={onClose}
     >
       <div
-        className="panel anim-in w-full max-w-xl"
+        ref={dialog}
+        tabIndex={-1}
+        role="dialog"
+        aria-modal="true"
+        aria-label={`Citation: ${citation.docTitle} page ${citation.page}`}
+        className="panel anim-in w-full max-w-xl shadow-2xl shadow-ink/25 focus:outline-none"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="panel-head">
@@ -308,10 +361,9 @@ function CitationDrawer({ citation, onClose }: { citation: Citation; onClose: ()
 
         <div className="px-4 py-4">
           <span className="eyebrow">Page {citation.page} · extracted text layer</span>
-          <blockquote
-            className="mt-2 border-l-2 py-1 pl-3 font-mono text-[13px] leading-[1.6]"
-            style={{ borderColor: "var(--color-signal)", color: "var(--color-ink)" }}
-          >
+          {/* The extracted line, marked the way an engineer marks a spec sheet:
+              highlighter fill, saturated rule, ink text. */}
+          <blockquote className="mt-2 border-l-2 border-signal-bright bg-signal-wash py-1.5 pr-2 pl-3 font-mono text-[13px] leading-[1.6] text-ink">
             {citation.snippet ?? "—"}
           </blockquote>
           <p className="mt-3 text-[11.5px] leading-[1.55] text-ink-faint">
@@ -320,7 +372,7 @@ function CitationDrawer({ citation, onClose }: { citation: Citation; onClose: ()
           </p>
           <Link
             href={citation.href}
-            className="mt-3 inline-block font-mono text-[10.5px] uppercase tracking-[0.12em] text-sick transition-opacity hover:opacity-80"
+            className="mt-3 inline-block font-mono text-[10.5px] uppercase tracking-[0.12em] text-sick underline-offset-4 transition-colors hover:text-sick-bright hover:underline"
           >
             Open the full page →
           </Link>

@@ -1,0 +1,182 @@
+{
+  "generated_from": "sick-catalog-dataset/products.jsonl",
+  "total_rows": 1776,
+  "products": 1493,
+  "accessories": 283,
+  "solution_classes": {
+    "photoelectric": 430,
+    "fluid": 224,
+    "safety_optoelectronic": 161,
+    "proximity": 127,
+    "distance": 107,
+    "identification": 105,
+    "registration": 95,
+    "safety_switch": 74,
+    "encoder": 57,
+    "magnetic_cylinder": 37,
+    "safety_controller": 36,
+    "light_grid": 26,
+    "vision": 14
+  },
+  "sensing_modes": {
+    "diffuse": 203,
+    "safety_light_curtain": 114,
+    "inductive": 109,
+    "retroreflective": 98,
+    "barcode_laser": 67,
+    "opposed": 64,
+    "fork": 44,
+    "laser_triangulation": 43,
+    "contrast": 42,
+    "magnetic": 37,
+    "ultrasonic": 35,
+    "encoder_incremental": 33,
+    "laser_tof": 30,
+    "capacitive": 18,
+    "safety_multibeam": 18,
+    "safety_single_beam": 16,
+    "encoder_absolute": 16,
+    "camera": 10,
+    "encoder_wire_draw": 8,
+    "safety_laser_scanner": 5,
+    "color": 3
+  },
+  "safety_products": 297,
+  "coverage": [
+    {
+      "field": "sensing_mode",
+      "baseline_field": "sensor_principle",
+      "before": 362,
+      "after": 1013,
+      "before_pct": 24.2,
+      "after_pct": 67.8,
+      "lift": 651
+    },
+    {
+      "field": "sensing_range_max_mm",
+      "baseline_field": "sensing_range_max_mm",
+      "before": 829,
+      "after": 883,
+      "before_pct": 55.5,
+      "after_pct": 59.1,
+      "lift": 54
+    },
+    {
+      "field": "ip_ingress",
+      "baseline_field": "enclosure_rating",
+      "before": 426,
+      "after": 426,
+      "before_pct": 28.5,
+      "after_pct": 28.5,
+      "lift": 0
+    },
+    {
+      "field": "protocols",
+      "baseline_field": "interface",
+      "before": 99,
+      "after": 287,
+      "before_pct": 6.6,
+      "after_pct": 19.2,
+      "lift": 188
+    },
+    {
+      "field": "mounting_type",
+      "baseline_field": null,
+      "before": 0,
+      "after": 132,
+      "before_pct": 0,
+      "after_pct": 8.8,
+      "lift": 132
+    },
+    {
+      "field": "housing_form",
+      "baseline_field": null,
+      "before": 0,
+      "after": 187,
+      "before_pct": 0,
+      "after_pct": 12.5,
+      "lift": 187
+    },
+    {
+      "field": "process_connection",
+      "baseline_field": null,
+      "before": 0,
+      "after": 185,
+      "before_pct": 0,
+      "after_pct": 12.4,
+      "lift": 185
+    },
+    {
+      "field": "process_temp_min_c",
+      "baseline_field": null,
+      "before": 0,
+      "after": 102,
+      "before_pct": 0,
+      "after_pct": 6.8,
+      "lift": 102
+    },
+    {
+      "field": "operating_temp_min_c",
+      "baseline_field": "operating_temp_min_c",
+      "before": 109,
+      "after": 109,
+      "before_pct": 7.3,
+      "after_pct": 7.3,
+      "lift": 0
+    },
+    {
+      "field": "protective_field_height_mm",
+      "baseline_field": null,
+      "before": 0,
+      "after": 121,
+      "before_pct": 0,
+      "after_pct": 8.1,
+      "lift": 121
+    },
+    {
+      "field": "measuring_range_raw",
+      "baseline_field": null,
+      "before": 0,
+      "after": 146,
+      "before_pct": 0,
+      "after_pct": 9.8,
+      "lift": 146
+    },
+    {
+      "field": "response_time_ms",
+      "baseline_field": "response_time_ms",
+      "before": 96,
+      "after": 139,
+      "before_pct": 6.4,
+      "after_pct": 9.3,
+      "lift": 43
+    },
+    {
+      "field": "resolution_value",
+      "baseline_field": "resolution_value",
+      "before": 132,
+      "after": 187,
+      "before_pct": 8.8,
+      "after_pct": 12.5,
+      "lift": 55
+    },
+    {
+      "field": "measurand",
+      "baseline_field": null,
+      "before": 0,
+      "after": 224,
+      "before_pct": 0,
+      "after_pct": 15,
+      "lift": 224
+    },
+    {
+      "field": "solution_class",
+      "baseline_field": null,
+      "before": 0,
+      "after": 1493,
+      "before_pct": 0,
+      "after_pct": 100,
+      "lift": 1493
+    }
+  ]
+}

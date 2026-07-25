@@ -82,7 +82,9 @@ export function ReplacesPanel({ part }: { part: Part }) {
       <Panel>
         <PanelHead eyebrow="02 · Cross-reference" title="documented replacements" />
         <div className="px-5 py-6 sm:px-6">
-          <h2 className="nameplate text-[clamp(1.4rem,3vw,2rem)] leading-none">Replaces</h2>
+          <h2 className="nameplate text-[clamp(1.4rem,3vw,2rem)] leading-none text-sick">
+            Replaces
+          </h2>
           <p className="mt-3 max-w-[64ch] text-[13px] leading-[1.6] text-ink-dim">
             No competitor family is recorded against this part in the corpus. That is an absence of
             evidence, not a claim of uniqueness — hand the workspace a competitor part number and it
@@ -97,8 +99,10 @@ export function ReplacesPanel({ part }: { part: Part }) {
 
   return (
     <Panel style={{ animationDelay: "60ms" }} className="anim-in">
-      {/* This panel gets the blue edge. It is the primary claim on the page. */}
-      <div className="h-[3px] w-full shrink-0 bg-sick" aria-hidden />
+      {/* This panel gets the blue edge. It is the primary claim on the page.
+          radius-panel went 3px → 6px, and .panel does not clip, so the cap needs
+          the inner radius or it shows two blue spurs past the rounded corners. */}
+      <div className="h-[3px] w-full shrink-0 rounded-t-[5px] bg-sick" aria-hidden />
 
       <PanelHead
         eyebrow="02 · Cross-reference"
@@ -106,9 +110,16 @@ export function ReplacesPanel({ part }: { part: Part }) {
         right={<Chip accent="sick">{corpusStats.datasheets} datasheets indexed</Chip>}
       />
 
-      <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-5 border-b border-rail px-5 py-6 sm:px-6 sm:py-7">
+      {/* The masthead carries the claim. On anthracite it landed because the type
+          was the brightest thing on the page; on white that lever is gone, so the
+          band itself goes to the blue wash and the headline to SICK blue. Black on
+          white here would be indistinguishable from the spec table below it — the
+          exact "flat and grey" failure. Blue on sick-wash is 7.2:1. */}
+      <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-5 border-b border-rail bg-sick-wash px-5 py-6 sm:px-6 sm:py-7">
         <div className="min-w-0">
-          <h2 className="nameplate text-[clamp(1.9rem,4.6vw,3rem)] leading-[0.88]">Replaces</h2>
+          <h2 className="nameplate text-[clamp(1.9rem,4.6vw,3rem)] leading-[0.88] text-sick">
+            Replaces
+          </h2>
           <p className="mt-3.5 max-w-[62ch] text-[13.5px] leading-[1.6] text-ink-dim">
             Competitor families this part is a documented replacement for. Each one resolves against
             the spec vector on this page — parameter by parameter, both datasheets cited. Open one
@@ -116,7 +127,8 @@ export function ReplacesPanel({ part }: { part: Part }) {
           </p>
         </div>
         <div className="shrink-0 text-right">
-          <span className="eyebrow">Families displaced</span>
+          {/* ink-faint sits at 4.36:1 on sick-wash — under AA. Step it to ink-dim. */}
+          <span className="eyebrow text-ink-dim">Families displaced</span>
           <p className="mt-1.5 font-mono text-[46px] font-semibold leading-[0.8] tracking-[-0.02em] text-sick tabular-nums">
             {String(rivals.length).padStart(2, "0")}
           </p>
@@ -140,7 +152,9 @@ export function ReplacesPanel({ part }: { part: Part }) {
                   <span className="font-mono text-[10px] text-ink-faint">{r.probe}</span>
                 </div>
 
-                <p className="nameplate mt-2 text-[clamp(1.15rem,2.6vw,1.75rem)] leading-none transition-colors group-hover:text-sick-bright">
+                {/* sick-bright is 4.6:1 on white and is a fill tone, not a text
+                    tone. The hover goes to sick, which is 8.4:1. */}
+                <p className="nameplate mt-2 text-[clamp(1.15rem,2.6vw,1.75rem)] leading-none text-ink transition-colors group-hover:text-sick">
                   {r.family} <span className="text-ink-faint">series</span>
                 </p>
 

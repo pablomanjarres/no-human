@@ -227,7 +227,9 @@ function SuggestionList({
               href={`/console?q=${encodeURIComponent(s.partNumber)}`}
               className="group flex flex-wrap items-baseline gap-x-2.5 gap-y-1 border-l-[3px] border-l-cab-600 py-2.5 pl-3 transition-colors hover:border-l-sick hover:bg-sick-wash focus-visible:border-l-sick focus-visible:bg-sick-wash"
             >
-              <span className="font-mono text-[13px] text-ink transition-colors group-hover:text-sick-bright">
+              {/* sick-bright is a fill tone — ~4.6:1 on the daylight panel. The
+                  hover goes to sick, same as the candidate ladder. */}
+              <span className="font-mono text-[13px] text-ink transition-colors group-hover:text-sick">
                 {s.partNumber}
               </span>
               <span className="font-mono text-[10px] text-ink-faint">order {s.orderNumber}</span>
@@ -294,12 +296,12 @@ function CandidateLadder({ run, promoted }: { run: SolveRun; promoted: boolean }
           const isActive = promoted
             ? c.verdict !== "rejected" && c.rank === run.promotion?.toRank
             : c.rank === 1;
+          // A killed row is struck through, carries the halt tone and says
+          // KILLED. It is deliberately not dimmed: compositing the row down to
+          // 45% took the label to roughly 2:1, and the killed row is the one a
+          // reader most needs to be able to read.
           return (
-            <li
-              key={c.part.id}
-              className="flex items-baseline gap-2 font-mono text-[11px]"
-              style={{ opacity: dead ? 0.45 : 1 }}
-            >
+            <li key={c.part.id} className="flex items-baseline gap-2 font-mono text-[11px]">
               <span className="w-3 text-ink-faint">{c.rank}</span>
               <Link
                 href={`/console/product/${c.part.partNumber}`}
