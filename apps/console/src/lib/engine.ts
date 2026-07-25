@@ -1,14 +1,24 @@
 import { runDescribe, runMl100, runQs18, runs } from "@/data/runs";
+import { findEntry, suggest } from "@/lib/lookup";
+import { buildIdentifiedRun, coverage } from "@/lib/solver";
 import type { InputMode, RailModel, SolveRun } from "@/lib/types";
 
 /**
  * The seam.
  *
- * Today this resolves a scripted run from the offline corpus. The real engine —
- * resolver agent, deterministic constraint solver, challenger agent — drops in
- * behind this exact signature without any component changing. Nothing above this
- * line knows whether a model was involved, which is the point: the interface
- * renders a solve, it does not perform one.
+ * Three resolution paths, in order of how much we can defend:
+ *
+ *   1. A scripted competitor run. Two of these exist. They carry a full
+ *      extracted competitor datasheet on the source side, which is the only
+ *      way a genuine cross-brand solve can be grounded today.
+ *   2. An exact hit in the SICK catalogue — 796 sensing SKUs, real order
+ *      numbers. Answers "what else does this job", and says plainly that it
+ *      answered a different question than cross-brand replacement.
+ *   3. Nothing. A refusal that reports the lookup it actually performed.
+ *
+ * Path 2 used to be missing entirely, so a part sitting in our own catalogue
+ * came back as "not in the offline corpus". A false negative delivered in
+ * confident prose is the one failure this product cannot afford.
  */
 
 export interface SolveInput {
@@ -39,7 +49,17 @@ export function resolveRun(input: SolveInput): SolveRun | null {
   if (input.mode === "describe") return runDescribe;
   const key = normalise(input.raw);
   if (!key) return null;
-  return ALIASES[key] ?? null;
+
+  const scripted = ALIASES[key];
+  if (scripted) return scripted;
+
+  // The catalogue is consulted on exact type code or order number only. The
+  // prefix-matching warning above still holds — `suggest` offers near misses to
+  // the operator rather than resolving them here.
+  const entry = findEntry(input.raw);
+  if (entry) return buildIdentifiedRun(entry, input);
+
+  return null;
 }
 
 export function solve(input: SolveInput): SolveRun | null {
@@ -51,14 +71,19 @@ export function runById(id: string): SolveRun | undefined {
 }
 
 /**
- * What happens when a judge types a part number we have never seen.
+ * What happens when somebody types a part number we do not hold.
  *
- * The honest answer is "it is not in the corpus", not a plausible-looking guess.
- * This is the same refusal path as a real no-equivalent result, so the interface
- * needs no special case — and an unseen input on stage is a feature, not a crash.
+ * Every number in this run is derived from the lookup that actually ran. The
+ * previous version reported "0 hits across 187 datasheets" as a string literal
+ * on a code path that never searched anything, which made a false negative
+ * indistinguishable from a real one. If we are going to refuse, the refusal has
+ * to be as checkable as a match.
  */
 export function buildMissRun(input: SolveInput): SolveRun {
   const raw = input.raw.trim() || "(empty)";
+  const near = suggest(raw);
+  const searched = `${coverage.sensingSkus} SICK sensing SKUs and 2 extracted competitor datasheets`;
+
   return {
     id: `miss-${raw}`,
     label: raw,
@@ -67,10 +92,14 @@ export function buildMissRun(input: SolveInput): SolveRun {
       id: `unknown-${raw}`,
       brand: "Unknown",
       partNumber: raw,
-      family: "Not in the offline corpus",
+      // A near miss is not the same absence as a total miss, and the panel
+      // heading is the first thing read. Saying "not in the corpus" over a
+      // screen that is listing close catalogue parts reads as a contradiction.
+      family: near.length ? "No exact match in the catalogue" : "Not in the offline corpus",
       principle: "—",
-      blurb:
-        "No datasheet for this part is cached locally. The extraction swarm covered SICK plus two competitor brands — narrow and complete beats wide and holed, and this part falls outside it.",
+      blurb: near.length
+        ? `No exact hit on this type code or order number. Searched ${searched} — ${near.length === 1 ? "one part is" : `${near.length} parts are`} close on the type code and listed below the verdict, unchosen.`
+        : `No record for this part number in the offline corpus. Searched ${searched} — the SICK side is the short-form catalogue (doc. ${coverage.source.docNumber}), the competitor side is narrow on purpose: complete and citable beats wide and holed.`,
       dims: { l: 32, w: 12, h: 21 },
       form: "rect",
       specs: [],
@@ -84,18 +113,18 @@ export function buildMissRun(input: SolveInput): SolveRun {
         at: 0,
         agent: "resolver",
         title: "Input received",
-        detail: `Searching the offline corpus for "${raw}".`,
+        detail: `Exact lookup on type code and order number for "${raw}".`,
         status: "ok",
       },
       {
         id: "miss-2",
         at: 220,
         agent: "resolver",
-        title: "No match in corpus",
+        title: "No exact match",
         tool: {
-          name: "corpus.lookup",
-          args: JSON.stringify({ partNumber: raw }),
-          result: "0 hits across 187 datasheets",
+          name: "catalog.lookup",
+          args: JSON.stringify({ query: raw }),
+          result: `0 exact hits across ${coverage.sensingSkus} sensing SKUs · ${near.length} near miss${near.length === 1 ? "" : "es"}`,
         },
         status: "halt",
       },
@@ -116,21 +145,42 @@ export function buildMissRun(input: SolveInput): SolveRun {
         at: 380,
         agent: "resolver",
         tone: "halt",
-        text: `I do not have a datasheet for ${raw}. It is not one of the 187 PDFs in the offline corpus, so there is no spec vector to solve against and I am not going to invent one. Give me the datasheet, a photo of the nameplate, or describe what the sensor has to do and I will work from that instead.`,
-        did: ["corpus.lookup → 0 hits across 187 datasheets", "Solver not invoked — no spec vector"],
+        text: near.length
+          ? `No exact match for ${raw}. I searched ${searched} and found nothing on that type code or order number — but ${near.length === 1 ? "one part is" : `${near.length} parts are`} close enough that you may have meant ${near.length === 1 ? "it" : "one of them"}. I am not going to pick for you: a single character of a type code is often a whole output polarity, and swapping PNP for NPN into a wired input card is the failure this tool exists to prevent. Pick one and I will run it.`
+          : `No match for ${raw}. I searched ${searched} on both type code and order number and there is nothing close, so there is no spec vector to solve against and I am not going to invent one. Give me the datasheet, a photo of the nameplate, or describe what the sensor has to do and I will work from that instead.`,
+        did: [
+          `catalog.lookup → 0 exact hits across ${coverage.sensingSkus} sensing SKUs`,
+          ...(near.length
+            ? [
+                `${near.length} near miss${near.length === 1 ? "" : "es"} offered, none auto-resolved`,
+              ]
+            : []),
+          "Solver not invoked — no spec vector",
+        ],
       },
     ],
     outcome: "refusal",
     refusal: {
-      headline: "Not in the offline corpus.",
-      closest: "—",
+      headline: near.length ? "No exact match." : "Not in the offline corpus.",
+      closest: near[0]?.typeCode ?? "—",
       losses: [
-        `No datasheet for ${raw} is cached locally, so every spec would be a guess.`,
+        `Nothing in ${searched} carries the type code or order number ${raw}.`,
         "Grounding is all-or-nothing here: a claim we cannot cite is a claim we do not make.",
-        "Drop the datasheet in, or switch to Describe and tell me what it has to do.",
+        near.length
+          ? "The near misses on the right are offered, not chosen — one character can be a whole output polarity."
+          : "Drop the datasheet in, or switch to Describe and tell me what it has to do.",
       ],
+      ...(near.length
+        ? {
+            suggestions: near.map((s) => ({
+              partNumber: s.typeCode,
+              orderNumber: s.orderNumber,
+              note: `${s.family ? `${s.family} · ` : ""}${s.reason}`,
+            })),
+          }
+        : {}),
     },
-    stats: { catalogue: 1204, afterConstraints: 0, survived: 0, durationMs: 380 },
+    stats: { catalogue: coverage.sensingSkus, afterConstraints: 0, survived: 0, durationMs: 380 },
   };
 }
 
