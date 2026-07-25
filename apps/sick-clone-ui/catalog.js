@@ -3,7 +3,9 @@
 
 (() => {
     const PAGE_SIZE = 48;
-    const IMAGE_DIR = 'assets/products';
+    // Where the images live is decided by the generator and travels in the data file, so the path
+    // is not spelled out in two places.
+    let imageDir = 'assets/products';
 
     const el = {
         grid: document.getElementById('grid'),
@@ -29,6 +31,7 @@
     let lastFocused = null;
 
     const nf = new Intl.NumberFormat('es-ES');
+    const plural = (n, one, many) => (n === 1 ? one : many);
 
     // ---------------------------------------------------------------- carga
 
@@ -38,6 +41,7 @@
             return r.json();
         })
         .then((data) => {
+            if (data.source && data.source.image_dir) imageDir = data.source.image_dir;
             all = data.products;
             byOrder = new Map(all.map((p) => [p.order_number, p]));
             for (const p of all) {
@@ -93,7 +97,7 @@
 
         const withImg = filtered.filter((p) => p.image).length;
         el.count.textContent = filtered.length
-            ? `${nf.format(filtered.length)} referencias · ${nf.format(withImg)} con imagen`
+            ? `${nf.format(filtered.length)} ${plural(filtered.length, 'referencia', 'referencias')} · ${nf.format(withImg)} con imagen`
             : '';
         el.empty.hidden = filtered.length > 0;
     }
@@ -125,7 +129,7 @@
         }
 
         const img = document.createElement('img');
-        img.src = `${IMAGE_DIR}/${p.image}`;
+        img.src = `${imageDir}/${p.image}`;
         img.alt = `${p.type_code || p.order_number}${p.name ? ` — ${p.name}` : ''}`;
         img.loading = 'lazy';
         img.decoding = 'async';
@@ -323,6 +327,26 @@
     el.panelClose.addEventListener('click', closePanel);
     el.backdrop.addEventListener('click', closePanel);
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !el.panel.hidden) closePanel();
+        if (el.panel.hidden) return;
+
+        if (e.key === 'Escape') {
+            closePanel();
+            return;
+        }
+
+        // The panel claims aria-modal, so keep Tab inside it instead of letting focus wander into
+        // the grid behind the backdrop.
+        if (e.key === 'Tab') {
+            const stops = [el.panelClose, ...el.panelBody.querySelectorAll('a[href]')];
+            const first = stops[0];
+            const last = stops[stops.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        }
     });
 })();

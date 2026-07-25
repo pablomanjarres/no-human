@@ -4,17 +4,17 @@
   "generated_by": "scripts/extract-product-images.mjs",
   "summary": {
     "skus": 1776,
-    "with_image": 1458,
-    "without_image": 318,
-    "coverage_pct": 82.1,
-    "distinct_images": 297,
-    "image_bytes": 1107724,
+    "with_image": 1477,
+    "without_image": 299,
+    "coverage_pct": 83.2,
+    "distinct_images": 299,
+    "image_bytes": 1114758,
     "by_match_method": {
-      "row_aligned": 241,
-      "page_hero": 604,
+      "row_aligned": 242,
+      "page_hero": 610,
       "family_hero_loose": 419,
-      "family_hero": 194,
-      "none": 318
+      "family_hero": 206,
+      "none": 299
     }
   },
   "images": {
@@ -14063,8 +14063,24 @@
       "reason": "no photo for this SKU in the source catalog"
     },
     "2045642": {
-      "image": null,
-      "reason": "no photo for this SKU in the source catalog"
+      "image": "sick-4f74a8a38d2b.webp",
+      "match_method": "row_aligned",
+      "low_confidence": false,
+      "provenance": {
+        "pdf_page": 199,
+        "pdf_image": "out-199_5.jpg",
+        "image_bbox": {
+          "top": 687,
+          "left": 91,
+          "width": 31,
+          "height": 88
+        },
+        "matched_order_number_at": {
+          "top": 724,
+          "left": 740
+        },
+        "row_offset_px": 2
+      }
     },
     "2045835": {
       "image": "sick-1fff48478bbf.webp",
@@ -18259,16 +18275,64 @@
       }
     },
     "6022317": {
-      "image": null,
-      "reason": "no photo for this SKU in the source catalog"
+      "image": "sick-b27d0aab8254.webp",
+      "match_method": "page_hero",
+      "low_confidence": false,
+      "provenance": {
+        "pdf_page": 215,
+        "pdf_image": "out-215_1.jpg",
+        "image_bbox": {
+          "top": 206,
+          "left": 75,
+          "width": 213,
+          "height": 72
+        },
+        "note": "single large photo at the top of the page, depicts the product family",
+        "page_size": {
+          "width": 892,
+          "height": 1188
+        }
+      }
     },
     "6022318": {
-      "image": null,
-      "reason": "no photo for this SKU in the source catalog"
+      "image": "sick-b27d0aab8254.webp",
+      "match_method": "page_hero",
+      "low_confidence": false,
+      "provenance": {
+        "pdf_page": 215,
+        "pdf_image": "out-215_1.jpg",
+        "image_bbox": {
+          "top": 206,
+          "left": 75,
+          "width": 213,
+          "height": 72
+        },
+        "note": "single large photo at the top of the page, depicts the product family",
+        "page_size": {
+          "width": 892,
+          "height": 1188
+        }
+      }
     },
     "6022319": {
-      "image": null,
-      "reason": "no photo for this SKU in the source catalog"
+      "image": "sick-b27d0aab8254.webp",
+      "match_method": "page_hero",
+      "low_confidence": false,
+      "provenance": {
+        "pdf_page": 215,
+        "pdf_image": "out-215_1.jpg",
+        "image_bbox": {
+          "top": 206,
+          "left": 75,
+          "width": 213,
+          "height": 72
+        },
+        "note": "single large photo at the top of the page, depicts the product family",
+        "page_size": {
+          "width": 892,
+          "height": 1188
+        }
+      }
     },
     "6022580": {
       "image": null,
@@ -20323,16 +20387,64 @@
       "reason": "no photo for this SKU in the source catalog"
     },
     "6034586": {
-      "image": null,
-      "reason": "no photo for this SKU in the source catalog"
+      "image": "sick-b27d0aab8254.webp",
+      "match_method": "page_hero",
+      "low_confidence": false,
+      "provenance": {
+        "pdf_page": 215,
+        "pdf_image": "out-215_1.jpg",
+        "image_bbox": {
+          "top": 206,
+          "left": 75,
+          "width": 213,
+          "height": 72
+        },
+        "note": "single large photo at the top of the page, depicts the product family",
+        "page_size": {
+          "width": 892,
+          "height": 1188
+        }
+      }
     },
     "6034587": {
-      "image": null,
-      "reason": "no photo for this SKU in the source catalog"
+      "image": "sick-b27d0aab8254.webp",
+      "match_method": "page_hero",
+      "low_confidence": false,
+      "provenance": {
+        "pdf_page": 215,
+        "pdf_image": "out-215_1.jpg",
+        "image_bbox": {
+          "top": 206,
+          "left": 75,
+          "width": 213,
+          "height": 72
+        },
+        "note": "single large photo at the top of the page, depicts the product family",
+        "page_size": {
+          "width": 892,
+          "height": 1188
+        }
+      }
     },
     "6034588": {
-      "image": null,
-      "reason": "no photo for this SKU in the source catalog"
+      "image": "sick-b27d0aab8254.webp",
+      "match_method": "page_hero",
+      "low_confidence": false,
+      "provenance": {
+        "pdf_page": 215,
+        "pdf_image": "out-215_1.jpg",
+        "image_bbox": {
+          "top": 206,
+          "left": 75,
+          "width": 213,
+          "height": 72
+        },
+        "note": "single large photo at the top of the page, depicts the product family",
+        "page_size": {
+          "width": 892,
+          "height": 1188
+        }
+      }
     },
     "6034595": {
       "image": "sick-eefc08c33043.webp",
@@ -25679,52 +25791,196 @@
       "reason": "no photo for this SKU in the source catalog"
     },
     "6044642": {
-      "image": null,
-      "reason": "no photo for this SKU in the source catalog"
+      "image": "sick-b27d0aab8254.webp",
+      "match_method": "family_hero",
+      "low_confidence": true,
+      "provenance": {
+        "pdf_page": 215,
+        "pdf_image": "out-215_1.jpg",
+        "image_bbox": {
+          "top": 206,
+          "left": 75,
+          "width": 213,
+          "height": 72
+        },
+        "note": "photo of subfamily TR4 Direct/— taken from its opening page 215"
+      }
     },
     "6044643": {
-      "image": null,
-      "reason": "no photo for this SKU in the source catalog"
+      "image": "sick-b27d0aab8254.webp",
+      "match_method": "family_hero",
+      "low_confidence": true,
+      "provenance": {
+        "pdf_page": 215,
+        "pdf_image": "out-215_1.jpg",
+        "image_bbox": {
+          "top": 206,
+          "left": 75,
+          "width": 213,
+          "height": 72
+        },
+        "note": "photo of subfamily TR4 Direct/— taken from its opening page 215"
+      }
     },
     "6044644": {
-      "image": null,
-      "reason": "no photo for this SKU in the source catalog"
+      "image": "sick-b27d0aab8254.webp",
+      "match_method": "family_hero",
+      "low_confidence": true,
+      "provenance": {
+        "pdf_page": 215,
+        "pdf_image": "out-215_1.jpg",
+        "image_bbox": {
+          "top": 206,
+          "left": 75,
+          "width": 213,
+          "height": 72
+        },
+        "note": "photo of subfamily TR4 Direct/— taken from its opening page 215"
+      }
     },
     "6044645": {
-      "image": null,
-      "reason": "no photo for this SKU in the source catalog"
+      "image": "sick-b27d0aab8254.webp",
+      "match_method": "family_hero",
+      "low_confidence": true,
+      "provenance": {
+        "pdf_page": 215,
+        "pdf_image": "out-215_1.jpg",
+        "image_bbox": {
+          "top": 206,
+          "left": 75,
+          "width": 213,
+          "height": 72
+        },
+        "note": "photo of subfamily TR4 Direct/— taken from its opening page 215"
+      }
     },
     "6044646": {
-      "image": null,
-      "reason": "no photo for this SKU in the source catalog"
+      "image": "sick-b27d0aab8254.webp",
+      "match_method": "family_hero",
+      "low_confidence": true,
+      "provenance": {
+        "pdf_page": 215,
+        "pdf_image": "out-215_1.jpg",
+        "image_bbox": {
+          "top": 206,
+          "left": 75,
+          "width": 213,
+          "height": 72
+        },
+        "note": "photo of subfamily TR4 Direct/— taken from its opening page 215"
+      }
     },
     "6044647": {
-      "image": null,
-      "reason": "no photo for this SKU in the source catalog"
+      "image": "sick-b27d0aab8254.webp",
+      "match_method": "family_hero",
+      "low_confidence": true,
+      "provenance": {
+        "pdf_page": 215,
+        "pdf_image": "out-215_1.jpg",
+        "image_bbox": {
+          "top": 206,
+          "left": 75,
+          "width": 213,
+          "height": 72
+        },
+        "note": "photo of subfamily TR4 Direct/— taken from its opening page 215"
+      }
     },
     "6044648": {
-      "image": null,
-      "reason": "no photo for this SKU in the source catalog"
+      "image": "sick-b27d0aab8254.webp",
+      "match_method": "family_hero",
+      "low_confidence": true,
+      "provenance": {
+        "pdf_page": 215,
+        "pdf_image": "out-215_1.jpg",
+        "image_bbox": {
+          "top": 206,
+          "left": 75,
+          "width": 213,
+          "height": 72
+        },
+        "note": "photo of subfamily TR4 Direct/— taken from its opening page 215"
+      }
     },
     "6044649": {
-      "image": null,
-      "reason": "no photo for this SKU in the source catalog"
+      "image": "sick-b27d0aab8254.webp",
+      "match_method": "family_hero",
+      "low_confidence": true,
+      "provenance": {
+        "pdf_page": 215,
+        "pdf_image": "out-215_1.jpg",
+        "image_bbox": {
+          "top": 206,
+          "left": 75,
+          "width": 213,
+          "height": 72
+        },
+        "note": "photo of subfamily TR4 Direct/— taken from its opening page 215"
+      }
     },
     "6044650": {
-      "image": null,
-      "reason": "no photo for this SKU in the source catalog"
+      "image": "sick-b27d0aab8254.webp",
+      "match_method": "family_hero",
+      "low_confidence": true,
+      "provenance": {
+        "pdf_page": 215,
+        "pdf_image": "out-215_1.jpg",
+        "image_bbox": {
+          "top": 206,
+          "left": 75,
+          "width": 213,
+          "height": 72
+        },
+        "note": "photo of subfamily TR4 Direct/— taken from its opening page 215"
+      }
     },
     "6044651": {
-      "image": null,
-      "reason": "no photo for this SKU in the source catalog"
+      "image": "sick-b27d0aab8254.webp",
+      "match_method": "family_hero",
+      "low_confidence": true,
+      "provenance": {
+        "pdf_page": 215,
+        "pdf_image": "out-215_1.jpg",
+        "image_bbox": {
+          "top": 206,
+          "left": 75,
+          "width": 213,
+          "height": 72
+        },
+        "note": "photo of subfamily TR4 Direct/— taken from its opening page 215"
+      }
     },
     "6044652": {
-      "image": null,
-      "reason": "no photo for this SKU in the source catalog"
+      "image": "sick-b27d0aab8254.webp",
+      "match_method": "family_hero",
+      "low_confidence": true,
+      "provenance": {
+        "pdf_page": 215,
+        "pdf_image": "out-215_1.jpg",
+        "image_bbox": {
+          "top": 206,
+          "left": 75,
+          "width": 213,
+          "height": 72
+        },
+        "note": "photo of subfamily TR4 Direct/— taken from its opening page 215"
+      }
     },
     "6044653": {
-      "image": null,
-      "reason": "no photo for this SKU in the source catalog"
+      "image": "sick-b27d0aab8254.webp",
+      "match_method": "family_hero",
+      "low_confidence": true,
+      "provenance": {
+        "pdf_page": 215,
+        "pdf_image": "out-215_1.jpg",
+        "image_bbox": {
+          "top": 206,
+          "left": 75,
+          "width": 213,
+          "height": 72
+        },
+        "note": "photo of subfamily TR4 Direct/— taken from its opening page 215"
+      }
     },
     "6044655": {
       "image": null,
