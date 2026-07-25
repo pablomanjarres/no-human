@@ -13,7 +13,7 @@
  */
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
-import { extname, join, normalize, resolve } from 'node:path';
+import { extname, join, normalize, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { consult, loadCatalog } from '@no-human/consultancy-engine';
@@ -91,7 +91,9 @@ function safeStaticPath(urlPath: string): string | null {
   const decoded = decodeURIComponent(urlPath.split('?')[0] ?? '/');
   const relative = normalize(decoded === '/' ? '/index.html' : decoded).replace(/^(\.\.[/\\])+/, '');
   const full = resolve(join(UI_ROOT, relative));
-  return full.startsWith(UI_ROOT) ? full : null;
+  // Compare on a path boundary: a bare startsWith would also accept a sibling
+  // directory whose name merely begins with the UI root's (…/sick-clone-ui-old).
+  return full === UI_ROOT || full.startsWith(UI_ROOT + sep) ? full : null;
 }
 
 function sendJson(res: import('node:http').ServerResponse, status: number, payload: unknown): void {

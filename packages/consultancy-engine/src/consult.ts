@@ -20,7 +20,7 @@ import {
   validateAdjudication,
 } from './prompts.js';
 import { scoreCatalog } from './score.js';
-import type { EnrichedProduct, Requirement, ScoredCandidate } from './types.js';
+import type { EnrichedProduct, Requirement, ScoredCandidate, ScoringResult } from './types.js';
 
 /** Minimal contract the engine needs from a model. Implemented by the API app. */
 export interface LlmClient {
@@ -182,9 +182,17 @@ export function consultWithRequirement(
   requirement: Requirement,
   options: { limit?: number } = {},
 ): ConsultResult {
+  return buildResult(
+    catalog,
+    requirement,
+    scoreCatalog(catalog.products, requirement, { limit: options.limit ?? 8 }),
+  );
+}
+
+/** Assemble the answer from an already-computed ranking. */
+function buildResult(catalog: Catalog, requirement: Requirement, scoring: ScoringResult): ConsultResult {
   const lang = requirement.language;
   const t = TEXT[lang];
-  const scoring = scoreCatalog(catalog.products, requirement, { limit: options.limit ?? 8 });
 
   const notices: string[] = [];
   if (scoring.relaxed) notices.push(scoring.relaxed.note);
@@ -270,10 +278,12 @@ export async function consult(
     requirement = fallbackRequirement(input);
   }
 
-  const base = consultWithRequirement(catalog, requirement, options);
+  // Score once and share the ranking with the adjudication step — re-running it
+  // would walk all 1,493 products a second time for an identical result.
+  const scoring = scoreCatalog(catalog.products, requirement, { limit: options.limit ?? 8 });
+  const base = buildResult(catalog, requirement, scoring);
   base.diagnostics.llm_parse = parsedByLlm;
 
-  const scoring = scoreCatalog(catalog.products, requirement, { limit: options.limit ?? 8 });
   if (!llm || scoring.candidates.length === 0) return base;
 
   const byOrder = new Map(scoring.candidates.map((c) => [c.product.order_number, c]));
