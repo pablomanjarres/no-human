@@ -104,12 +104,52 @@ describe("toHistory", () => {
     ]);
   });
 
-  it("drops empty and failed turns so a retry is not poisoned", () => {
+  it("drops a question whose answer failed, rather than leaving it dangling", () => {
+    // Keeping "q2" here would make the next question a second user turn in a
+    // row, and the Messages API rejects non-alternating roles.
     const turns: AskTurn[] = [
-      { role: "user", text: "q", tools: [] },
-      { role: "assistant", text: "", tools: [] },
+      { role: "user", text: "q1", tools: [] },
+      { role: "assistant", text: "a1", tools: [] },
+      { role: "user", text: "q2", tools: [] },
       { role: "assistant", text: "server exploded", tools: [], failed: true },
     ];
-    expect(toHistory(turns)).toEqual([{ role: "user", content: "q" }]);
+    expect(toHistory(turns)).toEqual([
+      { role: "user", content: "q1" },
+      { role: "assistant", content: "a1" },
+    ]);
+  });
+
+  it("drops a question whose answer was empty", () => {
+    const turns: AskTurn[] = [
+      { role: "user", text: "q", tools: [{ name: "search_catalog", input: {} }] },
+      { role: "assistant", text: "   ", tools: [] },
+    ];
+    expect(toHistory(turns)).toEqual([]);
+  });
+
+  it("ignores a user turn still awaiting its answer", () => {
+    const turns: AskTurn[] = [
+      { role: "user", text: "q1", tools: [] },
+      { role: "assistant", text: "a1", tools: [] },
+      { role: "user", text: "in flight", tools: [] },
+    ];
+    expect(toHistory(turns)).toEqual([
+      { role: "user", content: "q1" },
+      { role: "assistant", content: "a1" },
+    ]);
+  });
+
+  it("always alternates, starting with user", () => {
+    const turns: AskTurn[] = [
+      { role: "user", text: "q1", tools: [] },
+      { role: "assistant", text: "a1", tools: [] },
+      { role: "user", text: "q2", tools: [] },
+      { role: "assistant", text: "boom", tools: [], failed: true },
+      { role: "user", text: "q3", tools: [] },
+      { role: "assistant", text: "a3", tools: [] },
+    ];
+    const history = toHistory(turns);
+    expect(history.map((m) => m.role)).toEqual(["user", "assistant", "user", "assistant"]);
+    expect(history.map((m) => m.content)).toEqual(["q1", "a1", "q3", "a3"]);
   });
 });

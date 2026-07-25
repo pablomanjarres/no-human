@@ -30,6 +30,10 @@ export function AskPanel() {
   const [status, setStatus] = useState<Status>("idle");
   const [notice, setNotice] = useState<string | null>(null);
   const scroller = useRef<HTMLDivElement>(null);
+  // `status` is state, so two calls landing in the same tick would both read
+  // "idle" and both start a stream, and `updateLast` would then interleave two
+  // answers into one turn. A ref flips synchronously and cannot be raced.
+  const busy = useRef(false);
   const streaming = status === "streaming";
 
   useEffect(() => {
@@ -38,7 +42,8 @@ export function AskPanel() {
   }, [turns]);
 
   async function ask(question: string) {
-    if (streaming || question.trim() === "") return;
+    if (busy.current || question.trim() === "") return;
+    busy.current = true;
     setNotice(null);
     setStatus("streaming");
 
@@ -106,6 +111,10 @@ export function AskPanel() {
       updateLast((t) => ({ ...t, failed: true, text: message }));
       setStatus("error");
       setNotice(message);
+    } finally {
+      // Every exit path, including the early return on a non-OK response —
+      // leaking this leaves the panel permanently unable to ask again.
+      busy.current = false;
     }
   }
 

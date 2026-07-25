@@ -112,7 +112,24 @@ export function applyEvent(turn: AskTurn, event: AskEvent): AskTurn {
  * model its scratch work and keeps every follow-up valid.
  */
 export function toHistory(turns: AskTurn[]): { role: "user" | "assistant"; content: string }[] {
-  return turns
-    .filter((t) => t.text.trim() !== "" && !t.failed)
-    .map((t) => ({ role: t.role, content: t.text }));
+  const out: { role: "user" | "assistant"; content: string }[] = [];
+
+  // Emit complete user→assistant pairs only. Dropping a failed answer while
+  // keeping the question that produced it would leave a trailing user turn, and
+  // the next question would then be a second user turn in a row — the Messages
+  // API requires the roles to alternate and rejects the whole request. A turn
+  // that produced no usable answer takes its question down with it.
+  for (let i = 0; i < turns.length; i++) {
+    const question = turns[i];
+    const answer = turns[i + 1];
+    if (!question || question.role !== "user") continue;
+    if (!answer || answer.role !== "assistant") continue;
+    if (answer.failed || answer.text.trim() === "" || question.text.trim() === "") continue;
+
+    out.push({ role: "user", content: question.text });
+    out.push({ role: "assistant", content: answer.text });
+    i++;
+  }
+
+  return out;
 }
