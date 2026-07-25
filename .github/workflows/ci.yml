@@ -1,0 +1,83 @@
+name: ci
+
+on:
+  # `ready_for_review` matters: the default pull_request types are
+  # opened/synchronize/reopened, so a PR opened as a draft and later marked
+  # ready would never run CI at all — the draft guard below skips the opened
+  # event, and nothing re-triggers on the transition.
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  push:
+    branches: [main]
+  # Manual trigger lets us re-run CI on demand (useful after merging a flake
+  # fix to main, or for cutting an alpha tag). Also surfaces a "Run workflow"
+  # button that infra tooling can plug into later.
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+env:
+  PNPM_VERSION: '10.28.0'
+  TURBO_TELEMETRY_DISABLED: '1'
+
+# One job instead of five. Splitting setup/typecheck/lint/build/test across five
+# ubuntu-latest runners makes each do its own `pnpm install` + turbo task, and
+# GitHub bills per-job wall-clock SUMMED across them. A single runner that
+# installs once and reuses turbo's cache across tasks costs ~5x less.
+jobs:
+  ci:
+    name: ci
+    runs-on: ubuntu-latest
+    # Don't burn runner minutes on PRs that are still drafts (work-in-progress).
+    # Pushes to main and manual dispatches always run.
+    if: github.event_name != 'pull_request' || github.event.pull_request.draft == false
+    # Safety cap: a hung step can't run away and burn hours of Linux minutes.
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          # `turbo run --affected` (PRs) diffs against the PR base commit, so the
+          # runner needs that history present, not a depth-1 shallow clone.
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 10.28.0
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      # Reuse turbo's local cache across runs (no Vercel remote cache configured).
+      # Keyed by sha, restored from the most recent branch/os run — so a second push
+      # to the same branch skips re-doing unchanged work. To upgrade to a shared
+      # remote cache later, set TURBO_TOKEN (secret) + TURBO_TEAM (var) and drop this.
+      - uses: actions/cache@v4
+        with:
+          path: .turbo
+          key: turbo-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            turbo-${{ runner.os }}-
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      # Hard gate: typecheck + lint + build + test in one turbo invocation so build
+      # outputs are computed once and reused (typecheck/test both dependsOn ^build).
+      # test is a REAL gate — a failing test fails the PR; workspaces without tests
+      # pass because every test script uses `vitest run --passWithNoTests`. Do not
+      # reintroduce continue-on-error / `|| true`.
+      #   - On PRs: `--affected` validates only packages touched by the diff (and
+      #     their dependents), compared against the PR's base commit.
+      #   - On main / dispatch: full validation, no `--affected`.
+      - name: Typecheck + lint + build + test
+        env:
+          TURBO_SCM_BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            AFFECTED="--affected"
+          fi
+          pnpm exec turbo run typecheck lint build test $AFFECTED
