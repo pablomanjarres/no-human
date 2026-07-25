@@ -5,8 +5,10 @@
 
 ## What this is
 
-TODO: one paragraph. What the system does, for whom, and the single sentence
-that explains why it exists.
+`no-human` es una plataforma multi-agente de Inteligencia Artificial para la industria y automatización (SICK Sensor Intelligence), combinando un chatbot interactivo de navegación inteligente y un centro de operaciones (Dashboard) para el monitoreo, telemetría y ejecución de herramientas autónomas de agentes especializados.
+
+### Front-End Apps
+- **`apps/sick-clone-ui`**: Interfaz de usuario web que incluye el portal corporativo SICK, el widget flotante del **Chatbot de IA** y el **Dashboard de Operaciones de Agentes**. Ver [docs/agents-frontend-integration.md](file:///c:/Users/juego/Documents/ReshapeX%20Gemini/docs/agents-frontend-integration.md) para más información.
 
 ## Repository layout
 
