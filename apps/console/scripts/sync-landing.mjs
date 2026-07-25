@@ -11,19 +11,35 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
-const source = resolve(here, "..", "..", "sick-clone-ui");
+export const source = resolve(here, "..", "..", "sick-clone-ui");
 const target = resolve(here, "..", "public");
 
-/** Everything the page needs at runtime. The scrape scripts stay behind. */
-const ENTRIES = [
+/**
+ * Everything the pages need at runtime. The scrape scripts stay behind.
+ *
+ * There are three entry points, not one. `index.html` links to
+ * `productos.html`, and `consult.html` is reachable on its own URL. Each
+ * carries its own stylesheet and script, and the catalogue page also needs the
+ * generated `data/catalog.json` it fetches at load. Any one of them left off
+ * this list and the page 404s in production while working perfectly from the
+ * filesystem — which is exactly how it shipped the first time.
+ */
+export const ENTRIES = [
   "index.html",
   "styles.css",
   "app.js",
   "assets",
+  "productos.html",
+  "catalog.css",
+  "catalog.js",
+  "data/catalog.json",
   "consult.html",
   "consult.css",
   "consult.js",
 ];
+
+/** The HTML files a browser can land on directly. Everything else is reached from one of these. */
+export const ENTRY_POINTS = ["index.html", "productos.html", "consult.html"];
 
 const exists = async (p) => {
   try {
@@ -34,22 +50,30 @@ const exists = async (p) => {
   }
 };
 
-if (!(await exists(source))) {
-  console.error(`[sync-landing] apps/sick-clone-ui not found at ${source}`);
-  process.exit(1);
-}
-
-for (const entry of ENTRIES) {
-  const from = join(source, entry);
-  const to = join(target, entry);
-
-  if (!(await exists(from))) {
-    console.warn(`[sync-landing] skipping ${entry} — not present in apps/sick-clone-ui`);
-    continue;
+export async function syncLanding() {
+  if (!(await exists(source))) {
+    console.error(`[sync-landing] apps/sick-clone-ui not found at ${source}`);
+    process.exit(1);
   }
 
-  await rm(to, { recursive: true, force: true });
-  await cp(from, to, { recursive: true });
+  for (const entry of ENTRIES) {
+    const from = join(source, entry);
+    const to = join(target, entry);
+
+    if (!(await exists(from))) {
+      console.warn(`[sync-landing] skipping ${entry} — not present in apps/sick-clone-ui`);
+      continue;
+    }
+
+    await rm(to, { recursive: true, force: true });
+    await cp(from, to, { recursive: true });
+  }
+
+  console.log(`[sync-landing] landing page synced into ${target}`);
 }
 
-console.log(`[sync-landing] landing page synced into ${target}`);
+// Run when invoked as a script; stay inert when imported by the test that
+// checks ENTRIES against what the pages actually reference.
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  await syncLanding();
+}

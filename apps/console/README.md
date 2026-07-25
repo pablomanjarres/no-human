@@ -14,7 +14,11 @@ pnpm --filter @no-human/console dev   # http://localhost:3200
 `dev` and `build` first run two generators:
 
 - `scripts/sync-landing.mjs` copies the landing page from `apps/sick-clone-ui`
-  into `public/`, so both surfaces ship from one deployment on one URL.
+  into `public/`, so both surfaces ship from one deployment on one URL. Its
+  `ENTRIES` list is exhaustive, not a prefix: a file the landing page needs at
+  runtime and that is not on that list 404s in production while working fine
+  from the filesystem. Both entry points — `index.html` and `productos.html` —
+  and everything they pull must be listed.
 - `scripts/build-catalog.mjs` distils `sick-catalog-dataset/` into
   `src/data/catalog.generated.json` — 796 sensing SKUs the solver runs over.
 
@@ -29,6 +33,7 @@ from a CDN, so it loses its glyphs offline; the console does not care.
 | Route | What it is |
 | --- | --- |
 | `/` | The SICK landing page, rewritten to the synced static file |
+| `/productos.html` | All 1,776 catalogue references with their photos. Static, reads `/data/catalog.json` at load |
 | `/console` | The workspace: source part, SICK equivalent, consultation thread |
 | `/console/product/[sku]` | SICK product record, led by the competitor families it replaces |
 | `/console/corpus` | Extraction swarm output and the verifier dispute ledger |
