@@ -118,6 +118,15 @@ export function TelemetryRail({ stats }: { stats: CorpusStats }) {
         >
           Corpus →
         </Link>
+        {/* The live lane is labelled as such next to an "Offline" lamp, because
+            those two facts have to be read together: this console fetches
+            nothing at request time except here, where a model runs. */}
+        <Link
+          href="/console/ask"
+          className="font-mono text-[9.5px] uppercase tracking-[0.12em] transition-colors text-sick hover:text-sick-deep"
+        >
+          Ask ↗
+        </Link>
       </div>
     </header>
   );
