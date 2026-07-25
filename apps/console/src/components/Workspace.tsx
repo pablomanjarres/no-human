@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { type DescribeAnswers, buildDescribeRun, parseDescription } from "@/lib/describe";
-import { buildMissRun, solve } from "@/lib/engine";
+import { buildMissRun, classifyInput, solve } from "@/lib/engine";
 import type { Citation, CorpusStats, InputMode, SolveRun } from "@/lib/types";
 import { ConsultationPanel } from "./ConsultationPanel";
 import { ConstraintStrip, InputBar } from "./InputBar";
@@ -84,7 +84,15 @@ export function Workspace({
 
   const handleSolve = useCallback(
     (m: InputMode, raw: string) => {
-      const input = { mode: m, raw };
+      // Picking the Part Number tab and then typing a sentence is a description,
+      // not a lookup. Reroute rather than answering "not in the corpus" to a
+      // question the corpus was never going to contain.
+      const mode = m === "part" ? classifyInput(raw) : m;
+      const input = { mode, raw };
+      // Only move the tab when the reroute actually happened. The Photo and BOM
+      // samples submit as "part", and switching the tab out from under them
+      // would look like the console losing its place.
+      if (mode !== m) setMode(mode);
       setAnswers({});
       start(solve(input) ?? buildMissRun(input));
     },
@@ -93,8 +101,7 @@ export function Workspace({
 
   const handleAsk = useCallback(
     (text: string) => {
-      const looksLikePart = /^[A-Za-z0-9][A-Za-z0-9\-/. ]{3,}$/.test(text) && /\d/.test(text);
-      const input = { mode: looksLikePart ? ("part" as const) : ("describe" as const), raw: text };
+      const input = { mode: classifyInput(text), raw: text };
       setMode(input.mode);
       setAnswers({});
       start(solve(input) ?? buildMissRun(input));
