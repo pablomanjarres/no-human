@@ -48,7 +48,9 @@ export function ProductHero({ part }: { part: Part }) {
             {part.family} · {part.principle}
           </p>
 
-          <h1 className="nameplate mt-3 text-[clamp(2rem,5.4vw,3.6rem)] leading-[0.9] break-words">
+          {/* Near-black on white. On the anthracite direction this was the one
+              luminous thing on the panel; on paper the weight has to carry it. */}
+          <h1 className="nameplate mt-3 text-[clamp(2rem,5.4vw,3.6rem)] leading-[0.9] break-words text-ink">
             {part.partNumber}
           </h1>
 
@@ -56,10 +58,14 @@ export function ProductHero({ part }: { part: Part }) {
 
           {/* The order number, treated as the first-class fact it is. */}
           <div className="mt-6 flex flex-wrap items-end gap-x-5 gap-y-3">
-            <div className="flex items-stretch rounded-[2px] border border-rail bg-cab-850">
+            {/* cab-850 is 3 % off white and the plate vanished into the panel.
+                cab-800 is the recessed token, so it reads as a stamped plate; the
+                label steps up to ink-dim because ink-faint only clears 4.5:1 on
+                white, not on cab-800. */}
+            <div className="flex items-stretch rounded-[2px] border border-rail bg-cab-800">
               <span className="w-[3px] shrink-0 bg-sick" aria-hidden />
               <div className="px-4 py-2.5">
-                <span className="eyebrow">SICK order no.</span>
+                <span className="eyebrow text-ink-dim">SICK order no.</span>
                 <p className="mt-1.5 font-mono text-[26px] font-semibold leading-none tracking-[0.02em] text-ink tabular-nums">
                   {part.orderNumber ?? "—"}
                 </p>
@@ -76,19 +82,25 @@ export function ProductHero({ part }: { part: Part }) {
             <ul className="mt-6 flex flex-wrap gap-1.5">
               {chips.map((row) => (
                 <li key={row.key}>
-                  <Chip title={row.label}>{display(row)}</Chip>
+                  {/* The chip plate is a 9 % rail tint on white, so the value has
+                      to be full ink or the whole row reads as disabled. */}
+                  <Chip title={row.label} ink="var(--color-ink)">
+                    {display(row)}
+                  </Chip>
                 </li>
               ))}
             </ul>
           ) : null}
         </div>
 
-        <figure className="w-full max-w-[420px] min-w-0 rounded-[2px] border border-rail bg-cab-850 lg:w-[320px] lg:shrink-0">
+        {/* The frame stays white so its two ink-faint captions keep their 5:1;
+            only the well the drawing sits in is recessed to the page ground. */}
+        <figure className="w-full max-w-[420px] min-w-0 rounded-[2px] border border-rail bg-cab-900 lg:w-[320px] lg:shrink-0">
           <figcaption className="flex items-center justify-between gap-3 border-b border-rail px-3 py-2">
             <span className="eyebrow">Dimensional drawing</span>
             <span className="font-mono text-[10px] text-ink-faint">to scale</span>
           </figcaption>
-          <div className="flex items-center justify-center px-3 py-3">
+          <div className="flex items-center justify-center bg-cab-950 px-3 py-3">
             <Housing part={part} accent="sick" maxWidth={288} />
           </div>
           <p className="border-t border-rail px-3 py-2 font-mono text-[10px] leading-[1.5] text-ink-faint">

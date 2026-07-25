@@ -30,8 +30,10 @@ function Graticule() {
       aria-hidden
       className="h-[9px] shrink-0 border-b border-rail bg-cab-950"
       style={{
+        // On anthracite the ticks were lighter than the ground. On paper they have
+        // to be darker, and one step darker each so the major/minor read survives.
         backgroundImage:
-          "repeating-linear-gradient(90deg, var(--color-rail) 0 1px, transparent 1px 60px), repeating-linear-gradient(90deg, var(--color-cab-600) 0 1px, transparent 1px 12px)",
+          "repeating-linear-gradient(90deg, var(--color-rail-bright) 0 1px, transparent 1px 60px), repeating-linear-gradient(90deg, var(--color-rail) 0 1px, transparent 1px 12px)",
         backgroundSize: "100% 9px, 100% 4px",
         backgroundPosition: "0 0, 0 100%",
         backgroundRepeat: "repeat-x, repeat-x",
@@ -115,18 +117,33 @@ export function ReadoutStrip({ stats }: { stats: CorpusStats }) {
       <h2 id="readout-heading" className="sr-only">
         Extraction readout
       </h2>
-      <div className="grid grid-cols-2 gap-px bg-rail md:grid-cols-4 lg:grid-cols-7">
+      {/* The marked channel is the whole point of the strip. cab-850 against a row
+          of white cells is a 3 % step and disappeared, so the disputes cell takes
+          the amber wash: cream against white, capped in safety yellow, with the
+          figure in the dark amber text tone. Bright is the cap, never the number. */}
+      <div className="grid grid-cols-2 gap-px rounded-b-[5px] bg-rail md:grid-cols-4 lg:grid-cols-7">
         {channels.map((c) => (
           <div
             key={c.index}
-            className={`relative min-w-0 px-4 pb-4 pt-3.5 ${c.marked ? "bg-cab-850" : "bg-cab-900"} ${c.span}`}
+            className={`relative min-w-0 px-4 pt-3.5 pb-4 ${c.marked ? "bg-signal-wash" : "bg-cab-900"} ${c.span}`}
           >
             {c.marked ? (
-              <span aria-hidden className="absolute inset-x-0 top-0 block h-[2px] bg-signal" />
+              <span
+                aria-hidden
+                className="absolute inset-x-0 top-0 block h-[3px] bg-signal-bright"
+              />
             ) : null}
             <div className="flex items-baseline gap-2">
-              <span className="font-mono text-[9px] leading-none text-ink-faint">{c.index}</span>
-              <span className="eyebrow leading-none">{c.label}</span>
+              {/* ink-faint clears 4.5:1 on white but only 4.6:1 on the amber wash.
+                  On the marked cell the labels step up rather than sit on the line. */}
+              <span
+                className={`font-mono text-[9px] leading-none ${c.marked ? "text-ink-dim" : "text-ink-faint"}`}
+              >
+                {c.index}
+              </span>
+              <span className={`eyebrow leading-none ${c.marked ? "text-ink-dim" : ""}`}>
+                {c.label}
+              </span>
             </div>
             <p className="mt-2.5 flex items-baseline gap-1.5">
               <span
@@ -136,7 +153,11 @@ export function ReadoutStrip({ stats }: { stats: CorpusStats }) {
               >
                 {c.value}
               </span>
-              <span className="font-mono text-[10px] leading-none text-ink-faint">{c.unit}</span>
+              <span
+                className={`font-mono text-[10px] leading-none ${c.marked ? "text-ink-dim" : "text-ink-faint"}`}
+              >
+                {c.unit}
+              </span>
             </p>
             <p
               className={`mt-2.5 text-[11px] leading-[1.45] ${

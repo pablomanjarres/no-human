@@ -1,8 +1,21 @@
 "use client";
 
 import { railGeometry } from "@/lib/engine";
-import type { Citation, Evaluation } from "@/lib/types";
+import type { Citation, EvalStatus, Evaluation } from "@/lib/types";
 import { CiteLink, CriticalityMark, STATUS_ACCENT, StatusTag } from "./primitives";
+
+/**
+ * What the rail means, in words. The drawn axis is not the constraint — its ends
+ * are just the scale the values are plotted on — so a screen reader gets the
+ * evaluation's own strings (which carry their units) and the verdict, never the
+ * geometry.
+ */
+const RAIL_OUTCOME: Record<EvalStatus, string> = {
+  pass: "Satisfies the constraint",
+  loss: "Satisfies the hard constraints, reported as a quantified loss",
+  fail: "Fails the constraint",
+  info: "Reported, not scored",
+};
 
 /**
  * The signature element.
@@ -19,12 +32,18 @@ export function Rail({ evaluation }: { evaluation: Evaluation }) {
   const g = railGeometry(rail);
   const accent = STATUS_ACCENT[status];
 
+  const spoken = [
+    `${evaluation.label}: candidate ${evaluation.candidateValue}`,
+    `replacing ${evaluation.sourceValue}`,
+    ...(evaluation.delta ? [`difference ${evaluation.delta}`] : []),
+  ].join(", ");
+
   return (
     <div
       className="rail"
       style={{ "--rail-accent": accent } as React.CSSProperties}
       role="img"
-      aria-label={`${evaluation.label}: required window ${rail.bandStart} to ${rail.bandEnd}, candidate ${rail.candidate}, replaced part ${rail.source}. ${status}.`}
+      aria-label={`${spoken}. ${RAIL_OUTCOME[status]}.`}
     >
       <span className="rail-grat" />
       <span className="rail-track" />

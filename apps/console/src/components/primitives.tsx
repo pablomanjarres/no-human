@@ -1,6 +1,10 @@
 import type { Citation, Confidence, Criticality, EvalStatus, Part } from "@/lib/types";
 
-/** Accent tokens. Blue passes, yellow cautions, vermilion halts. No green anywhere. */
+/**
+ * Accent tokens. Blue passes, amber cautions, vermilion halts. No green anywhere.
+ * These are the *text-safe* tones — `signal` and `halt` are the darkened variants,
+ * not the safety-yellow / vermilion fills. `rail` is a border and mark tone only.
+ */
 export const ACCENT: Record<string, string> = {
   sick: "var(--color-sick)",
   signal: "var(--color-signal)",
@@ -8,11 +12,17 @@ export const ACCENT: Record<string, string> = {
   rail: "var(--color-rail-bright)",
 };
 
+/**
+ * Status tones. Used both as label ink (StatusTag, the spec value) and as the
+ * rail accent. INFO deliberately does not take `ACCENT.rail`: rail-bright is a
+ * border tone and lands around 2.5:1 on the panel, so it cannot carry a label.
+ * ink-faint is the same visual register and clears AA.
+ */
 export const STATUS_ACCENT: Record<EvalStatus, string> = {
   pass: ACCENT.sick!,
   loss: ACCENT.signal!,
   fail: ACCENT.halt!,
-  info: ACCENT.rail!,
+  info: "var(--color-ink-faint)",
 };
 
 export const STATUS_LABEL: Record<EvalStatus, string> = {
@@ -115,6 +125,11 @@ export function CriticalityMark({ criticality }: { criticality: Criticality }) {
   );
 }
 
+/**
+ * Extraction confidence, as ink. `high` never renders — silence is the signal —
+ * so the two that do render are the darkened amber and vermilion, both AA on the
+ * panel at 9px. The bright tones are never used here: this is a label.
+ */
 const CONFIDENCE_ACCENT: Record<Confidence, string> = {
   high: "var(--color-ink-faint)",
   medium: "var(--color-signal)",
@@ -158,6 +173,11 @@ export function CiteLink({ citation, onOpen }: { citation: Citation; onOpen?: (c
  * two columns are directly comparable. Pass `ghost` to overlay the outline of
  * the part being replaced: the 3 mm the replacement costs you becomes visible
  * rather than a number in a table.
+ *
+ * Drawn as ink on paper: a light body, a heavy object line, lighter dimension
+ * lines under it. The machined-face hatch is a mid grey at partial opacity —
+ * on the old anthracite ground it was white at 4%, which on a light body is
+ * invisible.
  */
 const MM = 2.4;
 const PAD_X = 10;
@@ -177,6 +197,10 @@ export function Housing({
   maxWidth?: number | undefined;
 }) {
   const color = ACCENT[accent] ?? ACCENT.rail!;
+  // The optical face and the status LED are the only coloured marks on the
+  // drawing. rail-bright against the light body is ~2.4:1 — under the 3:1 a
+  // meaningful graphic needs — so the neutral drawing marks in ink instead.
+  const mark = accent === "rail" ? "var(--color-ink-faint)" : color;
   const bw = part.dims.l * MM;
   const bh = part.dims.h * MM;
   const r = part.form === "cyl" ? bh / 2 : 2;
@@ -200,7 +224,8 @@ export function Housing({
       role="img"
       aria-label={`${part.partNumber} side elevation, ${part.dims.l} by ${part.dims.w} by ${part.dims.h} millimetres`}
     >
-      {/* the part being replaced, for scale */}
+      {/* the part being replaced, for scale — a reference line: lighter than the
+          object line and dashed, but not faded, or it disappears on paper */}
       {ghost ? (
         <rect
           x={PAD_X}
@@ -212,11 +237,10 @@ export function Housing({
           stroke="var(--color-ink-faint)"
           strokeWidth={1}
           strokeDasharray="2 2"
-          opacity={0.75}
         />
       ) : null}
 
-      {/* housing */}
+      {/* housing — object line, the heaviest line in the drawing */}
       <rect
         x={PAD_X}
         y={PAD_Y}
@@ -224,7 +248,7 @@ export function Housing({
         height={bh}
         rx={r}
         fill="var(--color-cab-700)"
-        stroke="var(--color-rail-bright)"
+        stroke="var(--color-ink-dim)"
         strokeWidth={1}
       />
       {/* machined face texture */}
@@ -235,9 +259,9 @@ export function Housing({
           y1={PAD_Y + 1}
           x2={PAD_X + 3 + i * 6}
           y2={PAD_Y + bh - 1}
-          stroke="var(--color-ink)"
+          stroke="var(--color-rail-bright)"
           strokeWidth={0.5}
-          opacity={0.04}
+          opacity={0.55}
         />
       ))}
       {/* optical face */}
@@ -247,11 +271,10 @@ export function Housing({
         width={4}
         height={Math.max(bh * 0.44, 10)}
         rx={1}
-        fill={color}
-        opacity={0.9}
+        fill={mark}
       />
       {/* status LED */}
-      <circle cx={PAD_X + 6} cy={PAD_Y + 5} r={1.8} fill={color} />
+      <circle cx={PAD_X + 6} cy={PAD_Y + 5} r={1.8} fill={mark} />
       {/* M12 connector stub */}
       <rect
         x={PAD_X - 5}
@@ -259,7 +282,7 @@ export function Housing({
         width={5}
         height={8}
         fill="var(--color-cab-600)"
-        stroke="var(--color-rail)"
+        stroke="var(--color-ink-dim)"
         strokeWidth={0.75}
       />
 
