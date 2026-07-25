@@ -7,6 +7,8 @@ import { ProductHero } from "@/components/product/ProductHero";
 import { ReplacesPanel } from "@/components/product/ReplacesPanel";
 import { SpecTable } from "@/components/product/SpecTable";
 import { corpusStats, findPart, sickCatalogue } from "@/data/runs";
+import { findEntry } from "@/lib/lookup";
+import { catalog, toPart } from "@/lib/solver";
 import type { Part } from "@/lib/types";
 
 /**
@@ -22,11 +24,37 @@ interface PageProps {
   params: Promise<{ sku: string }>;
 }
 
+/**
+ * Every SKU we hold gets a page.
+ *
+ * This used to emit three — the hand-authored parts — so every other real order
+ * number in the catalogue 404'd. A product record that exists in the data and
+ * not on the web is the same lie as a refusal for a part we hold.
+ */
 export function generateStaticParams(): { sku: string }[] {
-  return sickCatalogue.map((p) => ({ sku: p.partNumber }));
+  const seen = new Set<string>();
+  const params: { sku: string }[] = [];
+
+  for (const sku of [
+    ...sickCatalogue.map((p) => p.partNumber),
+    ...catalog.map((c) => c.typeCode),
+  ]) {
+    const key = sku.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    params.push({ sku });
+  }
+
+  return params;
 }
 
-/** A malformed percent-escape must not throw a 500 — it is just a bad SKU. */
+/**
+ * A malformed percent-escape must not throw a 500 — it is just a bad SKU.
+ *
+ * Hand-authored parts win over catalogue entries: they carry a real dimensional
+ * drawing, a documented replaces-list and matched accessories, none of which the
+ * short-form catalogue prints. The catalogue is the fallback, not the override.
+ */
 function resolve(raw: string): Part | undefined {
   let sku = raw;
   try {
@@ -34,7 +62,12 @@ function resolve(raw: string): Part | undefined {
   } catch {
     return undefined;
   }
-  return findPart(sku);
+
+  const authored = findPart(sku);
+  if (authored) return authored;
+
+  const entry = findEntry(sku);
+  return entry ? toPart(entry) : undefined;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

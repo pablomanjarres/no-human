@@ -4,12 +4,18 @@ import { useEffect, useRef, useState } from "react";
 import type { AgentName, Citation, SolveRun, ThreadMessage, TraceEvent } from "@/lib/types";
 import { CiteLink, Chip, Panel, PanelHead } from "./primitives";
 
+/**
+ * Who is speaking. These are label inks, so every one of them is a text-safe
+ * tone: the challenger and the verifier take the darkened amber, and the
+ * extractor takes ink-faint rather than rail-bright, which is a border tone and
+ * cannot carry a 9.5px badge.
+ */
 const AGENT_ACCENT: Record<AgentName, string> = {
   resolver: "var(--color-sick)",
   solver: "var(--color-ink-dim)",
   challenger: "var(--color-signal)",
   verifier: "var(--color-signal)",
-  extractor: "var(--color-rail-bright)",
+  extractor: "var(--color-ink-faint)",
 };
 
 const STATUS_ACCENT: Record<TraceEvent["status"], string> = {
@@ -165,7 +171,15 @@ function ThreadTurn({
   if (message.role === "user") {
     return (
       <div className="anim-in flex justify-end">
-        <div className="max-w-[85%] border border-cab-600 bg-cab-700 px-2.5 py-1.5">
+        {/* The human's turn: a tinted plate, not a filled slab. Blue because the
+            person asking is the one the brand belongs to. */}
+        <div
+          className="max-w-[85%] border px-2.5 py-1.5"
+          style={{
+            background: "var(--color-sick-wash)",
+            borderColor: "color-mix(in oklab, var(--color-sick) 22%, transparent)",
+          }}
+        >
           <p className="font-mono text-[12px] leading-[1.5] text-ink">{message.text}</p>
         </div>
       </div>
@@ -186,18 +200,23 @@ function ThreadTurn({
         </div>
         <p className="mt-1.5 text-[13.5px] font-medium leading-[1.5] text-ink">{message.text}</p>
         <p className="mt-1.5 text-[11.5px] leading-[1.55] text-ink-faint">{message.why}</p>
+        {/* The effect sits on its own line rather than in a shrink-0 span beside
+            the label: at every width from 375px up it was being cut off, and the
+            effect is the half of the option that says what answering costs. */}
         <div className="mt-2.5 flex flex-col gap-1.5">
           {message.options.map((o) => (
             <button
               key={o.value + o.label}
               type="button"
               onClick={() => onAnswer(o.value, o.label)}
-              className="group flex items-baseline gap-2 border border-cab-600 px-2.5 py-1.5 text-left transition-colors hover:border-signal"
+              className="group flex w-full flex-col items-start gap-0.5 border border-cab-600 px-2.5 py-1.5 text-left transition-colors hover:border-signal hover:bg-signal-wash"
             >
-              <span className="flex-1 text-[12.5px] text-ink-dim group-hover:text-ink">
+              <span className="text-[12.5px] leading-[1.4] text-ink-dim group-hover:text-ink">
                 {o.label}
               </span>
-              <span className="shrink-0 font-mono text-[9.5px] text-ink-faint">{o.effect}</span>
+              <span className="font-mono text-[9.5px] leading-[1.45] text-ink-faint">
+                {o.effect}
+              </span>
             </button>
           ))}
         </div>
@@ -299,8 +318,10 @@ export function TraceList({ events, live }: { events: TraceEvent[]; live?: Trace
           {e.detail ? (
             <p className="mt-0.5 text-[11.5px] leading-[1.5] text-ink-faint">{e.detail}</p>
           ) : null}
+          {/* Recessed tool call. cab-950 is the page ground now rather than the
+              darkest surface — the recessed tone on a white panel is 800. */}
           {e.tool ? (
-            <div className="mt-1.5 border border-cab-700 bg-cab-950 px-2 py-1.5 font-mono text-[10px] leading-[1.5]">
+            <div className="mt-1.5 border border-cab-700 bg-cab-800 px-2 py-1.5 font-mono text-[10px] leading-[1.5]">
               <div className="text-ink-dim">
                 <span className="text-sick">{e.tool.name}</span>
                 <span className="text-ink-faint">({e.tool.args})</span>

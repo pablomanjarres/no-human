@@ -19,12 +19,7 @@ export type Criticality =
   | "informational";
 
 export type SpecKind =
-  | "numeric-min"
-  | "numeric-max"
-  | "numeric-window"
-  | "enum"
-  | "boolean"
-  | "text";
+  "numeric-min" | "numeric-max" | "numeric-window" | "enum" | "boolean" | "text";
 
 export type AgentName = "extractor" | "verifier" | "resolver" | "solver" | "challenger";
 
@@ -217,7 +212,18 @@ export interface SolveRun {
   outcome: Outcome;
   /** The moment the challenger kills rank 1 and rank 2 takes the slot. */
   promotion?: { at: number; fromRank: number; toRank: number };
-  refusal?: { headline: string; closest: string; losses: string[] };
+  refusal?: {
+    headline: string;
+    closest: string;
+    losses: string[];
+    /**
+     * Near misses from the catalogue, offered for a human to pick. Never
+     * auto-resolved: one character of a type code is often one polarity of
+     * output, and guessing which the operator meant is how you wire a sourcing
+     * output into a sinking input card.
+     */
+    suggestions?: { partNumber: string; orderNumber: string; note: string }[];
+  };
   stats: { catalogue: number; afterConstraints: number; survived: number; durationMs: number };
 }
 

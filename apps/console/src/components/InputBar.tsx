@@ -30,7 +30,14 @@ const MODES: { id: InputMode; label: string; placeholder: string; hint: string }
   },
 ];
 
-const SAMPLES = ["QS18VN6LV", "ML100-8-1000-RT/95/103"];
+/**
+ * Two scripted competitor solves, then a real one.
+ *
+ * `WTB9-3P2211S14` is a live lookup into the 796-SKU catalogue and `1052171` is
+ * the same part by order number — both are here so it is obvious from the bar
+ * that the field takes any part we hold, not just the two demo strings.
+ */
+const SAMPLES = ["QS18VN6LV", "ML100-8-1000-RT/95/103", "WTB9-3P2211S14", "1052171"];
 
 export function InputBar({
   mode,
@@ -63,30 +70,40 @@ export function InputBar({
           onSolve(mode, value);
         }}
       >
-        <div className="flex shrink-0 items-stretch border-r border-rail" role="tablist" aria-label="Input mode">
-          {MODES.map((m) => (
-            <button
-              key={m.id}
-              type="button"
-              role="tab"
-              aria-selected={mode === m.id}
-              onClick={() => {
-                onModeChange(m.id);
-                setValue("");
-              }}
-              className="border-r border-cab-700 px-3 py-2.5 font-mono text-[9.5px] uppercase tracking-[0.12em] transition-colors last:border-r-0"
-              style={{
-                background: mode === m.id ? "var(--color-cab-700)" : "transparent",
-                color: mode === m.id ? "var(--color-sick)" : "var(--color-ink-faint)",
-                boxShadow: mode === m.id ? "inset 0 2px 0 0 var(--color-sick)" : "none",
-              }}
-            >
-              {m.label}
-            </button>
-          ))}
+        <div
+          className="flex shrink-0 items-stretch border-r border-rail"
+          role="tablist"
+          aria-label="Input mode"
+        >
+          {MODES.map((m) => {
+            const on = mode === m.id;
+            return (
+              <button
+                key={m.id}
+                type="button"
+                role="tab"
+                aria-selected={on}
+                onClick={() => {
+                  onModeChange(m.id);
+                  setValue("");
+                }}
+                // Lit key, not dark chip: the active tab is the white one, capped
+                // with a 2px blue rail. The bar itself sits on cab-850.
+                className={`border-r border-cab-700 px-3 py-2.5 font-mono text-[9.5px] uppercase tracking-[0.12em] transition-colors last:border-r-0 ${
+                  on
+                    ? "bg-cab-900 font-semibold text-sick shadow-[inset_0_2px_0_0_var(--color-sick)]"
+                    : "text-ink-faint hover:bg-cab-800 hover:text-ink-dim"
+                }`}
+              >
+                {m.label}
+              </button>
+            );
+          })}
         </div>
 
-        <label className="flex min-w-0 flex-1 items-center gap-2.5 px-3.5">
+        {/* min-w keeps the field from being crushed into a 70px slot when the row
+            wraps on a phone: below the wrap point it takes its own line. */}
+        <label className="flex min-w-[12rem] flex-1 items-center gap-2.5 px-3.5 py-2 sm:py-0">
           <span className="sr-only">{active.label}</span>
           {isDrop ? (
             // File input is not wired in this build. Saying so is cheaper than a
@@ -117,8 +134,9 @@ export function InputBar({
         <button
           type="submit"
           disabled={busy || (!isDrop && !value.trim())}
-          className="shrink-0 border-l border-rail px-5 font-mono text-[10.5px] uppercase tracking-[0.14em] transition-colors disabled:opacity-40"
-          style={{ background: "var(--color-sick-wash)", color: "var(--color-sick)" }}
+          // Solid, not a wash. This is the only action on the bar, and on a white
+          // ground a tinted button reads as already disabled.
+          className="shrink-0 bg-sick px-6 py-2.5 font-mono text-[10.5px] font-semibold uppercase tracking-[0.14em] text-white transition-colors enabled:hover:bg-sick-deep disabled:bg-cab-600 disabled:text-ink-faint sm:py-0"
         >
           {busy ? "Solving…" : isDrop ? "Run sample →" : "Solve →"}
         </button>
@@ -135,7 +153,7 @@ export function InputBar({
               setValue(s);
               onSolve("part", s);
             }}
-            className="font-mono text-[10.5px] text-ink-dim underline decoration-cab-600 decoration-dotted underline-offset-2 transition-colors hover:text-sick hover:decoration-sick"
+            className="font-mono text-[10.5px] text-ink-dim underline decoration-rail decoration-dotted underline-offset-2 transition-colors hover:text-sick hover:decoration-sick"
           >
             {s}
           </button>
@@ -145,7 +163,9 @@ export function InputBar({
         </span>
         <button
           type="button"
-          onClick={() => onSolve("describe", "Necesito detectar cajas negras sobre una banda transportadora")}
+          onClick={() =>
+            onSolve("describe", "Necesito detectar cajas negras sobre una banda transportadora")
+          }
           className="font-mono text-[10.5px] text-ink-dim underline decoration-cab-600 decoration-dotted underline-offset-2 transition-colors hover:text-sick hover:decoration-sick"
         >
           a description in Spanish
@@ -155,15 +175,39 @@ export function InputBar({
   );
 }
 
-const ORIGIN_STYLE: Record<Constraint["origin"], { accent: string; mark: string; title: string }> = {
-  extracted: { accent: "var(--color-sick)", mark: "", title: "Read directly from the source datasheet" },
-  asked: { accent: "var(--color-sick)", mark: "answered", title: "Answered by the operator, not assumed" },
+/**
+ * `accent` paints the chip border and its wash; `ink` carries the label. They are
+ * separate because the structural greys are borders, not text — rail-bright as a
+ * label on white is ~2.6:1.
+ */
+const ORIGIN_STYLE: Record<
+  Constraint["origin"],
+  { accent: string; ink: string; mark: string; title: string }
+> = {
+  extracted: {
+    accent: "var(--color-sick)",
+    ink: "var(--color-sick)",
+    mark: "",
+    title: "Read directly from the source datasheet",
+  },
+  asked: {
+    accent: "var(--color-sick)",
+    ink: "var(--color-sick)",
+    mark: "answered",
+    title: "Answered by the operator, not assumed",
+  },
   assumed: {
     accent: "var(--color-signal)",
+    ink: "var(--color-signal)",
     mark: "assumed",
     title: "ASSUMED by the resolver. Confirm before ordering.",
   },
-  default: { accent: "var(--color-rail-bright)", mark: "default", title: "From the application default profile" },
+  default: {
+    accent: "var(--color-rail-bright)",
+    ink: "var(--color-ink-dim)",
+    mark: "default",
+    title: "From the application default profile",
+  },
 };
 
 /**
@@ -177,7 +221,10 @@ export function ConstraintStrip({ constraints }: { constraints: Constraint[] }) 
 
   return (
     <div className="flex shrink-0 flex-wrap items-center gap-x-2 gap-y-1.5 border-b border-rail bg-cab-900 px-3.5 py-2">
-      <span className="eyebrow shrink-0" title="Emitted by the resolver agent. The solver runs on these, and only these.">
+      <span
+        className="eyebrow shrink-0"
+        title="Emitted by the resolver agent. The solver runs on these, and only these."
+      >
         Constraint set
       </span>
       <span className="shrink-0 font-mono text-[9.5px] text-ink-faint">
@@ -188,6 +235,7 @@ export function ConstraintStrip({ constraints }: { constraints: Constraint[] }) 
         const style = ORIGIN_STYLE[c.origin];
         const unknown = c.display === "unknown";
         const accent = unknown ? "var(--color-signal)" : style.accent;
+        const ink = unknown ? "var(--color-signal)" : style.ink;
         return (
           <span
             key={c.key}
@@ -196,14 +244,14 @@ export function ConstraintStrip({ constraints }: { constraints: Constraint[] }) 
             style={
               {
                 "--chip-accent": accent,
-                "--chip-ink": accent,
+                "--chip-ink": ink,
                 borderStyle: c.criticality === "hard" ? "solid" : "dashed",
               } as React.CSSProperties
             }
           >
             {c.display}
             {style.mark ? (
-              <span className="text-[8.5px] uppercase tracking-[0.1em] opacity-70">{style.mark}</span>
+              <span className="text-[8.5px] uppercase tracking-[0.1em]">{style.mark}</span>
             ) : null}
           </span>
         );

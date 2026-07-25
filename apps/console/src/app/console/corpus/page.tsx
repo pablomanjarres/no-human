@@ -54,7 +54,13 @@ export default function CorpusPage() {
           <span className="font-mono text-ink">{groupDigits(corpusStats.specRows)}</span> structured
           spec rows. A second agent then re-read every one of those rows against its source page and
           disagreed with the extractor{" "}
-          <span className="font-mono text-signal">{groupDigits(corpusStats.disputes)}</span> times.
+          {/* The dispute figure is the thesis of the board. On anthracite it was
+              the only warm thing on the page; on white it needs the wash tint
+              behind it to stay the thing your eye finds. */}
+          <span className="rounded-[2px] bg-signal-wash px-1.5 py-0.5 font-mono font-medium text-signal">
+            {groupDigits(corpusStats.disputes)}
+          </span>{" "}
+          times.
         </p>
         <p className="mt-3 max-w-[86ch] text-[14px] leading-[1.7] text-ink-dim">
           That count is not a defect rate to bury under a confidence percentage. It is the only

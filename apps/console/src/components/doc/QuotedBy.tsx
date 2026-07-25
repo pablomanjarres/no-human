@@ -9,6 +9,10 @@ import {
 } from "@/components/doc/corpus";
 import type { Citation } from "@/lib/types";
 
+/** The selected quote carries the same highlighter as the line on the sheet. */
+const ACTIVE_ROW = "var(--color-signal-wash)";
+const ACTIVE_EDGE = "var(--color-signal-bright)";
+
 /**
  * The return leg.
  *
@@ -54,10 +58,11 @@ export function QuotedBy({
             return (
               <section key={`${page}-${line.snippet}`}>
                 <header
-                  className="flex items-center gap-2 border-y border-cab-800 bg-cab-850 py-1.5 pr-2.5 pl-3"
+                  className="flex items-center gap-2 border-y border-cab-700 bg-cab-800 py-1.5 pr-2.5 pl-3"
                   style={{
                     borderLeft: "2px solid",
-                    borderLeftColor: active ? "var(--color-signal)" : "transparent",
+                    borderLeftColor: active ? ACTIVE_EDGE : "transparent",
+                    background: active ? ACTIVE_ROW : undefined,
                   }}
                 >
                   <span
@@ -76,7 +81,7 @@ export function QuotedBy({
                     return (
                       <li
                         key={`${use.agent}-${use.what}`}
-                        className="flex items-start gap-2 border-b border-cab-850 px-3 py-2"
+                        className="flex items-start gap-2 border-b border-cab-700 px-3 py-2"
                       >
                         <span className="shrink-0 pt-[1px]">
                           <Chip accent={tag.accent} title={tag.label}>

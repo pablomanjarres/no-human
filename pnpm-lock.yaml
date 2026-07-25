@@ -70,6 +70,25 @@ importers:
         specifier: ^3.2.4
         version: 3.2.7(@types/node@25.9.5)(jiti@2.7.0)(lightningcss@1.32.0)
 
+  apps/consultancy-api:
+    dependencies:
+      '@anthropic-ai/sdk':
+        specifier: ^0.115.0
+        version: 0.115.0(zod@3.25.76)
+      '@no-human/consultancy-engine':
+        specifier: workspace:*
+        version: link:../../packages/consultancy-engine
+    devDependencies:
+      '@types/node':
+        specifier: ^25.9.3
+        version: 25.9.5
+      typescript:
+        specifier: ^6.0.3
+        version: 6.0.3
+      vitest:
+        specifier: ^3.2.4
+        version: 3.2.7(@types/node@25.9.5)(jiti@2.7.0)(lightningcss@1.32.0)
+
   apps/sick-clone-ui:
     devDependencies:
       puppeteer-core:
@@ -85,6 +104,18 @@ importers:
         specifier: workspace:*
         version: link:../rag
     devDependencies:
+      typescript:
+        specifier: ^6.0.3
+        version: 6.0.3
+      vitest:
+        specifier: ^3.2.4
+        version: 3.2.7(@types/node@25.9.5)(jiti@2.7.0)(lightningcss@1.32.0)
+
+  packages/consultancy-engine:
+    devDependencies:
+      '@types/node':
+        specifier: ^25.9.3
+        version: 25.9.5
       typescript:
         specifier: ^6.0.3
         version: 6.0.3

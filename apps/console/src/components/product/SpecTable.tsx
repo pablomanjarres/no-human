@@ -35,15 +35,20 @@ function Readout({ label, value, accent }: { label: string; value: number; accen
 function DisputePair({ dispute }: { dispute: Dispute }) {
   return (
     <div className="flex flex-wrap gap-2">
-      <div className="min-w-[8.5rem] flex-1 rounded-[2px] border border-rail bg-cab-850 px-2.5 py-1.5">
-        <span className="eyebrow">Extracted</span>
-        <p className="mt-1 font-mono text-[13px] leading-tight text-ink-dim line-through decoration-cab-600">
+      {/* Recessed plate for the superseded read: cab-850 was invisible against a
+          white panel, and the strike-through needs a rule that shows on it. */}
+      <div className="min-w-[8.5rem] flex-1 rounded-[2px] border border-rail bg-cab-800 px-2.5 py-1.5">
+        <span className="eyebrow text-ink-dim">Extracted</span>
+        <p className="mt-1 font-mono text-[13px] leading-tight text-ink-dim line-through decoration-rail">
           {dispute.extracted}
         </p>
       </div>
+      {/* signal-wash is now a cream tint, so the value has to be the dark amber
+          text tone. signal-bright on it is ~1.3:1 — it was legible only because
+          the wash used to be near-black. */}
       <div className="min-w-[8.5rem] flex-1 rounded-[2px] border border-signal bg-signal-wash px-2.5 py-1.5">
         <span className="eyebrow text-signal">Verified</span>
-        <p className="mt-1 font-mono text-[13px] leading-tight text-signal-bright">
+        <p className="mt-1 font-mono text-[13px] leading-tight font-medium text-signal">
           {dispute.verified}
         </p>
       </div>
@@ -87,7 +92,9 @@ export function SpecTable({ part }: { part: Part }) {
         </dl>
       </div>
 
-      <div className="overflow-x-auto">
+      {/* `relative` so the sr-only <caption>, which is position:absolute, is
+          contained and clipped by this scroller rather than by the .panel. */}
+      <div className="relative overflow-x-auto">
         <table className="w-full min-w-[540px] border-collapse text-left">
           <caption className="sr-only">
             Full specification for {part.brand} {part.partNumber}, read from{" "}
@@ -119,7 +126,7 @@ export function SpecTable({ part }: { part: Part }) {
                     className={
                       d
                         ? "bg-signal-wash"
-                        : "border-b border-cab-800 transition-colors hover:bg-cab-850"
+                        : "border-b border-cab-700 transition-colors hover:bg-cab-800"
                     }
                   >
                     <th
@@ -150,7 +157,7 @@ export function SpecTable({ part }: { part: Part }) {
                   </tr>
 
                   {d ? (
-                    <tr className="border-b border-cab-800 bg-signal-wash">
+                    <tr className="border-b border-cab-700 bg-signal-wash">
                       <td
                         colSpan={4}
                         className="px-4 pt-0 pb-3.5 text-[12.5px] leading-[1.6] text-ink-dim"

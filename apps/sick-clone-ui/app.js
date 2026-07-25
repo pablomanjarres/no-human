@@ -15,9 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnNecessary = document.getElementById('cookie-necessary');
     const btnAccept = document.getElementById('cookie-accept');
     
-    // Check if user has already made a choice
     if (!localStorage.getItem('sick_cookie_consent')) {
-        // Show banner after a slight delay
         setTimeout(() => {
             if(cookieBanner) cookieBanner.classList.add('show');
         }, 1000);
@@ -28,28 +26,22 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('sick_cookie_consent', 'true');
     };
 
-    if(btnNecessary) {
-        btnNecessary.addEventListener('click', dismissBanner);
-    }
-    
-    if(btnAccept) {
-        btnAccept.addEventListener('click', dismissBanner);
-    }
+    if(btnNecessary) btnNecessary.addEventListener('click', dismissBanner);
+    if(btnAccept) btnAccept.addEventListener('click', dismissBanner);
 
-    // Smooth Scroll for anchor links
+    // Smooth Scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
-            if(targetId === '#') return; // ignore simple hash links
-            
+            if(targetId === '#') return;
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 e.preventDefault();
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
+                targetElement.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
 
 });
+
+
