@@ -14,8 +14,25 @@ const here = dirname(fileURLToPath(import.meta.url));
 const source = resolve(here, "..", "..", "sick-clone-ui");
 const target = resolve(here, "..", "public");
 
-/** Everything the page needs at runtime. The scrape scripts stay behind. */
-const ENTRIES = ["index.html", "styles.css", "app.js", "assets"];
+/**
+ * Everything the pages need at runtime. The scrape scripts stay behind.
+ *
+ * There are two entry points, not one. `index.html` links to `productos.html`,
+ * and that page carries its own stylesheet, its own script, and the generated
+ * `data/catalog.json` the script fetches at load. Any one of them left out of
+ * this list and the link 404s in production while working perfectly from the
+ * filesystem — which is exactly how it shipped the first time.
+ */
+const ENTRIES = [
+  "index.html",
+  "styles.css",
+  "app.js",
+  "assets",
+  "productos.html",
+  "catalog.css",
+  "catalog.js",
+  "data",
+];
 
 const exists = async (p) => {
   try {
