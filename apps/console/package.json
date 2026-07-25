@@ -6,10 +6,10 @@
   "description": "Cross-brand equivalence console: competitor sensor in, cited SICK equivalent out.",
   "scripts": {
     "sync:landing": "node scripts/sync-landing.mjs",
-    "dev": "node scripts/sync-landing.mjs && node scripts/build-catalog.mjs && next dev --port 3200",
-    "build": "node scripts/sync-landing.mjs && node scripts/build-catalog.mjs && next build",
+    "dev": "pnpm --filter @no-human/rag build && node scripts/sync-landing.mjs && node scripts/build-catalog.mjs && next dev --port 3200",
+    "build": "pnpm --filter @no-human/rag build && node scripts/sync-landing.mjs && node scripts/build-catalog.mjs && next build",
     "start": "next start --port 3200",
-    "typecheck": "node scripts/build-catalog.mjs && tsc --noEmit",
+    "typecheck": "pnpm --filter @no-human/rag build && node scripts/build-catalog.mjs && tsc --noEmit",
     "lint": "eslint src",
     "test": "vitest run --passWithNoTests",
     "build:catalog": "node scripts/build-catalog.mjs"
