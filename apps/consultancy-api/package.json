@@ -1,0 +1,25 @@
+{
+  "name": "@no-human/consultancy-api",
+  "version": "0.0.1-alpha.0",
+  "private": true,
+  "type": "module",
+  "description": "HTTP server for the SICK consultancy console. Holds the model credential and serves the UI.",
+  "main": "./dist/server.js",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "tsc -p tsconfig.build.json",
+    "dev": "tsc -p tsconfig.build.json && node dist/server.js",
+    "start": "node dist/server.js",
+    "lint": "eslint src",
+    "test": "vitest run --passWithNoTests"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.115.0",
+    "@no-human/consultancy-engine": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.3",
+    "typescript": "^6.0.3",
+    "vitest": "^3.2.4"
+  }
+}
