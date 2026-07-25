@@ -1,4 +1,5 @@
-import { runDescribe, runMl100, runQs18, runs } from "@/data/runs";
+import { runMl100, runQs18, runs } from "@/data/runs";
+import { buildDescribeRun } from "@/lib/describe";
 import { findEntry, suggest } from "@/lib/lookup";
 import { buildIdentifiedRun, coverage } from "@/lib/solver";
 import type { InputMode, RailModel, SolveRun } from "@/lib/types";
@@ -46,7 +47,9 @@ const ALIASES: Record<string, SolveRun> = {
 const normalise = (s: string) => s.trim().toLowerCase().replace(/\s+/g, "");
 
 export function resolveRun(input: SolveInput): SolveRun | null {
-  if (input.mode === "describe") return runDescribe;
+  // Every description used to return one scripted run about black boxes.
+  // Now the text is actually read, and what it does not state is asked for.
+  if (input.mode === "describe") return buildDescribeRun(input);
   const key = normalise(input.raw);
   if (!key) return null;
 
@@ -60,6 +63,36 @@ export function resolveRun(input: SolveInput): SolveRun | null {
   if (entry) return buildIdentifiedRun(entry, input);
 
   return null;
+}
+
+/**
+ * Which lane a free-text box entry belongs in.
+ *
+ * The old test was `/^[A-Za-z0-9][A-Za-z0-9\-/. ]{3,}$/ && /\d/` — a shape
+ * heuristic whose character class included the space, so "caja negra a 500 mm"
+ * matched and a Spanish sentence was sent to the part-number lookup, which
+ * answered that it was not in the corpus. Shape cannot separate these: a type
+ * code and a sentence are both letters, digits and separators.
+ *
+ * So resolve it instead. Anything the catalogue can actually find is a part
+ * number no matter how it reads; anything three words long is a sentence no
+ * matter what characters it uses. Only the short unresolvable middle is decided
+ * by shape, and it is sent to the part lane on purpose — that lane now answers
+ * with a real lookup and near misses, which is the more useful failure.
+ */
+export function classifyInput(text: string): InputMode {
+  const raw = text.trim();
+  if (!raw) return "describe";
+
+  if (ALIASES[normalise(raw)] || findEntry(raw)) return "part";
+
+  // A bare order number nobody stocks is still an order number, not prose.
+  if (/^\d{6,}$/.test(raw)) return "part";
+
+  const words = raw.split(/\s+/).filter(Boolean);
+  if (words.length >= 3) return "describe";
+
+  return /[A-Za-z]/.test(raw) && /\d/.test(raw) ? "part" : "describe";
 }
 
 export function solve(input: SolveInput): SolveRun | null {

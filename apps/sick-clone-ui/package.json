@@ -7,9 +7,10 @@
   "scripts": {
     "dev": "npx --yes serve . --listen 3300",
     "build": "echo 'static site — no build step'",
-    "test": "echo 'static site — no tests'"
+    "test": "vitest run --passWithNoTests"
   },
   "devDependencies": {
-    "puppeteer-core": "^25.3.0"
+    "puppeteer-core": "^25.3.0",
+    "vitest": "^3.2.4"
   }
 }

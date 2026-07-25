@@ -11,7 +11,7 @@
     "start": "next start --port 3200",
     "typecheck": "node scripts/build-catalog.mjs && node scripts/build-consult-catalog.mjs && tsc --noEmit",
     "lint": "eslint src",
-    "test": "vitest run --passWithNoTests",
+    "test": "node scripts/build-catalog.mjs && node scripts/build-consult-catalog.mjs && vitest run --passWithNoTests",
     "build:catalog": "node scripts/build-catalog.mjs",
     "build:consult-catalog": "node scripts/build-consult-catalog.mjs"
   },

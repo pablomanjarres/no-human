@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { buildMissRun, solve } from "@/lib/engine";
-import { buildCatalogRun } from "@/lib/solver";
+import { type DescribeAnswers, buildDescribeRun, parseDescription } from "@/lib/describe";
+import { buildMissRun, classifyInput, solve } from "@/lib/engine";
 import type { Citation, CorpusStats, InputMode, SolveRun } from "@/lib/types";
 import { ConsultationPanel } from "./ConsultationPanel";
 import { ConstraintStrip, InputBar } from "./InputBar";
@@ -40,6 +40,9 @@ export function Workspace({
   // already-armed rAF loop holding its original t0, which overwrites elapsed on
   // the very next frame and the button looks broken.
   const [take, setTake] = useState(0);
+  // Answers to the Describe lane's clarifying questions, cleared whenever a new
+  // input starts so one application's carton never derates the next one's box.
+  const [answers, setAnswers] = useState<DescribeAnswers>({});
   const raf = useRef(0);
 
   const total = run ? run.stats.durationMs + TAIL_MS : 0;
@@ -81,41 +84,61 @@ export function Workspace({
 
   const handleSolve = useCallback(
     (m: InputMode, raw: string) => {
-      const input = { mode: m, raw };
+      // Picking the Part Number tab and then typing a sentence is a description,
+      // not a lookup. Reroute rather than answering "not in the corpus" to a
+      // question the corpus was never going to contain.
+      const mode = m === "part" ? classifyInput(raw) : m;
+      const input = { mode, raw };
+      // Only move the tab when the reroute actually happened. The Photo and BOM
+      // samples submit as "part", and switching the tab out from under them
+      // would look like the console losing its place.
+      if (mode !== m) setMode(mode);
+      setAnswers({});
       start(solve(input) ?? buildMissRun(input));
     },
     [start],
   );
 
-
   const handleAsk = useCallback(
     (text: string) => {
-      const looksLikePart = /^[A-Za-z0-9][A-Za-z0-9\-/. ]{3,}$/.test(text) && /\d/.test(text);
-      const input = { mode: looksLikePart ? ("part" as const) : ("describe" as const), raw: text };
+      const input = { mode: classifyInput(text), raw: text };
       setMode(input.mode);
+      setAnswers({});
       start(solve(input) ?? buildMissRun(input));
     },
     [start],
   );
 
   // Answering a clarifying question is what runs the solve. That is the product:
-  // an underspecified input returns a question, and the answer returns a part.
-  // Answering the clarifying question is what runs the solve — and from here it
-  // is the real one: a deterministic pass over 796 SKUs transcribed from the
-  // SICK short-form catalogue, not a scripted result.
+  // an underspecified input returns a question, and the answer returns a part —
+  // a deterministic pass over 796 SKUs from the SICK short-form catalogue.
+  //
+  // Which question is on screen is derived from the description rather than
+  // tracked separately, so the answer can never be applied to the wrong slot.
+  // "I don't know" is a real answer and halts with a reason; it used to hit an
+  // early return, leaving the option on screen doing nothing at all.
   const handleAnswer = useCallback(
-    (value: string, label: string) => {
-      if (run?.id === "run-describe") {
-        if (value === "unknown") return;
-        const distanceMm = Number(value);
-        if (!Number.isFinite(distanceMm)) return;
-        start(
-          buildCatalogRun(
-            { distanceMm, remission: "6pct", output: "PNP" },
-            run.input,
-            label,
-          ),
-        );
+    (value: string, _label: string) => {
+      if (run?.id.startsWith("describe-")) {
+        const pending = parseDescription(run.input.raw, answers).remission
+          ? "distance"
+          : "remission";
+
+        if (value === "unknown") {
+          start(buildDescribeRun(run.input, answers, pending));
+          return;
+        }
+
+        let next: DescribeAnswers;
+        if (pending === "remission") {
+          next = { ...answers, remission: value };
+        } else {
+          const distanceMm = Number(value);
+          if (!Number.isFinite(distanceMm)) return;
+          next = { ...answers, distanceMm };
+        }
+        setAnswers(next);
+        start(buildDescribeRun(run.input, next));
         return;
       }
       if (run) {
@@ -124,7 +147,7 @@ export function Workspace({
         setTake((n) => n + 1);
       }
     },
-    [run, start],
+    [run, answers, start],
   );
 
   const replay = useCallback(() => {
@@ -316,7 +339,9 @@ function CitationDrawer({ citation, onClose }: { citation: Citation; onClose: ()
       }
       const active = document.activeElement;
       const inside = root.contains(active);
-      if (e.shiftKey ? active === first || active === root || !inside : active === last || !inside) {
+      if (
+        e.shiftKey ? active === first || active === root || !inside : active === last || !inside
+      ) {
         e.preventDefault();
         (e.shiftKey ? last : first).focus();
       }

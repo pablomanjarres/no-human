@@ -1,0 +1,491 @@
+/* Catálogo de productos — se apoya en los tokens de styles.css */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.catalog-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.nav-active {
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+/* ---------- cabecera de página ---------- */
+
+.catalog-head {
+    padding: 40px 0 28px;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.breadcrumb {
+    font-size: 0.8rem;
+    color: #6b7280;
+    margin-bottom: 18px;
+}
+
+.breadcrumb a:hover {
+    color: var(--primary-blue);
+}
+
+.breadcrumb span {
+    margin: 0 6px;
+}
+
+.catalog-head h1 {
+    font-size: 2.4rem;
+    line-height: 1.15;
+    margin: 10px 0 12px;
+}
+
+.catalog-lede {
+    max-width: 60ch;
+    color: #4b5563;
+}
+
+.coverage-note {
+    margin-top: 14px;
+    font-size: 0.82rem;
+    color: #6b7280;
+    border-left: 3px solid var(--border-color);
+    padding-left: 12px;
+}
+
+/* ---------- filtros ---------- */
+
+.catalog-filters {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background-color: var(--light-gray);
+    border-bottom: 1px solid var(--border-color);
+    padding: 14px 0;
+}
+
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+
+.filter-search {
+    position: relative;
+    flex: 1 1 320px;
+}
+
+.filter-search i {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    font-size: 0.85rem;
+}
+
+.filter-search input {
+    width: 100%;
+    padding: 11px 14px 11px 38px;
+    border: 1px solid var(--border-color);
+    background-color: var(--white);
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: inherit;
+}
+
+.filter-group select {
+    padding: 11px 14px;
+    border: 1px solid var(--border-color);
+    background-color: var(--white);
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: inherit;
+    max-width: 320px;
+}
+
+.filter-search input:focus-visible,
+.filter-group select:focus-visible,
+.product-card:focus-visible,
+.btn-reset:focus-visible,
+.panel-close:focus-visible {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 2px;
+}
+
+.filter-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.88rem;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.filter-check input {
+    accent-color: var(--primary-blue);
+    width: 16px;
+    height: 16px;
+}
+
+.btn-reset {
+    padding: 11px 16px;
+    border: 1px solid var(--border-color);
+    background-color: transparent;
+    font-family: inherit;
+    font-size: 0.88rem;
+    color: #4b5563;
+    cursor: pointer;
+}
+
+.btn-reset:hover {
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+}
+
+/* ---------- rejilla ---------- */
+
+.catalog-main {
+    padding: 26px 0 60px;
+    background-color: var(--white);
+    min-height: 60vh;
+}
+
+.result-count {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-bottom: 18px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    border: 1px solid var(--border-color);
+    background-color: var(--white);
+    font-family: inherit;
+    color: inherit;
+    padding: 0;
+    cursor: pointer;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.product-card:hover {
+    border-color: var(--primary-blue);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+}
+
+.card-media {
+    position: relative;
+    height: 175px;
+    background-color: #fafafa;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+}
+
+.card-media img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.card-media.no-image {
+    flex-direction: column;
+    gap: 8px;
+    color: #b0b6bd;
+    font-size: 0.72rem;
+    text-align: center;
+}
+
+.card-media.no-image i {
+    font-size: 1.5rem;
+}
+
+.family-flag {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: rgba(255, 255, 255, 0.94);
+    border: 1px solid var(--border-color);
+    color: #6b7280;
+    font-size: 0.7rem;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    padding: 3px 7px;
+}
+
+.card-body {
+    padding: 14px 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+/* No uppercase transform and no sub-0.8rem type here: SICK Intl renders digits illegibly below
+   ~12px (a 6 reads as an ó), and family names carry SICK's own casing — "deTec2 Core", "LFP Cubic". */
+.card-family {
+    font-size: 0.8rem;
+    letter-spacing: 0.2px;
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.card-type {
+    font-size: 0.98rem;
+    font-weight: 600;
+    line-height: 1.25;
+    word-break: break-word;
+}
+
+.card-name {
+    font-size: 0.8rem;
+    color: #4b5563;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-meta {
+    margin-top: auto;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 0.74rem;
+    color: #6b7280;
+}
+
+.card-order {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.4px;
+}
+
+.card-kind {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    border: 1px solid var(--border-color);
+    padding: 2px 6px;
+    white-space: nowrap;
+}
+
+.grid-footer {
+    margin-top: 34px;
+    text-align: center;
+}
+
+.empty-state {
+    color: #6b7280;
+    padding: 40px 0;
+}
+
+/* ---------- panel de detalle ---------- */
+
+/* Above .site-header (z-index 1000) — otherwise the sticky header covers the panel's top edge
+   and its close button becomes unclickable. */
+.panel-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(13, 17, 23, 0.45);
+    z-index: 1001;
+}
+
+.detail-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(520px, 100%);
+    background-color: var(--white);
+    z-index: 1002;
+    overflow-y: auto;
+    box-shadow: -6px 0 24px rgba(0, 0, 0, 0.16);
+}
+
+.panel-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--border-color);
+    background-color: var(--white);
+    color: #4b5563;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.panel-close:hover {
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+}
+
+.panel-body {
+    padding: 26px 30px 50px;
+}
+
+.panel-media {
+    height: 260px;
+    background-color: #fafafa;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    margin-bottom: 22px;
+}
+
+.panel-media img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.panel-media.no-image {
+    flex-direction: column;
+    gap: 10px;
+    color: #b0b6bd;
+    font-size: 0.8rem;
+}
+
+.panel-media.no-image i {
+    font-size: 2rem;
+}
+
+.panel-family {
+    font-size: 0.88rem;
+    letter-spacing: 0.2px;
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.panel-body h2 {
+    font-size: 1.5rem;
+    margin: 6px 0 4px;
+    word-break: break-word;
+}
+
+.panel-order {
+    font-size: 0.85rem;
+    color: #6b7280;
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 16px;
+}
+
+.panel-name {
+    color: #374151;
+    margin-bottom: 20px;
+}
+
+.image-note {
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: #6b7280;
+    background-color: var(--light-gray);
+    border-left: 3px solid #d1d5db;
+    padding: 10px 12px;
+    margin-bottom: 22px;
+}
+
+.panel-body h3 {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin: 26px 0 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.84rem;
+}
+
+.spec-table th,
+.spec-table td {
+    text-align: left;
+    vertical-align: top;
+    padding: 8px 10px 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.spec-table th {
+    font-weight: 400;
+    color: #6b7280;
+    width: 46%;
+}
+
+.spec-low::after {
+    content: "*";
+    color: #f39200;
+    font-weight: 600;
+    margin-left: 3px;
+}
+
+.spec-legend {
+    margin-top: 12px;
+    font-size: 0.74rem;
+    color: #9ca3af;
+}
+
+.panel-link {
+    display: inline-block;
+    margin-top: 22px;
+    color: var(--primary-blue);
+    font-weight: 600;
+    font-size: 0.88rem;
+}
+
+.panel-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+    .catalog-container {
+        padding: 0 20px;
+    }
+
+    .catalog-head h1 {
+        font-size: 1.8rem;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 14px;
+    }
+
+    .card-media {
+        height: 140px;
+    }
+
+    .panel-body {
+        padding: 24px 20px 44px;
+    }
+}
