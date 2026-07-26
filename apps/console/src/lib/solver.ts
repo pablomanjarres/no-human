@@ -53,6 +53,12 @@ export interface CatalogEntry {
   lightType?: string;
   housing?: string;
   outputFunction?: string;
+  /** Photo filename under public/assets/products/, when the catalogue prints one. */
+  image?: string;
+  /** The photo depicts the family rather than this exact variant. */
+  imageFamilyPhoto?: boolean;
+  /** Printed catalogue page the photo was cropped from. */
+  imagePage?: string | null;
 }
 
 export interface Coverage {
@@ -137,6 +143,17 @@ export function toPart(entry: CatalogEntry): Part {
     // nothing honest to draw. A nominal housing keeps the layout stable.
     dims: { l: 40, w: 15, h: 25 },
     form: "rect",
+    // It does print a photo, though, for 691 of the 796 sensing SKUs — which is
+    // real evidence where the silhouette above is only nominal.
+    ...(entry.image
+      ? {
+          photo: {
+            src: entry.image,
+            familyPhoto: Boolean(entry.imageFamilyPhoto),
+            page: entry.imagePage ?? null,
+          },
+        }
+      : {}),
     specs,
   };
 }

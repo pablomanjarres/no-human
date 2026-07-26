@@ -18,6 +18,7 @@ import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const source = resolve(here, "..", "..", "..", "sick-catalog-dataset", "products.jsonl");
+const imageManifest = resolve(here, "..", "..", "..", "sick-catalog-dataset", "images.json");
 const outFile = resolve(here, "..", "src", "data", "catalog.generated.json");
 
 /** Categories a cross-brand sensor replacement could plausibly land in. */
@@ -57,8 +58,10 @@ function normaliseIp(raw) {
 
 /** "energética" / "supresión de fondo" — the distinction that decides dark targets. */
 function normalisePrinciple(row) {
-  const hay = `${row.detection_principle ?? ""} ${row.sensor_principle ?? ""} ${row.product_name ?? ""}`.toLowerCase();
-  if (hay.includes("supresión de fondo") || hay.includes("supresion de fondo")) return "background-suppression";
+  const hay =
+    `${row.detection_principle ?? ""} ${row.sensor_principle ?? ""} ${row.product_name ?? ""}`.toLowerCase();
+  if (hay.includes("supresión de fondo") || hay.includes("supresion de fondo"))
+    return "background-suppression";
   if (hay.includes("energética") || hay.includes("energetica")) return "energetic";
   if (hay.includes("reflex") || hay.includes("réflex")) return "retroreflective";
   if (hay.includes("barrera")) return "through-beam";
@@ -116,6 +119,34 @@ const rows = raw
   .split("\n")
   .map((l) => JSON.parse(l));
 
+/**
+ * Product photos, keyed by order number, extracted from the same PDF as the specs
+ * (sick-catalog-dataset/images.json). sync-landing.mjs copies the files into
+ * public/assets/products/, so the console serves them from the same origin.
+ *
+ * The manifest distinguishes a photo matched to one exact SKU from a photo that
+ * only depicts the family, and 299 SKUs have no photo at all. That distinction is
+ * carried through rather than flattened: a card that shows a family photo has to
+ * say so, and a SKU with no photo shows nothing instead of a lookalike.
+ */
+let images = {};
+try {
+  images = JSON.parse(await readFile(imageManifest, "utf8")).images ?? {};
+} catch {
+  console.warn(
+    "[build-catalog] no sick-catalog-dataset/images.json — cards will render without photos. " +
+      "Regenerate with: node scripts/extract-product-images.mjs",
+  );
+}
+
+/** Printed catalogue page ("B-46") for a 1-based PDF page, so a photo cites the page a reader sees. */
+const printedPage = new Map();
+for (const r of rows) {
+  if (typeof r.pdf_page === "number" && r.source_page && !printedPage.has(r.pdf_page + 1)) {
+    printedPage.set(r.pdf_page + 1, r.source_page);
+  }
+}
+
 const catalog = [];
 
 for (const r of rows) {
@@ -135,6 +166,14 @@ for (const r of rows) {
     // labelled table cell. Never collapsed to a single flag.
     prose: lowConfidenceFields(r),
   };
+
+  const photo = images[String(r.order_number)];
+  if (photo?.image) {
+    entry.image = photo.image;
+    // true when the photo depicts the family, not this exact variant
+    entry.imageFamilyPhoto = Boolean(photo.low_confidence);
+    entry.imagePage = printedPage.get(photo.provenance?.pdf_page) ?? null;
+  }
 
   if (typeof r.sensing_range_max_mm === "number") entry.rangeMaxMm = r.sensing_range_max_mm;
   if (typeof r.sensing_range_min_mm === "number") entry.rangeMinMm = r.sensing_range_min_mm;
@@ -196,6 +235,7 @@ const coverage = {
     SOLVER_FIELDS.map((k) => [k, { present: has(k), fromProse: fromProse(k) }]),
   ),
   families: [...new Set(catalog.map((c) => c.family).filter(Boolean))].length,
+  withPhoto: catalog.filter((c) => c.image).length,
   source: {
     document: "SICK Catálogo resumido — Selección de productos para la automatización industrial",
     docNumber: "8014481",
@@ -213,5 +253,6 @@ await rename(tmpFile, outFile);
 
 console.log(
   `[build-catalog] ${catalog.length} sensing SKUs from ${coverage.totalSkus} catalogue products · ` +
-    `${coverage.solvable} solvable · ${coverage.anyProse} carry at least one solver field read from prose`,
+    `${coverage.solvable} solvable · ${coverage.anyProse} carry at least one solver field read from prose · ` +
+    `${coverage.withPhoto} with a product photo`,
 );

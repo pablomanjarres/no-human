@@ -93,21 +93,53 @@ export function ProductHero({ part }: { part: Part }) {
           ) : null}
         </div>
 
-        {/* The frame stays white so its two ink-faint captions keep their 5:1;
-            only the well the drawing sits in is recessed to the page ground. */}
-        <figure className="w-full max-w-[420px] min-w-0 rounded-[2px] border border-rail bg-cab-900 lg:w-[320px] lg:shrink-0">
-          <figcaption className="flex items-center justify-between gap-3 border-b border-rail px-3 py-2">
-            <span className="eyebrow">Dimensional drawing</span>
-            <span className="font-mono text-[10px] text-ink-faint">to scale</span>
-          </figcaption>
-          <div className="flex items-center justify-center bg-cab-950 px-3 py-3">
-            <Housing part={part} accent="sick" maxWidth={288} />
-          </div>
-          <p className="border-t border-rail px-3 py-2 font-mono text-[10px] leading-[1.5] text-ink-faint">
-            Drawn from the dimensional drawing{dimsPage ? `, p.${dimsPage}` : ""}. There is no
-            photograph of this part in the corpus, so there is none on this page.
-          </p>
-        </figure>
+        <div className="flex w-full max-w-[420px] min-w-0 flex-col gap-4 lg:w-[320px] lg:shrink-0">
+          {/* The catalogue's own photo, when it prints one. Cropped from the source
+              PDF — never a stock image — and simply absent for the SKUs it does
+              not cover, rather than substituted with a lookalike. */}
+          {part.photo ? (
+            <figure className="rounded-[2px] border border-rail bg-cab-900">
+              <figcaption className="flex items-center justify-between gap-3 border-b border-rail px-3 py-2">
+                <span className="eyebrow">
+                  {part.photo.familyPhoto ? "Photo of the family" : "Catalogue photo"}
+                </span>
+                {part.photo.page ? (
+                  <span className="font-mono text-[10px] text-ink-faint">p.{part.photo.page}</span>
+                ) : null}
+              </figcaption>
+              <div className="flex min-h-[150px] items-center justify-center bg-cab-950 px-3 py-3">
+                <img
+                  src={`/assets/products/${part.photo.src}`}
+                  alt={`${part.partNumber} — ${part.family}`}
+                  className="max-h-[240px] max-w-full object-contain"
+                />
+              </div>
+              <p className="border-t border-rail px-3 py-2 font-mono text-[10px] leading-[1.5] text-ink-faint">
+                {part.photo.familyPhoto
+                  ? `Cropped from the short-form catalogue${part.photo.page ? `, p.${part.photo.page}` : ""}. It shows the ${part.family} family, not this exact variant — the catalogue prints one photo per family page.`
+                  : `Cropped from the short-form catalogue${part.photo.page ? `, p.${part.photo.page}` : ""}, from this part's own row.`}
+              </p>
+            </figure>
+          ) : null}
+
+          {/* The frame stays white so its two ink-faint captions keep their 5:1;
+              only the well the drawing sits in is recessed to the page ground. */}
+          <figure className="rounded-[2px] border border-rail bg-cab-900">
+            <figcaption className="flex items-center justify-between gap-3 border-b border-rail px-3 py-2">
+              <span className="eyebrow">Dimensional drawing</span>
+              <span className="font-mono text-[10px] text-ink-faint">to scale</span>
+            </figcaption>
+            <div className="flex items-center justify-center bg-cab-950 px-3 py-3">
+              <Housing part={part} accent="sick" maxWidth={288} />
+            </div>
+            <p className="border-t border-rail px-3 py-2 font-mono text-[10px] leading-[1.5] text-ink-faint">
+              Drawn from the dimensional drawing{dimsPage ? `, p.${dimsPage}` : ""}.
+              {part.photo
+                ? ""
+                : " The catalogue prints no photograph of this part, so there is none on this page."}
+            </p>
+          </figure>
+        </div>
       </div>
     </Panel>
   );

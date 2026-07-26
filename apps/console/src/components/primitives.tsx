@@ -1,4 +1,11 @@
-import type { Citation, Confidence, Criticality, EvalStatus, Part } from "@/lib/types";
+import type {
+  Citation,
+  Confidence,
+  Criticality,
+  EvalStatus,
+  Part,
+  ProductPhoto as ProductPhotoData,
+} from "@/lib/types";
 
 /**
  * Accent tokens. Blue passes, amber cautions, vermilion halts. No green anywhere.
@@ -150,13 +157,23 @@ export function ConfidenceMark({ confidence }: { confidence: Confidence }) {
 }
 
 /** Clickable grounding. Every value on screen carries one of these. */
-export function CiteLink({ citation, onOpen }: { citation: Citation; onOpen?: (c: Citation) => void }) {
+export function CiteLink({
+  citation,
+  onOpen,
+}: {
+  citation: Citation;
+  onOpen?: (c: Citation) => void;
+}) {
   return (
     <button
       type="button"
       onClick={onOpen ? () => onOpen(citation) : undefined}
       className="group inline-flex shrink-0 items-center gap-1 font-mono text-[10px] text-ink-faint transition-colors hover:text-sick focus-visible:text-sick"
-      title={citation.snippet ? `“${citation.snippet}” — ${citation.docTitle}, p.${citation.page}` : citation.docTitle}
+      title={
+        citation.snippet
+          ? `“${citation.snippet}” — ${citation.docTitle}, p.${citation.page}`
+          : citation.docTitle
+      }
     >
       <span className="underline decoration-cab-600 decoration-dotted underline-offset-2 group-hover:decoration-sick">
         p.{citation.page}
@@ -167,12 +184,15 @@ export function CiteLink({ citation, onOpen }: { citation: Citation; onOpen?: (c
 }
 
 /**
- * There are no product photographs in this build, and a stock image would be a
- * lie about what the corpus contains. The sensor is drawn from its own
- * dimensional drawing instead — a side elevation at a fixed 2.4 px/mm, so the
- * two columns are directly comparable. Pass `ghost` to overlay the outline of
- * the part being replaced: the 3 mm the replacement costs you becomes visible
- * rather than a number in a table.
+ * A side elevation at a fixed 2.4 px/mm, so the two columns are directly
+ * comparable. Pass `ghost` to overlay the outline of the part being replaced:
+ * the 3 mm the replacement costs you becomes visible rather than a number in a
+ * table.
+ *
+ * This is a silhouette, not a portrait. It sits next to `ProductPhoto`, which
+ * carries the catalogue's own photograph of the part — cropped from the source
+ * PDF, never a stock image, and absent when the catalogue prints none. The
+ * drawing answers "what size", the photo answers "what does it look like".
  *
  * Drawn as ink on paper: a light body, a heavy object line, lighter dimension
  * lines under it. The machined-face hatch is a mid grey at partial opacity —
@@ -337,6 +357,48 @@ export function Housing({
         </text>
       ) : null}
     </svg>
+  );
+}
+
+/**
+ * The catalogue's own photo of the part.
+ *
+ * Deliberately plain: no crop, no zoom, no fill. The source images are small
+ * catalogue crops, so `object-contain` on a fixed box shows them at their real
+ * size rather than upscaling a 120 px photo into a blurry hero.
+ *
+ * When the photo only depicts the family, that is stated on the image rather
+ * than in a tooltip. Someone specifying a replacement part has to be able to see
+ * that the picture is of the family and not of the variant they are about to buy.
+ */
+export function ProductPhoto({
+  photo,
+  alt,
+  size = 96,
+}: {
+  photo: ProductPhotoData;
+  alt: string;
+  size?: number;
+}) {
+  return (
+    <figure className="shrink-0">
+      <div
+        className="flex items-center justify-center border border-cab-700 bg-cab-850 p-1.5"
+        style={{ width: size, height: size }}
+      >
+        <img
+          src={`/assets/products/${photo.src}`}
+          alt={alt}
+          loading="lazy"
+          decoding="async"
+          className="max-h-full max-w-full object-contain"
+        />
+      </div>
+      <figcaption className="mt-1 font-mono text-[9px] leading-tight text-ink-faint">
+        {photo.familyPhoto ? "family photo" : "catalogue photo"}
+        {photo.page ? ` · p.${photo.page}` : ""}
+      </figcaption>
+    </figure>
   );
 }
 
