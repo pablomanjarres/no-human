@@ -20,7 +20,7 @@
     "@no-human/consultancy-engine": "workspace:*",
     "@no-human/consultancy-llm": "workspace:*",
     "@no-human/rag": "workspace:*",
-    "next": "^16.0.0",
+    "next": "^16.2.12",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
