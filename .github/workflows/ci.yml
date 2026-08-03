@@ -42,7 +42,7 @@ jobs:
           # runner needs that history present, not a depth-1 shallow clone.
           fetch-depth: 0
 
-      - uses: pnpm/action-setup@v6
+      - uses: pnpm/action-setup@v6.0.9
         with:
           version: 10.28.0
 
